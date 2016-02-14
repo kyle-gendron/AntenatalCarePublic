@@ -1,0 +1,10 @@
+edu.usm.cos420.example1
+edu.usm.cos420.example1.controller
+edu.usm.cos420.example1.dao
+edu.usm.cos420.example1.dao.domain
+edu.usm.cos420.example1.dao.util
+edu.usm.cos420.example1.domain
+edu.usm.cos420.example1.exceptions
+edu.usm.cos420.example1.service
+edu.usm.cos420.example1.service.impl
+edu.usm.cos420.example1.view.impl
