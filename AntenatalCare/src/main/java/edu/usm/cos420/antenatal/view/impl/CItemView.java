@@ -1,6 +1,10 @@
 package edu.usm.cos420.antenatal.view.impl;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.Scanner;
 
@@ -11,16 +15,12 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 
+import edu.usm.cos420.antenatal.gui.newVisitTab;
 import edu.usm.cos420.antenatal.service.AntenatalService;
 import edu.usm.cos420.antenatal.service.impl.AntenatalService1;
 
-/* 
- * CItemView class 
- *    A Command line User Interface which displays menu of CItem options to user and collects 
- *    the user choice.  
- * 
- */
 
 public class CItemView extends JFrame{
  
@@ -65,13 +65,6 @@ public class CItemView extends JFrame{
       
       quitButton.addActionListener(l -> System.exit(0));
       
-//    quitButton.addActionListener(new ActionListener() {
-//       @Override
-//       public void actionPerformed(ActionEvent event) {
-//          System.exit(0);
-//       }
-//    });
-      
       createLayout(quitButton);
       
       setTitle("MoTech");
@@ -101,6 +94,7 @@ public class CItemView extends JFrame{
       file.setMnemonic(KeyEvent.VK_F);
       
       JMenuItem eMenuItemOne = new JMenuItem("Enter Information");
+      eMenuItemOne.addActionListener(new newEntry());
       JMenuItem eMenuItemTwo = new JMenuItem("Find Previous Visits");
       
       JMenuItem eMenuItemThree = new JMenuItem("Exit");
@@ -114,11 +108,22 @@ public class CItemView extends JFrame{
       
       setJMenuBar(menuBar);
    }
-
-   public static void main(String[] args) {
-      
-      
-
+   private class newEntry implements ActionListener{
+	   private JPanel panel1;
+	   private newEntry(){
+		   panel1 = new newVisitTab();
+		   panel1.setBackground(Color.LIGHT_GRAY);
+		   
+		   
+	   }
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		   getContentPane().removeAll();
+		   createLayout(panel1);
+		   
+		
+	}
+	   
    }
 
 }

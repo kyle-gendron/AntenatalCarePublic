@@ -21,7 +21,7 @@ public class App
     {
 		AntenatalService1 service = new AntenatalService1();
 		CItemView citemView = new CItemView(service);
-	   CItemController controller = new CItemController(citemView,service);    
+	   CItemController controller = new CItemController(citemView,service);   
 	   controller.provideCItemAccess();
 		EventQueue.invokeLater(new Runnable(){
          
