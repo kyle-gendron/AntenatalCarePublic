@@ -14,7 +14,6 @@ public class newVisitTab extends JPanel {
 	public newVisitTab(){
 		firstPanel = new JPanel();
 		
-		
 		firstPanel.setLayout(new FlowLayout());
 		
 		tabbedPane = new JTabbedPane();
@@ -24,7 +23,6 @@ public class newVisitTab extends JPanel {
 		
 		JTextField firstText = new JTextField(10);
 		firstPanel.add(firstText);
-		
 		
 		JButton submit = new JButton("Submit");
 		firstPanel.add(submit);
