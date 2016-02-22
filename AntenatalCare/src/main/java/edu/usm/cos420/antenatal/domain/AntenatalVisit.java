@@ -1,7 +1,7 @@
 /*
- * CItem.java
+ * AntenatalVisit.java
  *
- * Created on August 28, 2001, 11:46 AM
+ * Created on February 22, 2016
  */
 
 package edu.usm.cos420.antenatal.domain;
@@ -17,7 +17,7 @@ import java.io.Serializable;
  *  information in this class 
  * 
  */
-public class CItem implements Serializable {
+public class AntenatalVisit implements Serializable {
     
 	private static final long serialVersionUID = 7526472295622776147L;
     private Long id;
@@ -45,7 +45,7 @@ public class CItem implements Serializable {
 	 * Default Constructor : 
 	 * Creates new CItem with an autogenenerated sequence ID 
 	 */
-	public CItem() {
+	public AntenatalVisit() {
         myInteger = new Integer(0);
         myString = new String("");
     	id = generateId();
@@ -55,7 +55,7 @@ public class CItem implements Serializable {
 	 * Two field Constructor : 
 	 * Creates new CItem with an autogenenerated sequence ID 
 	 */
-    public CItem(int n, String str) {
+    public AntenatalVisit(int n, String str) {
         myInteger = new Integer(n);
         myString = str;
     	id = generateId();
@@ -64,7 +64,7 @@ public class CItem implements Serializable {
     /** 
      * Three field constructor 
      */
-    public CItem(Long id, int n, String str) {
+    public AntenatalVisit(Long id, int n, String str) {
         myInteger = new Integer(n);
         myString = str;
     	this.id = id;

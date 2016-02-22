@@ -3,8 +3,8 @@ package edu.usm.cos420.antenatal.service.impl;
 import java.util.Iterator;
 import java.util.List;
 
-import edu.usm.cos420.antenatal.dao.domain.CItemDao;
-import edu.usm.cos420.antenatal.domain.CItem;
+import edu.usm.cos420.antenatal.dao.domain.AntenatalVisitDao;
+import edu.usm.cos420.antenatal.domain.AntenatalVisit;
 import edu.usm.cos420.antenatal.service.AntenatalService;
 
 /**
@@ -17,21 +17,21 @@ import edu.usm.cos420.antenatal.service.AntenatalService;
  */
 public class AntenatalService1 implements AntenatalService {
 
-	CItemDao dao;
+	AntenatalVisitDao dao;
 	
 	/**
 	 * Default Constructor creates a default CItemDao object 
 	 */
     public AntenatalService1()
     {
-        this.dao = new CItemDao();	
+        this.dao = new AntenatalVisitDao();	
     }
 
     /**
      * Constructor with the DAO provided 
      * @param dao Data Access Object to use in the service
      */
-    public AntenatalService1(CItemDao dao)
+    public AntenatalService1(AntenatalVisitDao dao)
     {
         this.dao = dao;	
     }
@@ -42,7 +42,7 @@ public class AntenatalService1 implements AntenatalService {
     public void addACItem() 
     {
     	int randomNum = 1 + (int)(Math.random()*100000); 
-    	CItem anItem = new CItem(new Long(randomNum), randomNum,"String with random number " + randomNum);
+    	AntenatalVisit anItem = new AntenatalVisit(new Long(randomNum), randomNum,"String with random number " + randomNum);
         dao.add(anItem);
     }
     /**
@@ -51,21 +51,33 @@ public class AntenatalService1 implements AntenatalService {
      */
 
 	public Long maxCItemId() {
-    	 List<CItem> list = dao.list();
+    	 List<AntenatalVisit> list = dao.list();
     	 Long max = 0L;
     	 if (list.isEmpty())
     		 return max;
     	 else 
     	 {
-    		 Iterator<CItem> iter = list.iterator();
+    		 Iterator<AntenatalVisit> iter = list.iterator();
     		 max = iter.next().getId();
     		 while (iter.hasNext())
     		 {
-    			 CItem anItem = iter.next();
+    			 AntenatalVisit anItem = iter.next();
     			 if (anItem.getId() > max)
     			     max = anItem.getId();
     		 }
     		 return max;
     	 }
      }
+
+   @Override
+   public Long maxAntenatalVisitId() {
+      // TODO Auto-generated method stub
+      return null;
+   }
+
+   @Override
+   public void addAAntenatalVisit() {
+      // TODO Auto-generated method stub
+      
+   }
 }

@@ -19,5 +19,7 @@ public interface AntenatalService {
      * @return the maximum id of a CItem in the repository
      */
 	public Long maxCItemId();
+   public Long maxAntenatalVisitId();
+   public void addAAntenatalVisit();
 	
 }

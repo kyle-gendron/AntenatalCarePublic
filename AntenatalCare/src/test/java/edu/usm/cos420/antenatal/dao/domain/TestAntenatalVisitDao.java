@@ -16,28 +16,28 @@ import org.junit.Test;
 
 import edu.usm.cos420.antenatal.dao.GenericDao;
 import edu.usm.cos420.antenatal.dao.ObjectStreamDao;
-import edu.usm.cos420.antenatal.dao.domain.CItemDao;
-import edu.usm.cos420.antenatal.domain.CItem;
+import edu.usm.cos420.antenatal.dao.domain.AntenatalVisitDao;
+import edu.usm.cos420.antenatal.domain.AntenatalVisit;
 
-public class TestCItemDao {
+public class TestAntenatalVisitDao {
 
-	CItemDao dao; 
+	AntenatalVisitDao dao; 
 	
 /** 
  * Create a clean DAO before each test
  */
 	@Before
 	public void setupData() {
-		   dao = new CItemDao("_citemTest1.ser");
+		   dao = new AntenatalVisitDao("_AntenatalVisitTest1.ser");
 		   
 	}
 	
 	@Test
     public void testSaveandFind1() {
         Long id; 
-        CItem retrievedItem;
+        AntenatalVisit retrievedItem;
         
-        CItem oneItem = new CItem(2, "a string"); 
+        AntenatalVisit oneItem = new AntenatalVisit(2, "a string"); 
         
         // get PK of first address
         id = oneItem.getId();
@@ -55,12 +55,12 @@ public class TestCItemDao {
 	@Test
     public void testSaveandRemove1() {
         Long id; 
-        CItem retrievedItem;
+        AntenatalVisit retrievedItem;
         
     	
-        CItem oneItem = new CItem(new Long((int) (Math.random()*100000)), 1, "a string"); 
-        CItem twoItem = new CItem(new Long((int) (Math.random()*100000)), 2, "a string"); 
-        CItem threeItem = new CItem(new Long((int) (Math.random()*100000)), 3, "a string"); 
+        AntenatalVisit oneItem = new AntenatalVisit(new Long((int) (Math.random()*100000)), 1, "a string"); 
+        AntenatalVisit twoItem = new AntenatalVisit(new Long((int) (Math.random()*100000)), 2, "a string"); 
+        AntenatalVisit threeItem = new AntenatalVisit(new Long((int) (Math.random()*100000)), 3, "a string"); 
         
         // get PK of first address
         id = oneItem.getId();        
@@ -81,12 +81,12 @@ public class TestCItemDao {
 	@Test
     public void testSaveandUpdate1() {
         Long id; 
-        CItem retrievedItem;
+        AntenatalVisit retrievedItem;
         
     	
-        CItem oneItem = new CItem(new Long((int) (Math.random()*100000)), 1, "a string"); 
-        CItem twoItem = new CItem(new Long((int) (Math.random()*100000)), 2, "a string"); 
-        CItem threeItem = new CItem(new Long((int) (Math.random()*100000)), 3, "a string"); 
+        AntenatalVisit oneItem = new AntenatalVisit(new Long((int) (Math.random()*100000)), 1, "a string"); 
+        AntenatalVisit twoItem = new AntenatalVisit(new Long((int) (Math.random()*100000)), 2, "a string"); 
+        AntenatalVisit threeItem = new AntenatalVisit(new Long((int) (Math.random()*100000)), 3, "a string"); 
         
         // get PK of first address
         id = oneItem.getId();        
@@ -135,7 +135,7 @@ public class TestCItemDao {
 	public void tearDown()
 	{
 
-		Path path1 = FileSystems.getDefault().getPath(".", "_citemTest.ser");
+		Path path1 = FileSystems.getDefault().getPath(".", "_AntenatalVisitTest.ser");
 		try {
 		    Files.delete(path1);
 		} catch (NoSuchFileException x) {

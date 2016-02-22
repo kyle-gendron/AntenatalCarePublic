@@ -16,31 +16,31 @@ import org.junit.Test;
 
 import edu.usm.cos420.antenatal.dao.GenericDao;
 import edu.usm.cos420.antenatal.dao.ObjectStreamDao;
-import edu.usm.cos420.antenatal.dao.domain.CItemDao;
-import edu.usm.cos420.antenatal.domain.CItem;
+import edu.usm.cos420.antenatal.dao.domain.AntenatalVisitDao;
+import edu.usm.cos420.antenatal.domain.AntenatalVisit;
 import edu.usm.cos420.antenatal.service.AntenatalService;
 import edu.usm.cos420.antenatal.service.impl.AntenatalService1;
 
 public class IntegrationTestAntenatalService {
-	GenericDao<Long, CItem> dao;
-	CItemDao citemDao;
+	GenericDao<Long, AntenatalVisit> dao;
+	AntenatalVisitDao AntenatalVisitDao;
     AntenatalService testService;
     
 	@Before
 	public void setupData() {
-	   dao = new ObjectStreamDao<Long, CItem>("_test.ser");
-	   citemDao = new CItemDao(dao);
-	   testService = new AntenatalService1(citemDao);
+	   dao = new ObjectStreamDao<Long, AntenatalVisit>("_test.ser");
+	   AntenatalVisitDao = new AntenatalVisitDao(dao);
+	   testService = new AntenatalService1(AntenatalVisitDao);
 	}
 	
 	@Test
-    public void testaddACItem() {
-        CItem retrievedItem;
-        List<CItem> clist;
+    public void testaddAAntenatalVisit() {
+        AntenatalVisit retrievedItem;
+        List<AntenatalVisit> clist;
         
-        testService.addACItem();
+        testService.addAAntenatalVisit();
         
-        clist = citemDao.list();
+        clist = AntenatalVisitDao.list();
         
         retrievedItem = clist.get(0);
         
@@ -50,17 +50,17 @@ public class IntegrationTestAntenatalService {
 	@Test
     public void testmaxId() {
         Long id, newMax; 
-        List<CItem> clist;
+        List<AntenatalVisit> clist;
                 
-        id = testService.maxCItemId();
+        id = testService.maxAntenatalVisitId();
         
-	    CItem oneItem = new CItem(2, "test string"); 
+	    AntenatalVisit oneItem = new AntenatalVisit(2, "test string"); 
         oneItem.setId(id + 5);
-        citemDao.add(oneItem);
-        newMax = testService.maxCItemId();
-        clist = citemDao.list();
+        AntenatalVisitDao.add(oneItem);
+        newMax = testService.maxAntenatalVisitId();
+        clist = AntenatalVisitDao.list();
         
-        CItem retrievedItem = clist.get(0);
+        AntenatalVisit retrievedItem = clist.get(0);
         System.out.println(retrievedItem);
         
         assertEquals("Stored Id and original Id are not equal ", newMax.longValue(), id.longValue() + 5);
