@@ -48,6 +48,7 @@ public class newVisitTab extends JPanel {
 		JLabel name = new JLabel("Name: ");
 		JTextField nameText = new JTextField(10);
 		nameText.setText(NAME);
+		nameText.setEnabled(false);
 		oldEntry.add(name);
 		oldEntry.add(nameText);
 	}
