@@ -8,41 +8,45 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class newVisitTab extends JPanel {
+	String NAME = "Ross"; //REPLACE WITH PERSON OBJECT NAME.
 	JTabbedPane tabbedPane;
-	JPanel firstPanel;
-	JLabel firstLabel;
+	JPanel oldEntry,newEntry;
 	public newVisitTab(){
-		firstPanel = new JPanel();
 		
+		getConsultingInfo();
+		getNewInfo();
 		
-		firstPanel.setLayout(new FlowLayout());
+		JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, oldEntry, newEntry);
+		splitPane.setResizeWeight(0.25);
 		
 		tabbedPane = new JTabbedPane();
+		setLayout(new BorderLayout());
+		tabbedPane.addTab("New Visit", splitPane);	
+		tabbedPane.setTabPlacement(JTabbedPane.TOP);
+		tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
 		
-		firstLabel = new JLabel("Name:");
-		firstPanel.add(firstLabel);
-		
-		JTextField firstText = new JTextField(10);
-		firstPanel.add(firstText);
-		
+		add(tabbedPane, BorderLayout.CENTER);
+	}
+	private void getNewInfo() {
+		newEntry = new JPanel();
+		JTextField nameText = new JTextField(10);
+		newEntry.add(nameText);
 		
 		JButton submit = new JButton("Submit");
-		firstPanel.add(submit);
+		newEntry.add(submit);
+		
 		submit.addActionListener(new ActionListener(){
-
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(1);
 				
 			}
-			
 		});
 		
-		setLayout(new BorderLayout());
-		tabbedPane.addTab("New Visit", firstPanel);	
-		tabbedPane.setTabPlacement(JTabbedPane.TOP);
-		tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
-		
-		add(tabbedPane, BorderLayout.CENTER);
+	}
+	private void getConsultingInfo() {
+		oldEntry = new JPanel();
+		JLabel name = new JLabel("Name: "+NAME);
+		oldEntry.add(name);
 	}
 }
