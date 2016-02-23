@@ -22,50 +22,42 @@ import edu.usm.cos420.antenatal.service.AntenatalService;
 import edu.usm.cos420.antenatal.service.impl.AntenatalService1;
 
 
-public class CItemView extends JFrame{
- 
-	/** {@value}  : no choice selected by user */
-	public static final int NO_CHOICE = 0;
-	/** {@value #ADDONE}  : Add one CItem to the collection of items */
-    public static final int ADDONE = 1;
-	/** {@value #EXIT}  : Exit the program */
-    public static final int EXIT = 6;
+public class AntenatalView extends JFrame{
 
     private AntenatalService1 example1Service;
  
-    /**
-     * This small version of the UI does not need the model or service objects but, in general, 
-     *     references to these objects are needed in the UI. Default constructor
-     *     creates a reference to Example1Service class to illustrate this.
-     */
-  public CItemView()
+  public AntenatalView()
   {
       this.example1Service = new AntenatalService1();
+      
       initUI();
   }
-  /**
-   * This small version of the UI does not need the model or service objects but, in general, 
-   *     references to these objects are needed in the UI.
-   * @param example1Service reference to class which provides CItem Services
-   */
-   public CItemView(AntenatalService1 example1Service)
+
+   public AntenatalView(AntenatalService1 example1Service)
    {
 	  this.example1Service = example1Service;
+	  
 	  initUI();
    }
    
    
    private void initUI(){
+	   Container pane = getContentPane();
+	   BorderLayout border = new BorderLayout();
+	   pane.setLayout(border);
       
       createMenuBar();
       
       JButton quitButton = new JButton("Quit");
+      quitButton.setSize(pane.getWidth()/2,20);
       quitButton.setToolTipText("Quit button");
       quitButton.setMnemonic(KeyEvent.VK_Q);
       
       quitButton.addActionListener(l -> System.exit(0));
       
-      getContentPane().add(quitButton, BorderLayout.SOUTH);
+      
+      
+      pane.add(quitButton, BorderLayout.SOUTH);
       
       setTitle("MoTech");
       setSize(600, 400);
@@ -105,8 +97,9 @@ public class CItemView extends JFrame{
 	   }
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		   
-		   getContentPane().add(panel1,BorderLayout.CENTER);
+		   getContentPane().removeAll();
+		   add(panel1);
+		   validate();
 		   
 		
 	}
