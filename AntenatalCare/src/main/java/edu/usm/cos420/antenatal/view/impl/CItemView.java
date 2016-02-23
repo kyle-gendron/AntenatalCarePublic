@@ -65,26 +65,13 @@ public class CItemView extends JFrame{
       
       quitButton.addActionListener(l -> System.exit(0));
       
-      createLayout(quitButton);
+      getContentPane().add(quitButton, BorderLayout.SOUTH);
       
       setTitle("MoTech");
       setSize(600, 400);
       setLocationRelativeTo(null);
       setDefaultCloseOperation(EXIT_ON_CLOSE);
       
-   }
-   
-   private void createLayout(JComponent... arg){
-      
-      Container pane = getContentPane();
-      GroupLayout grplout = new GroupLayout(pane);
-      pane.setLayout(grplout);
-      
-      grplout.setAutoCreateContainerGaps(true);
-      
-      grplout.setHorizontalGroup(grplout.createSequentialGroup().addComponent(arg[0]));
-      
-      grplout.setVerticalGroup(grplout.createSequentialGroup().addComponent(arg [0]));
    }
    
    private void createMenuBar(){
@@ -118,8 +105,8 @@ public class CItemView extends JFrame{
 	   }
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		   getContentPane().removeAll();
-		   createLayout(panel1);
+		   
+		   getContentPane().add(panel1,BorderLayout.CENTER);
 		   
 		
 	}
