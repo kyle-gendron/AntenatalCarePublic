@@ -2,10 +2,10 @@ package edu.usm.cos420.antenatal;
 
 import java.awt.EventQueue;
 
-import edu.usm.cos420.antenatal.controller.CItemController;
+import edu.usm.cos420.antenatal.controller.AntenatalController;
 import edu.usm.cos420.antenatal.service.AntenatalService;
 import edu.usm.cos420.antenatal.service.impl.AntenatalService1;
-import edu.usm.cos420.antenatal.view.impl.CItemView;
+import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 
 /**
  * Top level application class that coordinates the calls to view and Controller
@@ -20,15 +20,15 @@ public class App
 	public static void main( String[] args )
     {
 		AntenatalService1 service = new AntenatalService1();
-		CItemView citemView = new CItemView(service);
-	   CItemController controller = new CItemController(citemView,service);   
+		AntenatalView aView = new AntenatalView(service);
+	   AntenatalController controller = new AntenatalController(aView,service);   
 	   controller.provideCItemAccess();
 		EventQueue.invokeLater(new Runnable(){
          
          @Override
          public void run(){
             
-            citemView.setVisible(true);
+            aView.setVisible(true);
          }
          
       });
