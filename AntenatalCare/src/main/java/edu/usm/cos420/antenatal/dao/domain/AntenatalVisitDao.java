@@ -8,7 +8,7 @@ import edu.usm.cos420.antenatal.domain.AntenatalVisit;
 
 /**
  * 
- *  A Data Access Object specifically for CItem entities 
+ *  A Data Access Object specifically for AntenatalVisit entities 
  *     
  */
 public class AntenatalVisitDao
@@ -20,7 +20,7 @@ public class AntenatalVisitDao
 	 */
 	public AntenatalVisitDao()
 	{
-		genDao = new ObjectStreamDao<Long,AntenatalVisit>("citem.ser");;
+		genDao = new ObjectStreamDao<Long,AntenatalVisit>("antenatalvisits.ser");;
 	}
 
 	/**

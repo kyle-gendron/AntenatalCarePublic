@@ -1,11 +1,18 @@
 package edu.usm.cos420.antenatal.domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DummyPerson {
+public class DummyPerson implements Serializable{
    
+   /**
+    * 
+    */
+   private static final long serialVersionUID = -1931254923689371768L;
+   private Long id;
+   private static Long COUNTER = 0L;
    private String FacZone = "A Facility";
    private String Subdistrict = "A Subdistrict"; 
    private String District = "A District"; 
@@ -20,7 +27,7 @@ public class DummyPerson {
    private List<Long> visitID = new ArrayList<Long>();
    
    public DummyPerson(){
-      
+      id = generateId();
    }
    
    public String getFacZone(){
@@ -59,7 +66,15 @@ public class DummyPerson {
    public List<Long> getVisitIDs(){
       return visitID;
    }
-   
+   public Long getId() {
+      return id;
+   }
+   // for autogeneration of ids
+   private Long generateId()
+   {
+     return COUNTER++;
+   }
+
    
    
    
