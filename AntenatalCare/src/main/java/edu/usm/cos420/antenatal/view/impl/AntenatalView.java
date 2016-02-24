@@ -44,7 +44,7 @@ public class AntenatalView extends JFrame{
 		initUI();
 	}
 
-	private JTabbedPane TPAIN;
+	private static JTabbedPane TPAIN;
 	private void initUI(){
 		Container pane = getContentPane();
 		BorderLayout border = new BorderLayout();
@@ -80,7 +80,7 @@ public class AntenatalView extends JFrame{
 
 
 	}
-
+	private int count = 1;
 	private void createMenuBar(){
 		JMenuBar menuBar = new JMenuBar();
 
@@ -91,11 +91,16 @@ public class AntenatalView extends JFrame{
 		eMenuItemOne.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if(count==1){
+					getContentPane().remove(getContentPane().getComponentCount()-1);
+				}
 				newVisitTab panel1 = new newVisitTab();
+				count++;
 				if(TPAIN.getTitleAt(0)=="-------"){
 					TPAIN.remove(0);
+					
 				}
-				TPAIN.addTab("New Visit", panel1);
+				TPAIN.addTab(panel1.getTitle(), panel1);
 				
 				validate();
 
@@ -116,24 +121,4 @@ public class AntenatalView extends JFrame{
 
 		setJMenuBar(menuBar);
 	}
-	private class newEntry implements ActionListener{
-		private newVisitTab panel1;
-		private newEntry(){
-			panel1 = new newVisitTab();
-			TPAIN.addTab("New Visit", panel1);
-
-
-
-		}
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			getContentPane().removeAll();
-			add(panel1);
-			validate();
-
-
-		}
-
-	}
-
 }

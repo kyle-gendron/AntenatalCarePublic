@@ -10,28 +10,38 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import edu.usm.cos420.antenatal.view.impl.AntenatalView;
+
 public class newVisitTab extends JPanel {
-	String NAME = "Ross"; //REPLACE WITH PERSON OBJECT NAME.
+	
+	private final String NAME = "Ross"; //REPLACE WITH PERSON OBJECT NAME.
 	JTabbedPane tabbedPane;
 	private JPanel oldEntry ,newEntry;
 	public newVisitTab(){
+		tabbedPane = new JTabbedPane();
+		tabbedPane.setTabPlacement(JTabbedPane.TOP);
+		tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
+		setLayout(new BorderLayout());
+		
+		
 		oldEntry = new JPanel();
 		newEntry = new JPanel();
-
+		
+		
 		getConsultingInfo();
 		getNewInfo();
+		JTabbedPane newTab = new JTabbedPane();
+		newTab.setTabPlacement(JTabbedPane.TOP);
+		newTab.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
 
-		JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, oldEntry, newEntry);
-		splitPane.setResizeWeight(0.30);	
+		newTab.addTab("Antenatal Care Input", newEntry);
+		
 		oldEntry.setMinimumSize(new Dimension(400,160));
+		JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, oldEntry, newTab);
+		splitPane.setResizeWeight(0.30);	
+		splitPane.setDividerLocation(160);
 
-		tabbedPane = new JTabbedPane();
-		setLayout(new BorderLayout());
 		tabbedPane.addTab("Consulting Registry", splitPane);	
-
-		tabbedPane.setTabPlacement(JTabbedPane.TOP);
-
-		tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
 
 		add(putNameAtTop(), BorderLayout.NORTH);
 		add(tabbedPane, BorderLayout.CENTER);
@@ -137,12 +147,15 @@ public class newVisitTab extends JPanel {
 		submit.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				System.exit(1);//MAKE IT SUBMIT
 
 			}
 		});
 		buttonPane.add(quitButton);
 		buttonPane.add(submit);
 		return buttonPane;
+	}
+	public String getTitle() {
+		
+		return NAME;
 	}
 }
