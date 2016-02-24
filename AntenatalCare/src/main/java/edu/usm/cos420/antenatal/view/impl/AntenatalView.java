@@ -2,6 +2,7 @@ package edu.usm.cos420.antenatal.view.impl;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -18,9 +19,12 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
+import edu.usm.cos420.antenatal.domain.DummyPerson;
+import edu.usm.cos420.antenatal.gui.consultingData;
 import edu.usm.cos420.antenatal.gui.newVisitTab;
 import edu.usm.cos420.antenatal.service.AntenatalService;
 import edu.usm.cos420.antenatal.service.impl.AntenatalService1;
@@ -29,10 +33,11 @@ import edu.usm.cos420.antenatal.service.impl.AntenatalService1;
 public class AntenatalView extends JFrame{
 
 	private AntenatalService1 example1Service;
-
+	private DummyPerson p;
 	public AntenatalView()
 	{
 		this.example1Service = new AntenatalService1();
+		p = new DummyPerson();
 
 		initUI();
 	}
@@ -40,7 +45,7 @@ public class AntenatalView extends JFrame{
 	public AntenatalView(AntenatalService1 example1Service)
 	{
 		this.example1Service = example1Service;
-
+		p = new DummyPerson();
 		initUI();
 	}
 
@@ -61,14 +66,18 @@ public class AntenatalView extends JFrame{
 
 
 		TPAIN = new JTabbedPane();
-		JPanel fill = new JPanel();
-		TPAIN.addTab("-------", fill);
-		fill.setBackground(Color.LIGHT_GRAY);
+		
+		fillEmpty();
+		
 		TPAIN.setTabPlacement(JTabbedPane.TOP);
 		TPAIN.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
+		
+		
 		pane.setBackground(Color.LIGHT_GRAY);
-
-		pane.add(TPAIN,BorderLayout.CENTER);
+		
+		consultingData holdData = new consultingData();
+		
+		pane.add(createSplitData(holdData), BorderLayout.CENTER);
 		pane.add(quitButton, BorderLayout.SOUTH);
 
 		setTitle("MoTech");
@@ -80,6 +89,21 @@ public class AntenatalView extends JFrame{
 
 
 	}
+	private Component createSplitData(consultingData holdData) {
+		JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT, holdData.getPanel(p), TPAIN);
+		split.setResizeWeight(0.30);
+		split.setDividerLocation(130);
+		
+		return split;
+	}
+
+	private static void fillEmpty() {
+		JPanel fill = new JPanel();
+		fill.setBackground(Color.LIGHT_GRAY);
+		TPAIN.addTab("-------", fill);
+		
+	}
+
 	private int count = 1;
 	private void createMenuBar(){
 		JMenuBar menuBar = new JMenuBar();
@@ -87,22 +111,25 @@ public class AntenatalView extends JFrame{
 		JMenu file = new JMenu("Antenatal");
 		file.setMnemonic(KeyEvent.VK_F);
 
-		JMenuItem eMenuItemOne = new JMenuItem("Enter Information");
+		JMenuItem eMenuItemOne = new JMenuItem("Create New Visit");
 		eMenuItemOne.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(count==1){
 					getContentPane().remove(getContentPane().getComponentCount()-1);
 				}
-				newVisitTab panel1 = new newVisitTab();
+				newVisitTab panel1 = new newVisitTab(p);
 				count++;
 				if(TPAIN.getTitleAt(0)=="-------"){
 					TPAIN.remove(0);
 					
 				}
-				TPAIN.addTab(panel1.getTitle(), panel1);
+				TPAIN.addTab(panel1.getTitle(), panel1.getPanel());
 				
 				validate();
+				
+				
+				
 
 
 			}
@@ -120,5 +147,11 @@ public class AntenatalView extends JFrame{
 		menuBar.add(file);
 
 		setJMenuBar(menuBar);
+	}
+	public static void removeTab(String s){
+		TPAIN.remove(TPAIN.indexOfTab(s));// make a remove 
+		if(TPAIN.getTabCount()==0){
+			fillEmpty();
+		}
 	}
 }
