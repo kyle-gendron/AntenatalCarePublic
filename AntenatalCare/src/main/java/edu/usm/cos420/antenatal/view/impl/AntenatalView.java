@@ -60,7 +60,7 @@ public class AntenatalView extends JFrame{
       pane.add(quitButton, BorderLayout.SOUTH);
       
       setTitle("MoTech");
-      setSize(600, 400);
+      setSize(800, 600);
       setLocationRelativeTo(null);
       setDefaultCloseOperation(EXIT_ON_CLOSE);
       
