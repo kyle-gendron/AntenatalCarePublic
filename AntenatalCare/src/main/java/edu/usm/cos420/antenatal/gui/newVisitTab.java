@@ -22,11 +22,12 @@ public class newVisitTab extends JPanel {
 		getNewInfo();
 
 		JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, oldEntry, newEntry);
-		splitPane.setResizeWeight(0.30);		
+		splitPane.setResizeWeight(0.30);	
+		oldEntry.setMinimumSize(new Dimension(400,160));
 
 		tabbedPane = new JTabbedPane();
 		setLayout(new BorderLayout());
-		tabbedPane.addTab("New Visit", splitPane);	
+		tabbedPane.addTab("Consulting Registry", splitPane);	
 
 		tabbedPane.setTabPlacement(JTabbedPane.TOP);
 
