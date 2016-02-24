@@ -1,6 +1,8 @@
 package edu.usm.cos420.antenatal.domain;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DummyPerson {
    
@@ -15,6 +17,7 @@ public class DummyPerson {
    private String Name = "Hello, my name is...";
    private String Address = "2nd on right";
    private int Age = 21;
+   private List<Long> visitID = new ArrayList<Long>();
    
    public DummyPerson(){
       
@@ -52,6 +55,9 @@ public class DummyPerson {
    }
    public int getAge(){
       return Age;
+   }
+   public List<Long> getVisitIDs(){
+      return visitID;
    }
    
    
