@@ -10,14 +10,19 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import edu.usm.cos420.antenatal.domain.DummyPerson;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 
 public class newVisitTab extends JPanel {
 	
-	private final String NAME = "Ross"; //REPLACE WITH PERSON OBJECT NAME.
+	private String NAME = "Ross"; //REPLACE WITH PERSON OBJECT NAME.
+	DummyPerson p;//REPLACE
 	JTabbedPane tabbedPane;
 	private JPanel oldEntry ,newEntry;
 	public newVisitTab(){
+		p = new DummyPerson();//REPLACE WITH DAO OBJECT OF PERSON
+		NAME = p.getName();
+		
 		tabbedPane = new JTabbedPane();
 		tabbedPane.setTabPlacement(JTabbedPane.TOP);
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
@@ -73,33 +78,76 @@ public class newVisitTab extends JPanel {
 		data.setLayout(layout);
 		
 		
-
+/////////////////////////////////////////////////////List of variables coming in from consulting registry
 		JLabel Facility = new JLabel("Facility: ");
 		JTextField facInput = new JTextField(10);
+		facInput.setText(p.getFacZone());
+		facInput.setEnabled(false);
+		
+		
 		JLabel SubDistrict = new JLabel("SubDistrict: ");
 		JTextField subInput = new JTextField(10);
+		subInput.setText(p.getSubdistrict());
+		subInput.setEnabled(false);
+		
+		
 		JLabel District = new JLabel("District: ");
 		JTextField disInput = new JTextField(10);
+		disInput.setText(p.getDistrict());
+		disInput.setEnabled(false);
+		
+		
 		JLabel Year = new JLabel("Year: ");
 		JTextField yearInput = new JTextField(4);
+		yearInput.setText(p.getYear());
+		yearInput.setEnabled(false);
+		
+		
 		JLabel SerialNumber = new JLabel("Serial Number: ");
 		JTextField serInput = new JTextField(10);
+		serInput.setText(""+p.getSerialNumber());
+		serInput.setEnabled(false);
+		
+		
 		JLabel Date = new JLabel("Date: ");
 		JTextField datInput = new JTextField(10);
+		datInput.setText(""+p.getDate());
+		datInput.setEnabled(false);
+		
+		
 		JLabel RegNumber = new JLabel("Registration Number: ");
 		JTextField regInput = new JTextField(10);
+		regInput.setText(""+p.getRegNumber());
+		regInput.setEnabled(false);
+		
+		
 		JLabel HININumber = new JLabel("HI/NI Number: ");
 		JTextField HINIInput = new JTextField(10);
+		HINIInput.setText(p.getHININumber()+"");
+		HINIInput.setEnabled(false);
+		
+		
 		JLabel Age = new JLabel("Age: ");
 		JTextField ageInput = new JTextField(3);
-
+		ageInput.setText(p.getAge()+"");
+		ageInput.setEnabled(false);
+		
+/////////////////////////////////////////Seperate Panel for these data inputs
 		JPanel address = new JPanel();
 		address.setLayout(new GridLayout(2,2));
 
 		JLabel Location = new JLabel("Community: ");
 		JTextField locInput = new JTextField(10);
+		locInput.setText("n/a");
+		locInput.setEnabled(false);
+		
+		
 		JLabel HouseNumber = new JLabel("House Number: ");
 		JTextField hnumInput = new JTextField(3);
+		hnumInput.setText("n/a");
+		hnumInput.setEnabled(false);
+		
+		
 		address.add(Location);
 		address.add(locInput);
 		address.add(HouseNumber);
