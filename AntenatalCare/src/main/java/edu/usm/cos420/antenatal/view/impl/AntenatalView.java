@@ -81,19 +81,16 @@ public class AntenatalView extends JFrame{
 		pane.add(quitButton, BorderLayout.SOUTH);
 
 		setTitle("MoTech");
-		setSize(800, 600);
-		setMinimumSize(new Dimension(600,400));
+		setSize(800, 700);
+		setMinimumSize(new Dimension(800,625));
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-
 
 	}
 	private Component createSplitData(consultingData holdData) {
 		JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT, holdData.getPanel(p), TPAIN);
 		split.setResizeWeight(0.30);
 		split.setDividerLocation(130);
-		
 		return split;
 	}
 
@@ -122,16 +119,9 @@ public class AntenatalView extends JFrame{
 				count++;
 				if(TPAIN.getTitleAt(0)=="-------"){
 					TPAIN.remove(0);
-					
 				}
 				TPAIN.addTab(panel1.getTitle(), panel1.getPanel());
-				
 				validate();
-				
-				
-				
-
-
 			}
 		});
 		

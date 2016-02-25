@@ -38,6 +38,7 @@ public class newVisitTab extends JPanel {
 		data.setLayout(new BorderLayout());
 		data.add(tabbedPane, BorderLayout.CENTER);
 		data.add(bottomButtons(),BorderLayout.SOUTH);
+		data.setMinimumSize(new Dimension(600,400));
 		
 		return data;
 	}
@@ -110,54 +111,162 @@ public class newVisitTab extends JPanel {
 		HBat36.add(new JLabel("(Grams/Decileter)"));
 		
 		JLabel UrineTes = new JLabel("Urine Test: ");//Sugar/Protein- double mmol/L / double mg/dL
-		JTextField uriInput = new JTextField(3);
+		JTextField uriInput1 = new JTextField(3);
+		JTextField uriInput2 = new JTextField(3);
 		JPanel UrineTest = new JPanel();
 		UrineTest.add(UrineTes);
-		UrineTest.add(uriInput);
+		UrineTest.add(uriInput1);
+		UrineTest.add(new JLabel("/"));
+		UrineTest.add(uriInput2);
 		UrineTest.add(new JLabel("(Sugar/Protein)"));
 		
-		JLabel BloodGroup = new JLabel("Blood Group: ");//String, Drop down with options
-		JTextField blgInput = new JTextField(3);
+		JLabel BloodG = new JLabel("Blood Group: ");//String, Drop down with options
+		JPanel BloodGroup = new JPanel();
+		String[] bt = {" ","O","A","B","AB"};
+		JComboBox bg = new JComboBox(bt);
+		BloodGroup.add(BloodG);
+		BloodGroup.add(bg);
 		
-		JLabel Sickling = new JLabel("Sickling: ");//Status/Type string/string (drop down)
-		JTextField sicInput = new JTextField(3);
 		
-		JLabel VDLab = new JLabel("VDLab: ");//button group reactive or non-reactive
-		JTextField vdlInput = new JTextField(3);
+		JLabel Sicklin = new JLabel("Sickling: ");//Status/Type string/string (drop down)
+		JPanel Sickling = new JPanel();
+		String[] ss = {" ","Positive","Negative"};
+		JComboBox sb = new JComboBox(ss);
+		String[] st = {"N/a","Hemoglobin SS","Hemoglobin SC","Hemoglobin SB+ (Beta) Thalassemia","Beta-Zero Thalassemia"};
+		JComboBox sbt = new JComboBox(st);
+		Sickling.add(Sicklin);
+		Sickling.add(sb);
+		Sickling.add(sbt);
 		
-		JLabel PMTCT = new JLabel("PMTCT: ");//yes or no
-		JTextField pmtInput = new JTextField(3);
+		JLabel VDLa = new JLabel("VDLab: ");//button group reactive or non-reactive
+		JPanel VDLab = new JPanel();
+		JRadioButton react = new JRadioButton("Reactive");
+		JRadioButton nReact = new JRadioButton("Non-Reactive");
+		ButtonGroup r = new ButtonGroup();
+		r.add(react);
+		r.add(nReact);
+		VDLab.add(VDLa);
+		VDLab.add(react);
+		VDLab.add(nReact);
 		
-		JLabel TestResult = new JLabel("Test-Result: ");//positive vs negative
-		JTextField testInput = new JTextField(3);
 		
-		JLabel PostTest = new JLabel("Post-Test Counseling: ");
-		JTextField posInput = new JTextField(3);
+		JLabel PMTC = new JLabel("PMTCT: ");//yes or no
+		JPanel PMTCT = new JPanel();
+		JRadioButton yes = new JRadioButton("Yes");
+		JRadioButton no= new JRadioButton("No");
+		ButtonGroup p = new ButtonGroup();
+		p.add(yes);
+		p.add(no);
+		PMTCT.add(PMTC);
+		PMTCT.add(yes);
+		PMTCT.add(no);
 		
-		JLabel BloodFilm = new JLabel("Blood Film: ");//present or not present
-		JTextField blfInput = new JTextField(3);
+		JLabel TestResul = new JLabel("Test-Result: ");//positive vs negative
+		JPanel TestResult = new JPanel();
+		JRadioButton positive = new JRadioButton("Positive");
+		JRadioButton negative = new JRadioButton("Negative");
+		ButtonGroup t = new ButtonGroup();
+		t.add(positive);
+		t.add(negative);
+		TestResult.add(TestResul);
+		TestResult.add(positive);
+		TestResult.add(negative);
 		
-		JLabel MaleInvolved = new JLabel("Male Involvement: ");//present or not
-		JTextField malInput = new JTextField(3);
+		JLabel PostTes = new JLabel("Post-Test Counseling: ");
+		JPanel PostTest = new JPanel();
+		JRadioButton yes1 = new JRadioButton("Yes");
+		JRadioButton no1= new JRadioButton("No");
+		ButtonGroup p1 = new ButtonGroup();
+		p1.add(yes1);
+		p1.add(no1);
+		PostTest.add(PostTes);
+		PostTest.add(yes1);
+		PostTest.add(no1);
 		
-		JLabel Trimester = new JLabel("Trimester: ");//int 1-3
-		JTextField triInput = new JTextField(3);
+		JLabel BloodFil = new JLabel("Blood Film: ");//present or not present
+		JPanel BloodFilm = new JPanel();
+		JRadioButton present = new JRadioButton("Present");
+		JRadioButton nPresent = new JRadioButton("Not-Present");
+		ButtonGroup b = new ButtonGroup();
+		b.add(present);
+		b.add(nPresent);
+		BloodFilm.add(BloodFil);
+		BloodFilm.add(present);
+		BloodFilm.add(nPresent);
 		
-		JLabel SubsequentVisits = new JLabel("Subsequent Visits: ");//int 2-12
-		JTextField subInput = new JTextField(3);
+		JLabel MaleInvolve = new JLabel("Male Involvement: ");//present or not
+		JPanel MaleInvolved = new JPanel();
+		JRadioButton present1 = new JRadioButton("Present");
+		JRadioButton nPresent1 = new JRadioButton("Not-Present");
+		ButtonGroup m = new ButtonGroup();
+		m.add(present1);
+		m.add(nPresent1);
+		MaleInvolved.add(MaleInvolve);
+		MaleInvolved.add(present1);
+		MaleInvolved.add(nPresent1);
 		
-		JLabel TT = new JLabel("TT: ");//given, boster, protected
-		JTextField ttInput = new JTextField(3);
+		JLabel Trimeste = new JLabel("Trimester: ");//int 1-3
+		JPanel Trimester = new JPanel();
+		String[] tr = {" ","1","2","3"};
+		JComboBox tb = new JComboBox(tr);
+		Trimester.add(Trimeste);
+		Trimester.add(tb);
 		
-		JLabel IPT = new JLabel("IPT: ");//check 1,2, or 3 doses
-		JTextField iptInput = new JTextField(3);
+		JLabel SV = new JLabel("Subsequent Visits: ");//int 2-12
+		JPanel Sub = new JPanel();
+		String[] sr = {" ","2","3","4","5","6","7","8","9","10","11","12"};
+		JComboBox sg = new JComboBox(sr);
+		Sub.add(SV);
+		Sub.add(sg);
+		
+		JLabel TTl = new JLabel("TT: ");//given, boster, protected
+		JPanel TT = new JPanel();
+		String[] ttr = {" ","given","boster","protected"};
+		JComboBox ttb = new JComboBox(ttr);
+		TT.add(TTl);
+		TT.add(ttb);
+		
+		JLabel IPTl = new JLabel("IPT: ");//check 1,2, or 3 doses
+		JPanel IPT = new JPanel();
+		JCheckBox one = new JCheckBox("1");
+		JCheckBox two = new JCheckBox("2");
+		JCheckBox three = new JCheckBox("3");
+		ButtonGroup ipt = new ButtonGroup();
+		ipt.add(one);
+		ipt.add(two);
+		ipt.add(three);
+		IPT.add(IPTl);
+		IPT.add(one);
+		IPT.add(two);
+		IPT.add(three);
+		IPT.add(new JLabel(" Doses"));
 		//doses
 		
-		JLabel ITP = new JLabel("ITP: ");//3 doses tick for each
-		JTextField itpInput = new JTextField(3);
+		JLabel ITPl = new JLabel("ITP: ");//3 doses tick for each
+		JPanel ITP = new JPanel();
+		JCheckBox one1 = new JCheckBox("1");
+		JCheckBox two1 = new JCheckBox("2");
+		JCheckBox three1 = new JCheckBox("3");
+		ButtonGroup itp = new ButtonGroup();
+		itp.add(one1);
+		itp.add(two1);
+		itp.add(three1);
+		ITP.add(ITPl);
+		ITP.add(one1);
+		ITP.add(two1);
+		ITP.add(three1);
+		ITP.add(new JLabel(" Doses"));
 		
-		JLabel ITN = new JLabel("ITN: ");//Yes or no
-		JTextField itnInput = new JTextField(3);
+		JLabel ITNl = new JLabel("ITN: ");//Yes or no
+		JPanel ITN = new JPanel();
+		JRadioButton yes2 = new JRadioButton("Yes");
+		JRadioButton no2= new JRadioButton("No");
+		ButtonGroup p2 = new ButtonGroup();
+		p2.add(yes2);
+		p2.add(no2);
+		ITN.add(ITNl);
+		ITN.add(yes2);
+		ITN.add(no2);
 		
 		
 		
@@ -173,33 +282,19 @@ public class newVisitTab extends JPanel {
 		data.add(HBat36);
 		data.add(UrineTest);
 		data.add(BloodGroup);
-		data.add(blgInput);
 		data.add(Sickling);
-		data.add(sicInput);
 		data.add(VDLab);
-		data.add(vdlInput);
 		data.add(PMTCT);
-		data.add(pmtInput);
 		data.add(TestResult);
-		data.add(testInput);
 		data.add(PostTest);
-		data.add(posInput);
 		data.add(BloodFilm);
-		data.add(blfInput);
 		data.add(MaleInvolved);
-		data.add(malInput);
 		data.add(Trimester);
-		data.add(triInput);
-		data.add(SubsequentVisits);
-		data.add(subInput);
+		data.add(Sub);
 		data.add(TT);
-		data.add(ttInput);
 		data.add(IPT);
-		data.add(iptInput);
 		data.add(ITP);
-		data.add(itpInput);
 		data.add(ITN);
-		data.add(itnInput);
 		return data;
 	}	
 
