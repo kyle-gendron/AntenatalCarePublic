@@ -43,7 +43,17 @@ public class AntenatalController implements ActionListener {
         NewVisitForm form = this.view.getVisitPanel().getForm();
 
         String parity = form.getParity();
-        System.out.print(parity);
+        System.out.println("Parity: " + parity);
+
+        String testResult = form.getTestResult();
+        System.out.println("Test-Result: " + testResult);
+
+        String height = form.getPatientHeight();
+        System.out.println("Height: " + height);
+
+        String weight = form.getPatientWeight();
+        System.out.println("Weight: " + weight);
+
       }
     }
   }

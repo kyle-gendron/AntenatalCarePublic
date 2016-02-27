@@ -305,4 +305,18 @@ public class NewVisitForm extends JPanel {
   public String getParity() {
     return parInput.getText();
   }
+
+  public String getTestResult() {
+    if (positive.isSelected()) return "positive";
+    if (negative.isSelected()) return "negative";
+    return "";
+  }
+
+  public String getPatientHeight() {
+    return heiInput.getText();
+  }
+
+  public String getPatientWeight() {
+    return weiInput.getText();
+  }
 }
