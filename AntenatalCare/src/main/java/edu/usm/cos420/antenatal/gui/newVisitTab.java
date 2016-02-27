@@ -1,7 +1,6 @@
 package edu.usm.cos420.antenatal.gui;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -221,7 +220,7 @@ public class newVisitTab extends JPanel {
 		
 		JLabel TTl = new JLabel("TT: ");//given, boster, protected
 		JPanel TT = new JPanel();
-		String[] ttr = {" ","given","boster","protected"};
+		String[] ttr = {" ","given","booster","protected"};
 		JComboBox ttb = new JComboBox(ttr);
 		TT.add(TTl);
 		TT.add(ttb);
@@ -306,12 +305,7 @@ public class newVisitTab extends JPanel {
 		JButton quitButton = new JButton("Quit");
 		quitButton.addActionListener(l -> System.exit(1));
 		JButton submit = new JButton("Submit");
-		submit.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				AntenatalView.removeTab(getTitle());
-			}
-		});
+		submit.addActionListener(arg0 -> AntenatalView.removeTab(getTitle()));
 		newEntry.add(submit);
 
 		buttonPane.add(quitButton);

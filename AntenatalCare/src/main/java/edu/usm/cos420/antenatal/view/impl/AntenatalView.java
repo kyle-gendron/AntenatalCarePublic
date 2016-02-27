@@ -5,23 +5,10 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.util.Scanner;
+import java.util.Objects;
 
-import javax.swing.GroupLayout;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JSplitPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import edu.usm.cos420.antenatal.domain.DummyPerson;
 import edu.usm.cos420.antenatal.gui.consultingData;
@@ -84,7 +71,7 @@ public class AntenatalView extends JFrame{
 		setSize(800, 700);
 		setMinimumSize(new Dimension(800,625));
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 	}
 	private Component createSplitData(consultingData holdData) {
@@ -109,21 +96,18 @@ public class AntenatalView extends JFrame{
 		file.setMnemonic(KeyEvent.VK_F);
 
 		JMenuItem eMenuItemOne = new JMenuItem("Create New Visit");
-		eMenuItemOne.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(count==1){
-					getContentPane().remove(getContentPane().getComponentCount()-1);
-				}
-				newVisitTab panel1 = new newVisitTab(p);
-				count++;
-				if(TPAIN.getTitleAt(0)=="-------"){
-					TPAIN.remove(0);
-				}
-				TPAIN.addTab(panel1.getTitle(), panel1.getPanel());
-				validate();
-			}
-		});
+		eMenuItemOne.addActionListener(e -> {
+            if(count==1){
+                getContentPane().remove(getContentPane().getComponentCount()-1);
+            }
+            newVisitTab panel1 = new newVisitTab(p);
+            count++;
+            if(Objects.equals(TPAIN.getTitleAt(0), "-------")){
+                TPAIN.remove(0);
+            }
+            TPAIN.addTab(panel1.getTitle(), panel1.getPanel());
+            validate();
+        });
 		
 		JMenuItem eMenuItemTwo = new JMenuItem("Find Previous Visits");
 

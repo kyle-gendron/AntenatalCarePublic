@@ -16,11 +16,11 @@ public class AntenatalVisitDao
 	private GenericDao<Long,AntenatalVisit> genDao;
 
 	/**
-	 * Default constructor creates an ObjectStream file called citem.ser
+	 * Default constructor creates an ObjectStream file called antenatalvisits.ser
 	 */
 	public AntenatalVisitDao()
 	{
-		genDao = new ObjectStreamDao<Long,AntenatalVisit>("antenatalvisits.ser");;
+		genDao = new ObjectStreamDao<>("antenatalvisits.ser");
 	}
 
 	/**
@@ -28,7 +28,7 @@ public class AntenatalVisitDao
 	 */
 	public AntenatalVisitDao(String fileName)
 	{
-		genDao = new ObjectStreamDao<Long,AntenatalVisit>(fileName);;
+		genDao = new ObjectStreamDao<>(fileName);;
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class AntenatalVisitDao
 	
 	/**
 	 * Find a CItem in the DAO repository
-	 * @param id of the CItem object to locate
+	 * @param key of the CItem object to locate
 	 * @return the CItem with id field equal to key
 	 */
 	public AntenatalVisit find(Long key)
