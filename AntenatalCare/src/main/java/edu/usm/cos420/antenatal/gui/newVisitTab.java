@@ -137,7 +137,7 @@ public class newVisitTab extends JPanel {
 		JPanel Sickling = new JPanel();
 		String[] ss = {" ","Positive","Negative"};
 		JComboBox sb = new JComboBox(ss);
-		String[] st = {"N/a","Hemoglobin SS","Hemoglobin SC","Hemoglobin SB+ (Beta) Thalassemia","Beta-Zero Thalassemia"};
+		String[] st = {" ","N/a","Hemoglobin SS","Hemoglobin SC","Hemoglobin SB+ (Beta) Thalassemia","Beta-Zero Thalassemia"};
 		JComboBox sbt = new JComboBox(st);
 		Sickling.add(Sicklin);
 		Sickling.add(sb);
