@@ -10,29 +10,23 @@ import java.util.Objects;
 
 import javax.swing.*;
 
+import edu.usm.cos420.antenatal.controller.AntenatalController;
 import edu.usm.cos420.antenatal.domain.DummyPerson;
 import edu.usm.cos420.antenatal.gui.consultingData;
 import edu.usm.cos420.antenatal.gui.newVisitTab;
-import edu.usm.cos420.antenatal.service.AntenatalService;
-import edu.usm.cos420.antenatal.service.impl.AntenatalService1;
 
 
 public class AntenatalView extends JFrame{
 
-	private AntenatalService1 example1Service;
-	private DummyPerson p;
-	public AntenatalView()
-	{
-		this.example1Service = new AntenatalService1();
-		p = new DummyPerson();
+  private AntenatalController controller;
+	private DummyPerson dummyPerson;
 
-		initUI();
-	}
+  protected JButton submitButton = null;
 
-	public AntenatalView(AntenatalService1 example1Service)
+	public AntenatalView(AntenatalController antenatalController)
 	{
-		this.example1Service = example1Service;
-		p = new DummyPerson();
+    this.controller = antenatalController;
+		dummyPerson = new DummyPerson();
 		initUI();
 	}
 
@@ -49,21 +43,21 @@ public class AntenatalView extends JFrame{
 		quitButton.setToolTipText("Quit button");
 		quitButton.setMnemonic(KeyEvent.VK_Q);
 
-		quitButton.addActionListener(l -> System.exit(0));
+		quitButton.addActionListener(controller);
 
 
 		TPAIN = new JTabbedPane();
-		
+
 		fillEmpty();
-		
+
 		TPAIN.setTabPlacement(JTabbedPane.TOP);
 		TPAIN.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
-		
-		
+
+
 		pane.setBackground(Color.LIGHT_GRAY);
-		
+
 		consultingData holdData = new consultingData();
-		
+
 		pane.add(createSplitData(holdData), BorderLayout.CENTER);
 		pane.add(quitButton, BorderLayout.SOUTH);
 
@@ -73,9 +67,12 @@ public class AntenatalView extends JFrame{
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+    this.submitButton = new JButton("Submit");
+    this.submitButton.addActionListener(controller);
+
 	}
 	private Component createSplitData(consultingData holdData) {
-		JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT, holdData.getPanel(p), TPAIN);
+		JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT, holdData.getPanel(dummyPerson), TPAIN);
 		split.setResizeWeight(0.30);
 		split.setDividerLocation(130);
 		return split;
@@ -85,7 +82,7 @@ public class AntenatalView extends JFrame{
 		JPanel fill = new JPanel();
 		fill.setBackground(Color.LIGHT_GRAY);
 		TPAIN.addTab("-------", fill);
-		
+
 	}
 
 	private int count = 1;
@@ -100,7 +97,7 @@ public class AntenatalView extends JFrame{
             if(count==1){
                 getContentPane().remove(getContentPane().getComponentCount()-1);
             }
-            newVisitTab panel1 = new newVisitTab(p);
+            newVisitTab panel1 = new newVisitTab(dummyPerson, this.submitButton);
             count++;
             if(Objects.equals(TPAIN.getTitleAt(0), "-------")){
                 TPAIN.remove(0);
@@ -108,13 +105,13 @@ public class AntenatalView extends JFrame{
             TPAIN.addTab(panel1.getTitle(), panel1.getPanel());
             validate();
         });
-		
+
 		JMenuItem eMenuItemTwo = new JMenuItem("Find Previous Visits");
 
 		JMenuItem eMenuItemThree = new JMenuItem("Exit");
 		eMenuItemThree.setMnemonic(KeyEvent.VK_E);
 		eMenuItemThree.setToolTipText("Exit application");
-		eMenuItemThree.addActionListener(l -> System.exit(0));
+		eMenuItemThree.addActionListener(controller);
 		file.add(eMenuItemOne);
 		file.add(eMenuItemTwo);
 		file.add(eMenuItemThree);
@@ -122,8 +119,9 @@ public class AntenatalView extends JFrame{
 
 		setJMenuBar(menuBar);
 	}
-	public static void removeTab(String s){
-		TPAIN.remove(TPAIN.indexOfTab(s));// make a remove 
+
+  public static void removeTab(String s){
+		TPAIN.remove(TPAIN.indexOfTab(s));// make a remove
 		if(TPAIN.getTabCount()==0){
 			fillEmpty();
 		}
