@@ -54,7 +54,7 @@ public class AntenatalVisitDao
 	 */
 	public void add(AntenatalVisit entity)
 	{
-		genDao.add(entity.getId(), entity);
+		genDao.add(entity.getID(), entity);
 	}
 	
 	/**
@@ -63,7 +63,7 @@ public class AntenatalVisitDao
 	 */
 	public void update(AntenatalVisit entity) 
 	{
-		genDao.update(entity.getId(), entity);
+		genDao.update(entity.getID(), entity);
 	}
 	
 	/**

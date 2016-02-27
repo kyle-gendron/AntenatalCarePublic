@@ -7,109 +7,527 @@
 package edu.usm.cos420.antenatal.domain;
 
 import java.io.Serializable;
+import java.util.GregorianCalendar;
 
 
 /**
  *
- *  For the purposes of this example, CItem holds three 
- *  piece of data. The class implements the interface 
- *  Serializable so that we can store and retrieve the 
- *  information in this class 
+ *  The Antenatal Visit class represents two things:
+ *  a first visit and the initial information taken down
+ *  on said visit -- and also all the general information 
+ *  associated with antenatal care at this facility that can
+ *  be taken down during any visit (for example, diagnosis
+ *  of HIV or Venereal Disease).  All Subsequent Visits will
+ *  be recorded in order and linked to this initial visit object.
  * 
  */
 public class AntenatalVisit implements Serializable {
     
 	private static final long serialVersionUID = 7526472295622776147L;
-    private Long id;
-    private static Long COUNTER = 0L;
-	private Integer myInteger;
-    private String myString;
-
-   /**
-    * get the ID of the CItem 
-    * @return ID 
-    */
-    public Long getId() {
-		return id;
-	}
-
-    /**
-     * Set the ID of the CItem
-     * @param id new id 
-     */
-	public void setId(Long id) {
-		this.id = id;
-	}
     
-	/** 
-	 * Default Constructor : 
-	 * Creates new CItem with an autogenenerated sequence ID 
-	 */
-	public AntenatalVisit() {
-        myInteger = new Integer(0);
-        myString = new String("");
-    	id = generateId();
-    }
-
-	/** 
-	 * Two field Constructor : 
-	 * Creates new CItem with an autogenenerated sequence ID 
-	 */
-    public AntenatalVisit(int n, String str) {
-        myInteger = new Integer(n);
-        myString = str;
-    	id = generateId();
-    }
-
-    /** 
-     * Three field constructor 
-     */
-    public AntenatalVisit(Long id, int n, String str) {
-        myInteger = new Integer(n);
-        myString = str;
-    	this.id = id;
-    }
-
+	int parity, systolicBP, diastolicBP, trimester, subVisits;
+	int gestation; //num weeks of pregnancy, calculated from last period
+	int iPTDoses, TTDoses; //added together from tick marks
+	double height, weight; //height in cm, weight in kg 
+	double fundalHeight; //in cm
+	double hBAtReg, hBAt36Weeks; //Hemoglobin (hB) in grams/deciliter
+	double urineTestSugar, urineTestProtein; // sug in mmol/Liter, prot in mg/dL 
+	GregorianCalendar EDD; //Estimated day of delivery
+	String bloodGroup, sicklingStatus, sicklingType;
+	boolean vDLabresults, preTestCounsel, hIVResults, postTestCounsel, ARV;
+	boolean bloodFilm;  //results of malaria blood film test
+	boolean iTN;
+	Long id;  //id used to identify a particular set of antenatal visits
+	
 	/**
-	 * @return Returns the Integer.
+	 * Ten-Field Constructor: The fields that absolutely must be filled
+	 * out in order to create a new visit.  All other fields will be filled out 
+	 * 
+	 * @param parity the number of previous children
+	 * @param systolicBP the systolic blood pressure
+	 * @param diastolicBP the diastolic blood pressure
+	 * @param height
+	 * @param weight
+	 * @param gestation the duration of pregnancy in weeks
+	 * @param fundalHeight the height of pregnancy
+	 * @param EDD the estimated date of delivery
+	 * @param hBAtReg the hemoglobin at registration of the patient
+	 * @param bloodGroup the blood group of the patient
 	 */
-	public Integer getMyInteger() {
-		return myInteger;
+	public AntenatalVisit(Long id, int parity, int systolicBP, int diastolicBP, double height, 
+			double weight, int gestation, double fundalHeight, GregorianCalendar EDD, 
+			double hBAtReg, String bloodGroup){
+		this.id = id;
+		this.parity = parity;
+		this.systolicBP = systolicBP;
+		this.diastolicBP = diastolicBP;
+		this.height = height;
+		this.weight = weight;
+		this.gestation = gestation;
+		this.fundalHeight = fundalHeight;
+		this.EDD = EDD;
+		this.hBAtReg = hBAtReg;
+		this.bloodGroup = bloodGroup;
 	}
+	
 	/**
-	 * @param i The integer to set.
+	 * 24-field constructor.  Made to test the functionality of all components
+	 * in constructing an AntenatalVisit object
+	 * 
+	 * @param parity the number of previous children
+	 * @param systolicBP the systolic blood pressure
+	 * @param diastolicBP the diastolic blood pressure
+	 * @param height
+	 * @param weight
+	 * @param gestation the duration of pregnancy in weeks
+	 * @param fundalHeight the height of pregnancy
+	 * @param EDD the estimated date of delivery
+	 * @param hBAtReg the hemoglobin at registration of the patient
+	 * @param hBAt36Weeks the hemoglobin at 36 weeks
+	 * @param bloodGroup the blood group of the patient
+	 * @param sicklingStatus the sickling status of the patient
+	 * @param sicklingType the type of sickling of the patient
+	 * @param vDLabResults the results of the venereal disease lab test
+	 * @param preTestCounsel whether the patient has had HIV test pre-counsel
+	 * @param hIVResults the results of an HIV test
+	 * @param postTestCounsel whether the patient has had HIV test post-counsel
+	 * @param ARV whether the patient is on Anti-Retroviral drugs
+	 * @param subVisits the number of subsequent visits
+	 * @param TTDoses the number of Tetanus Toxioid doses given
+	 * @param IPTDoses the number of IPT doses given
+	 * @param iTN whether the patient is using insecticide-treated Nets
+	 * @param urineTestSugar the sugar portion of the urine test
+	 * @param urineTestProtein the protein portion of the urine test
 	 */
-	public void setMyInteger(int i) {
-		this.myInteger = new Integer(i);
+	public AntenatalVisit(Long id, int parity, int systolicBP, int diastolicBP, double height, 
+			double weight, int gestation, double fundalHeight, GregorianCalendar EDD, 
+			double hBAtReg, double hBAt36Weeks, String bloodGroup, String sicklingStatus,
+			String sicklingType, boolean vDLabResults, boolean preTestCounsel,
+			boolean hIVResults, boolean postTestCounsel, boolean ARV, int subVisits,
+			int TTDoses, int IPTDoses, boolean iTN, double urineTestSugar, double urineTestProtein){
+		this.id = id;
+		this.parity = parity;
+		this.systolicBP = systolicBP;
+		this.diastolicBP = diastolicBP;
+		this.height = height;
+		this.weight = weight;
+		this.gestation = gestation;
+		this.fundalHeight = fundalHeight;
+		this.EDD = EDD;
+		this.hBAtReg = hBAtReg;
+		this.hBAt36Weeks = hBAt36Weeks;
+		this.bloodGroup = bloodGroup;
+		this.sicklingStatus = sicklingStatus;
+		this.sicklingType = sicklingType;
+		this.vDLabresults = vDLabResults;
+		this.preTestCounsel = preTestCounsel;
+		this.hIVResults = hIVResults;
+		this.postTestCounsel = postTestCounsel;
+		this.ARV = ARV;
+		this.subVisits = subVisits;
+		this.TTDoses = TTDoses;
+		this.iPTDoses = IPTDoses;
+		this.iTN = iTN;
+		this.urineTestSugar = urineTestSugar;
+		this.urineTestProtein = urineTestProtein;
 	}
-	/**
-	 * @return Returns  myString.
-	 */
-	public String getMyString() {
-		return myString;
-	}
-	/**
-	 * @param myString The string to set.
-	 */
-	public void setMyString(String myString) {
-		this.myString = myString;
-	}
-
+	
     /**
      * Returns the String representation of this User. Not required, it just pleases reading logs.
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
-        return String.format("CItem [id=%d,myString=%s,myInteger=%s]", getId(), myString, myInteger);
+        return String.format("");
     }
 
-    // for autogeneration of ids
-    private Long generateId()
-    {
-    	return COUNTER++;
+    /**
+     * Returns ID of Antenatal Visit
+     * @return id
+     */
+    public Long getID(){
+    	return id;
     }
+    
+    /**
+     * Sets the id of the Antenatal Visit
+     * @param id the id to set
+     */
+    public void setID(Long id){
+    	this.id = id;
+    }
+    
+	/**
+	 * returns the parity of the client
+	 * @return the parity
+	 */
+	public int getParity() {
+		return parity;
+	}
 
+	/**sets the parity of the client
+	 * @param parity the parity to set
+	 */
+	public void setParity(int parity) {
+		this.parity = parity;
+	}
+
+	/**returns systolic Blood Pressure
+	 * @return the systolicBP
+	 */
+	public int getSystolicBP() {
+		return systolicBP;
+	}
+
+	/**sets systolic Blood Pressure
+	 * @param systolicBP the systolicBP to set
+	 */
+	public void setSystolicBP(int systolicBP) {
+		this.systolicBP = systolicBP;
+	}
+
+	/**Return Diastolic Blood Pressure
+	 * @return the diastolicBP
+	 */
+	public int getDiastolicBP() {
+		return diastolicBP;
+	}
+
+	/**Sets the Diastolic Blood Pressure
+	 * @param diastolicBP the diastolicBP to set
+	 */
+	public void setDiastolicBP(int diastolicBP) {
+		this.diastolicBP = diastolicBP;
+	}
+
+	/**Returns the current trimester of the client.
+	 * @return the trimester
+	 */
+	public int getTrimester() {
+		return trimester;
+	}
+
+	/**Sets the current trimester of the client.
+	 * @param trimester the trimester to set
+	 */
+	public void setTrimester(int trimester) {
+		this.trimester = trimester;
+	}
+
+	/**Returns the number of subsequent visits
+	 * @return the subVisits
+	 */
+	public int getSubVisits() {
+		return subVisits;
+	}
+
+	/**Sets the number of subsequent visits
+	 * @param subVisits the subVisits to set
+	 */
+	public void setSubVisits(int subVisits) {
+		this.subVisits = subVisits;
+	}
+
+	/**Returns the gestation period of the pregnancy
+	 * @return the gestation
+	 */
+	public int getGestation() {
+		return gestation;
+	}
+
+	/**Sets the Gestation period of the pregnancy
+	 * @param gestation the gestation to set
+	 */
+	public void setGestation(int gestation) {
+		this.gestation = gestation;
+	}
+
+	/**Returns the number of IPT Doses given
+	 * @return the iPTDoses
+	 */
+	public int getiPTDoses() {
+		return iPTDoses;
+	}
+
+	/** Sets the number of IPT Doses given
+	 * @param iPTDoses the iPTDoses to set
+	 */
+	public void setiPTDoses(int iPTDoses) {
+		this.iPTDoses = iPTDoses;
+	}
+
+	/**Returns the number of ITP doses given
+	 * @return the iTPDoses
+	 */
+	public int getTTDoses() {
+		return TTDoses;
+	}
+
+	/**Sets the number of ITP Doses given
+	 * @param iTPDoses the iTPDoses to set
+	 */
+	public void setTTDoses(int TTDoses) {
+		this.TTDoses = TTDoses;
+	}
+
+	/**Returns the height of the client
+	 * @return the height
+	 */
+	public double getHeight() {
+		return height;
+	}
+
+	/**Sets the height of the client
+	 * @param height the height to set
+	 */
+	public void setHeight(double height) {
+		this.height = height;
+	}
+
+	/**Returns the weight of the client
+	 * @return the weight
+	 */
+	public double getWeight() {
+		return weight;
+	}
+
+	/**Sets the weight of the client
+	 * @param weight the weight to set
+	 */
+	public void setWeight(double weight) {
+		this.weight = weight;
+	}
+
+	/**Returns the Fundal Height of the pregnancy
+	 * @return the fundalHeight
+	 */
+	public double getFundalHeight() {
+		return fundalHeight;
+	}
+
+	/**Sets the Fundal Height of the pregnancy
+	 * @param fundalHeight the fundalHeight to set
+	 */
+	public void setFundalHeight(double fundalHeight) {
+		this.fundalHeight = fundalHeight;
+	}
+
+	/**Returns the Hemoglobin at Registration of the client
+	 * @return the hBAtReg
+	 */
+	public double gethBAtReg() {
+		return hBAtReg;
+	}
+
+	/**Sets the Hemoglobin at Registration of the client
+	 * @param hBAtReg the hBAtReg to set
+	 */
+	public void sethBAtReg(double hBAtReg) {
+		this.hBAtReg = hBAtReg;
+	}
+
+	/**Returns the Hemoglobin at 36 weeks of pregnancy
+	 * @return the hBAt36Weeks
+	 */
+	public double gethBAt36Weeks() {
+		return hBAt36Weeks;
+	}
+
+	/**Sets the Hemoglobin at 36 weeks of pregnancy
+	 * @param hBAt36Weeks the hBAt36Weeks to set
+	 */
+	public void sethBAt36Weeks(double hBAt36Weeks) {
+		this.hBAt36Weeks = hBAt36Weeks;
+	}
+
+	/**Returns the sugar portion of the urine test results
+	 * @return the urineTestSugar
+	 */
+	public double getUrineTestSugar() {
+		return urineTestSugar;
+	}
+
+	/**Sets the sugar portion of the urine test results
+	 * @param urineTestSugar the urineTestSugar to set
+	 */
+	public void setUrineTestSugar(double urineTestSugar) {
+		this.urineTestSugar = urineTestSugar;
+	}
+
+	/**Returns the protein portion of the urine test results
+	 * @return the urineTestProtein
+	 */
+	public double getUrineTestProtein() {
+		return urineTestProtein;
+	}
+
+	/**Sets the protein portion of the urine test results
+	 * @param urineTestProtein the urineTestProtein to set
+	 */
+	public void setUrineTestProtein(double urineTestProtein) {
+		this.urineTestProtein = urineTestProtein;
+	}
+
+	/**Returns the Estimated Date of Delivery
+	 * @return the eDD
+	 */
+	public GregorianCalendar getEDD() {
+		return EDD;
+	}
+
+	/**Sets the Estimated Date of Delivery
+	 * @param eDD the eDD to set
+	 */
+	public void setEDD(GregorianCalendar eDD) {
+		EDD = eDD;
+	}
+
+	/**Returns the blood group of the client
+	 * @return the bloodGroup
+	 */
+	public String getBloodGroup() {
+		return bloodGroup;
+	}
+
+	/**Sets the blood group of the client
+	 * @param bloodGroup the bloodGroup to set
+	 */
+	public void setBloodGroup(String bloodGroup) {
+		this.bloodGroup = bloodGroup;
+	}
+
+	/**Returns the Sickling Status of the client
+	 * @return the sicklingStatus
+	 */
+	public String getSicklingStatus() {
+		return sicklingStatus;
+	}
+
+	/**Sets the Sickling Status of the client
+	 * @param sicklingStatus the sicklingStatus to set
+	 */
+	public void setSicklingStatus(String sicklingStatus) {
+		this.sicklingStatus = sicklingStatus;
+	}
+
+	/**Returns the Sickling Type of the client
+	 * @return the sicklingType
+	 */
+	public String getSicklingType() {
+		return sicklingType;
+	}
+
+	/**Sets the Sickling Type of the client
+	 * @param sicklingType the sicklingType to set
+	 */
+	public void setSicklingType(String sicklingType) {
+		this.sicklingType = sicklingType;
+	}
+
+	/**Returns the Venereal Disease lab results
+	 * @return the vDLabresults
+	 */
+	public boolean isvDLabresults() {
+		return vDLabresults;
+	}
+
+	/**Sets the Venereal Disease lab results
+	 * @param vDLabresults the vDLabresults to set
+	 */
+	public void setvDLabresults(boolean vDLabresults) {
+		this.vDLabresults = vDLabresults;
+	}
+
+	/**Returns whether the client has had an HIV Pre-Test Counsel
+	 * @return the preTestCounsel
+	 */
+	public boolean isPreTestCounsel() {
+		return preTestCounsel;
+	}
+
+	/**Sets whether the client has had an HIV Pre-Test Counsel
+	 * @param preTestCounsel the preTestCounsel to set
+	 */
+	public void setPreTestCounsel(boolean preTestCounsel) {
+		this.preTestCounsel = preTestCounsel;
+	}
+
+	/**Returns the HIV test results of the client
+	 * @return the hIVResults
+	 */
+	public boolean ishIVResults() {
+		return hIVResults;
+	}
+
+	/**Sets the HIV test results of the client
+	 * @param hIVResults the hIVResults to set
+	 */
+	public void sethIVResults(boolean hIVResults) {
+		this.hIVResults = hIVResults;
+	}
+
+	/**Returns whether the client has had a Post-Test Counsel
+	 * @return the postTestCounsel
+	 */
+	public boolean isPostTestCounsel() {
+		return postTestCounsel;
+	}
+
+	/**Sets whether the client has had a Post-Test Counsel
+	 * @param postTestCounsel the postTestCounsel to set
+	 */
+	public void setPostTestCounsel(boolean postTestCounsel) {
+		this.postTestCounsel = postTestCounsel;
+	}
+
+	/**Returns whether the client is on Anti-Retroviral drugs
+	 * @return the aRV
+	 */
+	public boolean isARV() {
+		return ARV;
+	}
+
+	/**Sets whether the client is on Anti-Retroviral drugs
+	 * @param aRV the aRV to set
+	 */
+	public void setARV(boolean aRV) {
+		ARV = aRV;
+	}
+
+	/**Returns the results of the blood film test for Malaria
+	 * @return the bloodFilm
+	 */
+	public boolean bloodFilmResults() {
+		return bloodFilm;
+	}
+
+	/**Sets the results of the blood film test for Malaria
+	 * @param bloodFilm the bloodFilm to set
+	 */
+	public void setBloodFilm(boolean bloodFilm) {
+		this.bloodFilm = bloodFilm;
+	}
+
+	/**Returns whether the client uses Insecticide-Treated Nets
+	 * @return the iTN
+	 */
+	public boolean isiTN() {
+		return iTN;
+	}
+
+	/**Sets whether the client uses Insecticide-Treated Nets
+	 * @param iTN the iTN to set
+	 */
+	public void setiTN(boolean iTN) {
+		this.iTN = iTN;
+	}
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 }
 
 
