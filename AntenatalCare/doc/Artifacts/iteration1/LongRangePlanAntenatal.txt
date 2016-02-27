@@ -1,0 +1,31 @@
+
+To develop a piece of software that can address the following user stories:
+
+* CHO conducts first antenatal exam for patient and records information into the register.
+* CHO conducts a follow-up exam and records new information into the register.
+* CHO searches for past antenatal exams of a patient.
+* CHO updates information for an exam.
+* System alerts CHO when the next exam should be scheduled.
+* System alerts CHO when values are not within healthy ranges.
+* System alerts CHO when a patient has missed an appointment.
+* System prompts CHO to deliver critical information.
+
+
+Iteration 1
+* CHO conducts first antenatal exam for patient and records information into the register.
+
+Iteration 2
+* CHO conducts a follow-up exam and records new information into the register.
+* CHO searches for past antenatal exams of a patient.
+
+Iteration 3
+* CHO updates information for an exam.
+* System alerts CHO when the next exam should be scheduled.
+* System alerts CHO when values are not within healthy ranges.
+
+Iteration 4
+* System alerts CHO when a patient has missed an appointment.
+* System prompts CHO to deliver critical information.
+
+Iteration 5
+* Move application to a web-based system.

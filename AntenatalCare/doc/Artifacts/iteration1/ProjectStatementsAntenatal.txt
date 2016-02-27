@@ -1,0 +1,19 @@
+
+
+Project Statement: Antenatal Care data collection and reporting is part of a semester 
+long project to develop an application to maintain health service delivery information 
+by community health nurses or officers (CHOs) in rural Ghanaian health clinics.
+
+Problem Statement: Develop a subsection of an application to record, store, retrieve, 
+update and possibly delete information obtained during antenatal visits to a rural 
+health clinic, as well as to produce a monthly Midwifes Report. 
+
+Things to Keep in Mind
+* This subsection is only a part of a larger application
+* The Person object will be used across subsections of the application
+* User interface is important to the customer
+
+Identified Risks
+* UI design could prove challenging.
+* Shared Person data structure.
+* Will need to interact with other sections of the application.
