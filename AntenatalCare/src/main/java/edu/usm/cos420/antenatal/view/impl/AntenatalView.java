@@ -20,17 +20,20 @@ public class AntenatalView extends JFrame{
 
   private AntenatalController controller;
 	private DummyPerson dummyPerson;
+  private newVisitTab newVisitPanel;
 
-  protected JButton submitButton = null;
+  private static JTabbedPane TPAIN;
 
-	public AntenatalView(AntenatalController antenatalController)
+  public newVisitTab getVisitPanel() {
+    return newVisitPanel;
+  }
+
+  public AntenatalView(AntenatalController antenatalController)
 	{
     this.controller = antenatalController;
 		dummyPerson = new DummyPerson();
 		initUI();
 	}
-
-	private static JTabbedPane TPAIN;
 	private void initUI(){
 		Container pane = getContentPane();
 		BorderLayout border = new BorderLayout();
@@ -42,9 +45,7 @@ public class AntenatalView extends JFrame{
 		quitButton.setSize(pane.getWidth()/2,20);
 		quitButton.setToolTipText("Quit button");
 		quitButton.setMnemonic(KeyEvent.VK_Q);
-
 		quitButton.addActionListener(controller);
-
 
 		TPAIN = new JTabbedPane();
 
@@ -52,7 +53,6 @@ public class AntenatalView extends JFrame{
 
 		TPAIN.setTabPlacement(JTabbedPane.TOP);
 		TPAIN.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
-
 
 		pane.setBackground(Color.LIGHT_GRAY);
 
@@ -65,12 +65,8 @@ public class AntenatalView extends JFrame{
 		setSize(800, 700);
 		setMinimumSize(new Dimension(800,625));
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-    this.submitButton = new JButton("Submit");
-    this.submitButton.addActionListener(controller);
-
-	}
+    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+  }
 	private Component createSplitData(consultingData holdData) {
 		JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT, holdData.getPanel(dummyPerson), TPAIN);
 		split.setResizeWeight(0.30);
@@ -97,12 +93,12 @@ public class AntenatalView extends JFrame{
             if(count==1){
                 getContentPane().remove(getContentPane().getComponentCount()-1);
             }
-            newVisitTab panel1 = new newVisitTab(dummyPerson, this.submitButton);
+            newVisitPanel = new newVisitTab(dummyPerson, controller);
             count++;
             if(Objects.equals(TPAIN.getTitleAt(0), "-------")){
                 TPAIN.remove(0);
             }
-            TPAIN.addTab(panel1.getTitle(), panel1.getPanel());
+            TPAIN.addTab(newVisitPanel.getTitle(), newVisitPanel.getPanel());
             validate();
         });
 

@@ -6,11 +6,7 @@ import java.awt.*;
 /**
  * Created by aaron on 2/27/2016.
  */
-public class NewVisitForm {
-
-  public JPanel getPanel() {
-    return panel;
-  }
+public class NewVisitForm extends JPanel {
 
   private final JPanel panel;
   private final JTextField parInput;
@@ -57,7 +53,7 @@ public class NewVisitForm {
     panel.setLayout(layout);
     layout.setHgap(10);
 
-    JLabel Parity = new JLabel("Parity: "); //integer
+    JLabel parity = new JLabel("Parity: "); //integer
     parInput = new JTextField(2);
     JLabel BloodPressure = new JLabel("Blood Pressure: ");
     bloInput1 = new JTextField(2);//ADD TWO Fields int/int
@@ -275,7 +271,7 @@ public class NewVisitForm {
     ITN.add(itnYes);
     ITN.add(itnNo);
 
-    panel.add(Parity);
+    panel.add(parity);
     panel.add(parInput);
     panel.add(bloInput);
     panel.add(size);
@@ -300,5 +296,13 @@ public class NewVisitForm {
     panel.add(IPT);
     panel.add(ITP);
     panel.add(ITN);
+  }
+
+  public JPanel getPanel() {
+    return panel;
+  }
+
+  public String getParity() {
+    return parInput.getText();
   }
 }

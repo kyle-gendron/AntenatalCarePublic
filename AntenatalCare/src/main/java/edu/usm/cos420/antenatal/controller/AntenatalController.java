@@ -1,5 +1,6 @@
 package edu.usm.cos420.antenatal.controller;
 
+import edu.usm.cos420.antenatal.gui.NewVisitForm;
 import edu.usm.cos420.antenatal.service.impl.AntenatalService1;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 
@@ -38,7 +39,11 @@ public class AntenatalController implements ActionListener {
         break;
       }
       case "Submit": {
-        System.out.print(e);
+
+        NewVisitForm form = this.view.getVisitPanel().getForm();
+
+        String parity = form.getParity();
+        System.out.print(parity);
       }
     }
   }

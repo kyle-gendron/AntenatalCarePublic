@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 
 import javax.swing.*;
 
+import edu.usm.cos420.antenatal.controller.AntenatalController;
 import edu.usm.cos420.antenatal.domain.DummyPerson;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 
@@ -17,7 +18,7 @@ public class newVisitTab extends JPanel {
 	private NewVisitForm form;
   private JButton submitButton;
 
-  public newVisitTab(DummyPerson p, JButton submit){
+  public newVisitTab(DummyPerson p, AntenatalController controller){
 		this.p = p;
 
 		tabbedPane = new JTabbedPane();
@@ -27,7 +28,8 @@ public class newVisitTab extends JPanel {
     FlowLayout layout = new FlowLayout();
     form = new NewVisitForm(layout);
 
-    submitButton = submit;
+    submitButton = new JButton("Submit");
+    submitButton.addActionListener(controller);
 
 		tabbedPane.addTab("Antenatal Care Input", form.getPanel());
 
@@ -60,4 +62,8 @@ public class newVisitTab extends JPanel {
 
 		return p.getDate().toString();
 	}
+
+  public NewVisitForm getForm() {
+    return form;
+  }
 }
