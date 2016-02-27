@@ -1,0 +1,24 @@
+Use Case List
+
+* CHO conducts first antenatal exam for patient and records information into the register.
+* CHO conducts a follow-up exam and records new information into the register.
+* CHO searches for past antenatal exams of a patient.
+* CHO updates information for an exam.
+* System alerts CHO when the next exam should be scheduled.
+* System alerts CHO when values are not within healthy ranges.
+* System alerts CHO when a patient has missed an appointment.
+* System prompts CHO to deliver critical information.
+
+
+
+The simple use case is a new patient/client comes into the center requiring antenatal care
+1) CHO opens Consulting Register and records preliminary information.	
+2) Once complete the CHO opens the Antenatal Care Register.
+3) Items up through and including Age are pulled and populated from the Consulting Register.
+(Need to figure out how to make this happen)
+4) CHO conducts exam and records data points above. (We will need to figure out how to save
+progress in case power is lost).
+5) CHO submits information.
+6) System alerts CHO if items are missing.
+7) CHO adds the missing information.
+8) System alerts CHO that the register is complete and saved to storage. 

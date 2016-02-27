@@ -23,13 +23,10 @@ public class newVisitTab extends JPanel {
 		
 		tabbedPane = new JTabbedPane();
 		tabbedPane.setTabPlacement(JTabbedPane.TOP);
-		tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
+		tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);	
 		
-		
-		newEntry = new JPanel();
-		
-		newEntry = getNewInfo();
-		
+		newEntry = new JPanel();		
+		newEntry = getNewInfo();		
 		tabbedPane.addTab("Antenatal Care Input", newEntry);
 		
 	}
@@ -38,7 +35,7 @@ public class newVisitTab extends JPanel {
 		data.setLayout(new BorderLayout());
 		data.add(tabbedPane, BorderLayout.CENTER);
 		data.add(bottomButtons(),BorderLayout.SOUTH);
-		data.setMinimumSize(new Dimension(600,400));
+		data.setMinimumSize(new Dimension(600,600));
 		
 		return data;
 	}
@@ -48,10 +45,12 @@ public class newVisitTab extends JPanel {
 		data.setLayout(layout);
 		layout.setHgap(10);
 		
+		//number of previous children
 		JLabel Parity = new JLabel("Parity: ");//integer
 		JTextField parInput = new JTextField(2);
 		
 		
+		//blood pressure
 		JLabel BloodPressure = new JLabel("Blood Pressure: ");
 		JTextField bloInput1 = new JTextField(2);//ADD TWO Fields int/int
 		JLabel fill = new JLabel("/");
@@ -64,12 +63,11 @@ public class newVisitTab extends JPanel {
 		bloInput.add(bloInput2);
 		bloInput.setLayout(new FlowLayout());
 		
-		
+		//height and weight of patient
 		JLabel Height = new JLabel("Height: ");//double
 		JTextField heiInput = new JTextField(3);
 		JLabel Weight = new JLabel("Weight: ");//double
 		JTextField weiInput = new JTextField(3);
-		
 		JPanel size = new JPanel();
 		size.add(Height);
 		size.add(heiInput);
@@ -79,9 +77,19 @@ public class newVisitTab extends JPanel {
 		size.add(new JLabel(" (kg)"));
 		size.setLayout(new GridLayout(2,3));
 
+		//number of week pregnant	
 		JLabel Gestation = new JLabel("Gestation: ");//int
 		JTextField gesInput = new JTextField(3);//How to Calulate
 		
+		//date baby is due
+		JLabel EEDL = new JLabel("Due Date: ");
+		JTextField eedInput = new JTextField(3); //Determine how we want date entered.
+		JPanel EED = new JPanel();
+		EED.add(EEDL);
+		EED.add(eedInput);
+		EED.add(new JLabel("(mm/dd/yyyy)"));
+		
+		//measurement of uterus in CM
 		JLabel FHeight = new JLabel("Fundal Height: ");//Double
 		JTextField fInput = new JTextField(3);
 		JPanel FundalHeight = new JPanel();
@@ -89,13 +97,7 @@ public class newVisitTab extends JPanel {
 		FundalHeight.add(fInput);
 		FundalHeight.add(new JLabel(" (cm)"));
 		
-		JLabel EEDL = new JLabel("Expectation Date: ");
-		JTextField eedInput = new JTextField(3); //Determine how we want date entered.
-		JPanel EED = new JPanel();
-		EED.add(EEDL);
-		EED.add(eedInput);
-		EED.add(new JLabel("(mm/dd/yyyy)"));
-		
+		//test hemoglobin
 		JLabel HBatR = new JLabel("HBatReg: ");//Double grams/decileter
 		JTextField hbatInput = new JTextField(3);//how to calculate
 		JPanel HBatReg = new JPanel();
@@ -103,6 +105,7 @@ public class newVisitTab extends JPanel {
 		HBatReg.add(hbatInput);
 		HBatReg.add(new JLabel("(Grams/Decileter)"));
 		
+		// test Hemoglobin @ 36 weeks
 		JLabel HBat6 = new JLabel("HBat36: ");//double g/dl
 		JTextField hb36Input = new JTextField(3);
 		JPanel HBat36 = new JPanel();
@@ -110,6 +113,7 @@ public class newVisitTab extends JPanel {
 		HBat36.add(hb36Input);
 		HBat36.add(new JLabel("(Grams/Decileter)"));
 		
+		//testing for sugar & protein in urine
 		JLabel UrineTes = new JLabel("Urine Test: ");//Sugar/Protein- double mmol/L / double mg/dL
 		JTextField uriInput1 = new JTextField(3);
 		JTextField uriInput2 = new JTextField(3);
@@ -120,6 +124,7 @@ public class newVisitTab extends JPanel {
 		UrineTest.add(uriInput2);
 		UrineTest.add(new JLabel("(Sugar/Protein)"));
 		
+		//blood type/group
 		JLabel BloodG = new JLabel("Blood Group: ");//String, Drop down with options
 		JPanel BloodGroup = new JPanel();
 		String[] bt = {" ","O","A","B","AB"};
@@ -127,7 +132,7 @@ public class newVisitTab extends JPanel {
 		BloodGroup.add(BloodG);
 		BloodGroup.add(bg);
 		
-		
+		//sickle cell anemia testing
 		JLabel Sicklin = new JLabel("Sickling: ");//Status/Type string/string (drop down)
 		JPanel Sickling = new JPanel();
 		String[] ss = {" ","Positive","Negative"};
@@ -138,6 +143,7 @@ public class newVisitTab extends JPanel {
 		Sickling.add(sb);
 		Sickling.add(sbt);
 		
+		//veneral disease testing
 		JLabel VDLa = new JLabel("VDLab: ");//button group reactive or non-reactive
 		JPanel VDLab = new JPanel();
 		JRadioButton react = new JRadioButton("Reactive");
@@ -149,7 +155,7 @@ public class newVisitTab extends JPanel {
 		VDLab.add(react);
 		VDLab.add(nReact);
 		
-		
+		//pre VD test consoling
 		JLabel PMTC = new JLabel("PMTCT: ");//yes or no
 		JPanel PMTCT = new JPanel();
 		JRadioButton yes = new JRadioButton("Yes");
@@ -161,6 +167,7 @@ public class newVisitTab extends JPanel {
 		PMTCT.add(yes);
 		PMTCT.add(no);
 		
+		//VD test result
 		JLabel TestResul = new JLabel("Test-Result: ");//positive vs negative
 		JPanel TestResult = new JPanel();
 		JRadioButton positive = new JRadioButton("Positive");
@@ -172,6 +179,7 @@ public class newVisitTab extends JPanel {
 		TestResult.add(positive);
 		TestResult.add(negative);
 		
+		//Post VD test counseling
 		JLabel PostTes = new JLabel("Post-Test Counseling: ");
 		JPanel PostTest = new JPanel();
 		JRadioButton yes1 = new JRadioButton("Yes");
@@ -183,6 +191,7 @@ public class newVisitTab extends JPanel {
 		PostTest.add(yes1);
 		PostTest.add(no1);
 		
+		//malaria testing p/np
 		JLabel BloodFil = new JLabel("Blood Film: ");//present or not present
 		JPanel BloodFilm = new JPanel();
 		JRadioButton present = new JRadioButton("Present");
@@ -194,6 +203,7 @@ public class newVisitTab extends JPanel {
 		BloodFilm.add(present);
 		BloodFilm.add(nPresent);
 		
+		//men involvement y/n
 		JLabel MaleInvolve = new JLabel("Male Involvement: ");//present or not
 		JPanel MaleInvolved = new JPanel();
 		JRadioButton present1 = new JRadioButton("Present");
@@ -205,6 +215,7 @@ public class newVisitTab extends JPanel {
 		MaleInvolved.add(present1);
 		MaleInvolved.add(nPresent1);
 		
+		//what trimester they are at
 		JLabel Trimeste = new JLabel("Trimester: ");//int 1-3
 		JPanel Trimester = new JPanel();
 		String[] tr = {" ","1","2","3"};
@@ -212,6 +223,7 @@ public class newVisitTab extends JPanel {
 		Trimester.add(Trimeste);
 		Trimester.add(tb);
 		
+		//sub visits
 		JLabel SV = new JLabel("Subsequent Visits: ");//int 2-12
 		JPanel Sub = new JPanel();
 		String[] sr = {" ","2","3","4","5","6","7","8","9","10","11","12"};
@@ -219,6 +231,7 @@ public class newVisitTab extends JPanel {
 		Sub.add(SV);
 		Sub.add(sg);
 		
+		//Tetnus shot give,boster, & protected
 		JLabel TTl = new JLabel("TT: ");//given, boster, protected
 		JPanel TT = new JPanel();
 		String[] ttr = {" ","given","boster","protected"};
@@ -226,6 +239,7 @@ public class newVisitTab extends JPanel {
 		TT.add(TTl);
 		TT.add(ttb);
 		
+		//ipt/doses
 		JLabel IPTl = new JLabel("IPT: ");//check 1,2, or 3 doses
 		JPanel IPT = new JPanel();
 		JCheckBox one = new JCheckBox("1");
@@ -235,13 +249,13 @@ public class newVisitTab extends JPanel {
 		ipt.add(one);
 		ipt.add(two);
 		ipt.add(three);
-		IPT.add(IPTl);
+		IPT.add(IPTl);		
 		IPT.add(one);
 		IPT.add(two);
 		IPT.add(three);
 		IPT.add(new JLabel(" Doses"));
-		//doses
 		
+		//ITP doses		
 		JLabel ITPl = new JLabel("ITP: ");//3 doses tick for each
 		JPanel ITP = new JPanel();
 		JCheckBox one1 = new JCheckBox("1");
@@ -257,6 +271,7 @@ public class newVisitTab extends JPanel {
 		ITP.add(three1);
 		ITP.add(new JLabel(" Doses"));
 		
+		//stuff of ITN
 		JLabel ITNl = new JLabel("ITN: ");//Yes or no
 		JPanel ITN = new JPanel();
 		JRadioButton yes2 = new JRadioButton("Yes");
@@ -266,10 +281,9 @@ public class newVisitTab extends JPanel {
 		p2.add(no2);
 		ITN.add(ITNl);
 		ITN.add(yes2);
-		ITN.add(no2);
+		ITN.add(no2);		
 		
-		
-		
+		//add data to frame
 		data.add(Parity);
 		data.add(parInput);
 		data.add(bloInput);

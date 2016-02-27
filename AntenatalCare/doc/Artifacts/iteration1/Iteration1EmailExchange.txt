@@ -1,0 +1,336 @@
+Kyle Gendron <kyle.gendron@maine.edu>
+	
+Feb 8
+		
+to ross.mclain, aaron.harvey, me, heuer.naomi
+Hey everybody,
+
+This email we can use as a reference for each other's emails.  
+Here's the info about each other's physical availability I took down:
+
+Ross Mclain – Available 1-5 Monday and Wednesday on campus. Also available online most days for Skype or Teamspeak.  
+Most Fridays free as well.
+Aaron Harvey – Class 10-12 every day of the week but Friday  Free otherise, and can work around other schedules.
+Naomi Heuer – Mondays and Wednesdays: Class at 11:30 – 5.  Otherwise free on campus during the week.
+Nicholas Curlew – Free on campus Any day of the week.  Out of work at ~4:30.
+
+My phone number's (207) 332-5413.  My service is about as reliable as TNT is stable and safe, 
+but it's still another way to reach me.  If we choose to use Skype, my current username is bookshelfotron5000.  
+I'll probably make a new one for long term use this semester, though.  Lastly, I already have TS3 set up on my 
+machine, I'll just need some basic server information in order to connect.  I have tutorials for TeamSpeak 3 
+laying around somewhere if you need one.
+
+See you guys Wednesday this week at around 1, and good luck pawing through all that antenatal documentation,
+
+
+
+Naomi Heuer
+	
+Feb 8
+		
+to Kyle, ross.mclain, aaron.harvey, me
+Hey Guys,
+I gotta revise my availability I'm free Mondays & Wednesdays 11:30 - 5. Sorry for any confusion.
+I've never used TeamSpeak 3, but I'm sure I could figure it out. My skype username is bluemoongem, and my cell
+ is 207-607-9125. I'm pretty easy to reach through e-mail or text.
+
+Wednesday around 1 sounds great. Where do we plan on meeting though?
+
+Thanks!
+
+
+
+Aaron Harvey
+	
+Feb 9
+		
+to Naomi, Kyle, ross.mclain, me
+Hi everyone,
+
+My cell is (207) 632-4991. I do work full time, but as long as I have a heads up I can work around it 
+(flex hours rock).  I also always have my phone in close proximity to me and all emails are pushed to 
+my phone due to work. 
+
+I'll have the team speak sever info after class. I didn't get to it this morning.
+
+Wednesday works fine for me. CS lab?
+
+Aaron
+
+Sent from my iPhone
+
+
+
+Ross McLain
+	
+Feb 9
+		
+to Aaron, me, Kyle, Naomi
+
+Hello everyone,
+
+My number is 207 420 6255, and yes Wednesday at 130 or so at the cs lab works for me.
+
+Thanks, Ross
+
+
+
+Nicholas Curlew <nicholas.curlew@maine.edu>
+	
+Feb 9
+		
+to Ross, Aaron, Kyle, Naomi
+And I guess it's only appropriate that the team leader for this iteration chime in last.  
+My number is 207-776-3529.  You might need to leave a message as I tend to screen phone calls.  
+I should be able to step away from work for an hour or so at 1:30 tomorrow to join everyone in the cs lab. 
+Just a heads up that the section of the ManualforREGISTERS dealing with antenatal care can be found on 
+pages 15-17 of the pdf.  This includes definitions for the information being collected.  See everyone tomorrow.
+
+
+
+Aaron Harvey
+	
+Feb 9
+		
+to me, Ross, Kyle, Naomi
+Hi everyone, 
+
+Sorry for the delay.
+
+Here is the TS3 info:
+IP: ts.lolsup.com OR 192.30.34.45 (I'm not 100% how long it will take for the DNS to propagate)
+PORT: 9988 (note - this is not the default port)
+No password
+
+If it's asking you for a password, double check the port.  I have another server running on the default port.
+
+Let me know if there are any problems,  or I can help everyone get connected tomorrow if needed.
+
+
+
+Naomi Heuer
+	
+Feb 10
+		
+to Aaron, me, Ross, Kyle
+It worked for me. Though I had to look up how to change the port.
+You just gotta enter  ts.lolsup.com:9988
+
+It did ask for the server admin key when I logged in though. I just ignored it.
+
+
+
+Nicholas Curlew <nicholas.curlew@maine.edu>
+	
+Feb 14 (13 days ago)
+		
+to Naomi, Aaron, Ross, Kyle
+Hi Everyone,
+     At the moment we only have read access to our repository.  I have e-mailed Prof MacLeod to grant us 
+admin access.  My plan was to upload most of the same files as we started with for Assignment 1, though 
+I changed the view to a GUI template and the names say antenatal instead of example 1.  I was then going 
+to add some notes from our meeting this past week and probably a couple of fleshed out use cases.  If 
+anyone would rather we take a different direction, I am all ears.  Thank you.
+
+
+
+Nicholas Curlew <nicholas.curlew@maine.edu>
+	
+Feb 15 (12 days ago)
+		
+to Naomi, Aaron, Ross, Kyle
+The repository should now be accessible.
+
+
+
+Ross McLain
+	
+Feb 15 (12 days ago)
+		
+to me
+Hey so I grabbed the program from github and made a new branch to work on the GUI stuff. 
+I was wondering, did anyone start setting up the gui in cItemview? because it makes a basic java window. 
+If so I can work with that otherwise I made a couple classes that I can add to the repository when I get 
+them working.
+
+
+
+Ross McLain
+	
+Feb 15 (12 days ago)
+		
+to me, Naomi, Aaron, Kyle
+Hey guys,
+
+Never mind the last email, I looked at it for a bit longer and you definitely set it up so I'll go 
+with what you've got.
+
+Thanks, Ross
+
+
+
+Nicholas Curlew <nicholas.curlew@maine.edu>
+	
+Feb 16 (11 days ago)
+		
+to Ross, Naomi, Aaron, Kyle
+Hi Ross,
+     I added that in there just as a starting point.  Feel free to use, change, or delete it.  Thanks.
+
+
+
+Nicholas Curlew <nicholas.curlew@maine.edu>
+	
+Feb 24 (3 days ago)
+		
+to Ross, Naomi, Aaron, Kyle
+Hi everyone,
+     Should we get on TeamSpeak to have another meeting?  We're making some good progress.  Naomi and Ross
+ are going to be working on finishing up the GUI.  Aaron and Kyle, would you mind tackling the visit class?  
+There is already a template, but we need to add all the fields and getters and setters.  The fields are broken 
+down in first meeting doc which is in the Artifacts folder.  Some are text, some are numbers, and some will be 
+a check yes/no or check 1st, 2nd, 3rd, etc.  Once we have that it should be a matter of building the controller 
+to get the information from the GUI into the class.  Hopefully then we'll have a piece of working software to 
+build from.
+
+
+
+Kyle Gendron
+	
+Feb 24 (3 days ago)
+		
+to me, Ross, Naomi, Aaron
+Absolutely.  Now that my Calc B exam is done, I'll be working on this and one other thing all day tomorrow.  
+I was somewhat unsure as to which aspect I was working on since I noticed that there had been changes on the 
+people assigned to particular issues on Github. Also, just to clarify, we will be tackling the controller as well,
+correct?
+
+On a side note, the issue I was having pulling down clones and running them (since I had no binaries) has been 
+resolved.  It was as simple as not importing explicitly as an Eclipse project, hence why I couldn't modify my 
+build path or generate class files.  The code is perfectly runnable and I've been fetching updated masters and 
+testing them to make sure everything I pull keeps working.  In summary, I'm in the clear, there.  I'll start a 
+new branch for the Visit/Controller additions and push them to Github tonight.
+
+As for the meeting -- yes, absolutely.  I will be on tonight until Midnight at the latest, and I have free time 
+for most of the day tomorrow.
+
+
+
+Nicholas Curlew <nicholas.curlew@maine.edu>
+	
+Feb 24 (3 days ago)
+		
+to Kyle, Ross, Naomi, Aaron
+Hi Kyle,
+     If you and Aaron could tackle the visit class and controller that would be great.  I think the tricky part 
+with the controller will be pulling the information from the GUI.  We can then send it along to the service class 
+to run our creates, and in the future retrieves, updates and deletes (CRUD).  I could do a meeting tonight, or we 
+can pick a time tomorrow that works for everyone.
+
+- and congrats on getting through the first Calc B exam!
+
+
+
+Nicholas Curlew <nicholas.curlew@maine.edu>
+	
+Feb 24 (3 days ago)
+		
+to Kyle, Ross, Naomi, Aaron
+One other thing...
+
+As we are all working on this, I would suggest that you keep the items in http://www.cs.usm.maine.edu/~macleod/
+courses/cos420/Spring2016/Overview_of_Iterations.html in mind.  Prof. MacLeod said that these were the items we 
+would be graded on for each iteration.  He and Scott are going to go down the list checking off whether each item 
+was completed.  You'll notice that programming pairs should come up with at least one class diagram and at least 
+one sequence diagram.  When we schedule our next meeting we should probably go over some of the group items at 
+the top.  Let me know what times would work for everybody to meet on TeamSpeak.  Thanks.
+
+
+
+Naomi Heuer
+	
+Feb 24 (3 days ago)
+		
+to me, Ross, Aaron, Kyle
+I wouldn't be able to do a meeting until tomorrow, or later tonight (9ish). Everything sounds good!
+
+
+
+Ross McLain
+	
+Feb 24 (3 days ago)
+		
+to Naomi, me, Aaron, Kyle
+Hey guys! I am free friday and probably a little saturday to get on teamspeak for a meeting. Also I just 
+updated the Gui with all of the entry data and the methods that relate to each item. I also changed the 
+consulting register so it takes it in once and leaves it at the top. I think the next step will just be 
+working with you guys to get all the data into the visit object. Also you guys should check it out again 
+to see if you like what I have done and give me any changes you would like to see.
+
+Thanks, Ross
+
+
+
+Kyle Gendron
+	
+Feb 26 (1 day ago)
+		
+to Ross, Naomi, me, Aaron
+Hey everyone,
+
+I can do Saturday for a meeting as well.  I built up the AntenatalVisit class, I just need to iron out all 
+the constructors we'll need (based on the number of optional values), and continue work on the controller object.  
+I'll also look into Object Factories, since I know we have a lot of data points to keep track of here.  In regards 
+to the UML Class diagram and Sequence diagram, I was thinking a class diagram for the Antenatal Visit class and 
+the a Sequence diagram for the entry of an initial visit.  I'll be working on those diagrams a bit today at work, 
+but I'll be focused on the controller and visit classes tonight.  Saturday will be the day to iron out those 
+diagrams, unless we can do a meeting tonight after 7 PM.  I also have a few design questions I'd like to pose to 
+everyone when we get the chance.   Either way, the branch will be committed, merged and pushed tonight once 
+everything's working in the visit class   
+
+Thanks, Kyle
+
+
+
+Ross McLain
+	
+6:16 PM (21 hours ago)
+		
+to Kyle, Naomi, me, Aaron
+Hey everyone!
+
+I will be busy from 12 to probably around 6 tomorrow due to my grandmothers 80th birthday party that I can't miss. 
+I will be free tonight any time and tomorrow after 6 or 7.
+
+Thanks, Ross
+
+
+
+Naomi Heuer
+	
+9:21 AM (6 hours ago)
+		
+to Ross, Kyle, me, Aaron
+Happy birthday to your gram, Ross.
+Since we keep shouting out times, how does tonight at 7ish sound? If that works for everyone.
+
+
+
+Kyle Gendron
+	
+9:25 AM (6 hours ago)
+		
+to Naomi, Ross, me, Aaron
+I can do 7, definitely.
+
+
+
+Nicholas Curlew <nicholas.curlew@maine.edu>
+	
+11:43 AM (4 hours ago)
+		
+to Kyle, Naomi, Ross, Aaron
+Sounds good to me.  I was going to work on some of the documentation today.  Nice work on the visit class.  
+The GUI looks great.  I think we're just about there.  When the functionality is complete we can validate 
+inputs and do some testing - try to break it while running.  We should also think about some of the non-functional 
+requirements we might have missed.  Great work everyone.

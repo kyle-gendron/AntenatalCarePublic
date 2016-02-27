@@ -39,11 +39,9 @@ public class AntenatalService1 implements AntenatalService {
 	/**
 	 * Add a randomly generated CItem element to the repository
 	 */
-    public void addACItem() 
+    public void add(AntenatalVisit entity) 
     {
-    	int randomNum = 1 + (int)(Math.random()*100000); 
-    	AntenatalVisit anItem = new AntenatalVisit(new Long(randomNum), randomNum,"String with random number " + randomNum);
-        dao.add(anItem);
+        dao.add(entity);
     }
     /**
      * Calculate the maximum ID value of elements in the repository     
@@ -58,12 +56,12 @@ public class AntenatalService1 implements AntenatalService {
     	 else 
     	 {
     		 Iterator<AntenatalVisit> iter = list.iterator();
-    		 max = iter.next().getId();
+    		 max = iter.next().getID();
     		 while (iter.hasNext())
     		 {
     			 AntenatalVisit anItem = iter.next();
-    			 if (anItem.getId() > max)
-    			     max = anItem.getId();
+    			 if (anItem.getID() > max)
+    			     max = anItem.getID();
     		 }
     		 return max;
     	 }
