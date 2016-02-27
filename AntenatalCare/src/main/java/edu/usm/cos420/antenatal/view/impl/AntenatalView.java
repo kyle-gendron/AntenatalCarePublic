@@ -116,8 +116,8 @@ public class AntenatalView extends JFrame{
 		setJMenuBar(menuBar);
 	}
 
-  public static void removeTab(String s){
-		TPAIN.remove(TPAIN.indexOfTab(s));// make a remove
+  public static void removeCurrentTab(){
+    TPAIN.removeTabAt(TPAIN.getSelectedIndex());
 		if(TPAIN.getTabCount()==0){
 			fillEmpty();
 		}

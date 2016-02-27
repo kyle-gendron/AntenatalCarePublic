@@ -52,7 +52,7 @@ public class newVisitTab extends JPanel {
 		JButton quitButton = new JButton("Quit");
 		quitButton.addActionListener(l -> System.exit(1));
 
-		this.submitButton.addActionListener(arg0 -> AntenatalView.removeTab(getTitle()));
+		this.submitButton.addActionListener(arg0 -> AntenatalView.removeCurrentTab());
 
 		buttonPane.add(quitButton);
 		buttonPane.add(submitButton);
