@@ -89,7 +89,7 @@ public class AntenatalView extends JFrame{
 	private Component createSplitData(consultingData holdData) {
 		JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT, holdData.getPanel(dummyPerson), TPAIN);
 		split.setResizeWeight(0.30);
-		split.setDividerLocation(130);
+		split.setDividerLocation(160);
 		return split;
 	}
 	

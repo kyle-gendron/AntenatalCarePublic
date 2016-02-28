@@ -155,7 +155,7 @@ public class NewVisitForm extends JPanel {
     JPanel Sickling = new JPanel();
     String[] ss = {" ","Positive","Negative"};
     sb = new JComboBox(ss);
-    String[] st = {"N/a","Hemoglobin SS","Hemoglobin SC","Hemoglobin SB+ (Beta) Thalassemia","Beta-Zero Thalassemia"};
+    String[] st = {" ","N/a","Hemoglobin SS","Hemoglobin SC","Hemoglobin SB+ (Beta) Thalassemia","Beta-Zero Thalassemia"};
     sbt = new JComboBox(st);
     Sickling.add(Sicklin);
     Sickling.add(sb);
@@ -177,7 +177,7 @@ public class NewVisitForm extends JPanel {
     JLabel PMTC = new JLabel("PMTCT: ");//yes or no
     JPanel PMTCT = new JPanel();
     pmctYes = new JRadioButton("Yes");
-    pmctNo= new JRadioButton("No");
+    pmctNo = new JRadioButton("No");
     ButtonGroup p = new ButtonGroup();
     p.add(pmctYes);
     p.add(pmctNo);
@@ -345,6 +345,7 @@ public class NewVisitForm extends JPanel {
     return parInput.getText();
   }
 
+<<<<<<< HEAD
   /**
    * 
    * @return returns the string of the test results "positive" or "negative". 
@@ -354,6 +355,12 @@ public class NewVisitForm extends JPanel {
     if (positive.isSelected()) return "positive";
     if (negative.isSelected()) return "negative";
     return "";
+=======
+  public Integer getTestResult() {
+    if (positive.isSelected()) return 1;
+    if (negative.isSelected()) return -1;
+    return 0;
+>>>>>>> master
   }
 
   /**

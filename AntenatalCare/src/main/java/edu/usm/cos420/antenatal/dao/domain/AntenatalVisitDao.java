@@ -7,13 +7,13 @@ import edu.usm.cos420.antenatal.dao.ObjectStreamDao;
 import edu.usm.cos420.antenatal.domain.AntenatalVisit;
 
 /**
- * 
- *  A Data Access Object specifically for AntenatalVisit entities 
- *     
+ *
+ *  A Data Access Object specifically for AntenatalVisit entities
+ *
  */
 public class AntenatalVisitDao
 {
-	private GenericDao<Long,AntenatalVisit> genDao;
+	private GenericDao<String,AntenatalVisit> genDao;
 
 	/**
 	 * Default constructor creates an ObjectStream file called antenatalvisits.ser
@@ -24,7 +24,7 @@ public class AntenatalVisitDao
 	}
 
 	/**
-	 * Constructor where the filename is provided 
+	 * Constructor where the filename is provided
 	 */
 	public AntenatalVisitDao(String fileName)
 	{
@@ -33,62 +33,62 @@ public class AntenatalVisitDao
 
 	/**
 	 * Support for other DAOs is provided
-	 * @param dao a Data Access Object class that implements GenericDao<Long,CItem> 
+	 * @param dao a Data Access Object class that implements GenericDao<Long,AntenatalVisit>
 	 */
-	public AntenatalVisitDao(GenericDao<Long,AntenatalVisit> dao)
+	public AntenatalVisitDao(GenericDao<String,AntenatalVisit> dao)
 	{
 		genDao = dao;
 	}
-	
+
 	/**
 	 * Returns the DAO used in the class
-	 * @return a DAO that implements GenericDao<Long,CItem> 
+	 * @return a DAO that implements GenericDao<Long,AntenatalVisit>
 	 */
-	public GenericDao<Long,AntenatalVisit> getGenDao() {
+	public GenericDao<String,AntenatalVisit> getGenDao() {
 		return genDao;
 	}
 
 	/**
-	 * Add a CItem to the DAO repository
-	 * @param entity any CItem object
+	 * Add a AntenatalVisit to the DAO repository
+	 * @param entity any AntenatalVisit object
 	 */
 	public void add(AntenatalVisit entity)
 	{
 		genDao.add(entity.getID(), entity);
 	}
-	
+
 	/**
-	 * Update a CItem in the DAO repository
-	 * @param entity any CItem object
+	 * Update a AntenatalVisit in the DAO repository
+	 * @param entity any AntenatalVisit object
 	 */
-	public void update(AntenatalVisit entity) 
+	public void update(AntenatalVisit entity)
 	{
 		genDao.update(entity.getID(), entity);
 	}
-	
+
 	/**
-	 * Remove a CItem in the DAO repository
-	 * @param id of the CItem object to remove
+	 * Remove a AntenatalVisit in the DAO repository
+	 * @param id of the AntenatalVisit object to remove
 	 */
 
-	public void remove(Long id)
+	public void remove(String id)
 	{
 		genDao.remove(id);
 	}
-	
+
 	/**
-	 * Find a CItem in the DAO repository
-	 * @param key of the CItem object to locate
-	 * @return the CItem with id field equal to key
+	 * Find a AntenatalVisit in the DAO repository
+	 * @param key of the AntenatalVisit object to locate
+	 * @return the AntenatalVisit with id field equal to key
 	 */
-	public AntenatalVisit find(Long key)
+	public AntenatalVisit find(String key)
 	{
 		return genDao.find(key);
 	}
-    
+
 	/**
-	 * Generate a list of CItems in the DAO repository
-	 * @return List of CItems 
+	 * Generate a list of AntenatalVisits in the DAO repository
+	 * @return List of AntenatalVisits
 	 */
 
 	public List<AntenatalVisit> list() {
