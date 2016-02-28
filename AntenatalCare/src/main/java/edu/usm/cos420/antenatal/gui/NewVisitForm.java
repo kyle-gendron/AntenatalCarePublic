@@ -142,7 +142,7 @@ public class NewVisitForm extends JPanel {
     JPanel Sickling = new JPanel();
     String[] ss = {" ","Positive","Negative"};
     sb = new JComboBox(ss);
-    String[] st = {"N/a","Hemoglobin SS","Hemoglobin SC","Hemoglobin SB+ (Beta) Thalassemia","Beta-Zero Thalassemia"};
+    String[] st = {" ","N/a","Hemoglobin SS","Hemoglobin SC","Hemoglobin SB+ (Beta) Thalassemia","Beta-Zero Thalassemia"};
     sbt = new JComboBox(st);
     Sickling.add(Sicklin);
     Sickling.add(sb);
