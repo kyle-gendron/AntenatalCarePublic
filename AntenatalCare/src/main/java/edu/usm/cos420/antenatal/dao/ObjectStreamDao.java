@@ -94,7 +94,7 @@ public class ObjectStreamDao<IDType, T extends Serializable> implements GenericD
     		System.err.println("Some Error writing to stream " + e);   	
     	}
     	catch (Exception e){
-    		System.err.println(e);
+    		System.err.println(e.toString());
     	}	
 	}
 

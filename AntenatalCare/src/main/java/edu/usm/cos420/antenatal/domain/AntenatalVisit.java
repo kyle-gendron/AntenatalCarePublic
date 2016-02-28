@@ -46,8 +46,8 @@ public class AntenatalVisit implements Serializable {
 	 * @param parity the number of previous children
 	 * @param systolicBP the systolic blood pressure
 	 * @param diastolicBP the diastolic blood pressure
-	 * @param height
-	 * @param weight
+	 * @param height the height of patient
+	 * @param weight the weight of the patient
 	 * @param gestation the duration of pregnancy in weeks
 	 * @param fundalHeight the height of pregnancy
 	 * @param EDD the estimated date of delivery
@@ -77,8 +77,8 @@ public class AntenatalVisit implements Serializable {
 	 * @param parity the number of previous children
 	 * @param systolicBP the systolic blood pressure
 	 * @param diastolicBP the diastolic blood pressure
-	 * @param height
-	 * @param weight
+	 * @param height the height of patient
+	 * @param weight the weight of the patient
 	 * @param gestation the duration of pregnancy in weeks
 	 * @param fundalHeight the height of pregnancy
 	 * @param EDD the estimated date of delivery
@@ -138,7 +138,7 @@ public class AntenatalVisit implements Serializable {
      */
     @Override
     public String toString() {
-        return String.format("");
+        return "";
     }
 
     /**
@@ -264,7 +264,7 @@ public class AntenatalVisit implements Serializable {
 	}
 
 	/**Sets the number of ITP Doses given
-	 * @param iTPDoses the iTPDoses to set
+	 * @param TTDoses the iTPDoses to set
 	 */
 	public void setTTDoses(int TTDoses) {
 		this.TTDoses = TTDoses;
@@ -523,7 +523,7 @@ public class AntenatalVisit implements Serializable {
 	}
 
 	/**
-	 * @return the serialversionuid
+	 * @return the serialVersionUID
 	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;

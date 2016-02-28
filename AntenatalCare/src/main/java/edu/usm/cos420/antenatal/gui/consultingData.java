@@ -96,7 +96,7 @@ public class consultingData extends JPanel{
 		nameText.setText(p.getName());
 		nameText.setEnabled(false);
 		
-/////////////////////////////////////////Seperate Panel for these data inputs
+/////////////////////////////////////////Separate Panel for these data inputs
 		JPanel address = new JPanel();
 		address.setLayout(new GridLayout(2,2));
 
@@ -107,15 +107,15 @@ public class consultingData extends JPanel{
 		
 		
 		JLabel HouseNumber = new JLabel("House Number: ");
-		JTextField hnumInput = new JTextField(3);
-		hnumInput.setText("n/a");
-		hnumInput.setEnabled(false);
+		JTextField hNumInput = new JTextField(3);
+		hNumInput.setText("n/a");
+		hNumInput.setEnabled(false);
 		
 		
 		address.add(Location);
 		address.add(locInput);
 		address.add(HouseNumber);
-		address.add(hnumInput);
+		address.add(hNumInput);
 		
 		data.add(Facility);
 		data.add(facInput);

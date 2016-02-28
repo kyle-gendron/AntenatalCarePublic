@@ -19,7 +19,7 @@ public class DummyPersonDao {
        */
       public DummyPersonDao()
       {
-         genDao = new ObjectStreamDao<Long, DummyPerson>("person.ser");;
+         genDao = new ObjectStreamDao<Long, DummyPerson>("person.ser");
       }
 
       /**
@@ -27,7 +27,7 @@ public class DummyPersonDao {
        */
       public DummyPersonDao(String fileName)
       {
-         genDao = new ObjectStreamDao<Long, DummyPerson>(fileName);;
+         genDao = new ObjectStreamDao<Long, DummyPerson>(fileName);
       }
 
       /**
@@ -77,7 +77,7 @@ public class DummyPersonDao {
       
       /**
        * Find a CItem in the DAO repository
-       * @param id of the CItem object to locate
+       * @param key of the CItem object to locate
        * @return the CItem with id field equal to key
        */
       public DummyPerson find(Long key)
