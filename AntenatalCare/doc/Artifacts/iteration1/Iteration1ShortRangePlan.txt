@@ -22,7 +22,7 @@ Tasks:
      - add labels and text or check boxes for the unique antenatal exam items
      - create submit button that validates completeness and sends information to be stored
 * Controller class work
-     - collect information from the GUI
+     - collect information from the GUI (Estimated 3, Actual ?)
      - use collected information to create a new visit instance
      - send the visit instance to persistent storage
      - if time allows, populate GUI with prior visit information
@@ -37,5 +37,5 @@ Tasks:
 * DAO/Storage
      - generate a DAO for storing the exam class
      - generate a DAO for storing the DummyPerson class
-*Documentation
+*Documentation (Estimated time 2, actual 1.5)
     -Create basic JDoc comments
