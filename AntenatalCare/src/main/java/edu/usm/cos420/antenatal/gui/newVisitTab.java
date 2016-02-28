@@ -23,7 +23,7 @@ public class newVisitTab extends JPanel {
 
 		tabbedPane = new JTabbedPane();
 		tabbedPane.setTabPlacement(JTabbedPane.TOP);
-		tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
+		tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);	
 
     FlowLayout layout = new FlowLayout();
     form = new NewVisitForm(layout);
@@ -39,7 +39,7 @@ public class newVisitTab extends JPanel {
 		data.setLayout(new BorderLayout());
 		data.add(tabbedPane, BorderLayout.CENTER);
 		data.add(bottomButtons(),BorderLayout.SOUTH);
-		data.setMinimumSize(new Dimension(600,400));
+		data.setMinimumSize(new Dimension(600,600));
 
 		return data;
 	}

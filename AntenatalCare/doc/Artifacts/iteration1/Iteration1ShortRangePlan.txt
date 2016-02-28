@@ -1,0 +1,39 @@
+Iteration 1 Plan
+
+Use case: 
+* CHO conducts first antenatal exam for patient and records information into the register.
+
+1) CHO opens Consulting Register and records preliminary information.	
+2) Once complete the CHO opens the Antenatal Care Register.
+3) Items up through and including Age are pulled and populated from the Consulting Register.
+(Need to figure out how to make this happen)
+4) CHO conducts exam and records data points above. (We will need to figure out how to save
+progress in case power is lost).
+5) CHO submits information.
+6) System alerts CHO if items are missing.
+7) CHO adds the missing information.
+8) System alerts CHO that the register is complete and saved to storage. 
+
+
+Tasks:
+* Create a GUI with the required fields and checkboxes
+     - create a tab for new visit
+     - add labels for the items to be populated from the consulting register 
+     - add labels and text or check boxes for the unique antenatal exam items
+     - create submit button that validates completeness and sends information to be stored
+* Controller class work
+     - collect information from the GUI
+     - use collected information to create a new visit instance
+     - send the visit instance to persistent storage
+     - if time allows, populate GUI with prior visit information
+* Build stub person object
+     - create with already set fields
+     - blank constructor
+     - get and set methods
+* Create exam storage class
+     - fields (We'll need one that references the Person object from the Consulting Register
+     - constructors
+     - methods: getters and setters
+* DAO/Storage
+     - generate a DAO for storing the exam class
+     - generate a DAO for storing the DummyPerson class
