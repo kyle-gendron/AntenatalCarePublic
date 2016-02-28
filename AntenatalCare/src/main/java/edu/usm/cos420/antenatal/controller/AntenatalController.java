@@ -31,6 +31,10 @@ public class AntenatalController implements ActionListener {
   }
 
   @Override
+  /**
+   * listens for the form to quit or be submitted
+   * @params e : an ActionEvent that it lists to
+   */
   public void actionPerformed(ActionEvent e) {
 
     switch (e.getActionCommand()) {
