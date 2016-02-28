@@ -1,11 +1,14 @@
 package edu.usm.cos420.antenatal.controller;
 
+import edu.usm.cos420.antenatal.domain.AntenatalVisit;
 import edu.usm.cos420.antenatal.gui.NewVisitForm;
+import edu.usm.cos420.antenatal.service.AntenatalService;
 import edu.usm.cos420.antenatal.service.impl.AntenatalService1;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.GregorianCalendar;
 
 /**
  * A Controller class
@@ -21,6 +24,10 @@ public class AntenatalController implements ActionListener {
   public AntenatalController() {
     this.service = new AntenatalService1();
     this.view = new AntenatalView(this);
+
+    // Debug Test
+    System.out.println("Current Visit Table:");
+    service.getAllVisits().forEach(System.out::println);
   }
 
   /**
@@ -42,19 +49,38 @@ public class AntenatalController implements ActionListener {
 
         NewVisitForm form = this.view.getVisitPanel().getForm();
 
-        String parity = form.getParity();
-        System.out.println("Parity: " + parity);
+        Integer parity = parseInteger(form.getParity(), 0);
+        boolean testResult = form.getTestResult() > 0;
+        Double height = parseDouble(form.getPatientHeight(), 0);
+        Double weight = parseDouble(form.getPatientWeight(), 0);
 
-        String testResult = form.getTestResult();
-        System.out.println("Test-Result: " + testResult);
+        String nextId = AntenatalService.getNextID();
+        // Create a new Visit object to pass to the service class.
+        AntenatalVisit visit = new AntenatalVisit(nextId,
+          parity, 0, 0, height, weight, 0, 0, (GregorianCalendar) GregorianCalendar.getInstance(),
+          0, 0, "", "", "", testResult, false, false, false, false, 0, 0, 0, false, 0, 0);
 
-        String height = form.getPatientHeight();
-        System.out.println("Height: " + height);
-
-        String weight = form.getPatientWeight();
-        System.out.println("Weight: " + weight);
-
+        service.addAntenatalVisit(visit);
+        System.out.println("Inserted New Visit (" + nextId + ")");
       }
+    }
+  }
+
+  public static int parseInteger( String string, int defaultValue ) {
+    try {
+      return Integer.parseInt(string);
+    }
+    catch (NumberFormatException e ) {
+      return defaultValue;
+    }
+  }
+
+  public static double parseDouble( String string, double defaultValue ) {
+    try {
+      return Double.parseDouble(string);
+    }
+    catch (NumberFormatException e ) {
+      return defaultValue;
     }
   }
 }

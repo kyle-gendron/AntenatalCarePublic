@@ -324,10 +324,10 @@ public class NewVisitForm extends JPanel {
     return parInput.getText();
   }
 
-  public String getTestResult() {
-    if (positive.isSelected()) return "positive";
-    if (negative.isSelected()) return "negative";
-    return "";
+  public Integer getTestResult() {
+    if (positive.isSelected()) return 1;
+    if (negative.isSelected()) return -1;
+    return 0;
   }
 
   public String getPatientHeight() {
