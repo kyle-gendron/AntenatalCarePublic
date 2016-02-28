@@ -14,35 +14,35 @@ import java.util.GregorianCalendar;
  *
  *  The Antenatal Visit class represents two things:
  *  a first visit and the initial information taken down
- *  on said visit -- and also all the general information 
+ *  on said visit -- and also all the general information
  *  associated with antenatal care at this facility that can
  *  be taken down during any visit (for example, diagnosis
  *  of HIV or Venereal Disease).  All Subsequent Visits will
  *  be recorded in order and linked to this initial visit object.
- * 
+ *
  */
 public class AntenatalVisit implements Serializable {
-    
+
 	private static final long serialVersionUID = 7526472295622776147L;
-    
+
 	int parity, systolicBP, diastolicBP, trimester, subVisits;
 	int gestation; //num weeks of pregnancy, calculated from last period
 	int iPTDoses, TTDoses; //added together from tick marks
-	double height, weight; //height in cm, weight in kg 
+	double height, weight; //height in cm, weight in kg
 	double fundalHeight; //in cm
 	double hBAtReg, hBAt36Weeks; //Hemoglobin (hB) in grams/deciliter
-	double urineTestSugar, urineTestProtein; // sug in mmol/Liter, prot in mg/dL 
+	double urineTestSugar, urineTestProtein; // sug in mmol/Liter, prot in mg/dL
 	GregorianCalendar EDD; //Estimated day of delivery
 	String bloodGroup, sicklingStatus, sicklingType;
 	boolean vDLabresults, preTestCounsel, hIVResults, postTestCounsel, ARV;
 	boolean bloodFilm;  //results of malaria blood film test
 	boolean iTN;
-	Long id;  //id used to identify a particular set of antenatal visits
-	
+	String id;  //id used to identify a particular set of antenatal visits
+
 	/**
 	 * Ten-Field Constructor: The fields that absolutely must be filled
-	 * out in order to create a new visit.  All other fields will be filled out 
-	 * 
+	 * out in order to create a new visit.  All other fields will be filled out
+	 *
 	 * @param parity the number of previous children
 	 * @param systolicBP the systolic blood pressure
 	 * @param diastolicBP the diastolic blood pressure
@@ -54,8 +54,8 @@ public class AntenatalVisit implements Serializable {
 	 * @param hBAtReg the hemoglobin at registration of the patient
 	 * @param bloodGroup the blood group of the patient
 	 */
-	public AntenatalVisit(Long id, int parity, int systolicBP, int diastolicBP, double height, 
-			double weight, int gestation, double fundalHeight, GregorianCalendar EDD, 
+	public AntenatalVisit(String id, int parity, int systolicBP, int diastolicBP, double height,
+			double weight, int gestation, double fundalHeight, GregorianCalendar EDD,
 			double hBAtReg, String bloodGroup){
 		this.id = id;
 		this.parity = parity;
@@ -69,11 +69,11 @@ public class AntenatalVisit implements Serializable {
 		this.hBAtReg = hBAtReg;
 		this.bloodGroup = bloodGroup;
 	}
-	
+
 	/**
 	 * 24-field constructor.  Made to test the functionality of all components
 	 * in constructing an AntenatalVisit object
-	 * 
+	 *
 	 * @param parity the number of previous children
 	 * @param systolicBP the systolic blood pressure
 	 * @param diastolicBP the diastolic blood pressure
@@ -99,8 +99,8 @@ public class AntenatalVisit implements Serializable {
 	 * @param urineTestSugar the sugar portion of the urine test
 	 * @param urineTestProtein the protein portion of the urine test
 	 */
-	public AntenatalVisit(Long id, int parity, int systolicBP, int diastolicBP, double height, 
-			double weight, int gestation, double fundalHeight, GregorianCalendar EDD, 
+	public AntenatalVisit(String id, int parity, int systolicBP, int diastolicBP, double height,
+			double weight, int gestation, double fundalHeight, GregorianCalendar EDD,
 			double hBAtReg, double hBAt36Weeks, String bloodGroup, String sicklingStatus,
 			String sicklingType, boolean vDLabResults, boolean preTestCounsel,
 			boolean hIVResults, boolean postTestCounsel, boolean ARV, int subVisits,
@@ -131,32 +131,56 @@ public class AntenatalVisit implements Serializable {
 		this.urineTestSugar = urineTestSugar;
 		this.urineTestProtein = urineTestProtein;
 	}
-	
-    /**
-     * Returns the String representation of this User. Not required, it just pleases reading logs.
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "";
-    }
 
-    /**
+  @Override
+  public String toString() {
+    return "AntenatalVisit{" +
+      "parity=" + parity +
+//      ", systolicBP=" + systolicBP +
+//      ", diastolicBP=" + diastolicBP +
+//      ", trimester=" + trimester +
+//      ", subVisits=" + subVisits +
+//      ", gestation=" + gestation +
+//      ", iPTDoses=" + iPTDoses +
+//      ", TTDoses=" + TTDoses +
+      ", height=" + height +
+      ", weight=" + weight +
+//      ", fundalHeight=" + fundalHeight +
+//      ", hBAtReg=" + hBAtReg +
+//      ", hBAt36Weeks=" + hBAt36Weeks +
+//      ", urineTestSugar=" + urineTestSugar +
+//      ", urineTestProtein=" + urineTestProtein +
+//      ", EDD=" + EDD +
+//      ", bloodGroup='" + bloodGroup + '\'' +
+//      ", sicklingStatus='" + sicklingStatus + '\'' +
+//      ", sicklingType='" + sicklingType + '\'' +
+      ", vDLabresults=" + vDLabresults +
+//      ", preTestCounsel=" + preTestCounsel +
+//      ", hIVResults=" + hIVResults +
+//      ", postTestCounsel=" + postTestCounsel +
+//      ", ARV=" + ARV +
+//      ", bloodFilm=" + bloodFilm +
+//      ", iTN=" + iTN +
+      ", id='" + id + '\'' +
+      '}';
+  }
+
+  /**
      * Returns ID of Antenatal Visit
      * @return id
      */
-    public Long getID(){
+    public String getID(){
     	return id;
     }
-    
+
     /**
      * Sets the id of the Antenatal Visit
      * @param id the id to set
      */
-    public void setID(Long id){
+    public void setID(String id){
     	this.id = id;
     }
-    
+
 	/**
 	 * returns the parity of the client
 	 * @return the parity
@@ -528,6 +552,8 @@ public class AntenatalVisit implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+
 }
 
 
