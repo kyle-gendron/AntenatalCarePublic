@@ -9,6 +9,7 @@ public class DummyPerson implements Serializable{
    
    /**
     * Stub person object to populate fields in GUI coming from the consulting register
+    * this will be removed later once we get the actually dummy from the consulting register
     */
    private static final long serialVersionUID = -1931254923689371768L;
    private Long id;

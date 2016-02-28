@@ -11,29 +11,48 @@ import edu.usm.cos420.antenatal.controller.AntenatalController;
 import edu.usm.cos420.antenatal.domain.DummyPerson;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 
+/**
+ * Sets up the basics of the new empty antenatal visit frame
+ * and sends it to create a new visit form which ads in the necessary fields
+ * and then displays it within the existing frame as a new tabbed named
+ * after todays date
+ */
 public class newVisitTab extends JPanel {
 
 	DummyPerson p;//REPLACE
 	JTabbedPane tabbedPane;
 	private NewVisitForm form;
-  private JButton submitButton;
+	private JButton submitButton;
 
-  public newVisitTab(DummyPerson p, AntenatalController controller){
+	/**
+	 * Creates a new tab for the visit and adds in the antenatal fields
+	 * 
+	 * @param p : a person class to get consulting information from
+	 * @param controller : the controller for antenatal
+	 */
+	public newVisitTab(DummyPerson p, AntenatalController controller){
 		this.p = p;
 
 		tabbedPane = new JTabbedPane();
 		tabbedPane.setTabPlacement(JTabbedPane.TOP);
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);	
 
-    FlowLayout layout = new FlowLayout();
-    form = new NewVisitForm(layout);
+		FlowLayout layout = new FlowLayout();
+		form = new NewVisitForm(layout);
 
-    submitButton = new JButton("Submit");
-    submitButton.addActionListener(controller);
+		submitButton = new JButton("Submit");
+		submitButton.addActionListener(controller);
 
 		tabbedPane.addTab("Antenatal Care Input", form.getPanel());
 
 	}
+	
+	/**
+	 * Sets up the empty tabbed panel
+	 * sets minimum size to 600,600
+	 *
+	 * @return the new jPanel that is set up
+	 */
 	public JPanel getPanel(){
 		JPanel data = new JPanel();
 		data.setLayout(new BorderLayout());
@@ -44,6 +63,11 @@ public class newVisitTab extends JPanel {
 		return data;
 	}
 
+	/**
+	 * creates the Quit and Submit buttons on the bottle of the gui
+	 *  
+	 * @return returns the frame on the bottom of the gui that holds Quit and Submit buttons
+	 */
 	private JPanel bottomButtons(){
 		JPanel buttonPane = new JPanel();
 		buttonPane.setLayout(new FlowLayout());
@@ -58,12 +82,23 @@ public class newVisitTab extends JPanel {
 		buttonPane.add(submitButton);
 		return buttonPane;
 	}
-	public String getTitle() {
 
+	/**
+	 * Sets the title of the tab
+	 * for now it returns today's date
+	 * 
+	 * @return a date string (for now)
+	 */
+	public String getTitle() {
 		return p.getDate().toString();
 	}
 
-  public NewVisitForm getForm() {
-    return form;
-  }
+	/**
+	 * Returns the new form generated in the class
+	 * 
+	 * @return a new form
+	 */
+	public NewVisitForm getForm() {
+		return form;
+	}
 }

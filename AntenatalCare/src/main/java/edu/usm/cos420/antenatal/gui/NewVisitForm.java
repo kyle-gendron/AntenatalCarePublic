@@ -6,6 +6,14 @@ import java.awt.*;
 /**
  * Created by aaron on 2/27/2016.
  */
+
+/**
+ * A public class that creates the new antenatal visit.
+ * Which consists of several fields that are used to
+ * enter data necessary to the antenatal appointment.
+ * (Height, weight, fundalHeight, gestation etc.)
+ * 
+ */
 public class NewVisitForm extends JPanel {
 
   private final JPanel panel;
@@ -48,6 +56,12 @@ public class NewVisitForm extends JPanel {
   private final JRadioButton itnNo;
   private final JRadioButton itnYes;
 
+  /**
+   * Fills in the jFrame with all of the field that need to be filled in
+   * and adds the to a FlowLayout element.
+   * 
+   * @param layout
+   */
   public NewVisitForm(FlowLayout layout) {
     panel = new JPanel();
     panel.setLayout(layout);
@@ -82,7 +96,7 @@ public class NewVisitForm extends JPanel {
     size.add(new JLabel(" (kg)"));
     size.setLayout(new GridLayout(2,3));
 
-    //number of week pregnant
+    //number of weeks pregnant
     JLabel Gestation = new JLabel("Gestation: ");//int
     gesInput = new JTextField(3);//How to Calculate
 
@@ -316,24 +330,45 @@ public class NewVisitForm extends JPanel {
     panel.add(ITN);
   }
 
+  /**
+   * 
+   * @return the JPanel created
+   */
   public JPanel getPanel() {
     return panel;
   }
 
+  /**
+   * 
+   * @return String of the parity field 
+   */
   public String getParity() {
     return parInput.getText();
   }
 
+  /**
+   * 
+   * @return returns 1 if the test results are "positive" or -1 for "negative". 
+   * 0 is returned if neither are selected
+   */
   public Integer getTestResult() {
     if (positive.isSelected()) return 1;
     if (negative.isSelected()) return -1;
     return 0;
   }
 
+  /**
+   * 
+   * @return Returns string of the patients height
+   */
   public String getPatientHeight() {
     return heiInput.getText();
   }
 
+  /**
+   * 
+   * @return Returns string of the patients weight
+   */
   public String getPatientWeight() {
     return weiInput.getText();
   }
