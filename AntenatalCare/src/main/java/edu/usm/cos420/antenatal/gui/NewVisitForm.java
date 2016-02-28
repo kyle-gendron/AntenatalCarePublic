@@ -82,9 +82,11 @@ public class NewVisitForm extends JPanel {
     size.add(new JLabel(" (kg)"));
     size.setLayout(new GridLayout(2,3));
 
+    //number of week pregnant
     JLabel Gestation = new JLabel("Gestation: ");//int
-    gesInput = new JTextField(3);//How to Calulate
+    gesInput = new JTextField(3);//How to Calculate
 
+    //measurement of uterus in CM
     JLabel FHeight = new JLabel("Fundal Height: ");//Double
     fInput = new JTextField(3);
     JPanel FundalHeight = new JPanel();
@@ -92,13 +94,15 @@ public class NewVisitForm extends JPanel {
     FundalHeight.add(fInput);
     FundalHeight.add(new JLabel(" (cm)"));
 
-    JLabel EEDL = new JLabel("Expectation Date: ");
+    //date baby is due
+    JLabel EEDL = new JLabel("Due Date: ");
     eedInput = new JTextField(3); //Determine how we want date entered.
     JPanel EED = new JPanel();
     EED.add(EEDL);
     EED.add(eedInput);
     EED.add(new JLabel("(mm/dd/yyyy)"));
 
+    //test hemoglobin
     JLabel HBatR = new JLabel("HBatReg: ");//Double grams/deciliter
     hbatInput = new JTextField(3);//how to calculate
     JPanel HBatReg = new JPanel();
@@ -106,6 +110,7 @@ public class NewVisitForm extends JPanel {
     HBatReg.add(hbatInput);
     HBatReg.add(new JLabel("(Grams/Deciliter)"));
 
+    // test Hemoglobin @ 36 weeks
     JLabel HBat6 = new JLabel("HBat36: ");//double g/dl
     hb36Input = new JTextField(3);
     JPanel HBat36 = new JPanel();
@@ -113,6 +118,7 @@ public class NewVisitForm extends JPanel {
     HBat36.add(hb36Input);
     HBat36.add(new JLabel("(Grams/Deciliter)"));
 
+    //testing for sugar & protein in urine
     JLabel UrineTes = new JLabel("Urine Test: ");//Sugar/Protein- double mmol/L / double mg/dL
     uriInput1 = new JTextField(3);
     uriInput2 = new JTextField(3);
@@ -123,6 +129,7 @@ public class NewVisitForm extends JPanel {
     UrineTest.add(uriInput2);
     UrineTest.add(new JLabel("(Sugar/Protein)"));
 
+    //blood type/group
     JLabel BloodG = new JLabel("Blood Group: ");//String, Drop down with options
     JPanel BloodGroup = new JPanel();
     String[] bt = {" ","O","A","B","AB"};
@@ -130,7 +137,7 @@ public class NewVisitForm extends JPanel {
     BloodGroup.add(BloodG);
     BloodGroup.add(bg);
 
-
+    //sickle cell anemia testing
     JLabel Sicklin = new JLabel("Sickling: ");//Status/Type string/string (drop down)
     JPanel Sickling = new JPanel();
     String[] ss = {" ","Positive","Negative"};
@@ -141,6 +148,7 @@ public class NewVisitForm extends JPanel {
     Sickling.add(sb);
     Sickling.add(sbt);
 
+    //veneral disease testing
     JLabel VDLa = new JLabel("VDLab: ");//button group reactive or non-reactive
     JPanel VDLab = new JPanel();
     react = new JRadioButton("Reactive");
@@ -152,7 +160,7 @@ public class NewVisitForm extends JPanel {
     VDLab.add(react);
     VDLab.add(nReact);
 
-
+    //pre VD test consoling
     JLabel PMTC = new JLabel("PMTCT: ");//yes or no
     JPanel PMTCT = new JPanel();
     pmctYes = new JRadioButton("Yes");
@@ -164,6 +172,7 @@ public class NewVisitForm extends JPanel {
     PMTCT.add(pmctYes);
     PMTCT.add(pmctNo);
 
+    //VD test result
     JLabel TestResul = new JLabel("Test-Result: ");//positive vs negative
     JPanel TestResult = new JPanel();
     positive = new JRadioButton("Positive");
@@ -175,6 +184,7 @@ public class NewVisitForm extends JPanel {
     TestResult.add(positive);
     TestResult.add(negative);
 
+    //Post VD test counseling
     JLabel PostTes = new JLabel("Post-Test Counseling: ");
     JPanel PostTest = new JPanel();
     postYes = new JRadioButton("Yes");
@@ -186,6 +196,7 @@ public class NewVisitForm extends JPanel {
     PostTest.add(postYes);
     PostTest.add(postNo);
 
+    //malaria testing p/np
     JLabel BloodFil = new JLabel("Blood Film: ");//bloodPresent or not bloodPresent
     JPanel BloodFilm = new JPanel();
     bloodPresent = new JRadioButton("Present");
@@ -197,6 +208,7 @@ public class NewVisitForm extends JPanel {
     BloodFilm.add(bloodPresent);
     BloodFilm.add(bloodNotPresent);
 
+    //men involvement y/n
     JLabel MaleInvolve = new JLabel("Male Involvement: ");//bloodPresent or not
     JPanel MaleInvolved = new JPanel();
     malePresent = new JRadioButton("Present");
@@ -208,6 +220,7 @@ public class NewVisitForm extends JPanel {
     MaleInvolved.add(malePresent);
     MaleInvolved.add(maleNotPresent);
 
+    //what trimester they are at
     JLabel Trimeste = new JLabel("Trimester: ");//int 1-3
     JPanel Trimester = new JPanel();
     String[] tr = {" ","1","2","3"};
@@ -215,6 +228,7 @@ public class NewVisitForm extends JPanel {
     Trimester.add(Trimeste);
     Trimester.add(tb);
 
+    //sub visits
     JLabel SV = new JLabel("Subsequent Visits: ");//int 2-12
     JPanel Sub = new JPanel();
     String[] sr = {" ","2","3","4","5","6","7","8","9","10","11","12"};
@@ -222,13 +236,15 @@ public class NewVisitForm extends JPanel {
     Sub.add(SV);
     Sub.add(sg);
 
-    JLabel TTl = new JLabel("TT: ");//given, boster, protected
+    //Tetanus shot give,boster, & protected
+    JLabel TTl = new JLabel("TT: ");//given, booster, protected
     JPanel TT = new JPanel();
     String[] ttr = {" ","given","booster","protected"};
     ttb = new JComboBox(ttr);
     TT.add(TTl);
     TT.add(ttb);
 
+    //ipt/doses
     JLabel IPTl = new JLabel("IPT: ");//check 1,2, or 3 doses
     JPanel IPT = new JPanel();
     iptOne = new JCheckBox("1");
@@ -243,8 +259,8 @@ public class NewVisitForm extends JPanel {
     IPT.add(iptTwo);
     IPT.add(iptThree);
     IPT.add(new JLabel(" Doses"));
-    //doses
 
+    //ITP doses
     JLabel ITPl = new JLabel("ITP: ");//3 doses tick for each
     JPanel ITP = new JPanel();
     itpOne = new JCheckBox("1");
@@ -260,6 +276,7 @@ public class NewVisitForm extends JPanel {
     ITP.add(itpThree);
     ITP.add(new JLabel(" Doses"));
 
+    //stuff of ITN
     JLabel ITNl = new JLabel("ITN: ");//Yes or no
     JPanel ITN = new JPanel();
     itnYes = new JRadioButton("Yes");
@@ -271,6 +288,7 @@ public class NewVisitForm extends JPanel {
     ITN.add(itnYes);
     ITN.add(itnNo);
 
+    //add data to frame
     panel.add(parity);
     panel.add(parInput);
     panel.add(bloInput);
