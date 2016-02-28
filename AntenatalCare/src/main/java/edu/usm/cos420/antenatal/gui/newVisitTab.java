@@ -12,8 +12,10 @@ import edu.usm.cos420.antenatal.domain.DummyPerson;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 
 /**
- * Sets up the basics of the new antenatal visit tab/frame
- *
+ * Sets up the basics of the new empty antenatal visit frame
+ * and sends it to create a new visit form which ads in the necessary fields
+ * and then displays it within the existing frame as a new tabbed named
+ * after todays date
  */
 public class newVisitTab extends JPanel {
 
@@ -23,6 +25,7 @@ public class newVisitTab extends JPanel {
 	private JButton submitButton;
 
 	/**
+	 * Creates a new tab for the visit and adds in the antenatal fields
 	 * 
 	 * @param p : a person class to get consulting information from
 	 * @param controller : the controller for antenatal
@@ -43,6 +46,7 @@ public class newVisitTab extends JPanel {
 		tabbedPane.addTab("Antenatal Care Input", form.getPanel());
 
 	}
+	
 	/**
 	 * Sets up the empty tabbed panel
 	 * sets minimum size to 600,600

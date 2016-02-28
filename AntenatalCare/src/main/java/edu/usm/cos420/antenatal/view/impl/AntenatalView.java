@@ -16,7 +16,9 @@ import edu.usm.cos420.antenatal.gui.consultingData;
 import edu.usm.cos420.antenatal.gui.newVisitTab;
 
 /**
- * Creates all the views and puts them together
+ * Creates the simple consulting view across the top
+ * adds a place for the antenatal visit tab
+ * and puts them together in one frame
  *
  */
 public class AntenatalView extends JFrame{

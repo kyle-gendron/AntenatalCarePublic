@@ -21,6 +21,13 @@ public class consultingData extends JPanel{
 		jTab = new JTabbedPane();
 		
 	}
+	/**
+	 * Creates a consulting tab with the consulting data of a person
+	 * this currently uses a DummyPerson class
+	 * 
+	 * @param p the person that is currently selected
+	 * @return the new Jtab with the consulting data
+	 */
 	public JTabbedPane getPanel(DummyPerson p){
 		this.p=p;
 		jTab.setTabPlacement(JTabbedPane.TOP);
@@ -30,6 +37,10 @@ public class consultingData extends JPanel{
 		return jTab;
 		
 	}
+	/**
+	 * Creates the panel to put the consulting info in the panel
+	 * @return returns the filled in panel
+	 */
 	private JPanel getConsultingInfo() {
 		JPanel data = new JPanel();
 		GridLayout layout = new GridLayout(6,2);

@@ -11,7 +11,9 @@ import java.awt.event.ActionListener;
 import java.util.GregorianCalendar;
 
 /**
- * A Controller class
+ * A controller class for the antenatal forms.
+ * It listens for the submit button to be pressed and than grabs
+ * the information from the view, and sends it on to be stored.
  */
 public class AntenatalController implements ActionListener {
 
@@ -31,7 +33,7 @@ public class AntenatalController implements ActionListener {
   }
 
   /**
-   * display the GUI
+   * displays the GUI
    */
   public void displayGUI() {
     this.view.setVisible(true);

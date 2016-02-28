@@ -8,10 +8,11 @@ import java.awt.*;
  */
 
 /**
- * A public class that creates the new antenatal visit
- * and adds all the data fields necessary
+ * A public class that creates the new antenatal visit.
+ * Which consists of several fields that are used to
+ * enter data necessary to the antenatal appointment.
+ * (Height, weight, fundalHeight, gestation etc.)
  * 
- *
  */
 public class NewVisitForm extends JPanel {
 
@@ -56,8 +57,8 @@ public class NewVisitForm extends JPanel {
   private final JRadioButton itnYes;
 
   /**
-   * Fills in the tab with data collectors(eh?)
-   * and adds them the tab
+   * Fills in the jFrame with all of the field that need to be filled in
+   * and adds the to a FlowLayout element.
    * 
    * @param layout
    */
@@ -345,22 +346,15 @@ public class NewVisitForm extends JPanel {
     return parInput.getText();
   }
 
-<<<<<<< HEAD
   /**
    * 
-   * @return returns the string of the test results "positive" or "negative". 
-   * An empty is returned if neither are selected
+   * @return returns 1 if the test results are "positive" or -1 for "negative". 
+   * 0 is returned if neither are selected
    */
-  public String getTestResult() {
-    if (positive.isSelected()) return "positive";
-    if (negative.isSelected()) return "negative";
-    return "";
-=======
   public Integer getTestResult() {
     if (positive.isSelected()) return 1;
     if (negative.isSelected()) return -1;
     return 0;
->>>>>>> master
   }
 
   /**
