@@ -33,7 +33,7 @@ public class AntenatalVisitDao
 
 	/**
 	 * Support for other DAOs is provided
-	 * @param dao a Data Access Object class that implements GenericDao<Long,CItem>
+	 * @param dao a Data Access Object class that implements GenericDao<Long,AntenatalVisit>
 	 */
 	public AntenatalVisitDao(GenericDao<String,AntenatalVisit> dao)
 	{
@@ -42,15 +42,15 @@ public class AntenatalVisitDao
 
 	/**
 	 * Returns the DAO used in the class
-	 * @return a DAO that implements GenericDao<Long,CItem>
+	 * @return a DAO that implements GenericDao<Long,AntenatalVisit>
 	 */
 	public GenericDao<String,AntenatalVisit> getGenDao() {
 		return genDao;
 	}
 
 	/**
-	 * Add a CItem to the DAO repository
-	 * @param entity any CItem object
+	 * Add a AntenatalVisit to the DAO repository
+	 * @param entity any AntenatalVisit object
 	 */
 	public void add(AntenatalVisit entity)
 	{
@@ -58,8 +58,8 @@ public class AntenatalVisitDao
 	}
 
 	/**
-	 * Update a CItem in the DAO repository
-	 * @param entity any CItem object
+	 * Update a AntenatalVisit in the DAO repository
+	 * @param entity any AntenatalVisit object
 	 */
 	public void update(AntenatalVisit entity)
 	{
@@ -67,8 +67,8 @@ public class AntenatalVisitDao
 	}
 
 	/**
-	 * Remove a CItem in the DAO repository
-	 * @param id of the CItem object to remove
+	 * Remove a AntenatalVisit in the DAO repository
+	 * @param id of the AntenatalVisit object to remove
 	 */
 
 	public void remove(String id)
@@ -77,9 +77,9 @@ public class AntenatalVisitDao
 	}
 
 	/**
-	 * Find a CItem in the DAO repository
-	 * @param key of the CItem object to locate
-	 * @return the CItem with id field equal to key
+	 * Find a AntenatalVisit in the DAO repository
+	 * @param key of the AntenatalVisit object to locate
+	 * @return the AntenatalVisit with id field equal to key
 	 */
 	public AntenatalVisit find(String key)
 	{
@@ -87,8 +87,8 @@ public class AntenatalVisitDao
 	}
 
 	/**
-	 * Generate a list of CItems in the DAO repository
-	 * @return List of CItems
+	 * Generate a list of AntenatalVisits in the DAO repository
+	 * @return List of AntenatalVisits
 	 */
 
 	public List<AntenatalVisit> list() {

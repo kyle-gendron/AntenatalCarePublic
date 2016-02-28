@@ -15,7 +15,7 @@ public class DummyPersonDao {
       private GenericDao<Long, DummyPerson> genDao;
 
       /**
-       * Default constructor creates an ObjectStream file called citem.ser
+       * Default constructor creates an ObjectStream file called person.ser
        */
       public DummyPersonDao()
       {
@@ -32,7 +32,7 @@ public class DummyPersonDao {
 
       /**
        * Support for other DAOs is provided
-       * @param dao a Data Access Object class that implements GenericDao<Long,CItem> 
+       * @param dao a Data Access Object class that implements GenericDao<Long,DummyPerson> 
        */
       public DummyPersonDao(GenericDao<Long, DummyPerson> dao)
       {
@@ -41,15 +41,15 @@ public class DummyPersonDao {
       
       /**
        * Returns the DAO used in the class
-       * @return a DAO that implements GenericDao<Long,CItem> 
+       * @return a DAO that implements GenericDao<Long,DummyPerson> 
        */
       public GenericDao<Long, DummyPerson> getGenDao() {
          return genDao;
       }
 
       /**
-       * Add a CItem to the DAO repository
-       * @param entity any CItem object
+       * Add a DummyPerson to the DAO repository
+       * @param entity any DummyPerson object
        */
       public void add(DummyPerson entity)
       {
@@ -57,8 +57,8 @@ public class DummyPersonDao {
       }
       
       /**
-       * Update a CItem in the DAO repository
-       * @param entity any CItem object
+       * Update a DummyPerson in the DAO repository
+       * @param entity any DummyPerson object
        */
       public void update(DummyPerson entity) 
       {
@@ -66,8 +66,8 @@ public class DummyPersonDao {
       }
       
       /**
-       * Remove a CItem in the DAO repository
-       * @param id of the CItem object to remove
+       * Remove a DummyPerson in the DAO repository
+       * @param id of the DummyPerson object to remove
        */
 
       public void remove(Long id)
@@ -76,9 +76,9 @@ public class DummyPersonDao {
       }
       
       /**
-       * Find a CItem in the DAO repository
-       * @param key of the CItem object to locate
-       * @return the CItem with id field equal to key
+       * Find a DummyPerson in the DAO repository
+       * @param key of the DummyPerson object to locate
+       * @return the DummyPerson with id field equal to key
        */
       public DummyPerson find(Long key)
       {
@@ -86,8 +86,8 @@ public class DummyPersonDao {
       }
        
       /**
-       * Generate a list of CItems in the DAO repository
-       * @return List of CItems 
+       * Generate a list of DummyPersons in the DAO repository
+       * @return List of DummyPersons 
        */
 
       public List<DummyPerson> list() {
