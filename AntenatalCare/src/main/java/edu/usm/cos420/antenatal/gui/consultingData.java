@@ -32,7 +32,7 @@ public class consultingData extends JPanel{
 	}
 	private JPanel getConsultingInfo() {
 		JPanel data = new JPanel();
-		GridLayout layout = new GridLayout(5,2);
+		GridLayout layout = new GridLayout(6,2);
 		layout.setHgap(20);
 		data.setLayout(layout);
 		
@@ -96,9 +96,6 @@ public class consultingData extends JPanel{
 		nameText.setText(p.getName());
 		nameText.setEnabled(false);
 		
-/////////////////////////////////////////Separate Panel for these data inputs
-		JPanel address = new JPanel();
-		address.setLayout(new GridLayout(2,2));
 
 		JLabel Location = new JLabel("Community: ");
 		JTextField locInput = new JTextField(10);
@@ -111,11 +108,6 @@ public class consultingData extends JPanel{
 		hNumInput.setText("n/a");
 		hNumInput.setEnabled(false);
 		
-		
-		address.add(Location);
-		address.add(locInput);
-		address.add(HouseNumber);
-		address.add(hNumInput);
 		
 		data.add(Facility);
 		data.add(facInput);
@@ -133,18 +125,25 @@ public class consultingData extends JPanel{
 		data.add(regInput);
 		data.add(HININumber);
 		data.add(HINIInput);
-		data.add(Age);
-		data.add(ageInput);
-		data.add(name);
-		data.add(nameText);
+	   data.add(name);
+	   data.add(nameText);
+
+
+
+		data.add(Location);
+      data.add(locInput);
+      data.add(Age);
+      data.add(ageInput);
+      data.add(HouseNumber);
+      data.add(hNumInput);
 		
+      data.setMinimumSize(new Dimension(600,125));
 		hold.add(data);
-		hold.add(address);
 		
 		FlowLayout flow = new FlowLayout();
 		hold.setLayout(flow);
 		flow.setHgap(30);
-		hold.setMinimumSize(new Dimension(600,105));
+		
 		return hold;
 
 

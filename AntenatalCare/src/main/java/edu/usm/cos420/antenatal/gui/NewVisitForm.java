@@ -164,7 +164,7 @@ public class NewVisitForm extends JPanel {
     JLabel PMTC = new JLabel("PMTCT: ");//yes or no
     JPanel PMTCT = new JPanel();
     pmctYes = new JRadioButton("Yes");
-    pmctNo= new JRadioButton("No");
+    pmctNo = new JRadioButton("No");
     ButtonGroup p = new ButtonGroup();
     p.add(pmctYes);
     p.add(pmctNo);
