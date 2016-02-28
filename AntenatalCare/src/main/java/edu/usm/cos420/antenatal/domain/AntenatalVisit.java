@@ -37,8 +37,8 @@ public class AntenatalVisit implements Serializable {
 	boolean vDLabresults, preTestCounsel, hIVResults, postTestCounsel, ARV;
 	boolean bloodFilm;  //results of malaria blood film test
 	boolean iTN;
-	Long id;  //id used to identify a particular set of antenatal visits
-	
+	String id;  //id used to identify a particular set of antenatal visits
+
 	/**
 	 * Ten-Field Constructor: The fields that absolutely must be filled
 	 * out in order to create a new visit.  All other fields will be filled out 
@@ -54,8 +54,8 @@ public class AntenatalVisit implements Serializable {
 	 * @param hBAtReg the hemoglobin at registration of the patient
 	 * @param bloodGroup the blood group of the patient
 	 */
-	public AntenatalVisit(Long id, int parity, int systolicBP, int diastolicBP, double height, 
-			double weight, int gestation, double fundalHeight, GregorianCalendar EDD, 
+	public AntenatalVisit(String id, int parity, int systolicBP, int diastolicBP, double height,
+			double weight, int gestation, double fundalHeight, GregorianCalendar EDD,
 			double hBAtReg, String bloodGroup){
 		this.id = id;
 		this.parity = parity;
@@ -69,11 +69,11 @@ public class AntenatalVisit implements Serializable {
 		this.hBAtReg = hBAtReg;
 		this.bloodGroup = bloodGroup;
 	}
-	
+
 	/**
 	 * 24-field constructor.  Made to test the functionality of all components
 	 * in constructing an AntenatalVisit object
-	 * 
+	 *
 	 * @param parity the number of previous children
 	 * @param systolicBP the systolic blood pressure
 	 * @param diastolicBP the diastolic blood pressure
@@ -99,8 +99,8 @@ public class AntenatalVisit implements Serializable {
 	 * @param urineTestSugar the sugar portion of the urine test
 	 * @param urineTestProtein the protein portion of the urine test
 	 */
-	public AntenatalVisit(Long id, int parity, int systolicBP, int diastolicBP, double height, 
-			double weight, int gestation, double fundalHeight, GregorianCalendar EDD, 
+	public AntenatalVisit(String id, int parity, int systolicBP, int diastolicBP, double height,
+			double weight, int gestation, double fundalHeight, GregorianCalendar EDD,
 			double hBAtReg, double hBAt36Weeks, String bloodGroup, String sicklingStatus,
 			String sicklingType, boolean vDLabResults, boolean preTestCounsel,
 			boolean hIVResults, boolean postTestCounsel, boolean ARV, int subVisits,
@@ -145,15 +145,15 @@ public class AntenatalVisit implements Serializable {
      * Returns ID of Antenatal Visit
      * @return id
      */
-    public Long getID(){
+    public String getID(){
     	return id;
     }
-    
+
     /**
      * Sets the id of the Antenatal Visit
      * @param id the id to set
      */
-    public void setID(Long id){
+    public void setID(String id){
     	this.id = id;
     }
     
