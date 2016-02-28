@@ -37,3 +37,5 @@ Tasks:
 * DAO/Storage
      - generate a DAO for storing the exam class
      - generate a DAO for storing the DummyPerson class
+*Documentation
+    -Create basic JDoc comments
