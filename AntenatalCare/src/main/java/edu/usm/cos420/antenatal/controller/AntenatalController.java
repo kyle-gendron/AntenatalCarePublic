@@ -54,7 +54,8 @@ public class AntenatalController implements ActionListener {
       case "Submit": {
 
         NewVisitForm form = this.view.getVisitPanel().getForm();
-
+        
+        //TODO: get the rest of the information from the gui
         Integer parity = form.getParity();
         boolean testResult = form.getTestResult() > 0;
         Double height = form.getPatientHeight();
@@ -67,7 +68,6 @@ public class AntenatalController implements ActionListener {
           parity, 0, 0, height, weight, 0, 0, (GregorianCalendar) GregorianCalendar.getInstance(),
           0, 0, "", "", "", testResult, false, false, false, false, 0, 0, 0, false, 0, 0);
         
-        //need to get info out of the gui and create a new class with it
         
         
         //doesn't do anything right now
