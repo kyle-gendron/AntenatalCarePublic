@@ -54,18 +54,23 @@ public class AntenatalController implements ActionListener {
       case "Submit": {
 
         NewVisitForm form = this.view.getVisitPanel().getForm();
-
-        Integer parity = parseInteger(form.getParity(), 0);
+        
+        //TODO: get the rest of the information from the gui
+        Integer parity = form.getParity();
         boolean testResult = form.getTestResult() > 0;
-        Double height = parseDouble(form.getPatientHeight(), 0);
-        Double weight = parseDouble(form.getPatientWeight(), 0);
+        Double height = form.getPatientHeight();
+        Double weight = form.getPatientWeight();
 
         String nextId = AntenatalService.getNextID();
+        
         // Create a new Visit object to pass to the service class.
         AntenatalVisit visit = new AntenatalVisit(nextId,
           parity, 0, 0, height, weight, 0, 0, (GregorianCalendar) GregorianCalendar.getInstance(),
           0, 0, "", "", "", testResult, false, false, false, false, 0, 0, 0, false, 0, 0);
-
+        
+        
+        
+        //doesn't do anything right now
         service.addAntenatalVisit(visit);
         System.out.println("Inserted New Visit (" + nextId + ")");
       }
