@@ -421,20 +421,29 @@ public class NewVisitForm extends JPanel {
 
 	/**
 	 * 
-	 * @return returns int val of the trimester
+	 * @return returns int val of the trimester, or -1 if error
 	 */
 	public int getTrimester(){
-		Integer tri = 0;
 		try{
-			tri = Integer.valueOf(bloInput1.getText());
-			return (int) tri;
+			int gest = Integer.valueOf(gesInput.getText());
+
+			if(gest <= 13 ){//tri 1
+				return 1;
+			}else if(gest <= 26){//tri2
+				return 2;
+			}else{
+				return 3;
+			}
 		}catch(NumberFormatException e){
 			return -1;
 		}
 	}
 
 	public int getSubVisits(){
-
+		Object selectedSubVis = sg.getSelectedItem();
+		//TODO: may or not be correct val
+		int st = (int) Integer.valueOf(selectedSubVis.toString());
+		return st;
 	}
 
 	public int getGestation(){
@@ -448,13 +457,38 @@ public class NewVisitForm extends JPanel {
 	}
 
 	public int getIPTDoses(){
-
+		//TODO: make this better?
+		int doses = 0;
+		int tmp = -1;
+		
+		if(iptOne.isSelected() == true){
+			doses++;
+		}
+		if(iptTwo.isSelected() == true){
+			doses++;
+		}
+		
+		if(iptThree.isSelected() == true){
+			doses++;
+		}
+		
+		return doses;		
 	}
-
+	/**
+	 * 
+	 * @return Returns the number of doses
+	 */
 	public int getTTDoses(){
-
+		Object TTdoses = ttb.getSelectedItem();
+		//TODO: may or not be correct val
+		int st = (int) Integer.valueOf(TTdoses.toString());
+		return st;
+		
 	}
-
+	/**
+	 * 
+	 * @return Double value of the fundal height
+	 */
 	public double getFundalHeight(){
 		Integer fun = 0;
 		try{
@@ -465,22 +499,61 @@ public class NewVisitForm extends JPanel {
 		}
 	}
 
+	/**
+	 * 
+	 * @return Double value of the hemoglobin levels at registration
+	 */
 	public double gethBAtReg(){
-
+		Double hb = 0.0;
+		try{
+			hb = Double.valueOf(hb36Input.getText());
+			return hb;
+		}catch(NumberFormatException e){
+			return -1;
+		}
 	}
 
+	/**
+	 * 
+	 * @return Double value of the hemoglobin levels at 36 weeks
+	 */
 	public double gethBAt36Weeks(){
-
+		Double hb = 0.0;
+		try{
+			hb = Double.valueOf(hbatInput.getText());
+			return hb;
+		}catch(NumberFormatException e){
+			return -1;
+		}
 	}
 
+	/**
+	 * 
+	 * @return Double val of the urine sugar test results
+	 */
 	public double getUrineTestSugar(){
-
+		Double sp = 0.0; //sugar pee
+		try{
+			sp = Double.valueOf(uriInput1.getText());
+			return sp;
+		}catch(NumberFormatException e){
+			return -1;
+		}
 	}
-
+	/**
+	 * 
+	 * @return Doubleval of the urine protein test results
+	 */
 	public double getUrineTestProtein(){
-
+		Double pp = 0.0; //protein pee
+		try{
+			pp = Double.valueOf(uriInput2.getText());
+			return pp;
+		}catch(NumberFormatException e){
+			return -1;
+		}
 	}
-	
+
 	/**
 	 * 
 	 * @return a GregorianCalendar of the estimated due date
@@ -492,19 +565,19 @@ public class NewVisitForm extends JPanel {
 			String date = eedInput.getText(); 
 			GregorianCalendar edd = null;
 			String[] spDate = date.split("/");
-			
+
 			int day = Integer.parseInt(spDate[1]);
 			int month = Integer.parseInt(spDate[0]);
 			int year = Integer.parseInt(spDate[2]);
-			
+
 			edd = new GregorianCalendar(year, month , day);
-			
+
 			return edd;
 		}catch(Exception e){
 			return null;
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @return String representation of blood group
@@ -543,32 +616,63 @@ public class NewVisitForm extends JPanel {
 
 		return st;
 	}
-
+	/**
+	 * 
+	 * @return Returns true if reactive, else false
+	 */
 	public boolean getVDLabResults(){
-
+		if( react.isSelected()  == true ) return true;
+		if( nReact.isSelected() == true ) return false;
+		
+		return false;
 	}
-
+	/**
+	 * 
+	 * @return Returns True if yes, else returns false
+	 */
 	public boolean getPreTestCounsel(){
-
+		if( pmctYes.isSelected()  == true ) return true;
+		if( pmctNo.isSelected()   == true ) return false;
+		return false;
 	}
 
-	public boolean getHIVResults(){
-
-	}
-
+	/**
+	 * 
+	 * @return Returns true is yes, else returns false
+	 */
 	public boolean getPostTestCounsel(){
-
+		if( postYes.isSelected() == true ) return true;
+		if( postNo.isSelected()  == true ) return false;
+		
+		return false;
 	}
 
-	public boolean getARV(){
-
-	}
-
+	/**
+	 * 
+	 * @return Returns true if malaria pos, else false
+	 */
 	public boolean getBloodFilm(){
-
+		if( bloodPresent.isSelected()    == true ) return true;
+		if( bloodNotPresent.isSelected() == true ) return false;		
+		return false;		
 	}
-
-	public boolean getITB(){
-
+	/**
+	 * 
+	 * @return Returns true if male involved, else false
+	 */
+	public boolean getMaleInvolvement(){
+		if( malePresent.isSelected()    == true ) return true;
+		if( maleNotPresent.isSelected() == true ) return false;		
+		return false;		
+	}
+	
+	/**
+	 * 
+	 * @return returns true if yes, returns false otherwise
+	 */
+	public boolean getITN(){
+		if( itnYes.isSelected() == true ) return true;
+		if( itnNo.isSelected()  == true ) return false;		
+		return false;		
 	}
 }
