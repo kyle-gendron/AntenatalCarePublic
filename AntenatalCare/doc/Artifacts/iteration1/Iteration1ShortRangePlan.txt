@@ -22,7 +22,7 @@ Tasks:
      - add labels and text or check boxes for the unique antenatal exam items
      - create submit button that validates completeness and sends information to be stored
 * Controller class work
-     - collect information from the GUI (Estimated 4, Actual ?) NH
+     - collect information from the GUI (Estimated 4, Actual 3) NH
      - use collected information to create a new visit instance
      - send the visit instance to persistent storage
      - if time allows, populate GUI with prior visit information
