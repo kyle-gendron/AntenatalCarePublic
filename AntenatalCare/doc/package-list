@@ -1,1 +1,11 @@
+edu.usm.cos420.antenatal
+edu.usm.cos420.antenatal.controller
+edu.usm.cos420.antenatal.dao
+edu.usm.cos420.antenatal.dao.domain
+edu.usm.cos420.antenatal.dao.util
+edu.usm.cos420.antenatal.domain
+edu.usm.cos420.antenatal.exceptions
 edu.usm.cos420.antenatal.gui
+edu.usm.cos420.antenatal.service
+edu.usm.cos420.antenatal.service.impl
+edu.usm.cos420.antenatal.view.impl
