@@ -1,0 +1,46 @@
+Iteration 2 Plan:
+
+Use Cases:
+* CHO conducts a follow-up exam and records new information into the register.
+
+1. CHO opens Consulting Register, enters patient search information and finds account.
+2. Once found, the CHO opens the Antenatal Care Register.
+3. Consulting Register panel above Antenatal panel populated with data.
+4. CHO conducts exam and fill out New Subsequent Visit information.
+5. System alerts CHO if any fields are missing.
+6. CHO adds missing information if necessary.
+7. System alerts the CHO that the Subsequent Visit is complete and saved to storage.
+8. CHO views complete Antenatal Care form and reviews information and looks for any optional fields not filled out.
+9. CHO screens patient and fills out any new fields discovered to be valid (for example, Venereal Disease Lab Results, 
+    once the patient has had the test after the initial antenatal visit).
+10. Once all applicable fields are filled out, CHO submits info.
+11. System alerts the CHO that the Antenatal Visit form has been updated.
+
+* CHO searches for past antenatal exams of a patient.
+
+1. CHO opens Consulting Register, enters patient search information and finds account.
+2. Once found, the CHO opens the Antenatal Care Register.
+3. Consulting Register panel above Antenatal panel populated with data.
+4. (there are a number of ways we could go about displaying previous antenatal care objects, we need to flesh this out)
+
+Tasks:
+* Ensure Input Validation
+      - Ensure input types are valid
+      - Ensure that any input field that is dependent on another field is inactive unless the other field is satisfied.
+        (for example, make sure that if Sickling Status isn't filled out, Sickling Type is inactive).
+      - Produce Error message popups to inform user of invalid entries (preferably done in one window, listing each
+        invalid entry message on its own line)
+* Expand program to include interface for searching for an existing patient's Antenatal Care information
+      - Expand GUI to include interface for search.
+      - Connect new GUI interface to controller for database search.
+      - Pull data from database and populate fields on screen.
+      - Allow for user to update currently-empty fields from this view.
+* Expand AntenatalVisit View to include option for adding subsequent visit exam.
+      - Create AntenatalSubsequentVisit object.
+      - Add data structure of AntenatalSubsequentVisit objects to AntenatalVisit object.
+      - Build window with Subsequent Visit fields in GUI.
+      - Collect and store information from Subsequent Visit window.
+* Dummy Person Object
+      - Implement use of actual DummyPerson objects when searching for AntenatalVisit objects.
+* Documentation
+      - Create basic JDoc comments

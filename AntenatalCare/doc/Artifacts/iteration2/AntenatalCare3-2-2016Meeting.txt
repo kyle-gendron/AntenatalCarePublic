@@ -1,0 +1,37 @@
+Antenatal Meeting 3/2/2016
+
+AntenatalVisit object changes:
+-Will be renamed pregnancy for the sake of brevity.
+
+-At its core, the AntenatalVisit object is actually meant to represent both the first visit of a pregnancy
+ and also hold all the optional fields that can be updated at any time.  Since this object expires with 
+ the end of the pregnancy and will have all subsequent visits relevant to this pregnancy associated with it, 
+ we will rename this class pregnancy. (minor refactor)
+ 
+-In case the pregnancy is terminated at any point before the Births and Deliveries Department can handle it, 
+we need a Boolean to deactivate the current pregnancy object in our system.  Termination may need to be 
+reported to Births and Deliveries department for the sake of their report (future iteration issue).
+
+-Change all yes/no boolean values to simple check boxes to save space. (Refactor)
+
+
+Subvisit Type Changes:
+
+-Object that will be separate from the pregnancy instance, but associated with via foreign key (GUID).
+
+Subvisit GUI Additions:
+
+-Will be listed in separate tabs next to the first visit/general pregnancy info tab, sorted most recent on the far right.  
+Each new subsequent visit will be created by clicking a right-most blank tab titled “New Subsequent Visit.”  
+
+Overall GUI changes:
+-Considered but reject idea of auto-populating all previous pregnancies as individual tabs below the Consulting 
+Register panel on screen once a patient account had been selected and the Antenatal Tab selected.  Page will remain
+blank until either “Create New Antenatal Visit” (or rather, pregnancy) or Find Previous Visits is selected.
+
+-When Find Previous Visits is selected, the same form as with entering a new pregnancy will appear, with the fields that
+have already been entered populated with values pulled from the database.  Again, this will be the primary form referred 
+to for any given pregnancy.  
+
+-When a previous pregnancy is found, fields should be available for modification if the pregnancy is still active.  Also, 
+subsequent visits should be able to be added if the pregnancy is still active.
