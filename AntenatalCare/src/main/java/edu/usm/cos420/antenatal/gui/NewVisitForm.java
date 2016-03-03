@@ -35,12 +35,10 @@ public class NewVisitForm extends JPanel {
 	private final JComboBox sbt;
 	private final JRadioButton react;
 	private final JRadioButton nReact;
-	private final JRadioButton pmctYes;
-	private final JRadioButton pmctNo;
+	private final JCheckBox pmctYes;
 	private final JRadioButton positive;
 	private final JRadioButton negative;
-	private final JRadioButton postYes;
-	private final JRadioButton postNo;
+	private final JCheckBox postYes;
 	private final JRadioButton bloodPresent;
 	private final JRadioButton bloodNotPresent;
 	private final JRadioButton malePresent;
@@ -54,8 +52,9 @@ public class NewVisitForm extends JPanel {
 	private final JCheckBox itpOne;
 	private final JCheckBox itpTwo;
 	private final JCheckBox itpThree;
-	private final JRadioButton itnNo;
-	private final JRadioButton itnYes;
+	private final JCheckBox itnYes;
+	private final JTextArea complaints;
+	private final JTextArea remarks;
 
 	/**
 	 * Fills in the jFrame with all of the field that need to be filled in
@@ -176,16 +175,11 @@ public class NewVisitForm extends JPanel {
 		VDLab.add(nReact);
 
 		//pre VD test consoling
-		JLabel PMTC = new JLabel("PMTCT: ");//yes or no
+		JLabel PMTC = new JLabel("PMTCT: ");//yes 
 		JPanel PMTCT = new JPanel();
-		pmctYes = new JRadioButton("Yes");
-		pmctNo = new JRadioButton("No");
-		ButtonGroup p = new ButtonGroup();
-		p.add(pmctYes);
-		p.add(pmctNo);
+		pmctYes = new JCheckBox("");
 		PMTCT.add(PMTC);
 		PMTCT.add(pmctYes);
-		PMTCT.add(pmctNo);
 
 		//VD test result
 		JLabel TestResul = new JLabel("Test-Result: ");//positive vs negative
@@ -200,16 +194,11 @@ public class NewVisitForm extends JPanel {
 		TestResult.add(negative);
 
 		//Post VD test counseling
-		JLabel PostTes = new JLabel("Post-Test Counseling: ");
+		JLabel PostTes = new JLabel("Post-Test Counseling: ");//yess
 		JPanel PostTest = new JPanel();
-		postYes = new JRadioButton("Yes");
-		postNo= new JRadioButton("No");
-		ButtonGroup p1 = new ButtonGroup();
-		p1.add(postYes);
-		p1.add(postNo);
+		postYes = new JCheckBox("");
 		PostTest.add(PostTes);
 		PostTest.add(postYes);
-		PostTest.add(postNo);
 
 		//malaria testing p/np
 		JLabel BloodFil = new JLabel("Blood Film: ");//bloodPresent or not bloodPresent
@@ -265,10 +254,6 @@ public class NewVisitForm extends JPanel {
 		iptOne = new JCheckBox("1");
 		iptTwo = new JCheckBox("2");
 		iptThree = new JCheckBox("3");
-		ButtonGroup ipt = new ButtonGroup();
-		ipt.add(iptOne);
-		ipt.add(iptTwo);
-		ipt.add(iptThree);
 		IPT.add(IPTl);
 		IPT.add(iptOne);
 		IPT.add(iptTwo);
@@ -281,10 +266,6 @@ public class NewVisitForm extends JPanel {
 		itpOne = new JCheckBox("1");
 		itpTwo = new JCheckBox("2");
 		itpThree = new JCheckBox("3");
-		ButtonGroup itp = new ButtonGroup();
-		itp.add(itpOne);
-		itp.add(itpTwo);
-		itp.add(itpThree);
 		ITP.add(ITPl);
 		ITP.add(itpOne);
 		ITP.add(itpTwo);
@@ -292,17 +273,25 @@ public class NewVisitForm extends JPanel {
 		ITP.add(new JLabel(" Doses"));
 
 		//stuff of ITN
-		JLabel ITNl = new JLabel("ITN: ");//Yes or no
+		JLabel ITNl = new JLabel("ITN: ");//Yes 
 		JPanel ITN = new JPanel();
-		itnYes = new JRadioButton("Yes");
-		itnNo= new JRadioButton("No");
-		ButtonGroup p2 = new ButtonGroup();
-		p2.add(itnYes);
-		p2.add(itnNo);
+		itnYes = new JCheckBox("");
 		ITN.add(ITNl);
 		ITN.add(itnYes);
-		ITN.add(itnNo);
-
+		
+		//add complaints field
+		JLabel complaint = new JLabel("Complaints: ");
+		JLabel remarked = new JLabel("Remarks: ");
+		JPanel texthold = new JPanel();
+		complaints = new JTextArea(2,12);
+		remarks = new JTextArea(2,12);
+		texthold.add(complaint);
+		texthold.add(complaints);
+		
+		//add remarks field
+		texthold.add(remarked);
+		texthold.add(remarks);
+		
 		//add data to frame
 		panel.add(parity);
 		panel.add(parInput);
@@ -329,6 +318,8 @@ public class NewVisitForm extends JPanel {
 		panel.add(IPT);
 		panel.add(ITP);
 		panel.add(ITN);
+		panel.add(texthold);
+		
 	}
 
 	/**
@@ -632,7 +623,6 @@ public class NewVisitForm extends JPanel {
 	 */
 	public boolean getPreTestCounsel(){
 		if( pmctYes.isSelected()  == true ) return true;
-		if( pmctNo.isSelected()   == true ) return false;
 		return false;
 	}
 
@@ -642,8 +632,6 @@ public class NewVisitForm extends JPanel {
 	 */
 	public boolean getPostTestCounsel(){
 		if( postYes.isSelected() == true ) return true;
-		if( postNo.isSelected()  == true ) return false;
-		
 		return false;
 	}
 
@@ -672,7 +660,6 @@ public class NewVisitForm extends JPanel {
 	 */
 	public boolean getITN(){
 		if( itnYes.isSelected() == true ) return true;
-		if( itnNo.isSelected()  == true ) return false;		
 		return false;		
 	}
 }

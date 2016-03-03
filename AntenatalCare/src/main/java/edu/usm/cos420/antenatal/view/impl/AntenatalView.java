@@ -94,7 +94,7 @@ public class AntenatalView extends JFrame{
 		split.setDividerLocation(160);
 		return split;
 	}
-	
+
 	/**
 	 * Filles in empty space with a color and "--------"
 	 */
@@ -106,7 +106,7 @@ public class AntenatalView extends JFrame{
 	}
 
 	private int count = 1;
-	
+
 	/**
 	 * Creates the menu bar across the top of the screen to give selectable options
 	 */
@@ -126,8 +126,12 @@ public class AntenatalView extends JFrame{
 			if(Objects.equals(TPAIN.getTitleAt(0), "-------")){
 				TPAIN.remove(0);
 			}
-			TPAIN.addTab(newVisitPanel.getTitle(), newVisitPanel.getPanel());
-			validate();
+			//if(!controller.getPregnancy()){//if they dont have an open pregnancy session ###CODE THIS###
+				TPAIN.addTab(newVisitPanel.getTitle(), newVisitPanel.getPanel());
+				validate();
+			//}else{
+				//get previous tabs to display and make new subsequent tab
+			//}
 		});
 
 		JMenuItem eMenuItemTwo = new JMenuItem("Find Previous Visits");
@@ -143,7 +147,7 @@ public class AntenatalView extends JFrame{
 
 		setJMenuBar(menuBar);
 	}
-	
+
 	/**
 	 * Removes the current selected tab and fills it with the color gray
 	 */
