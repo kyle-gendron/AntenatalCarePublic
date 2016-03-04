@@ -435,15 +435,15 @@ public class NewVisitForm extends JPanel {
 		int doses = 0;
 		int tmp = -1;
 		
-		if(iptOne.isSelected() == true){
-			doses++;
+		if(iptOne.isSelected()){
+			doses = 1;
 		}
-		if(iptTwo.isSelected() == true){
-			doses++;
+		if(iptTwo.isSelected()){
+			doses = 2;
 		}
 		
-		if(iptThree.isSelected() == true){
-			doses++;
+		if(iptThree.isSelected()){
+			doses = 3;
 		}
 		
 		return doses;		
@@ -602,8 +602,7 @@ public class NewVisitForm extends JPanel {
 	 * @return Returns True if yes, else returns false
 	 */
 	public boolean getPreTestCounsel(){
-		if( pmctYes.isSelected()  == true ) return true;
-		return false;
+		 return pmctYes.isSelected();
 	}
 
 	/**
@@ -611,8 +610,7 @@ public class NewVisitForm extends JPanel {
 	 * @return Returns true is yes, else returns false
 	 */
 	public boolean getPostTestCounsel(){
-		if( postYes.isSelected() == true ) return true;
-		return false;
+		return postYes.isSelected();
 	}
 
 	/**
@@ -635,7 +633,6 @@ public class NewVisitForm extends JPanel {
 	 * @return returns true if yes, returns false otherwise
 	 */
 	public boolean getITN(){
-		if( itnYes.isSelected() == true ) return true;
-		return false;		
+		return itnYes.isSelected();		
 	}
 }
