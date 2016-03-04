@@ -156,7 +156,7 @@ public class AntenatalVisit implements Serializable {
 //      ", sicklingType='" + sicklingType + '\'' +
       ", vDLabresults=" + vDLabresults +
 //      ", preTestCounsel=" + preTestCounsel +
-//      ", hIVResults=" + hIVResults +
+      ", hIVResults=" + hIVResults +
 //      ", postTestCounsel=" + postTestCounsel +
 //      ", ARV=" + ARV +
 //      ", bloodFilm=" + bloodFilm +

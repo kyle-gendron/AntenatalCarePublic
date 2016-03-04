@@ -33,16 +33,13 @@ public class NewVisitForm extends JPanel {
 	private final JComboBox bg;
 	private final JComboBox sb;
 	private final JComboBox sbt;
-	private final JRadioButton react;
-	private final JRadioButton nReact;
+	private final JCheckBox react;
 	private final JCheckBox pmctYes;
 	private final JRadioButton positive;
 	private final JRadioButton negative;
 	private final JCheckBox postYes;
-	private final JRadioButton bloodPresent;
-	private final JRadioButton bloodNotPresent;
-	private final JRadioButton malePresent;
-	private final JRadioButton maleNotPresent;
+	private final JCheckBox bloodPresent;
+	private final JCheckBox malePresent;
 	private final JComboBox tb;
 	private final JComboBox sg;
 	private final JComboBox ttb;
@@ -165,14 +162,10 @@ public class NewVisitForm extends JPanel {
 		//veneral disease testing
 		JLabel VDLa = new JLabel("VDLab: ");//button group reactive or non-reactive
 		JPanel VDLab = new JPanel();
-		react = new JRadioButton("Reactive");
-		nReact = new JRadioButton("Non-Reactive");
-		ButtonGroup r = new ButtonGroup();
-		r.add(react);
-		r.add(nReact);
+		react = new JCheckBox("Reactive");
 		VDLab.add(VDLa);
 		VDLab.add(react);
-		VDLab.add(nReact);
+
 
 		//pre VD test consoling
 		JLabel PMTC = new JLabel("PMTCT: ");//yes 
@@ -203,26 +196,16 @@ public class NewVisitForm extends JPanel {
 		//malaria testing p/np
 		JLabel BloodFil = new JLabel("Blood Film: ");//bloodPresent or not bloodPresent
 		JPanel BloodFilm = new JPanel();
-		bloodPresent = new JRadioButton("Present");
-		bloodNotPresent = new JRadioButton("Not-Present");
-		ButtonGroup b = new ButtonGroup();
-		b.add(bloodPresent);
-		b.add(bloodNotPresent);
+		bloodPresent = new JCheckBox("Present");
 		BloodFilm.add(BloodFil);
 		BloodFilm.add(bloodPresent);
-		BloodFilm.add(bloodNotPresent);
 
 		//men involvement y/n
 		JLabel MaleInvolve = new JLabel("Male Involvement: ");//bloodPresent or not
 		JPanel MaleInvolved = new JPanel();
-		malePresent = new JRadioButton("Present");
-		maleNotPresent = new JRadioButton("Not-Present");
-		ButtonGroup m = new ButtonGroup();
-		m.add(malePresent);
-		m.add(maleNotPresent);
+		malePresent = new JCheckBox("Present");
 		MaleInvolved.add(MaleInvolve);
 		MaleInvolved.add(malePresent);
-		MaleInvolved.add(maleNotPresent);
 
 		//what trimester they are at
 		JLabel Trimeste = new JLabel("Trimester: ");//int 1-3
@@ -612,10 +595,7 @@ public class NewVisitForm extends JPanel {
 	 * @return Returns true if reactive, else false
 	 */
 	public boolean getVDLabResults(){
-		if( react.isSelected()  == true ) return true;
-		if( nReact.isSelected() == true ) return false;
-		
-		return false;
+		return react.isSelected();
 	}
 	/**
 	 * 
@@ -640,18 +620,14 @@ public class NewVisitForm extends JPanel {
 	 * @return Returns true if malaria pos, else false
 	 */
 	public boolean getBloodFilm(){
-		if( bloodPresent.isSelected()    == true ) return true;
-		if( bloodNotPresent.isSelected() == true ) return false;		
-		return false;		
+		return bloodPresent.isSelected();	
 	}
 	/**
 	 * 
 	 * @return Returns true if male involved, else false
 	 */
 	public boolean getMaleInvolvement(){
-		if( malePresent.isSelected()    == true ) return true;
-		if( maleNotPresent.isSelected() == true ) return false;		
-		return false;		
+		return malePresent.isSelected();		
 	}
 	
 	/**
