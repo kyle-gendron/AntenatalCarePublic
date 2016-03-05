@@ -545,26 +545,19 @@ public class NewVisitForm extends JPanel {
 	 */
 	public LocalDate getEDD(){
 		//TODO: calculate from gestation 
-		//TODO: not use gregorian Cal
 		  
 		   try{
 			String date = eedInput.getText();
 			date = date.replaceAll("\\D", "");
 			System.out.println(date);
 			DateTimeFormatter formatter = null;
+			
 			if(date.length() == 8){
 			formatter = DateTimeFormatter.ofPattern("MMddyyyy");
 			}
 			
 			return LocalDate.parse(date, formatter);
-			//String[] spDate = date.split("/");
 			
-			//int day = Integer.parseInt(spDate[1]);
-			//int month = Integer.parseInt(spDate[0]);
-			//int year = Integer.parseInt(spDate[2]);
-
-
-			//return edd;
 		}catch(Exception e){
 			return null;
 		}
