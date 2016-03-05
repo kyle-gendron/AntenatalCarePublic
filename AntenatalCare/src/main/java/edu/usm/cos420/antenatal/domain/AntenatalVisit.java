@@ -8,7 +8,6 @@ package edu.usm.cos420.antenatal.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.GregorianCalendar;
 
 
 /**

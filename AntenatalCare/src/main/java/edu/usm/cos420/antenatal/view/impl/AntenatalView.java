@@ -11,6 +11,7 @@ import java.util.Objects;
 import javax.swing.*;
 
 import edu.usm.cos420.antenatal.controller.AntenatalController;
+import edu.usm.cos420.antenatal.controller.SubController;
 import edu.usm.cos420.antenatal.domain.DummyPerson;
 import edu.usm.cos420.antenatal.gui.consultingData;
 import edu.usm.cos420.antenatal.gui.newVisitTab;
@@ -27,6 +28,7 @@ import javafx.scene.Scene;
 public class AntenatalView extends JFrame{
 
 	private AntenatalController controller;
+	private SubController subController;
 	private DummyPerson dummyPerson;
 	private newVisitTab newVisitPanel;
 	private static JTabbedPane TPAIN;
@@ -50,7 +52,12 @@ public class AntenatalView extends JFrame{
 		initUI();
 	}
 
-	/**
+	public AntenatalView(SubController subController) {
+      // TODO Auto-generated constructor stub
+	   this.subController = subController;
+   }
+
+   /**
 	 * initializes the user interface
 	 */
 	private void initUI(){
@@ -138,14 +145,20 @@ public class AntenatalView extends JFrame{
 		});
 
 		JMenuItem eMenuItemTwo = new JMenuItem("Find Previous Visits");
+		
+		JMenuItem eMenuItemThree = new JMenuItem("Show Sub Visits");
+		eMenuItemThree.addActionListener(l -> {
+		   
+		});
 
-		JMenuItem eMenuItemThree = new JMenuItem("Exit");
+		JMenuItem eMenuItemFour = new JMenuItem("Exit");
 		eMenuItemThree.setMnemonic(KeyEvent.VK_E);
 		eMenuItemThree.setToolTipText("Exit application");
 		eMenuItemThree.addActionListener(controller);
 		file.add(eMenuItemOne);
 		file.add(eMenuItemTwo);
 		file.add(eMenuItemThree);
+		file.add(eMenuItemFour);
 		menuBar.add(file);
 
 		setJMenuBar(menuBar);

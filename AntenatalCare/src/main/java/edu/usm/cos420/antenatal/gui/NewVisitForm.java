@@ -541,7 +541,7 @@ public class NewVisitForm extends JPanel {
 
 	/**
 	 * 
-	 * @return a GregorianCalendar of the estimated due date
+	 * @return a LocalDate of the estimated due date
 	 */
 	public LocalDate getEDD(){
 		//TODO: calculate from gestation 
