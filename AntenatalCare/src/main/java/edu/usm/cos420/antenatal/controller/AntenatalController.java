@@ -8,6 +8,7 @@ import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.GregorianCalendar;
 
 /**
@@ -61,12 +62,13 @@ public class AntenatalController implements ActionListener {
         Double height = form.getPatientHeight();
         Double weight = form.getPatientWeight();
         boolean reactive = form.getVDLabResults();
+        LocalDate EDD = form.getEDD();
 
         String nextId = AntenatalService.getNextID();
         
         // Create a new Visit object to pass to the service class.
         AntenatalVisit visit = new AntenatalVisit(nextId,
-          parity, 0, 0, height, weight, 0, 0, (GregorianCalendar) GregorianCalendar.getInstance(),
+          parity, 0, 0, height, weight, 0, 0, EDD,
           0, 0, "", "", "", reactive, false, testResult, false, false, 0, 0, 0, false, 0, 0);
         
         
@@ -95,4 +97,5 @@ public class AntenatalController implements ActionListener {
       return defaultValue;
     }
   }
+  
 }

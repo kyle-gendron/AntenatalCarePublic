@@ -1,8 +1,19 @@
 package edu.usm.cos420.antenatal.gui;
 
 import javax.swing.*;
+
+
+import org.jdatepicker.JDatePicker;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
+
 import java.awt.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.GregorianCalendar;
+import java.util.Properties;
+
 
 /**
  * Created by aaron on 2/27/2016.
@@ -532,21 +543,28 @@ public class NewVisitForm extends JPanel {
 	 * 
 	 * @return a GregorianCalendar of the estimated due date
 	 */
-	public GregorianCalendar getEDD(){
+	public LocalDate getEDD(){
 		//TODO: calculate from gestation 
 		//TODO: not use gregorian Cal
-		try{
-			String date = eedInput.getText(); 
-			GregorianCalendar edd = null;
-			String[] spDate = date.split("/");
+		  
+		   try{
+			String date = eedInput.getText();
+			date = date.replaceAll("\\D", "");
+			System.out.println(date);
+			DateTimeFormatter formatter = null;
+			if(date.length() == 8){
+			formatter = DateTimeFormatter.ofPattern("MMddyyyy");
+			}
+			
+			return LocalDate.parse(date, formatter);
+			//String[] spDate = date.split("/");
+			
+			//int day = Integer.parseInt(spDate[1]);
+			//int month = Integer.parseInt(spDate[0]);
+			//int year = Integer.parseInt(spDate[2]);
 
-			int day = Integer.parseInt(spDate[1]);
-			int month = Integer.parseInt(spDate[0]);
-			int year = Integer.parseInt(spDate[2]);
 
-			edd = new GregorianCalendar(year, month , day);
-
-			return edd;
+			//return edd;
 		}catch(Exception e){
 			return null;
 		}

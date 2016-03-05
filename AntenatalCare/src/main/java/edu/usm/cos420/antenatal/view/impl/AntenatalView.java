@@ -14,6 +14,9 @@ import edu.usm.cos420.antenatal.controller.AntenatalController;
 import edu.usm.cos420.antenatal.domain.DummyPerson;
 import edu.usm.cos420.antenatal.gui.consultingData;
 import edu.usm.cos420.antenatal.gui.newVisitTab;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Scene;
 
 /**
  * Creates the simple consulting view across the top
