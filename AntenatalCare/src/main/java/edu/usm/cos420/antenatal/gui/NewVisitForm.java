@@ -1,8 +1,19 @@
 package edu.usm.cos420.antenatal.gui;
 
 import javax.swing.*;
+
+
+import org.jdatepicker.JDatePicker;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
+
 import java.awt.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.GregorianCalendar;
+import java.util.Properties;
+
 
 /**
  * Created by aaron on 2/27/2016.
@@ -33,18 +44,13 @@ public class NewVisitForm extends JPanel {
 	private final JComboBox bg;
 	private final JComboBox sb;
 	private final JComboBox sbt;
-	private final JRadioButton react;
-	private final JRadioButton nReact;
-	private final JRadioButton pmctYes;
-	private final JRadioButton pmctNo;
+	private final JCheckBox react;
+	private final JCheckBox pmctYes;
 	private final JRadioButton positive;
 	private final JRadioButton negative;
-	private final JRadioButton postYes;
-	private final JRadioButton postNo;
-	private final JRadioButton bloodPresent;
-	private final JRadioButton bloodNotPresent;
-	private final JRadioButton malePresent;
-	private final JRadioButton maleNotPresent;
+	private final JCheckBox postYes;
+	private final JCheckBox bloodPresent;
+	private final JCheckBox malePresent;
 	private final JComboBox tb;
 	private final JComboBox sg;
 	private final JComboBox ttb;
@@ -54,8 +60,9 @@ public class NewVisitForm extends JPanel {
 	private final JCheckBox itpOne;
 	private final JCheckBox itpTwo;
 	private final JCheckBox itpThree;
-	private final JRadioButton itnNo;
-	private final JRadioButton itnYes;
+	private final JCheckBox itnYes;
+	private final JTextArea complaints;
+	private final JTextArea remarks;
 
 	/**
 	 * Fills in the jFrame with all of the field that need to be filled in
@@ -166,26 +173,17 @@ public class NewVisitForm extends JPanel {
 		//veneral disease testing
 		JLabel VDLa = new JLabel("VDLab: ");//button group reactive or non-reactive
 		JPanel VDLab = new JPanel();
-		react = new JRadioButton("Reactive");
-		nReact = new JRadioButton("Non-Reactive");
-		ButtonGroup r = new ButtonGroup();
-		r.add(react);
-		r.add(nReact);
+		react = new JCheckBox("Reactive");
 		VDLab.add(VDLa);
 		VDLab.add(react);
-		VDLab.add(nReact);
+
 
 		//pre VD test consoling
-		JLabel PMTC = new JLabel("PMTCT: ");//yes or no
+		JLabel PMTC = new JLabel("PMTCT: ");//yes 
 		JPanel PMTCT = new JPanel();
-		pmctYes = new JRadioButton("Yes");
-		pmctNo = new JRadioButton("No");
-		ButtonGroup p = new ButtonGroup();
-		p.add(pmctYes);
-		p.add(pmctNo);
+		pmctYes = new JCheckBox("");
 		PMTCT.add(PMTC);
 		PMTCT.add(pmctYes);
-		PMTCT.add(pmctNo);
 
 		//VD test result
 		JLabel TestResul = new JLabel("Test-Result: ");//positive vs negative
@@ -200,40 +198,25 @@ public class NewVisitForm extends JPanel {
 		TestResult.add(negative);
 
 		//Post VD test counseling
-		JLabel PostTes = new JLabel("Post-Test Counseling: ");
+		JLabel PostTes = new JLabel("Post-Test Counseling: ");//yess
 		JPanel PostTest = new JPanel();
-		postYes = new JRadioButton("Yes");
-		postNo= new JRadioButton("No");
-		ButtonGroup p1 = new ButtonGroup();
-		p1.add(postYes);
-		p1.add(postNo);
+		postYes = new JCheckBox("");
 		PostTest.add(PostTes);
 		PostTest.add(postYes);
-		PostTest.add(postNo);
 
 		//malaria testing p/np
 		JLabel BloodFil = new JLabel("Blood Film: ");//bloodPresent or not bloodPresent
 		JPanel BloodFilm = new JPanel();
-		bloodPresent = new JRadioButton("Present");
-		bloodNotPresent = new JRadioButton("Not-Present");
-		ButtonGroup b = new ButtonGroup();
-		b.add(bloodPresent);
-		b.add(bloodNotPresent);
+		bloodPresent = new JCheckBox("Present");
 		BloodFilm.add(BloodFil);
 		BloodFilm.add(bloodPresent);
-		BloodFilm.add(bloodNotPresent);
 
 		//men involvement y/n
 		JLabel MaleInvolve = new JLabel("Male Involvement: ");//bloodPresent or not
 		JPanel MaleInvolved = new JPanel();
-		malePresent = new JRadioButton("Present");
-		maleNotPresent = new JRadioButton("Not-Present");
-		ButtonGroup m = new ButtonGroup();
-		m.add(malePresent);
-		m.add(maleNotPresent);
+		malePresent = new JCheckBox("Present");
 		MaleInvolved.add(MaleInvolve);
 		MaleInvolved.add(malePresent);
-		MaleInvolved.add(maleNotPresent);
 
 		//what trimester they are at
 		JLabel Trimeste = new JLabel("Trimester: ");//int 1-3
@@ -265,10 +248,6 @@ public class NewVisitForm extends JPanel {
 		iptOne = new JCheckBox("1");
 		iptTwo = new JCheckBox("2");
 		iptThree = new JCheckBox("3");
-		ButtonGroup ipt = new ButtonGroup();
-		ipt.add(iptOne);
-		ipt.add(iptTwo);
-		ipt.add(iptThree);
 		IPT.add(IPTl);
 		IPT.add(iptOne);
 		IPT.add(iptTwo);
@@ -281,10 +260,6 @@ public class NewVisitForm extends JPanel {
 		itpOne = new JCheckBox("1");
 		itpTwo = new JCheckBox("2");
 		itpThree = new JCheckBox("3");
-		ButtonGroup itp = new ButtonGroup();
-		itp.add(itpOne);
-		itp.add(itpTwo);
-		itp.add(itpThree);
 		ITP.add(ITPl);
 		ITP.add(itpOne);
 		ITP.add(itpTwo);
@@ -292,17 +267,25 @@ public class NewVisitForm extends JPanel {
 		ITP.add(new JLabel(" Doses"));
 
 		//stuff of ITN
-		JLabel ITNl = new JLabel("ITN: ");//Yes or no
+		JLabel ITNl = new JLabel("ITN: ");//Yes 
 		JPanel ITN = new JPanel();
-		itnYes = new JRadioButton("Yes");
-		itnNo= new JRadioButton("No");
-		ButtonGroup p2 = new ButtonGroup();
-		p2.add(itnYes);
-		p2.add(itnNo);
+		itnYes = new JCheckBox("");
 		ITN.add(ITNl);
 		ITN.add(itnYes);
-		ITN.add(itnNo);
-
+		
+		//add complaints field
+		JLabel complaint = new JLabel("Complaints: ");
+		JLabel remarked = new JLabel("Remarks: ");
+		JPanel texthold = new JPanel();
+		complaints = new JTextArea(2,12);
+		remarks = new JTextArea(2,12);
+		texthold.add(complaint);
+		texthold.add(complaints);
+		
+		//add remarks field
+		texthold.add(remarked);
+		texthold.add(remarks);
+		
 		//add data to frame
 		panel.add(parity);
 		panel.add(parInput);
@@ -329,6 +312,8 @@ public class NewVisitForm extends JPanel {
 		panel.add(IPT);
 		panel.add(ITP);
 		panel.add(ITN);
+		panel.add(texthold);
+		
 	}
 
 	/**
@@ -461,15 +446,15 @@ public class NewVisitForm extends JPanel {
 		int doses = 0;
 		int tmp = -1;
 		
-		if(iptOne.isSelected() == true){
-			doses++;
+		if(iptOne.isSelected()){
+			doses = 1;
 		}
-		if(iptTwo.isSelected() == true){
-			doses++;
+		if(iptTwo.isSelected()){
+			doses = 2;
 		}
 		
-		if(iptThree.isSelected() == true){
-			doses++;
+		if(iptThree.isSelected()){
+			doses = 3;
 		}
 		
 		return doses;		
@@ -558,21 +543,21 @@ public class NewVisitForm extends JPanel {
 	 * 
 	 * @return a GregorianCalendar of the estimated due date
 	 */
-	public GregorianCalendar getEDD(){
+	public LocalDate getEDD(){
 		//TODO: calculate from gestation 
-		//TODO: not use gregorian Cal
-		try{
-			String date = eedInput.getText(); 
-			GregorianCalendar edd = null;
-			String[] spDate = date.split("/");
-
-			int day = Integer.parseInt(spDate[1]);
-			int month = Integer.parseInt(spDate[0]);
-			int year = Integer.parseInt(spDate[2]);
-
-			edd = new GregorianCalendar(year, month , day);
-
-			return edd;
+		  
+		   try{
+			String date = eedInput.getText();
+			date = date.replaceAll("\\D", "");
+			System.out.println(date);
+			DateTimeFormatter formatter = null;
+			
+			if(date.length() == 8){
+			formatter = DateTimeFormatter.ofPattern("MMddyyyy");
+			}
+			
+			return LocalDate.parse(date, formatter);
+			
 		}catch(Exception e){
 			return null;
 		}
@@ -621,19 +606,14 @@ public class NewVisitForm extends JPanel {
 	 * @return Returns true if reactive, else false
 	 */
 	public boolean getVDLabResults(){
-		if( react.isSelected()  == true ) return true;
-		if( nReact.isSelected() == true ) return false;
-		
-		return false;
+		return react.isSelected();
 	}
 	/**
 	 * 
 	 * @return Returns True if yes, else returns false
 	 */
 	public boolean getPreTestCounsel(){
-		if( pmctYes.isSelected()  == true ) return true;
-		if( pmctNo.isSelected()   == true ) return false;
-		return false;
+		 return pmctYes.isSelected();
 	}
 
 	/**
@@ -641,10 +621,7 @@ public class NewVisitForm extends JPanel {
 	 * @return Returns true is yes, else returns false
 	 */
 	public boolean getPostTestCounsel(){
-		if( postYes.isSelected() == true ) return true;
-		if( postNo.isSelected()  == true ) return false;
-		
-		return false;
+		return postYes.isSelected();
 	}
 
 	/**
@@ -652,18 +629,14 @@ public class NewVisitForm extends JPanel {
 	 * @return Returns true if malaria pos, else false
 	 */
 	public boolean getBloodFilm(){
-		if( bloodPresent.isSelected()    == true ) return true;
-		if( bloodNotPresent.isSelected() == true ) return false;		
-		return false;		
+		return bloodPresent.isSelected();	
 	}
 	/**
 	 * 
 	 * @return Returns true if male involved, else false
 	 */
 	public boolean getMaleInvolvement(){
-		if( malePresent.isSelected()    == true ) return true;
-		if( maleNotPresent.isSelected() == true ) return false;		
-		return false;		
+		return malePresent.isSelected();		
 	}
 	
 	/**
@@ -671,8 +644,6 @@ public class NewVisitForm extends JPanel {
 	 * @return returns true if yes, returns false otherwise
 	 */
 	public boolean getITN(){
-		if( itnYes.isSelected() == true ) return true;
-		if( itnNo.isSelected()  == true ) return false;		
-		return false;		
+		return itnYes.isSelected();		
 	}
 }

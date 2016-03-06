@@ -7,6 +7,7 @@
 package edu.usm.cos420.antenatal.domain;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.GregorianCalendar;
 
 
@@ -32,7 +33,7 @@ public class AntenatalVisit implements Serializable {
 	double fundalHeight; //in cm
 	double hBAtReg, hBAt36Weeks; //Hemoglobin (hB) in grams/deciliter
 	double urineTestSugar, urineTestProtein; // sug in mmol/Liter, prot in mg/dL
-	GregorianCalendar EDD; //Estimated day of delivery
+	LocalDate EDD; //Estimated day of delivery
 	String bloodGroup, sicklingStatus, sicklingType;
 	boolean vDLabresults, preTestCounsel, hIVResults, postTestCounsel, ARV;
 	boolean bloodFilm;  //results of malaria blood film test
@@ -55,7 +56,7 @@ public class AntenatalVisit implements Serializable {
 	 * @param bloodGroup the blood group of the patient
 	 */
 	public AntenatalVisit(String id, int parity, int systolicBP, int diastolicBP, double height,
-			double weight, int gestation, double fundalHeight, GregorianCalendar EDD,
+			double weight, int gestation, double fundalHeight, LocalDate EDD,
 			double hBAtReg, String bloodGroup){
 		this.id = id;
 		this.parity = parity;
@@ -100,7 +101,7 @@ public class AntenatalVisit implements Serializable {
 	 * @param urineTestProtein the protein portion of the urine test
 	 */
 	public AntenatalVisit(String id, int parity, int systolicBP, int diastolicBP, double height,
-			double weight, int gestation, double fundalHeight, GregorianCalendar EDD,
+			double weight, int gestation, double fundalHeight, LocalDate EDD,
 			double hBAtReg, double hBAt36Weeks, String bloodGroup, String sicklingStatus,
 			String sicklingType, boolean vDLabResults, boolean preTestCounsel,
 			boolean hIVResults, boolean postTestCounsel, boolean ARV, int subVisits,
@@ -150,13 +151,13 @@ public class AntenatalVisit implements Serializable {
 //      ", hBAt36Weeks=" + hBAt36Weeks +
 //      ", urineTestSugar=" + urineTestSugar +
 //      ", urineTestProtein=" + urineTestProtein +
-//      ", EDD=" + EDD +
+      ", EDD=" + EDD +
 //      ", bloodGroup='" + bloodGroup + '\'' +
 //      ", sicklingStatus='" + sicklingStatus + '\'' +
 //      ", sicklingType='" + sicklingType + '\'' +
       ", vDLabresults=" + vDLabresults +
 //      ", preTestCounsel=" + preTestCounsel +
-//      ", hIVResults=" + hIVResults +
+      ", hIVResults=" + hIVResults +
 //      ", postTestCounsel=" + postTestCounsel +
 //      ", ARV=" + ARV +
 //      ", bloodFilm=" + bloodFilm +
@@ -395,14 +396,14 @@ public class AntenatalVisit implements Serializable {
 	/**Returns the Estimated Date of Delivery
 	 * @return the eDD
 	 */
-	public GregorianCalendar getEDD() {
+	public LocalDate getEDD() {
 		return EDD;
 	}
 
 	/**Sets the Estimated Date of Delivery
 	 * @param eDD the eDD to set
 	 */
-	public void setEDD(GregorianCalendar eDD) {
+	public void setEDD(LocalDate eDD) {
 		EDD = eDD;
 	}
 
