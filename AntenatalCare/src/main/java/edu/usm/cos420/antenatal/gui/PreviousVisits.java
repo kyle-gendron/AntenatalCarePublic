@@ -33,7 +33,7 @@ public class PreviousVisits {
       null,
       options.toArray(),
       null);
-
+    
     return s;
   }
 }

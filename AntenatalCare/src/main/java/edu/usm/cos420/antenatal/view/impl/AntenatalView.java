@@ -55,20 +55,12 @@ public class AntenatalView extends JFrame {
     quitButton.setToolTipText("Quit button");
     quitButton.setMnemonic(KeyEvent.VK_Q);
     quitButton.addActionListener(controller);
-
-    tPain = new JTabbedPane();
-
-    fillEmpty();
-
-    tPain.setTabPlacement(JTabbedPane.TOP);
-    tPain.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
-
-    pane.setBackground(Color.LIGHT_GRAY);
-
-    consultingData holdData = new consultingData();
-
-    pane.add(createSplitData(holdData), BorderLayout.CENTER);
+    
+    makeTabbedDisplay(pane);
+    
+    
     pane.add(quitButton, BorderLayout.SOUTH);
+    
 
     setTitle("MoTech");
     setSize(800, 700);
@@ -77,7 +69,23 @@ public class AntenatalView extends JFrame {
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
   }
 
-  /**
+  private void makeTabbedDisplay(Container pane) {
+	  tPain = new JTabbedPane();
+
+	    fillEmpty();
+
+	    tPain.setTabPlacement(JTabbedPane.TOP);
+	    tPain.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
+
+	    pane.setBackground(Color.LIGHT_GRAY);
+
+	    consultingData holdData = new consultingData();
+
+	    pane.add(createSplitData(holdData), BorderLayout.CENTER);
+	
+}
+
+/**
    * Creates a divider between the consulting data and other data
    *
    * @param holdData current person data panel
@@ -126,7 +134,7 @@ public class AntenatalView extends JFrame {
     file.add(eMenuItemOne);
     file.add(eMenuItemTwo);
     file.add(eMenuItemThree);
-		file.add(eMenuItemFour);
+	file.add(eMenuItemFour);
     menuBar.add(file);
 
     setJMenuBar(menuBar);
