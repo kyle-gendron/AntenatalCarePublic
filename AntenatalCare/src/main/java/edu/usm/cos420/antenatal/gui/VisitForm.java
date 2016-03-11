@@ -26,7 +26,7 @@ import java.util.Properties;
  * (Height, weight, fundalHeight, gestation etc.)
  *
  */
-public class NewVisitForm extends JPanel {
+public class VisitForm extends JPanel {
 
 	private final JPanel panel;
 	private final JTextField parInput;
@@ -70,7 +70,7 @@ public class NewVisitForm extends JPanel {
 	 *
 	 * @param layout
 	 */
-	public NewVisitForm(FlowLayout layout) {
+	public VisitForm(FlowLayout layout) {
 		panel = new JPanel();
 		panel.setLayout(layout);
 		layout.setHgap(10);
