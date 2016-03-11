@@ -37,7 +37,7 @@ public class NewVisitController implements ActionListener {
       case "Submit": {
         AntenatalVisit visit = getVisitObject();
 
-        if (id.isEmpty()){
+        if (id == null){
           String nextId = controller.getNextId();
           visit.setId(nextId);
           controller.submitNewVisit(visit);
