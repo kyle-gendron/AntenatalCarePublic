@@ -24,7 +24,7 @@ import java.util.Properties;
  * Which consists of several fields that are used to
  * enter data necessary to the antenatal appointment.
  * (Height, weight, fundalHeight, gestation etc.)
- * 
+ *
  */
 public class NewVisitForm extends JPanel {
 
@@ -67,7 +67,7 @@ public class NewVisitForm extends JPanel {
 	/**
 	 * Fills in the jFrame with all of the field that need to be filled in
 	 * and adds the to a FlowLayout element.
-	 * 
+	 *
 	 * @param layout
 	 */
 	public NewVisitForm(FlowLayout layout) {
@@ -179,7 +179,7 @@ public class NewVisitForm extends JPanel {
 
 
 		//pre VD test consoling
-		JLabel PMTC = new JLabel("PMTCT: ");//yes 
+		JLabel PMTC = new JLabel("PMTCT: ");//yes
 		JPanel PMTCT = new JPanel();
 		pmctYes = new JCheckBox("");
 		PMTCT.add(PMTC);
@@ -267,12 +267,12 @@ public class NewVisitForm extends JPanel {
 		ITP.add(new JLabel(" Doses"));
 
 		//stuff of ITN
-		JLabel ITNl = new JLabel("ITN: ");//Yes 
+		JLabel ITNl = new JLabel("ITN: ");//Yes
 		JPanel ITN = new JPanel();
 		itnYes = new JCheckBox("");
 		ITN.add(ITNl);
 		ITN.add(itnYes);
-		
+
 		//add complaints field
 		JLabel complaint = new JLabel("Complaints: ");
 		JLabel remarked = new JLabel("Remarks: ");
@@ -281,11 +281,11 @@ public class NewVisitForm extends JPanel {
 		remarks = new JTextArea(2,12);
 		texthold.add(complaint);
 		texthold.add(complaints);
-		
+
 		//add remarks field
 		texthold.add(remarked);
 		texthold.add(remarks);
-		
+
 		//add data to frame
 		panel.add(parity);
 		panel.add(parInput);
@@ -313,11 +313,11 @@ public class NewVisitForm extends JPanel {
 		panel.add(ITP);
 		panel.add(ITN);
 		panel.add(texthold);
-		
+
 	}
 
 	/**
-	 * 
+	 *
 	 * @return the JPanel created
 	 */
 	public JPanel getPanel() {
@@ -325,8 +325,8 @@ public class NewVisitForm extends JPanel {
 	}
 
 	/**
-	 * 
-	 * @return String of the parity field, or -1 if invalid 
+	 *
+	 * @return String of the parity field, or -1 if invalid
 	 */
 	public int getParity() {
 		Integer parity = 0;
@@ -339,8 +339,8 @@ public class NewVisitForm extends JPanel {
 	}
 
 	/**
-	 * 
-	 * @return returns 1 if the test results are "positive" or -1 for "negative". 
+	 *
+	 * @return returns 1 if the test results are "positive" or -1 for "negative".
 	 * 0 is returned if neither are selected
 	 */
 	public Integer getTestResult() {
@@ -350,10 +350,10 @@ public class NewVisitForm extends JPanel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return Returns double of the patients height, or -1 if invalid
 	 */
-	public Double getPatientHeight() {		
+	public Double getPatientHeight() {
 		Double hei = 0.0;
 		try{
 			hei = Double.valueOf(heiInput.getText());
@@ -364,7 +364,7 @@ public class NewVisitForm extends JPanel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return Returns double of the patients weight, or -1 if invalid
 	 */
 	public Double getPatientWeight() {
@@ -378,7 +378,7 @@ public class NewVisitForm extends JPanel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return Returns int val of the patients Systollic blood pressue
 	 */
 	public int getSystolicBP(){
@@ -388,10 +388,10 @@ public class NewVisitForm extends JPanel {
 			return (int) sBP;
 		}catch(NumberFormatException e){
 			return -1;
-		}		
+		}
 	}
 	/**
-	 * 
+	 *
 	 * @return returns int val of the patients Diastolic blood pressure
 	 */
 	public int getDiastolicBP(){
@@ -405,7 +405,7 @@ public class NewVisitForm extends JPanel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return returns int val of the trimester, or -1 if error
 	 */
 	public int getTrimester(){
@@ -445,22 +445,22 @@ public class NewVisitForm extends JPanel {
 		//TODO: make this better?
 		int doses = 0;
 		int tmp = -1;
-		
+
 		if(iptOne.isSelected()){
 			doses = 1;
 		}
 		if(iptTwo.isSelected()){
 			doses = 2;
 		}
-		
+
 		if(iptThree.isSelected()){
 			doses = 3;
 		}
-		
-		return doses;		
+
+		return doses;
 	}
 	/**
-	 * 
+	 *
 	 * @return Returns the number of doses
 	 */
 	public int getTTDoses(){
@@ -468,10 +468,10 @@ public class NewVisitForm extends JPanel {
 		//TODO: may or not be correct val
 		int st = (int) Integer.valueOf(TTdoses.toString());
 		return st;
-		
+
 	}
 	/**
-	 * 
+	 *
 	 * @return Double value of the fundal height
 	 */
 	public double getFundalHeight(){
@@ -485,7 +485,7 @@ public class NewVisitForm extends JPanel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return Double value of the hemoglobin levels at registration
 	 */
 	public double gethBAtReg(){
@@ -499,7 +499,7 @@ public class NewVisitForm extends JPanel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return Double value of the hemoglobin levels at 36 weeks
 	 */
 	public double gethBAt36Weeks(){
@@ -513,7 +513,7 @@ public class NewVisitForm extends JPanel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return Double val of the urine sugar test results
 	 */
 	public double getUrineTestSugar(){
@@ -526,7 +526,7 @@ public class NewVisitForm extends JPanel {
 		}
 	}
 	/**
-	 * 
+	 *
 	 * @return Doubleval of the urine protein test results
 	 */
 	public double getUrineTestProtein(){
@@ -540,31 +540,31 @@ public class NewVisitForm extends JPanel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return a GregorianCalendar of the estimated due date
 	 */
 	public LocalDate getEDD(){
-		//TODO: calculate from gestation 
-		  
+		//TODO: calculate from gestation
+
 		   try{
 			String date = eedInput.getText();
 			date = date.replaceAll("\\D", "");
 			System.out.println(date);
 			DateTimeFormatter formatter = null;
-			
+
 			if(date.length() == 8){
 			formatter = DateTimeFormatter.ofPattern("MMddyyyy");
 			}
-			
+
 			return LocalDate.parse(date, formatter);
-			
+
 		}catch(Exception e){
 			return null;
 		}
 	}
 
 	/**
-	 * 
+	 *
 	 * @return String representation of blood group
 	 */
 	public String getBloodGroup(){
@@ -577,7 +577,7 @@ public class NewVisitForm extends JPanel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return String representation of sickling status
 	 */
 	public String getSicklingStatus(){
@@ -589,8 +589,8 @@ public class NewVisitForm extends JPanel {
 		return st;
 	}
 
-	/** 
-	 * 
+	/**
+	 *
 	 * @return String representation of sickling type
 	 */
 	public String getSicklingType(){
@@ -602,14 +602,14 @@ public class NewVisitForm extends JPanel {
 		return st;
 	}
 	/**
-	 * 
+	 *
 	 * @return Returns true if reactive, else false
 	 */
 	public boolean getVDLabResults(){
 		return react.isSelected();
 	}
 	/**
-	 * 
+	 *
 	 * @return Returns True if yes, else returns false
 	 */
 	public boolean getPreTestCounsel(){
@@ -617,7 +617,7 @@ public class NewVisitForm extends JPanel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return Returns true is yes, else returns false
 	 */
 	public boolean getPostTestCounsel(){
@@ -625,25 +625,25 @@ public class NewVisitForm extends JPanel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return Returns true if malaria pos, else false
 	 */
 	public boolean getBloodFilm(){
-		return bloodPresent.isSelected();	
+		return bloodPresent.isSelected();
 	}
 	/**
-	 * 
+	 *
 	 * @return Returns true if male involved, else false
 	 */
 	public boolean getMaleInvolvement(){
-		return malePresent.isSelected();		
+		return malePresent.isSelected();
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @return returns true if yes, returns false otherwise
 	 */
 	public boolean getITN(){
-		return itnYes.isSelected();		
+		return itnYes.isSelected();
 	}
 }

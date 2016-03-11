@@ -3,11 +3,11 @@ package edu.usm.cos420.antenatal.gui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 
 import javax.swing.*;
 
 import edu.usm.cos420.antenatal.controller.AntenatalController;
+import edu.usm.cos420.antenatal.controller.NewVisitController;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 
 /**
@@ -79,18 +79,8 @@ public class newVisitTab extends JPanel {
 	}
 
 	/**
-	 * Sets the title of the tab
-	 * for now it returns today's date
-	 * 
-	 * @return a date string (for now)
-	 */
-	public String getTitle() {
-		return p.getDate().toString();
-	}
-
-	/**
 	 * Returns the new form generated in the class
-	 * 
+	 *
 	 * @return a new form
 	 */
 	public NewVisitForm getForm() {
