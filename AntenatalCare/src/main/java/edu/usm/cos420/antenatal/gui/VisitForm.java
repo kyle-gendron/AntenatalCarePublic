@@ -1,11 +1,17 @@
 package edu.usm.cos420.antenatal.gui;
 
-import javax.swing.*;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
 
+import javax.swing.*;
 
 import java.awt.*;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Properties;
 
 import static edu.usm.cos420.antenatal.controller.Utils.parseDouble;
 import static edu.usm.cos420.antenatal.controller.Utils.parseInteger;
@@ -32,7 +38,7 @@ public class VisitForm extends JPanel {
 	private final JTextField weightInput;
 	private final JTextField gestationInput;
 	private final JTextField fundalHeightInput;
-	private final JTextField eedInput;
+	private final JDatePickerImpl eedInput;
 	private final JTextField hbaAt36WeeksInput;
 	private final JTextField urineTestSugarInput;
 	private final JTextField urineTestProteinInput;
@@ -59,6 +65,7 @@ public class VisitForm extends JPanel {
   private final JTextField hbaAtRegInput;
   private final JComboBox hivTestInput;
   private final JComboBox ARVInput;
+  private UtilDateModel dateModel;
 
   /**
 	 * Fills in the jFrame with all of the field that need to be filled in
@@ -111,11 +118,19 @@ public class VisitForm extends JPanel {
 
 		//date baby is due
 		JLabel EEDL = new JLabel("Due Date:");
-		eedInput = new JTextField(10); //Determine how we want date entered.
+//    eedInput = new JTextField(10); //Determine how we want date entered.
+
+    Properties p = new Properties();
+    p.put("text.today", "Today");
+    p.put("text.month", "Month");
+    p.put("text.year", "Year");
+    dateModel = new UtilDateModel();
+    JDatePanelImpl datePanel = new JDatePanelImpl(dateModel, p);
+    eedInput = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+
 		JPanel EED = new JPanel();
 		EED.add(EEDL);
 		EED.add(eedInput);
-		EED.add(new JLabel("(mm/dd/yyyy)"));
 
 		//test hemoglobin
 		JLabel HBatR = new JLabel("HBatReg (g/dL):");//Double grams/deciliter
@@ -431,21 +446,24 @@ public class VisitForm extends JPanel {
 	public LocalDate getEDD(){
 		//TODO: calculate from gestation
 
-		   try{
-			String date = eedInput.getText();
-			date = date.replaceAll("\\D", "");
-			System.out.println(date);
-			DateTimeFormatter formatter = null;
+      Date pickerDate = (Date) eedInput.getModel().getValue();
+      LocalDate date = pickerDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+      return date;
+//		   try{
+//			String date = eedInput.getValue().;
+//			date = date.replaceAll("\\D", "");
+//			System.out.println(date);
+//			DateTimeFormatter formatter = null;
+//
+//			if(date.length() == 8){
+//			formatter = DateTimeFormatter.ofPattern("MMddyyyy");
+//			}
 
-			if(date.length() == 8){
-			formatter = DateTimeFormatter.ofPattern("MMddyyyy");
-			}
-
-			return LocalDate.parse(date, formatter);
-
-		}catch(Exception e){
-			return null;
-		}
+//			return LocalDate.parse(date, formatter);
+//
+//		}catch(Exception e){
+//			return null;
+//		}
 	}
 
 	/**
@@ -614,7 +632,10 @@ public class VisitForm extends JPanel {
   }
 
   public void setEDD(LocalDate EDD) {
-    this.eedInput.setText(String.valueOf(EDD));
+    if (EDD != null) {
+      this.dateModel.setDate(EDD.getYear(), EDD.getMonthValue()-1, EDD.getDayOfMonth());
+      this.dateModel.setSelected(true);
+    }
   }
 
   public void setBloodGroup(String bloodGroup) {
@@ -629,8 +650,8 @@ public class VisitForm extends JPanel {
 //    this.setSicklingType(sicklingType);
   }
 
-  public void setVDLabResults(String VDLabresults) {
-    this.resultsVDLabInput.setSelectedItem(VDLabresults);
+  public void setVDLabResults(String VDLabResults) {
+    this.resultsVDLabInput.setSelectedItem(VDLabResults);
   }
 
   public void setPreTestCounsel(String preTestCounsel) {

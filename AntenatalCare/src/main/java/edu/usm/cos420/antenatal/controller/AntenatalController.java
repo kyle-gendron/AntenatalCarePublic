@@ -78,7 +78,7 @@ public class AntenatalController implements ActionListener {
         List<String> options = service.getAllVisits().stream().map(AntenatalVisit::getID).collect(Collectors.toList());
         String visitId = this.findPrevious.showDialog(options);
 
-        if (!visitId.isEmpty()) {
+        if (visitId != null) {
           AntenatalVisit prevVisit = service.getAntenatalVisitById(visitId);
           System.out.println("Loading: " + prevVisit);
           NewVisitController newVisit = new NewVisitController(this, prevVisit);
