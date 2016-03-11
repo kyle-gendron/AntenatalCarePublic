@@ -58,13 +58,13 @@ public class NewVisitController implements ActionListener {
 
     VisitForm form = panel.getForm();
     Integer parity = form.getParity();
-    boolean testResult = form.getTestResult() > 0;
+    String testResult = form.getHIVTestResults();
     Double height = form.getPatientHeight();
     Double weight = form.getPatientWeight();
-    boolean reactive = form.getVDLabResults();
+    String reactive = (String) form.getVDLabResults();
     LocalDate EDD = form.getEDD();
 
     return new AntenatalVisit(null, parity, 0, 0, height, weight, 0, 0, EDD,
-      0, 0, "", "", "", reactive, false, testResult, false, false, 0, 0, 0, false, 0, 0);
+      0, 0, "", "", "", reactive, "", testResult, "", "", 0, 0, 0, 0, 0, 0);
   }
 }

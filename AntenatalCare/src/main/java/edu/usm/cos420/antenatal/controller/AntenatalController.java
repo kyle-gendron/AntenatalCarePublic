@@ -78,12 +78,14 @@ public class AntenatalController implements ActionListener {
         List<String> options = service.getAllVisits().stream().map(AntenatalVisit::getID).collect(Collectors.toList());
         String visitId = this.findPrevious.showDialog(options);
 
-        AntenatalVisit prevVisit = service.getAntenatalVisitById(visitId);
-        System.out.println("Loading: " + prevVisit);
-        NewVisitController newVisit = new NewVisitController(this, prevVisit);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String date = sdf.format(new Date());
-        this.view.addTab(date, newVisit.getPanel());
+        if (visitId != null) {
+          AntenatalVisit prevVisit = service.getAntenatalVisitById(visitId);
+          System.out.println("Loading: " + prevVisit);
+          NewVisitController newVisit = new NewVisitController(this, prevVisit);
+          SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+          String date = sdf.format(new Date());
+          this.view.addTab(date, newVisit.getPanel());
+        }
         break;
       }
     }

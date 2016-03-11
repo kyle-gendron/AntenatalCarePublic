@@ -111,8 +111,8 @@ public class newVisitTab extends JPanel {
     form.setPreTestCounsel(formData.getPreTestCounsel());
     form.setHIVResults(formData.getHIVResults());
     form.setPostTestCounsel(formData.getPostTestCounsel());
-    form.setARV(formData.getARV());
+//    form.setARV(formData.getARV());
     form.setBloodFilm(formData.getBloodFilm());
-    form.setITN(formData.getITN());
+    form.setITN(String.valueOf(formData.getITN()));
   }
 }
