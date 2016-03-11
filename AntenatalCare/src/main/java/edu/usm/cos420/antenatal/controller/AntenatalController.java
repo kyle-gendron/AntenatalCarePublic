@@ -110,22 +110,5 @@ public class AntenatalController implements ActionListener {
 
         service.addAntenatalVisit(visit);
         System.out.println("Inserted New Visit (" + nextId + ")");
-  public static int parseInteger( String string, int defaultValue ) {
-    try {
-      return Integer.parseInt(string);
-    }
-    catch (NumberFormatException e ) {
-      return defaultValue;
-    }
   }
-
-  public static double parseDouble( String string, double defaultValue ) {
-    try {
-      return Double.parseDouble(string);
-    }
-    catch (NumberFormatException e ) {
-      return defaultValue;
-    }
-  }
-  
 }
