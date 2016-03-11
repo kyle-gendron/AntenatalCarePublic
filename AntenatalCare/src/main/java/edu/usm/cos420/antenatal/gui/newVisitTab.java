@@ -8,7 +8,6 @@ import java.awt.GridLayout;
 import javax.swing.*;
 
 import edu.usm.cos420.antenatal.controller.AntenatalController;
-import edu.usm.cos420.antenatal.domain.DummyPerson;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 
 /**
@@ -19,23 +18,19 @@ import edu.usm.cos420.antenatal.view.impl.AntenatalView;
  */
 public class newVisitTab extends JPanel {
 
-	DummyPerson p;//REPLACE
 	JTabbedPane tabbedPane;
 	private NewVisitForm form;
 	private JButton submitButton;
 
 	/**
 	 * Creates a new tab for the visit and adds in the antenatal fields
-	 * 
-	 * @param p : a person class to get consulting information from
-	 * @param controller : the controller for antenatal
-	 */
-	public newVisitTab(DummyPerson p, AntenatalController controller){
-		this.p = p;
-
+	 *
+   * @param controller : the controller for antenatal
+   */
+	public newVisitTab(NewVisitController controller){
 		tabbedPane = new JTabbedPane();
 		tabbedPane.setTabPlacement(JTabbedPane.TOP);
-		tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);	
+		tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
 
 		FlowLayout layout = new FlowLayout();
 		form = new NewVisitForm(layout);
@@ -46,7 +41,7 @@ public class newVisitTab extends JPanel {
 		tabbedPane.addTab("Antenatal Care Input", form.getPanel());
 
 	}
-	
+
 	/**
 	 * Sets up the empty tabbed panel
 	 * sets minimum size to 600,600
@@ -65,7 +60,7 @@ public class newVisitTab extends JPanel {
 
 	/**
 	 * creates the Quit and Submit buttons on the bottle of the gui
-	 *  
+	 *
 	 * @return returns the frame on the bottom of the gui that holds Quit and Submit buttons
 	 */
 	private JPanel bottomButtons(){
@@ -73,12 +68,12 @@ public class newVisitTab extends JPanel {
 		buttonPane.setLayout(new FlowLayout());
 
 
-		JButton quitButton = new JButton("Quit");
-		quitButton.addActionListener(l -> System.exit(1));
+		JButton cancelButton = new JButton("Cancel");
+		cancelButton.addActionListener(arg0 -> AntenatalView.removeCurrentTab());
 
 		this.submitButton.addActionListener(arg0 -> AntenatalView.removeCurrentTab());
 
-		buttonPane.add(quitButton);
+		buttonPane.add(cancelButton);
 		buttonPane.add(submitButton);
 		return buttonPane;
 	}

@@ -1,6 +1,7 @@
 package edu.usm.cos420.antenatal.controller;
 
 import edu.usm.cos420.antenatal.domain.AntenatalVisit;
+import edu.usm.cos420.antenatal.domain.DummyPerson;
 import edu.usm.cos420.antenatal.gui.NewVisitForm;
 import edu.usm.cos420.antenatal.service.AntenatalService;
 import edu.usm.cos420.antenatal.service.impl.AntenatalService1;
@@ -20,11 +21,15 @@ public class AntenatalController implements ActionListener {
 
   private AntenatalService1 service;
   private AntenatalView view;
+  private DummyPerson dummyPerson;
 
   /**
    * Constructor initialized the service and GUI
    */
   public AntenatalController() {
+    // Dummy person object
+    dummyPerson = new DummyPerson();
+
     this.service = new AntenatalService1();
     this.view = new AntenatalView(this);
 
@@ -53,6 +58,10 @@ public class AntenatalController implements ActionListener {
         break;
       }
       case "Submit": {
+
+  public DummyPerson getPerson() {
+    return dummyPerson;
+  }
 
         NewVisitForm form = this.view.getVisitPanel().getForm();
         
