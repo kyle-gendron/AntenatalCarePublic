@@ -3,16 +3,9 @@ package edu.usm.cos420.antenatal.gui;
 import javax.swing.*;
 
 
-import org.jdatepicker.JDatePicker;
-import org.jdatepicker.impl.JDatePanelImpl;
-import org.jdatepicker.impl.JDatePickerImpl;
-import org.jdatepicker.impl.UtilDateModel;
-
 import java.awt.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.GregorianCalendar;
-import java.util.Properties;
 
 
 /**
@@ -29,42 +22,42 @@ import java.util.Properties;
 public class VisitForm extends JPanel {
 
 	private final JPanel panel;
-	private final JTextField parInput;
-	private final JTextField bloInput1;
-	private final JTextField bloInput2;
-	private final JTextField heiInput;
-	private final JTextField weiInput;
-	private final JTextField gesInput;
-	private final JTextField fInput;
-	private final JTextField hb36Input;
+	private final JTextField parityInput;
+	private final JTextField systolicInput;
+	private final JTextField diastolicInput;
+	private final JTextField heightInput;
+	private final JTextField weightInput;
+	private final JTextField gestationInput;
+	private final JTextField fundalHeightInput;
 	private final JTextField eedInput;
-	private final JTextField hbatInput;
-	private final JTextField uriInput1;
-	private final JTextField uriInput2;
-	private final JComboBox bg;
-	private final JComboBox sb;
-	private final JComboBox sbt;
-	private final JCheckBox react;
-	private final JCheckBox pmctYes;
-	private final JRadioButton positive;
-	private final JRadioButton negative;
-	private final JCheckBox postYes;
-	private final JCheckBox bloodPresent;
-	private final JCheckBox malePresent;
-	private final JComboBox tb;
-	private final JComboBox sg;
-	private final JComboBox ttb;
+	private final JTextField hbaAt36WeeksInput;
+	private final JTextField urineTestSugarInput;
+	private final JTextField urineTestProteinInput;
+	private final JComboBox bloodTypeGroup;
+	private final JComboBox sicklingStatusInput;
+	private final JComboBox sicklingTypeInput;
+	private final JCheckBox resultsVDLabInput;
+	private final JCheckBox preTestCounselInput;
+	private final JRadioButton hivPositiveInput;
+	private final JRadioButton hivNegativeInput;
+	private final JCheckBox postTestCounselInput;
+	private final JCheckBox bloodFilmInput;
+	private final JCheckBox malePresentInput;
+	private final JComboBox trimesterInput;
+	private final JComboBox subVisitsInput;
+	private final JComboBox ttDosesInput;
 	private final JCheckBox iptThree;
 	private final JCheckBox iptOne;
 	private final JCheckBox iptTwo;
 	private final JCheckBox itpOne;
 	private final JCheckBox itpTwo;
 	private final JCheckBox itpThree;
-	private final JCheckBox itnYes;
+	private final JCheckBox itnInput;
 	private final JTextArea complaints;
 	private final JTextArea remarks;
+  private final JTextField hbaAtRegInput;
 
-	/**
+  /**
 	 * Fills in the jFrame with all of the field that need to be filled in
 	 * and adds the to a FlowLayout element.
 	 *
@@ -76,44 +69,44 @@ public class VisitForm extends JPanel {
 		layout.setHgap(10);
 
 		JLabel parity = new JLabel("Parity: "); //integer
-		parInput = new JTextField(2);
+		parityInput = new JTextField(2);
 		JLabel BloodPressure = new JLabel("Blood Pressure: ");
-		bloInput1 = new JTextField(2);//ADD TWO Fields int/int
+		systolicInput = new JTextField(2);//ADD TWO Fields int/int
 		JLabel fill = new JLabel("/");
-		bloInput2 = new JTextField(2);
+		diastolicInput = new JTextField(2);
 
 		JPanel bloInput = new JPanel();
 		bloInput.add(BloodPressure);
-		bloInput.add(bloInput1);
+		bloInput.add(systolicInput);
 		bloInput.add(fill);
-		bloInput.add(bloInput2);
+		bloInput.add(diastolicInput);
 		bloInput.setLayout(new FlowLayout());
 
 
 		JLabel Height = new JLabel("Height: ");//double
-		heiInput = new JTextField(3);
+		heightInput = new JTextField(3);
 		JLabel Weight = new JLabel("Weight: ");//double
-		weiInput = new JTextField(3);
+		weightInput = new JTextField(3);
 
 		JPanel size = new JPanel();
 		size.add(Height);
-		size.add(heiInput);
+		size.add(heightInput);
 		size.add(new JLabel(" (cm)"));
 		size.add(Weight);
-		size.add(weiInput);
+		size.add(weightInput);
 		size.add(new JLabel(" (kg)"));
 		size.setLayout(new GridLayout(2,3));
 
 		//number of weeks pregnant
 		JLabel Gestation = new JLabel("Gestation: ");//int
-		gesInput = new JTextField(3);//How to Calculate
+		gestationInput = new JTextField(3);//How to Calculate
 
 		//measurement of uterus in CM
 		JLabel FHeight = new JLabel("Fundal Height: ");//Double
-		fInput = new JTextField(3);
+		fundalHeightInput = new JTextField(3);
 		JPanel FundalHeight = new JPanel();
 		FundalHeight.add(FHeight);
-		FundalHeight.add(fInput);
+		FundalHeight.add(fundalHeightInput);
 		FundalHeight.add(new JLabel(" (cm)"));
 
 		//date baby is due
@@ -126,121 +119,121 @@ public class VisitForm extends JPanel {
 
 		//test hemoglobin
 		JLabel HBatR = new JLabel("HBatReg: ");//Double grams/deciliter
-		hbatInput = new JTextField(3);//how to calculate
+		hbaAtRegInput = new JTextField(3);//how to calculate
 		JPanel HBatReg = new JPanel();
 		HBatReg.add(HBatR);
-		HBatReg.add(hbatInput);
+		HBatReg.add(hbaAtRegInput);
 		HBatReg.add(new JLabel("(Grams/Deciliter)"));
 
 		// test Hemoglobin @ 36 weeks
 		JLabel HBat6 = new JLabel("HBat36: ");//double g/dl
-		hb36Input = new JTextField(3);
+    hbaAt36WeeksInput = new JTextField(3);
 		JPanel HBat36 = new JPanel();
 		HBat36.add(HBat6);
-		HBat36.add(hb36Input);
+		HBat36.add(hbaAt36WeeksInput);
 		HBat36.add(new JLabel("(Grams/Deciliter)"));
 
 		//testing for sugar & protein in urine
 		JLabel UrineTes = new JLabel("Urine Test: ");//Sugar/Protein- double mmol/L / double mg/dL
-		uriInput1 = new JTextField(3);
-		uriInput2 = new JTextField(3);
+		urineTestSugarInput = new JTextField(3);
+		urineTestProteinInput = new JTextField(3);
 		JPanel UrineTest = new JPanel();
 		UrineTest.add(UrineTes);
-		UrineTest.add(uriInput1);
+		UrineTest.add(urineTestSugarInput);
 		UrineTest.add(new JLabel("/"));
-		UrineTest.add(uriInput2);
+		UrineTest.add(urineTestProteinInput);
 		UrineTest.add(new JLabel("(Sugar/Protein)"));
 
 		//blood type/group
 		JLabel BloodG = new JLabel("Blood Group: ");//String, Drop down with options
 		JPanel BloodGroup = new JPanel();
 		String[] bt = {" ","O","A","B","AB"};
-		bg = new JComboBox(bt);
+		bloodTypeGroup = new JComboBox(bt);
 		BloodGroup.add(BloodG);
-		BloodGroup.add(bg);
+		BloodGroup.add(bloodTypeGroup);
 
 		//sickle cell anemia testing
 		JLabel Sicklin = new JLabel("Sickling: ");//Status/Type string/string (drop down)
 		JPanel Sickling = new JPanel();
-		String[] ss = {" ","Positive","Negative"};
-		sb = new JComboBox(ss);
-		String[] st = {" ","N/a","Hemoglobin SS","Hemoglobin SC","Hemoglobin SB+ (Beta) Thalassemia","Beta-Zero Thalassemia"};
-		sbt = new JComboBox(st);
+		String[] ss = {"","Positive","Negative"};
+		sicklingStatusInput = new JComboBox(ss);
+		String[] st = {"","N/a","Hemoglobin SS","Hemoglobin SC","Hemoglobin SB+ (Beta) Thalassemia","Beta-Zero Thalassemia"};
+		sicklingTypeInput = new JComboBox(st);
 		Sickling.add(Sicklin);
-		Sickling.add(sb);
-		Sickling.add(sbt);
+		Sickling.add(sicklingStatusInput);
+		Sickling.add(sicklingTypeInput);
 
 		//veneral disease testing
 		JLabel VDLa = new JLabel("VDLab: ");//button group reactive or non-reactive
 		JPanel VDLab = new JPanel();
-		react = new JCheckBox("Reactive");
+		resultsVDLabInput = new JCheckBox("Reactive");
 		VDLab.add(VDLa);
-		VDLab.add(react);
+		VDLab.add(resultsVDLabInput);
 
 
 		//pre VD test consoling
 		JLabel PMTC = new JLabel("PMTCT: ");//yes
 		JPanel PMTCT = new JPanel();
-		pmctYes = new JCheckBox("");
+		preTestCounselInput = new JCheckBox("");
 		PMTCT.add(PMTC);
-		PMTCT.add(pmctYes);
+		PMTCT.add(preTestCounselInput);
 
 		//VD test result
-		JLabel TestResul = new JLabel("Test-Result: ");//positive vs negative
+		JLabel TestResul = new JLabel("Test-Result: ");//hivPositiveInput vs hivNegativeInput
 		JPanel TestResult = new JPanel();
-		positive = new JRadioButton("Positive");
-		negative = new JRadioButton("Negative");
+		hivPositiveInput = new JRadioButton("Positive");
+		hivNegativeInput = new JRadioButton("Negative");
 		ButtonGroup t = new ButtonGroup();
-		t.add(positive);
-		t.add(negative);
+		t.add(hivPositiveInput);
+		t.add(hivNegativeInput);
 		TestResult.add(TestResul);
-		TestResult.add(positive);
-		TestResult.add(negative);
+		TestResult.add(hivPositiveInput);
+		TestResult.add(hivNegativeInput);
 
 		//Post VD test counseling
-		JLabel PostTes = new JLabel("Post-Test Counseling: ");//yess
+		JLabel PostTes = new JLabel("Post-Test Counseling: ");
 		JPanel PostTest = new JPanel();
-		postYes = new JCheckBox("");
+		postTestCounselInput = new JCheckBox("");
 		PostTest.add(PostTes);
-		PostTest.add(postYes);
+		PostTest.add(postTestCounselInput);
 
 		//malaria testing p/np
-		JLabel BloodFil = new JLabel("Blood Film: ");//bloodPresent or not bloodPresent
+		JLabel BloodFil = new JLabel("Blood Film: ");//bloodFilmInput or not bloodFilmInput
 		JPanel BloodFilm = new JPanel();
-		bloodPresent = new JCheckBox("Present");
+		bloodFilmInput = new JCheckBox("Present");
 		BloodFilm.add(BloodFil);
-		BloodFilm.add(bloodPresent);
+		BloodFilm.add(bloodFilmInput);
 
 		//men involvement y/n
-		JLabel MaleInvolve = new JLabel("Male Involvement: ");//bloodPresent or not
+		JLabel MaleInvolve = new JLabel("Male Involvement: ");//bloodFilmInput or not
 		JPanel MaleInvolved = new JPanel();
-		malePresent = new JCheckBox("Present");
+		malePresentInput = new JCheckBox("Present");
 		MaleInvolved.add(MaleInvolve);
-		MaleInvolved.add(malePresent);
+		MaleInvolved.add(malePresentInput);
 
 		//what trimester they are at
 		JLabel Trimeste = new JLabel("Trimester: ");//int 1-3
 		JPanel Trimester = new JPanel();
 		String[] tr = {" ","1","2","3"};
-		tb = new JComboBox(tr);
+		trimesterInput = new JComboBox(tr);
 		Trimester.add(Trimeste);
-		Trimester.add(tb);
+		Trimester.add(trimesterInput);
 
 		//sub visits
 		JLabel SV = new JLabel("Subsequent Visits: ");//int 2-12
 		JPanel Sub = new JPanel();
 		String[] sr = {" ","2","3","4","5","6","7","8","9","10","11","12"};
-		sg = new JComboBox(sr);
+		subVisitsInput = new JComboBox(sr);
 		Sub.add(SV);
-		Sub.add(sg);
+		Sub.add(subVisitsInput);
 
 		//Tetanus shot give,boster, & protected
 		JLabel TTl = new JLabel("TT: ");//given, booster, protected
 		JPanel TT = new JPanel();
 		String[] ttr = {" ","given","booster","protected"};
-		ttb = new JComboBox(ttr);
+		ttDosesInput = new JComboBox(ttr);
 		TT.add(TTl);
-		TT.add(ttb);
+		TT.add(ttDosesInput);
 
 		//ipt/doses
 		JLabel IPTl = new JLabel("IPT: ");//check 1,2, or 3 doses
@@ -269,9 +262,9 @@ public class VisitForm extends JPanel {
 		//stuff of ITN
 		JLabel ITNl = new JLabel("ITN: ");//Yes
 		JPanel ITN = new JPanel();
-		itnYes = new JCheckBox("");
+		itnInput = new JCheckBox("");
 		ITN.add(ITNl);
-		ITN.add(itnYes);
+		ITN.add(itnInput);
 
 		//add complaints field
 		JLabel complaint = new JLabel("Complaints: ");
@@ -288,11 +281,11 @@ public class VisitForm extends JPanel {
 
 		//add data to frame
 		panel.add(parity);
-		panel.add(parInput);
+		panel.add(parityInput);
 		panel.add(bloInput);
 		panel.add(size);
 		panel.add(Gestation);
-		panel.add(gesInput);
+		panel.add(gestationInput);
 		panel.add(FundalHeight);
 		panel.add(EED);
 		panel.add(HBatReg);
@@ -331,7 +324,7 @@ public class VisitForm extends JPanel {
 	public int getParity() {
 		Integer parity = 0;
 		try{
-			parity = Integer.valueOf(parInput.getText());
+			parity = Integer.valueOf(parityInput.getText());
 			return (int) parity;
 		}catch(NumberFormatException e){
 			return -1;
@@ -340,12 +333,12 @@ public class VisitForm extends JPanel {
 
 	/**
 	 *
-	 * @return returns 1 if the test results are "positive" or -1 for "negative".
+	 * @return returns 1 if the test results are "hivPositiveInput" or -1 for "hivNegativeInput".
 	 * 0 is returned if neither are selected
 	 */
 	public Integer getTestResult() {
-		if (positive.isSelected()) return 1;
-		if (negative.isSelected()) return -1;
+		if (hivPositiveInput.isSelected()) return 1;
+		if (hivNegativeInput.isSelected()) return -1;
 		return 0;
 	}
 
@@ -356,7 +349,7 @@ public class VisitForm extends JPanel {
 	public Double getPatientHeight() {
 		Double hei = 0.0;
 		try{
-			hei = Double.valueOf(heiInput.getText());
+			hei = Double.valueOf(heightInput.getText());
 			return hei;
 		}catch(NumberFormatException e){
 			return -1.0;
@@ -370,7 +363,7 @@ public class VisitForm extends JPanel {
 	public Double getPatientWeight() {
 		Double wei = 0.0;
 		try{
-			wei = Double.valueOf(weiInput.getText());
+			wei = Double.valueOf(weightInput.getText());
 			return wei;
 		}catch(NumberFormatException e){
 			return -1.0;
@@ -384,7 +377,7 @@ public class VisitForm extends JPanel {
 	public int getSystolicBP(){
 		Integer sBP = 0;
 		try{
-			sBP = Integer.valueOf(bloInput1.getText());
+			sBP = Integer.valueOf(systolicInput.getText());
 			return (int) sBP;
 		}catch(NumberFormatException e){
 			return -1;
@@ -397,7 +390,7 @@ public class VisitForm extends JPanel {
 	public int getDiastolicBP(){
 		Integer dBP = 0;
 		try{
-			dBP = Integer.valueOf(bloInput2.getText());
+			dBP = Integer.valueOf(diastolicInput.getText());
 			return (int) dBP;
 		}catch(NumberFormatException e){
 			return -1;
@@ -410,7 +403,7 @@ public class VisitForm extends JPanel {
 	 */
 	public int getTrimester(){
 		try{
-			int gest = Integer.valueOf(gesInput.getText());
+			int gest = Integer.valueOf(gestationInput.getText());
 
 			if(gest <= 13 ){//tri 1
 				return 1;
@@ -424,8 +417,8 @@ public class VisitForm extends JPanel {
 		}
 	}
 
-	public int getSubVisits(){
-		Object selectedSubVis = sg.getSelectedItem();
+	public int getSubVisitsInput(){
+		Object selectedSubVis = subVisitsInput.getSelectedItem();
 		//TODO: may or not be correct val
 		int st = (int) Integer.valueOf(selectedSubVis.toString());
 		return st;
@@ -434,7 +427,7 @@ public class VisitForm extends JPanel {
 	public int getGestation(){
 		Integer ges = 0;
 		try{
-			ges = Integer.valueOf(gesInput.getText());
+			ges = Integer.valueOf(gestationInput.getText());
 			return (int) ges;
 		}catch(NumberFormatException e){
 			return -1;
@@ -464,7 +457,7 @@ public class VisitForm extends JPanel {
 	 * @return Returns the number of doses
 	 */
 	public int getTTDoses(){
-		Object TTdoses = ttb.getSelectedItem();
+		Object TTdoses = ttDosesInput.getSelectedItem();
 		//TODO: may or not be correct val
 		int st = (int) Integer.valueOf(TTdoses.toString());
 		return st;
@@ -477,7 +470,7 @@ public class VisitForm extends JPanel {
 	public double getFundalHeight(){
 		Integer fun = 0;
 		try{
-			fun = Integer.valueOf(fInput.getText());
+			fun = Integer.valueOf(fundalHeightInput.getText());
 			return (int) fun;
 		}catch(NumberFormatException e){
 			return -1;
@@ -488,10 +481,10 @@ public class VisitForm extends JPanel {
 	 *
 	 * @return Double value of the hemoglobin levels at registration
 	 */
-	public double gethBAtReg(){
+	public double getHBAtReg(){
 		Double hb = 0.0;
 		try{
-			hb = Double.valueOf(hb36Input.getText());
+			hb = Double.valueOf(hbaAtRegInput.getText());
 			return hb;
 		}catch(NumberFormatException e){
 			return -1;
@@ -502,10 +495,10 @@ public class VisitForm extends JPanel {
 	 *
 	 * @return Double value of the hemoglobin levels at 36 weeks
 	 */
-	public double gethBAt36Weeks(){
+	public double getHBAt36Weeks(){
 		Double hb = 0.0;
 		try{
-			hb = Double.valueOf(hbatInput.getText());
+			hb = Double.valueOf(hbaAt36WeeksInput.getText());
 			return hb;
 		}catch(NumberFormatException e){
 			return -1;
@@ -519,7 +512,7 @@ public class VisitForm extends JPanel {
 	public double getUrineTestSugar(){
 		Double sp = 0.0; //sugar pee
 		try{
-			sp = Double.valueOf(uriInput1.getText());
+			sp = Double.valueOf(urineTestSugarInput.getText());
 			return sp;
 		}catch(NumberFormatException e){
 			return -1;
@@ -532,7 +525,7 @@ public class VisitForm extends JPanel {
 	public double getUrineTestProtein(){
 		Double pp = 0.0; //protein pee
 		try{
-			pp = Double.valueOf(uriInput2.getText());
+			pp = Double.valueOf(urineTestProteinInput.getText());
 			return pp;
 		}catch(NumberFormatException e){
 			return -1;
@@ -568,7 +561,7 @@ public class VisitForm extends JPanel {
 	 * @return String representation of blood group
 	 */
 	public String getBloodGroup(){
-		Object blood = bg.getSelectedItem();
+		Object blood = bloodTypeGroup.getSelectedItem();
 
 		//TODO: may or not be correct val
 		String bt = blood.toString();
@@ -581,7 +574,7 @@ public class VisitForm extends JPanel {
 	 * @return String representation of sickling status
 	 */
 	public String getSicklingStatus(){
-		Object sickStat = bg.getSelectedItem();
+		Object sickStat = bloodTypeGroup.getSelectedItem();
 
 		//TODO: may or not be correct val
 		String st = sickStat.toString();
@@ -594,7 +587,7 @@ public class VisitForm extends JPanel {
 	 * @return String representation of sickling type
 	 */
 	public String getSicklingType(){
-		Object sickStat = bg.getSelectedItem();
+		Object sickStat = bloodTypeGroup.getSelectedItem();
 
 		//TODO: may or not be correct val
 		String st = sickStat.toString();
@@ -606,14 +599,14 @@ public class VisitForm extends JPanel {
 	 * @return Returns true if reactive, else false
 	 */
 	public boolean getVDLabResults(){
-		return react.isSelected();
+		return resultsVDLabInput.isSelected();
 	}
 	/**
 	 *
 	 * @return Returns True if yes, else returns false
 	 */
 	public boolean getPreTestCounsel(){
-		 return pmctYes.isSelected();
+		 return preTestCounselInput.isSelected();
 	}
 
 	/**
@@ -621,7 +614,7 @@ public class VisitForm extends JPanel {
 	 * @return Returns true is yes, else returns false
 	 */
 	public boolean getPostTestCounsel(){
-		return postYes.isSelected();
+		return postTestCounselInput.isSelected();
 	}
 
 	/**
@@ -629,14 +622,14 @@ public class VisitForm extends JPanel {
 	 * @return Returns true if malaria pos, else false
 	 */
 	public boolean getBloodFilm(){
-		return bloodPresent.isSelected();
+		return bloodFilmInput.isSelected();
 	}
 	/**
 	 *
 	 * @return Returns true if male involved, else false
 	 */
 	public boolean getMaleInvolvement(){
-		return malePresent.isSelected();
+		return malePresentInput.isSelected();
 	}
 
 	/**
@@ -644,6 +637,130 @@ public class VisitForm extends JPanel {
 	 * @return returns true if yes, returns false otherwise
 	 */
 	public boolean getITN(){
-		return itnYes.isSelected();
+		return itnInput.isSelected();
 	}
+
+  public void setParity(int parity) {
+    this.parityInput.setText(String.valueOf(parity));
+  }
+
+  public void setSystolicBP(int systolicBP) {
+    this.systolicInput.setText(String.valueOf(systolicBP));
+  }
+
+  public void setDiastolicBP(int diastolicBP) {
+    this.systolicInput.setText(String.valueOf(diastolicBP));
+  }
+
+  public void setTrimester(int trimester) {
+    this.trimesterInput.setSelectedIndex(trimester);
+  }
+
+  public void setGestation(int gestation) {
+    this.gestationInput.setText(String.valueOf(gestation));
+  }
+
+  public void setIPTDoses(int IPTDoses) {
+    if (IPTDoses > 0) {
+      iptOne.setSelected(true);
+    }
+    if (IPTDoses > 1) {
+      iptTwo.setSelected(true);
+    }
+    if (IPTDoses > 2) {
+      iptThree.setSelected(true);
+    }
+  }
+
+  public void setITPDoses(int ITPDoses) {
+    if (ITPDoses > 0) {
+      itpOne.setSelected(true);
+    }
+    if (ITPDoses > 1) {
+      itpTwo.setSelected(true);
+    }
+    if (ITPDoses > 2) {
+      itpThree.setSelected(true);
+    }
+  }
+
+  public void setTTDoses(int TTDoses) {
+    this.ttDosesInput.setSelectedIndex(TTDoses);
+  }
+
+  public void setHeight(double height) {
+    this.heightInput.setText(String.valueOf(height));
+  }
+
+  public void setWeight(double weight) {
+    this.weightInput.setText(String.valueOf(weight));
+  }
+
+  public void setFundalHeight(double fundalHeight) {
+    this.fundalHeightInput.setText(String.valueOf(fundalHeight));
+  }
+
+  public void setHBAtReg(double HBAtReg) {
+    this.hbaAtRegInput.setText(String.valueOf(HBAtReg));
+  }
+
+  public void setHBAt36Weeks(double HBAt36Weeks) {
+    this.hbaAt36WeeksInput.setText(String.valueOf(HBAt36Weeks));
+  }
+
+  public void setUrineTestSugar(double urineTestSugar) {
+    this.urineTestSugarInput.setText(String.valueOf(urineTestSugar));
+  }
+
+  public void setUrineTestProtein(double urineTestProtein) {
+    this.urineTestProteinInput.setText(String.valueOf(urineTestProtein));
+  }
+
+  public void setEDD(LocalDate EDD) {
+    this.eedInput.setText(String.valueOf(EDD));
+  }
+
+  public void setBloodGroup(String bloodGroup) {
+//    this.blood
+  }
+
+  public void setSicklingStatus(String sicklingStatus) {
+//    this.sick
+  }
+
+  public void setSicklingType(String sicklingType) {
+//    this.setSicklingType(sicklingType);
+  }
+
+  public void setVDLabResults(boolean VDLabresults) {
+    this.resultsVDLabInput.setSelected(VDLabresults);
+  }
+
+  public void setPreTestCounsel(boolean preTestCounsel) {
+    this.preTestCounselInput.setSelected(preTestCounsel);
+  }
+
+  public void setHIVResults(boolean HIVResults) {
+    if (HIVResults){
+      hivPositiveInput.setSelected(true);
+    } else {
+      hivNegativeInput.setSelected(true);
+    }
+  }
+
+  public void setPostTestCounsel(boolean postTestCounsel) {
+    this.postTestCounselInput.setSelected(postTestCounsel);
+  }
+
+  public void setARV(boolean ARV) {
+//    this.
+  }
+
+  public void setBloodFilm(boolean bloodFilm) {
+    this.bloodFilmInput.setSelected(bloodFilm);
+  }
+
+  public void setITN(boolean itn) {
+    this.itnInput.setSelected(itn);
+  }
 }

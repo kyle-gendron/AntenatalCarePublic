@@ -6,8 +6,8 @@ import java.awt.FlowLayout;
 
 import javax.swing.*;
 
-import edu.usm.cos420.antenatal.controller.AntenatalController;
 import edu.usm.cos420.antenatal.controller.NewVisitController;
+import edu.usm.cos420.antenatal.domain.AntenatalVisit;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 
 /**
@@ -19,7 +19,7 @@ import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 public class newVisitTab extends JPanel {
 
 	JTabbedPane tabbedPane;
-	private NewVisitForm form;
+	private VisitForm form;
 	private JButton submitButton;
 
 	/**
@@ -33,7 +33,7 @@ public class newVisitTab extends JPanel {
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
 
 		FlowLayout layout = new FlowLayout();
-		form = new NewVisitForm(layout);
+		form = new VisitForm(layout);
 
 		submitButton = new JButton("Submit");
 		submitButton.addActionListener(controller);
@@ -83,7 +83,36 @@ public class newVisitTab extends JPanel {
 	 *
 	 * @return a new form
 	 */
-	public NewVisitForm getForm() {
+	public VisitForm getForm() {
 		return form;
 	}
+
+  public void setFormData(AntenatalVisit formData) {
+    form.setParity(formData.getParity());
+    form.setSystolicBP(formData.getSystolicBP());
+    form.setDiastolicBP(formData.getDiastolicBP());
+    form.setTrimester(formData.getTrimester());
+    form.setGestation(formData.getGestation());
+    form.setIPTDoses(formData.getIPTDoses());
+    form.setITPDoses(formData.getITPDoses());
+    form.setTTDoses(formData.getTTDoses());
+    form.setHeight(formData.getHeight());
+    form.setWeight(formData.getWeight());
+    form.setFundalHeight(formData.getFundalHeight());
+    form.setHBAtReg(formData.getHBAtReg());
+    form.setHBAt36Weeks(formData.gethBAt36Weeks());
+    form.setUrineTestSugar(formData.getUrineTestSugar());
+    form.setUrineTestProtein(formData.getUrineTestProtein());
+    form.setEDD(formData.getEDD());
+    form.setBloodGroup(formData.getBloodGroup());
+    form.setSicklingStatus(formData.getSicklingStatus());
+    form.setSicklingType(formData.getSicklingType());
+    form.setVDLabResults(formData.getVDLabresults());
+    form.setPreTestCounsel(formData.getPreTestCounsel());
+    form.setHIVResults(formData.getHIVResults());
+    form.setPostTestCounsel(formData.getPostTestCounsel());
+    form.setARV(formData.getARV());
+    form.setBloodFilm(formData.getBloodFilm());
+    form.setITN(formData.getITN());
+  }
 }

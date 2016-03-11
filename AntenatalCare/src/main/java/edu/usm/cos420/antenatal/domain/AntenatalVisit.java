@@ -39,8 +39,9 @@ public class AntenatalVisit implements Serializable {
 	boolean bloodFilm;  //results of malaria blood film test
 	boolean iTN;
 	String id;  //id used to identify a particular set of antenatal visits
+  private int iTPDoses;
 
-	/**
+  /**
 	 * Ten-Field Constructor: The fields that absolutely must be filled
 	 * out in order to create a new visit.  All other fields will be filled out
 	 *
@@ -178,7 +179,7 @@ public class AntenatalVisit implements Serializable {
      * Sets the id of the Antenatal Visit
      * @param id the id to set
      */
-    public void setID(String id){
+    public void setId(String id){
     	this.id = id;
     }
 
@@ -270,14 +271,14 @@ public class AntenatalVisit implements Serializable {
 	/**Returns the number of IPT Doses given
 	 * @return the iPTDoses
 	 */
-	public int getiPTDoses() {
+	public int getIPTDoses() {
 		return iPTDoses;
 	}
 
 	/** Sets the number of IPT Doses given
 	 * @param iPTDoses the iPTDoses to set
 	 */
-	public void setiPTDoses(int iPTDoses) {
+	public void setIPTDoses(int iPTDoses) {
 		this.iPTDoses = iPTDoses;
 	}
 
@@ -340,7 +341,7 @@ public class AntenatalVisit implements Serializable {
 	/**Returns the Hemoglobin at Registration of the client
 	 * @return the hBAtReg
 	 */
-	public double gethBAtReg() {
+	public double getHBAtReg() {
 		return hBAtReg;
 	}
 
@@ -452,7 +453,7 @@ public class AntenatalVisit implements Serializable {
 	/**Returns the Venereal Disease lab results
 	 * @return the vDLabresults
 	 */
-	public boolean isvDLabresults() {
+	public boolean getVDLabresults() {
 		return vDLabresults;
 	}
 
@@ -466,7 +467,7 @@ public class AntenatalVisit implements Serializable {
 	/**Returns whether the client has had an HIV Pre-Test Counsel
 	 * @return the preTestCounsel
 	 */
-	public boolean isPreTestCounsel() {
+	public boolean getPreTestCounsel() {
 		return preTestCounsel;
 	}
 
@@ -480,21 +481,21 @@ public class AntenatalVisit implements Serializable {
 	/**Returns the HIV test results of the client
 	 * @return the hIVResults
 	 */
-	public boolean ishIVResults() {
+	public boolean getHIVResults() {
 		return hIVResults;
 	}
 
 	/**Sets the HIV test results of the client
 	 * @param hIVResults the hIVResults to set
 	 */
-	public void sethIVResults(boolean hIVResults) {
+	public void setHIVResults(boolean hIVResults) {
 		this.hIVResults = hIVResults;
 	}
 
 	/**Returns whether the client has had a Post-Test Counsel
 	 * @return the postTestCounsel
 	 */
-	public boolean isPostTestCounsel() {
+	public boolean getPostTestCounsel() {
 		return postTestCounsel;
 	}
 
@@ -508,7 +509,7 @@ public class AntenatalVisit implements Serializable {
 	/**Returns whether the client is on Anti-Retroviral drugs
 	 * @return the aRV
 	 */
-	public boolean isARV() {
+	public boolean getARV() {
 		return ARV;
 	}
 
@@ -522,7 +523,7 @@ public class AntenatalVisit implements Serializable {
 	/**Returns the results of the blood film test for Malaria
 	 * @return the bloodFilm
 	 */
-	public boolean bloodFilmResults() {
+	public boolean getBloodFilm() {
 		return bloodFilm;
 	}
 
@@ -536,14 +537,14 @@ public class AntenatalVisit implements Serializable {
 	/**Returns whether the client uses Insecticide-Treated Nets
 	 * @return the iTN
 	 */
-	public boolean isiTN() {
+	public boolean getITN() {
 		return iTN;
 	}
 
 	/**Sets whether the client uses Insecticide-Treated Nets
 	 * @param iTN the iTN to set
 	 */
-	public void setiTN(boolean iTN) {
+	public void setITN(boolean iTN) {
 		this.iTN = iTN;
 	}
 
@@ -553,4 +554,8 @@ public class AntenatalVisit implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+  public int getITPDoses() {
+    return this.iTPDoses;
+  }
 }
