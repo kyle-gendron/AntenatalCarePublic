@@ -26,6 +26,7 @@ public class AntenatalView extends JFrame {
 	private static JTabbedPane tPain;
 	private static JScrollPane sPain;
 	private static JPanel newPane;
+	private static JPanel subPane;
 	private static JSplitPane split;
 	private SubController subController;
 
@@ -54,13 +55,12 @@ public class AntenatalView extends JFrame {
 		createMenuBar();
 		
 		newPane = new JPanel();
-		JPanel subPane = new JPanel();
+		subPane = new JPanel();
 		
 		BorderLayout border = new BorderLayout();
 		newPane.setLayout(border);
 		BorderLayout subBorder = new BorderLayout();
 		subPane.setLayout(subBorder);
-		subPane.setMinimumSize(new Dimension(200,600));
 		newPane.setMinimumSize(new Dimension(600,600));
 
 		
@@ -77,11 +77,12 @@ public class AntenatalView extends JFrame {
 		
 		makeScrollDisplay(panel);
 		JTabbedPane title = new JTabbedPane();
+		title.setMinimumSize(new Dimension(0,0));
 		title.addTab("Subsequent Visits", sPain);
 		subPane.add(title);
 		
 		split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,subPane,newPane);
-		split.setDividerLocation(subPane.getMinimumSize().width);
+		split.setDividerLocation(0);
 		pane.add(split);
 
 
@@ -218,6 +219,10 @@ public class AntenatalView extends JFrame {
 		//}
 	}
 	public void addSub(String title,JPanel panel){
+		if(split.getDividerLocation()==0){
+			split.setDividerLocation(300);
+			subPane.setMinimumSize(new Dimension(200,600));
+		}
 		JPanel subView = panel;
 		JLabel name = new JLabel(title);
 		JPanel P = ((JPanel) sPain.getViewport().getView());
