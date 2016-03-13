@@ -3,6 +3,7 @@ package edu.usm.cos420.antenatal.gui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.time.LocalDate;
 import java.util.Properties;
 
@@ -11,6 +12,7 @@ import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 import javax.swing.JCheckBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -42,8 +44,9 @@ public class subsequentVisit{
 	public subsequentVisit(SubController subC){
 		subVisit = new JPanel();
 		this.subC = subC;
-		FlowLayout layout = new FlowLayout();
-		subVisit.setLayout(layout);
+		//GridLayout layout = new GridLayout();
+		//FlowLayout layout = new FlowLayout();
+		//subVisit.setLayout(layout);
 		//int systolicBP, int diastolicBP,
         //double weight, double fundalHeight, LocalDate apptDate, boolean bloodFilm, boolean referred
 		
@@ -56,7 +59,11 @@ public class subsequentVisit{
 		
 	}
 	private JPanel addForm() {
+	   
 		JPanel data = new JPanel();
+	    GridLayout layout = new GridLayout(2, 8);
+	      layout.setHgap(20);
+	      data.setLayout(layout);
 		
 		sBP = new JLabel("Systolic Blood Pressure: ");
 		dBP = new JLabel("Diastolic Blood Pressure: ");
@@ -79,43 +86,25 @@ public class subsequentVisit{
 	    bloodF = new JCheckBox();
 	    refer = new JCheckBox();
 	    
-	    JPanel sBPP = new JPanel();
-	    sBPP.add(sBP);
-	    sBPP.add(sysBP);
-	    
-	    JPanel dBPP = new JPanel();
-	    sBPP.add(dBP);
-	    sBPP.add(diaBP);
-	    
-	    JPanel weightP = new JPanel();
-	    weightP.add(weight);
-	    weightP.add(weigh);
-	    
-	    JPanel fundalP = new JPanel();
-	    fundalP.add(fundalHeight);
-	    fundalP.add(fundalH);
-	    
-	    JPanel dateP = new JPanel();
-	    dateP.add(Date);
-	    dateP.add(apptDate);
-	    
-	    JPanel bloodFilmP = new JPanel();
-	    bloodFilmP.add(bloodFilm);
-	    bloodFilmP.add(bloodF);
-	    
-	    JPanel referredP = new JPanel();
-	    referredP.add(referred);
-	    referredP.add(refer);
-	    
-	    data.add(sBPP);
-	    data.add(dBPP);
-	    data.add(weightP);
-	    data.add(fundalP);
-	    data.add(dateP);
-	    data.add(bloodFilmP);
-	    data.add(referredP);
-	    
-	    
+	    //JPanel data = new JPanel();
+	     data.add(Date);
+	    data.add(sBP);
+	    data.add(dBP);
+	    data.add(weight);
+	    data.add(fundalHeight);
+	    data.add(bloodFilm);
+	    data.add(referred);
+
+	    //JPanel data = new JPanel();
+
+       data.add(apptDate);
+	     data.add(sysBP);
+	       data.add(diaBP);
+	       data.add(weigh);
+	       data.add(fundalH);
+	       data.add(bloodF);
+	       data.add(refer);
+	   
 	    
 		return data;
 	}

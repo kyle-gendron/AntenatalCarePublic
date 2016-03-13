@@ -92,7 +92,7 @@ public class AntenatalController implements ActionListener {
 		}
 		case "Show Sub Visits":{
 		   SubController subController = new SubController(this);
-	       this.view.addSub("Date", subController.getPanel());
+	       this.view.addSub("", subController.getPanel());
 	       break;
 		}
 		case "Quit":{
