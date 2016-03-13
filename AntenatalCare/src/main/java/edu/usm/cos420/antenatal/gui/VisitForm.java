@@ -443,26 +443,12 @@ public class VisitForm extends JPanel {
 	 * @return a GregorianCalendar of the estimated due date
 	 */
 	public LocalDate getEDD(){
-		//TODO: calculate from gestation
-
-      Date pickerDate = (Date) eedInput.getModel().getValue();
-      LocalDate date = pickerDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-      return date;
-//		   try{
-//			String date = eedInput.getValue().;
-//			date = date.replaceAll("\\D", "");
-//			System.out.println(date);
-//			DateTimeFormatter formatter = null;
-//
-//			if(date.length() == 8){
-//			formatter = DateTimeFormatter.ofPattern("MMddyyyy");
-//			}
-
-//			return LocalDate.parse(date, formatter);
-//
-//		}catch(Exception e){
-//			return null;
-//		}
+    Date pickerDate = (Date) eedInput.getModel().getValue();
+    LocalDate date = null;
+      if (pickerDate != null) {
+        date = pickerDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+      }
+    return date;
 	}
 
 	/**

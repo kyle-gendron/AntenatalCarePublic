@@ -61,7 +61,7 @@ public class NewVisitController implements ActionListener {
     String testResult = form.getHIVTestResults();
     Double height = form.getPatientHeight();
     Double weight = form.getPatientWeight();
-    String reactive = (String) form.getVDLabResults();
+    String reactive = form.getVDLabResults();
     LocalDate EDD = form.getEDD();
 
     return new AntenatalVisit(null, parity, 0, 0, height, weight, 0, 0, EDD,
