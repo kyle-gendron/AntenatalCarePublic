@@ -3,12 +3,11 @@ package edu.usm.cos420.antenatal.gui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 
 import javax.swing.*;
 
-import edu.usm.cos420.antenatal.controller.AntenatalController;
-import edu.usm.cos420.antenatal.domain.DummyPerson;
+import edu.usm.cos420.antenatal.controller.NewVisitController;
+import edu.usm.cos420.antenatal.domain.AntenatalVisit;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 
 /**
@@ -19,26 +18,22 @@ import edu.usm.cos420.antenatal.view.impl.AntenatalView;
  */
 public class newVisitTab extends JPanel {
 
-	DummyPerson p;//REPLACE
 	JTabbedPane tabbedPane;
-	private NewVisitForm form;
+	private VisitForm form;
 	private JButton submitButton;
 
 	/**
 	 * Creates a new tab for the visit and adds in the antenatal fields
-	 * 
-	 * @param p : a person class to get consulting information from
-	 * @param controller : the controller for antenatal
-	 */
-	public newVisitTab(DummyPerson p, AntenatalController controller){
-		this.p = p;
-
+	 *
+   * @param controller : the controller for antenatal
+   */
+	public newVisitTab(NewVisitController controller){
 		tabbedPane = new JTabbedPane();
 		tabbedPane.setTabPlacement(JTabbedPane.TOP);
-		tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);	
+		tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
 
 		FlowLayout layout = new FlowLayout();
-		form = new NewVisitForm(layout);
+		form = new VisitForm(layout);
 
 		submitButton = new JButton("Submit");
 		submitButton.addActionListener(controller);
@@ -46,7 +41,7 @@ public class newVisitTab extends JPanel {
 		tabbedPane.addTab("Antenatal Care Input", form.getPanel());
 
 	}
-	
+
 	/**
 	 * Sets up the empty tabbed panel
 	 * sets minimum size to 600,600
@@ -65,7 +60,7 @@ public class newVisitTab extends JPanel {
 
 	/**
 	 * creates the Quit and Submit buttons on the bottle of the gui
-	 *  
+	 *
 	 * @return returns the frame on the bottom of the gui that holds Quit and Submit buttons
 	 */
 	private JPanel bottomButtons(){
@@ -73,32 +68,51 @@ public class newVisitTab extends JPanel {
 		buttonPane.setLayout(new FlowLayout());
 
 
-		JButton quitButton = new JButton("Quit");
-		quitButton.addActionListener(l -> System.exit(1));
+		JButton cancelButton = new JButton("Cancel");
+		cancelButton.addActionListener(arg0 -> AntenatalView.removeCurrentTab());
 
 		this.submitButton.addActionListener(arg0 -> AntenatalView.removeCurrentTab());
 
-		buttonPane.add(quitButton);
+		buttonPane.add(cancelButton);
 		buttonPane.add(submitButton);
 		return buttonPane;
 	}
 
 	/**
-	 * Sets the title of the tab
-	 * for now it returns today's date
-	 * 
-	 * @return a date string (for now)
-	 */
-	public String getTitle() {
-		return p.getDate().toString();
-	}
-
-	/**
 	 * Returns the new form generated in the class
-	 * 
+	 *
 	 * @return a new form
 	 */
-	public NewVisitForm getForm() {
+	public VisitForm getForm() {
 		return form;
 	}
+
+  public void setFormData(AntenatalVisit formData) {
+    form.setParity(formData.getParity());
+    form.setSystolicBP(formData.getSystolicBP());
+    form.setDiastolicBP(formData.getDiastolicBP());
+    form.setTrimester(formData.getTrimester());
+    form.setGestation(formData.getGestation());
+    form.setIPTDoses(formData.getIPTDoses());
+    form.setITPDoses(formData.getITPDoses());
+    form.setTTDoses(formData.getTTDoses());
+    form.setHeight(formData.getHeight());
+    form.setWeight(formData.getWeight());
+    form.setFundalHeight(formData.getFundalHeight());
+    form.setHBAtReg(formData.getHBAtReg());
+    form.setHBAt36Weeks(formData.gethBAt36Weeks());
+    form.setUrineTestSugar(formData.getUrineTestSugar());
+    form.setUrineTestProtein(formData.getUrineTestProtein());
+    form.setEDD(formData.getEDD());
+    form.setBloodGroup(formData.getBloodGroup());
+    form.setSicklingStatus(formData.getSicklingStatus());
+    form.setSicklingType(formData.getSicklingType());
+    form.setVDLabResults(formData.getVDLabresults());
+    form.setPreTestCounsel(formData.getPreTestCounsel());
+    form.setHIVResults(formData.getHIVResults());
+    form.setPostTestCounsel(formData.getPostTestCounsel());
+//    form.setARV(formData.getARV());
+    form.setBloodFilm(formData.getBloodFilm());
+    form.setITN(String.valueOf(formData.getITN()));
+  }
 }

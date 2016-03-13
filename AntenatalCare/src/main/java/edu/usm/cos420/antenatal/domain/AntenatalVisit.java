@@ -8,7 +8,6 @@ package edu.usm.cos420.antenatal.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.GregorianCalendar;
 
 
 /**
@@ -35,12 +34,13 @@ public class AntenatalVisit implements Serializable {
 	double urineTestSugar, urineTestProtein; // sug in mmol/Liter, prot in mg/dL
 	LocalDate EDD; //Estimated day of delivery
 	String bloodGroup, sicklingStatus, sicklingType;
-	boolean vDLabresults, preTestCounsel, hIVResults, postTestCounsel, ARV;
-	boolean bloodFilm;  //results of malaria blood film test
-	boolean iTN;
+	String vDLabresults, preTestCounsel, hIVResults, postTestCounsel, ARV;
+	String bloodFilm;  //results of malaria blood film test
+	int iTN;
 	String id;  //id used to identify a particular set of antenatal visits
+  int iTPDoses;
 
-	/**
+  /**
 	 * Ten-Field Constructor: The fields that absolutely must be filled
 	 * out in order to create a new visit.  All other fields will be filled out
 	 *
@@ -74,38 +74,37 @@ public class AntenatalVisit implements Serializable {
 	/**
 	 * 24-field constructor.  Made to test the functionality of all components
 	 * in constructing an AntenatalVisit object
-	 *
-	 * @param parity the number of previous children
-	 * @param systolicBP the systolic blood pressure
-	 * @param diastolicBP the diastolic blood pressure
-	 * @param height the height of patient
-	 * @param weight the weight of the patient
-	 * @param gestation the duration of pregnancy in weeks
-	 * @param fundalHeight the height of pregnancy
-	 * @param EDD the estimated date of delivery
-	 * @param hBAtReg the hemoglobin at registration of the patient
-	 * @param hBAt36Weeks the hemoglobin at 36 weeks
-	 * @param bloodGroup the blood group of the patient
-	 * @param sicklingStatus the sickling status of the patient
-	 * @param sicklingType the type of sickling of the patient
-	 * @param vDLabResults the results of the venereal disease lab test
-	 * @param preTestCounsel whether the patient has had HIV test pre-counsel
-	 * @param hIVResults the results of an HIV test
-	 * @param postTestCounsel whether the patient has had HIV test post-counsel
-	 * @param ARV whether the patient is on Anti-Retroviral drugs
-	 * @param subVisits the number of subsequent visits
-	 * @param TTDoses the number of Tetanus Toxioid doses given
-	 * @param IPTDoses the number of IPT doses given
-	 * @param iTN whether the patient is using insecticide-treated Nets
-	 * @param urineTestSugar the sugar portion of the urine test
-	 * @param urineTestProtein the protein portion of the urine test
-	 */
+   * @param parity the number of previous children
+   * @param systolicBP the systolic blood pressure
+   * @param diastolicBP the diastolic blood pressure
+   * @param height the height of patient
+   * @param weight the weight of the patient
+   * @param gestation the duration of pregnancy in weeks
+   * @param fundalHeight the height of pregnancy
+   * @param EDD the estimated date of delivery
+   * @param hBAtReg the hemoglobin at registration of the patient
+   * @param hBAt36Weeks the hemoglobin at 36 weeks
+   * @param bloodGroup the blood group of the patient
+   * @param sicklingStatus the sickling status of the patient
+   * @param sicklingType the type of sickling of the patient
+   * @param vDLabResults the results of the venereal disease lab test
+   * @param preTestCounsel whether the patient has had HIV test pre-counsel
+   * @param hIVResults the results of an HIV test
+   * @param postTestCounsel whether the patient has had HIV test post-counsel
+   * @param ARV whether the patient is on Anti-Retroviral drugs
+   * @param subVisits the number of subsequent visits
+   * @param TTDoses the number of Tetanus Toxioid doses given
+   * @param IPTDoses the number of IPT doses given
+   * @param iTN whether the patient is using insecticide-treated Nets
+   * @param urineTestSugar the sugar portion of the urine test
+   * @param urineTestProtein the protein portion of the urine test
+   */
 	public AntenatalVisit(String id, int parity, int systolicBP, int diastolicBP, double height,
-			double weight, int gestation, double fundalHeight, LocalDate EDD,
-			double hBAtReg, double hBAt36Weeks, String bloodGroup, String sicklingStatus,
-			String sicklingType, boolean vDLabResults, boolean preTestCounsel,
-			boolean hIVResults, boolean postTestCounsel, boolean ARV, int subVisits,
-			int TTDoses, int IPTDoses, boolean iTN, double urineTestSugar, double urineTestProtein){
+                        double weight, int gestation, double fundalHeight, LocalDate EDD,
+                        double hBAtReg, double hBAt36Weeks, String bloodGroup, String sicklingStatus,
+                        String sicklingType, String vDLabResults, String preTestCounsel,
+                        String hIVResults, String postTestCounsel, String ARV, int subVisits,
+                        int TTDoses, int IPTDoses, int iTN, double urineTestSugar, double urineTestProtein){
 		this.id = id;
 		this.parity = parity;
 		this.systolicBP = systolicBP;
@@ -137,31 +136,31 @@ public class AntenatalVisit implements Serializable {
   public String toString() {
     return "AntenatalVisit{" +
       "parity=" + parity +
-//      ", systolicBP=" + systolicBP +
-//      ", diastolicBP=" + diastolicBP +
-//      ", trimester=" + trimester +
-//      ", subVisits=" + subVisits +
-//      ", gestation=" + gestation +
-//      ", iPTDoses=" + iPTDoses +
-//      ", TTDoses=" + TTDoses +
+      ", systolicBP=" + systolicBP +
+      ", diastolicBP=" + diastolicBP +
+      ", trimester=" + trimester +
+      ", subVisits=" + subVisits +
+      ", gestation=" + gestation +
+      ", iPTDoses=" + iPTDoses +
+      ", TTDoses=" + TTDoses +
       ", height=" + height +
       ", weight=" + weight +
-//      ", fundalHeight=" + fundalHeight +
-//      ", hBAtReg=" + hBAtReg +
-//      ", hBAt36Weeks=" + hBAt36Weeks +
-//      ", urineTestSugar=" + urineTestSugar +
-//      ", urineTestProtein=" + urineTestProtein +
+      ", fundalHeight=" + fundalHeight +
+      ", hBAtReg=" + hBAtReg +
+      ", hBAt36Weeks=" + hBAt36Weeks +
+      ", urineTestSugar=" + urineTestSugar +
+      ", urineTestProtein=" + urineTestProtein +
       ", EDD=" + EDD +
-//      ", bloodGroup='" + bloodGroup + '\'' +
-//      ", sicklingStatus='" + sicklingStatus + '\'' +
-//      ", sicklingType='" + sicklingType + '\'' +
+      ", bloodGroup='" + bloodGroup + '\'' +
+      ", sicklingStatus='" + sicklingStatus + '\'' +
+      ", sicklingType='" + sicklingType + '\'' +
       ", vDLabresults=" + vDLabresults +
-//      ", preTestCounsel=" + preTestCounsel +
+      ", preTestCounsel=" + preTestCounsel +
       ", hIVResults=" + hIVResults +
-//      ", postTestCounsel=" + postTestCounsel +
-//      ", ARV=" + ARV +
-//      ", bloodFilm=" + bloodFilm +
-//      ", iTN=" + iTN +
+      ", postTestCounsel=" + postTestCounsel +
+      ", ARV=" + ARV +
+      ", bloodFilm=" + bloodFilm +
+      ", iTN=" + iTN +
       ", id='" + id + '\'' +
       '}';
   }
@@ -178,7 +177,7 @@ public class AntenatalVisit implements Serializable {
      * Sets the id of the Antenatal Visit
      * @param id the id to set
      */
-    public void setID(String id){
+    public void setId(String id){
     	this.id = id;
     }
 
@@ -270,14 +269,14 @@ public class AntenatalVisit implements Serializable {
 	/**Returns the number of IPT Doses given
 	 * @return the iPTDoses
 	 */
-	public int getiPTDoses() {
+	public int getIPTDoses() {
 		return iPTDoses;
 	}
 
 	/** Sets the number of IPT Doses given
 	 * @param iPTDoses the iPTDoses to set
 	 */
-	public void setiPTDoses(int iPTDoses) {
+	public void setIPTDoses(int iPTDoses) {
 		this.iPTDoses = iPTDoses;
 	}
 
@@ -340,7 +339,7 @@ public class AntenatalVisit implements Serializable {
 	/**Returns the Hemoglobin at Registration of the client
 	 * @return the hBAtReg
 	 */
-	public double gethBAtReg() {
+	public double getHBAtReg() {
 		return hBAtReg;
 	}
 
@@ -452,98 +451,98 @@ public class AntenatalVisit implements Serializable {
 	/**Returns the Venereal Disease lab results
 	 * @return the vDLabresults
 	 */
-	public boolean isvDLabresults() {
+	public String getVDLabresults() {
 		return vDLabresults;
 	}
 
 	/**Sets the Venereal Disease lab results
-	 * @param vDLabresults the vDLabresults to set
-	 */
-	public void setvDLabresults(boolean vDLabresults) {
+   * @param vDLabresults the vDLabresults to set
+   */
+	public void setvDLabresults(String vDLabresults) {
 		this.vDLabresults = vDLabresults;
 	}
 
 	/**Returns whether the client has had an HIV Pre-Test Counsel
 	 * @return the preTestCounsel
 	 */
-	public boolean isPreTestCounsel() {
+	public String getPreTestCounsel() {
 		return preTestCounsel;
 	}
 
 	/**Sets whether the client has had an HIV Pre-Test Counsel
-	 * @param preTestCounsel the preTestCounsel to set
-	 */
-	public void setPreTestCounsel(boolean preTestCounsel) {
+   * @param preTestCounsel the preTestCounsel to set
+   */
+	public void setPreTestCounsel(String preTestCounsel) {
 		this.preTestCounsel = preTestCounsel;
 	}
 
 	/**Returns the HIV test results of the client
 	 * @return the hIVResults
 	 */
-	public boolean ishIVResults() {
+	public String getHIVResults() {
 		return hIVResults;
 	}
 
 	/**Sets the HIV test results of the client
-	 * @param hIVResults the hIVResults to set
-	 */
-	public void sethIVResults(boolean hIVResults) {
+   * @param hIVResults the hIVResults to set
+   */
+	public void setHIVResults(String hIVResults) {
 		this.hIVResults = hIVResults;
 	}
 
 	/**Returns whether the client has had a Post-Test Counsel
 	 * @return the postTestCounsel
 	 */
-	public boolean isPostTestCounsel() {
+	public String getPostTestCounsel() {
 		return postTestCounsel;
 	}
 
 	/**Sets whether the client has had a Post-Test Counsel
-	 * @param postTestCounsel the postTestCounsel to set
-	 */
-	public void setPostTestCounsel(boolean postTestCounsel) {
+   * @param postTestCounsel the postTestCounsel to set
+   */
+	public void setPostTestCounsel(String postTestCounsel) {
 		this.postTestCounsel = postTestCounsel;
 	}
 
 	/**Returns whether the client is on Anti-Retroviral drugs
 	 * @return the aRV
 	 */
-	public boolean isARV() {
+	public String getARV() {
 		return ARV;
 	}
 
 	/**Sets whether the client is on Anti-Retroviral drugs
-	 * @param aRV the aRV to set
-	 */
-	public void setARV(boolean aRV) {
+   * @param aRV the aRV to set
+   */
+	public void setARV(String aRV) {
 		ARV = aRV;
 	}
 
 	/**Returns the results of the blood film test for Malaria
 	 * @return the bloodFilm
 	 */
-	public boolean bloodFilmResults() {
+	public String getBloodFilm() {
 		return bloodFilm;
 	}
 
 	/**Sets the results of the blood film test for Malaria
-	 * @param bloodFilm the bloodFilm to set
-	 */
-	public void setBloodFilm(boolean bloodFilm) {
+   * @param bloodFilm the bloodFilm to set
+   */
+	public void setBloodFilm(String bloodFilm) {
 		this.bloodFilm = bloodFilm;
 	}
 
 	/**Returns whether the client uses Insecticide-Treated Nets
 	 * @return the iTN
 	 */
-	public boolean isiTN() {
+	public int getITN() {
 		return iTN;
 	}
 
 	/**Sets whether the client uses Insecticide-Treated Nets
-	 * @param iTN the iTN to set
-	 */
-	public void setiTN(boolean iTN) {
+   * @param iTN the iTN to set
+   */
+	public void setITN(int iTN) {
 		this.iTN = iTN;
 	}
 
@@ -553,4 +552,8 @@ public class AntenatalVisit implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+  public int getITPDoses() {
+    return this.iTPDoses;
+  }
 }

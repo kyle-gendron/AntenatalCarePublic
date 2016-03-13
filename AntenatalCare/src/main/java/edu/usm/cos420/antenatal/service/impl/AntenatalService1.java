@@ -46,4 +46,8 @@ public class AntenatalService1 implements AntenatalService {
   public List<AntenatalVisit> getAllVisits() {
     return dao.list();
   }
+
+  public void updateAntenatalVisit(AntenatalVisit visit) {
+    dao.update(visit);
+  }
 }

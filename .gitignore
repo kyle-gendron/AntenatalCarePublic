@@ -58,4 +58,4 @@ out/
 *.ser
 *.iml
 .idea/
-*.ser
+*.log

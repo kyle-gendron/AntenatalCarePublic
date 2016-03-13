@@ -1,15 +1,21 @@
 package edu.usm.cos420.antenatal.controller;
 
 import edu.usm.cos420.antenatal.domain.AntenatalVisit;
-import edu.usm.cos420.antenatal.gui.NewVisitForm;
+import edu.usm.cos420.antenatal.domain.DummyPerson;
+import edu.usm.cos420.antenatal.gui.VisitForm;
+import edu.usm.cos420.antenatal.gui.PreviousVisits;
+import edu.usm.cos420.antenatal.gui.newVisitTab;
 import edu.usm.cos420.antenatal.service.AntenatalService;
 import edu.usm.cos420.antenatal.service.impl.AntenatalService1;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.GregorianCalendar;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * A controller class for the antenatal forms.
@@ -18,84 +24,93 @@ import java.util.GregorianCalendar;
  */
 public class AntenatalController implements ActionListener {
 
-  private AntenatalService1 service;
-  private AntenatalView view;
+	private final PreviousVisits findPrevious;
+	private AntenatalService1 service;
+	private AntenatalView view;
+	private DummyPerson dummyPerson;
+	private newVisitTab currentForm;
 
-  /**
-   * Constructor initialized the service and GUI
-   */
-  public AntenatalController() {
-    this.service = new AntenatalService1();
-    this.view = new AntenatalView(this);
+	/**
+	 * Constructor initialized the service and GUI
+	 */
+	public AntenatalController() {
+		// Dummy person object
+		dummyPerson = new DummyPerson();
 
-    // Debug Test
-    System.out.println("Current Visit Table:");
-    service.getAllVisits().forEach(System.out::println);
-  }
+		this.service = new AntenatalService1();
+		this.view = new AntenatalView(this);
 
-  /**
-   * displays the GUI
-   */
-  public void displayGUI() {
-    this.view.setVisible(true);
-  }
+		// Debug Test
+		System.out.println("Current Visit Table:");
+		service.getAllVisits().forEach(System.out::println);
 
-  @Override
-  /**
-   * listens for the form to quit or be submitted
-   * @params e : an ActionEvent that it lists to
-   */
-  public void actionPerformed(ActionEvent e) {
+		// Set up the find previous dialog.
+		this.findPrevious = new PreviousVisits(this.view);
+	}
 
-    switch (e.getActionCommand()) {
-      case "Exit": {
-        System.exit(0);
-        break;
-      }
-      case "Submit": {
+	/**
+	 * displays the main GUI
+	 */
+	public void displayGUI() {
+		this.view.setVisible(true);
+	}
 
-        NewVisitForm form = this.view.getVisitPanel().getForm();
-        
-        //TODO: get the rest of the information from the gui
-        Integer parity = form.getParity();
-        boolean testResult = form.getTestResult() > 0;
-        Double height = form.getPatientHeight();
-        Double weight = form.getPatientWeight();
-        boolean reactive = form.getVDLabResults();
-        LocalDate EDD = form.getEDD();
+	@Override
+	/**
+	 * listens for the form to quit or be submitted
+	 * @params e : an ActionEvent that it lists to
+	 */
+	public void actionPerformed(ActionEvent e) {
 
-        String nextId = AntenatalService.getNextID();
-        
-        // Create a new Visit object to pass to the service class.
-        AntenatalVisit visit = new AntenatalVisit(nextId,
-          parity, 0, 0, height, weight, 0, 0, EDD,
-          0, 0, "", "", "", reactive, false, testResult, false, false, 0, 0, 0, false, 0, 0);
-        
-        
-        
-        //doesn't do anything right now
-        service.addAntenatalVisit(visit);
-        System.out.println("Inserted New Visit (" + nextId + ")");
-      }
-    }
-  }
+		switch (e.getActionCommand()) {
+		case "Exit": {
+			System.exit(0);
+			break;
+		}
+		case "Create New Visit": {
+			NewVisitController newVisit = new NewVisitController(this);
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			String date = sdf.format(new Date());
+			this.view.addTab(date, newVisit.getPanel());
+			break;
+		}
+		case "Find Previous Visits": {
+			List<String> options = service.getAllVisits().stream().map(AntenatalVisit::getID).collect(Collectors.toList());
+			if(!options.isEmpty()){
+				String visitId = this.findPrevious.showDialog(options);
+				if (visitId != null) {
+					AntenatalVisit prevVisit = service.getAntenatalVisitById(visitId);
+					System.out.println("Loading: " + prevVisit);
+					NewVisitController newVisit = new NewVisitController(this, prevVisit);
+					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+					String date = sdf.format(new Date());
+					this.view.addTab(date, newVisit.getPanel());
+				}
+			}
+			break;
+		}
+		case "Quit":{
+			System.exit(0);
+			break;
+		}
+		}
+	}
 
-  public static int parseInteger( String string, int defaultValue ) {
-    try {
-      return Integer.parseInt(string);
-    }
-    catch (NumberFormatException e ) {
-      return defaultValue;
-    }
-  }
+	public DummyPerson getPerson() {
+		return dummyPerson;
+	}
 
-  public static double parseDouble( String string, double defaultValue ) {
-    try {
-      return Double.parseDouble(string);
-    }
-    catch (NumberFormatException e ) {
-      return defaultValue;
-    }
-  }
-  
+	public void submitNewVisit(AntenatalVisit visit) {
+		System.out.println("Inserting New Visit (" + visit.getID() + ")");
+		service.addAntenatalVisit(visit);
+	}
+
+	public void updateVisit(AntenatalVisit visit) {
+		System.out.println("Updating Visit (" + visit.getID() + ")");
+		service.updateAntenatalVisit(visit);
+	}
+
+	public String getNextId() {
+		return AntenatalService.getNextID();
+	}
 }
