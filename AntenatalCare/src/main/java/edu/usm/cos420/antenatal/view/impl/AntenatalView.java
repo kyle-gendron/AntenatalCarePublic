@@ -81,8 +81,8 @@ public class AntenatalView extends JFrame {
 		title.addTab("Subsequent Visits", sPain);
 		subPane.add(title);
 		
-		split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,subPane,newPane);
-		split.setDividerLocation(0);
+		split = new JSplitPane(JSplitPane.VERTICAL_SPLIT,newPane,subPane);
+		split.setDividerLocation(newPane.getHeight()-100);
 		pane.add(split);
 
 
@@ -222,6 +222,7 @@ public class AntenatalView extends JFrame {
 		if(split.getDividerLocation()==0){
 			split.setDividerLocation(300);
 			subPane.setMinimumSize(new Dimension(200,600));
+			subPane.setSize(new Dimension(220,600));
 		}
 		JPanel subView = panel;
 		JLabel name = new JLabel(title);
