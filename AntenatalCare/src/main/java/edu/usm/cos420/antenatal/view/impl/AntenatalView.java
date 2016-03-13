@@ -40,11 +40,6 @@ public class AntenatalView extends JFrame {
 		initUI();
 	}
 
-	public AntenatalView(SubController subController) {
-		// TODO Auto-generated constructor stub
-		this.subController = subController;
-	}
-
 	/**
 	 * initializes the user interface
 	 */

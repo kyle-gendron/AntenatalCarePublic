@@ -7,6 +7,8 @@ package edu.usm.cos420.antenatal.controller;
 
 import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
 import edu.usm.cos420.antenatal.domain.AntenatalVisit;
+import edu.usm.cos420.antenatal.gui.newVisitTab;
+import edu.usm.cos420.antenatal.gui.subsequentVisit;
 import edu.usm.cos420.antenatal.service.SubVisitService;
 import edu.usm.cos420.antenatal.service.impl.SubVisitService1;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
@@ -14,6 +16,8 @@ import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+
+import javax.swing.JPanel;
 
 /**
  * A controller class for the antenatal forms.
@@ -23,26 +27,27 @@ import java.time.LocalDate;
 public class SubController implements ActionListener {
 
   private SubVisitService1 service;
-  private AntenatalView view;
+  private final AntenatalController controller;
+  private subsequentVisit panel;
+  private String id = null;
 
   /**
    * Constructor initialized the service and GUI
    */
-  public SubController() {
+  public SubController(AntenatalController controller) {
     this.service = new SubVisitService1();
-    this.view = new AntenatalView(this);
+    this.controller = controller;
+    this.panel = new subsequentVisit(this);
 
     // Debug Test
-    System.out.println("Current Visit Table:");
+    System.out.println("Sub Visit Table:");
     service.getAllSubVisits().forEach(System.out::println);
   }
-
-  /**
-   * displays the GUI
-   */
-  public void displayGUI() {
-    this.view.setVisible(true);
+  
+  public JPanel getPanel(){
+     return panel.getPanel();
   }
+
 
   @Override
   /**

@@ -5,6 +5,7 @@ import edu.usm.cos420.antenatal.domain.DummyPerson;
 import edu.usm.cos420.antenatal.gui.VisitForm;
 import edu.usm.cos420.antenatal.gui.PreviousVisits;
 import edu.usm.cos420.antenatal.gui.newVisitTab;
+import edu.usm.cos420.antenatal.gui.subsequentVisit;
 import edu.usm.cos420.antenatal.service.AntenatalService;
 import edu.usm.cos420.antenatal.service.impl.AntenatalService1;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
@@ -88,6 +89,11 @@ public class AntenatalController implements ActionListener {
 				}
 			}
 			break;
+		}
+		case "Show Sub Visits":{
+		   SubController subController = new SubController(this);
+	       this.view.addSub("Date", subController.getPanel());
+	       break;
 		}
 		case "Quit":{
 			System.exit(0);

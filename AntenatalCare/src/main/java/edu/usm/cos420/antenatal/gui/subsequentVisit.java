@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 
 import edu.usm.cos420.antenatal.controller.SubController;
 
-public class subsequentVisit {
+public class subsequentVisit{
 
 	private JLabel sBP;
 	private JLabel dBP;
@@ -35,10 +35,13 @@ public class subsequentVisit {
 	private UtilDateModel dateModel;
 	private JCheckBox bloodF;
 	private JCheckBox refer;
+	private SubController subC;
 	
 	private JPanel subVisit;
+	
 	public subsequentVisit(SubController subC){
 		subVisit = new JPanel();
+		this.subC = subC;
 		FlowLayout layout = new FlowLayout();
 		subVisit.setLayout(layout);
 		//int systolicBP, int diastolicBP,
