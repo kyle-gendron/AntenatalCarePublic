@@ -97,7 +97,7 @@ public class AntenatalView extends JFrame {
 		sPain.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		sPain.setViewportBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		
-		panel.setBackground(Color.LIGHT_GRAY);
+		//panel.setBackground(Color.LIGHT_GRAY);
 		panel.validate();
 	}
 

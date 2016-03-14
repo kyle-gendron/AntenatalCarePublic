@@ -120,7 +120,10 @@ public class subsequentVisit{
 	   container.add(data, BorderLayout.CENTER);
 	     saveButton = new JButton("Save");
 	      saveButton.addActionListener(subC);
-	      container.add(saveButton, BorderLayout.SOUTH);
+	      JPanel buttonPane = new JPanel();
+	      buttonPane.setLayout(new FlowLayout());
+	      buttonPane.add(saveButton);
+	      container.add(buttonPane, BorderLayout.SOUTH);
 	    
 		return container;
 	}

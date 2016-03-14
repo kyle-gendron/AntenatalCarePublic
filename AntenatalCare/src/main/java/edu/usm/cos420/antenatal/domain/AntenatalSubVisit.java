@@ -89,14 +89,14 @@ public class AntenatalSubVisit implements Serializable{
    @Override
    public String toString() {
      return "AntenatalSubVisit{" +
-//       ", InitVisitID=" + initialVisitID +
-//       ", systolicBP=" + systolicBP +
-//       ", diastolicBP=" + diastolicBP +
+      "InitVisitID=" + initialVisitID +
+       ", systolicBP=" + systolicBP +
+       ", diastolicBP=" + diastolicBP +
        ", weight=" + weight +
-//       ", fundalHeight=" + fundalHeight +
+       ", fundalHeight=" + fundalHeight +
        ", SubVisit Date=" + apptDate.toString() +
-//       ", bloodFilm=" + bloodFilm +
-//       ", referred=" + referred +
+       ", bloodFilm=" + bloodFilm +
+       ", referred=" + referred +
        '}';
    }
    

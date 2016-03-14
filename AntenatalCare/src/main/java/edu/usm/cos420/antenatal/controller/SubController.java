@@ -19,6 +19,8 @@ import java.time.LocalDate;
 
 import javax.swing.JPanel;
 
+import com.sun.prism.paint.Color;
+
 /**
  * A controller class for the antenatal forms.
  * It listens for the submit button to be pressed and than grabs
@@ -58,7 +60,6 @@ public class SubController implements ActionListener {
 
     switch (e.getActionCommand()) {
       case "Save": {
-        
          LocalDate date = panel.getApptDate();
          int sysBP = panel.getSystolicBP();
          int diaBP = panel.getDiastolicBP();
@@ -76,7 +77,7 @@ public class SubController implements ActionListener {
         
         //doesn't do anything right now
         service.addSubVisit(visit);
-        System.out.println("Inserted New Visit (" + subId + ")");
+        System.out.println("Inserted New SubVisit (" + subId + ")");
       }
     }
   }
