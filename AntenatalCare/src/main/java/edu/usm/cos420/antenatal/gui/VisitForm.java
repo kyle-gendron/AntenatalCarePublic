@@ -318,7 +318,7 @@ public class VisitForm extends JPanel {
 	 * @return Returns double of the patients height, or -1 if invalid
 	 */
 	public Double getPatientHeight() {
-    return parseDouble(heightInput.getText(), -1.0);
+    return parseDouble(heightInput.getText());
 	}
 
 	/**
@@ -326,7 +326,7 @@ public class VisitForm extends JPanel {
 	 * @return Returns double of the patients weight, or -1 if invalid
 	 */
 	public Double getPatientWeight() {
-    return parseDouble(weightInput.getText(), -1.0);
+    return parseDouble(weightInput.getText());
 	}
 
 	/**
@@ -334,14 +334,14 @@ public class VisitForm extends JPanel {
 	 * @return Returns int val of the patients Systollic blood pressue
 	 */
 	public int getSystolicBP(){
-    return parseInteger(systolicInput.getText(), -1);
+    return parseInteger(systolicInput.getText());
 	}
 	/**
 	 *
 	 * @return returns int val of the patients Diastolic blood pressure
 	 */
 	public int getDiastolicBP(){
-    return parseInteger(diastolicInput.getText(), -1);
+    return parseInteger(diastolicInput.getText());
 	}
 
 	/**
@@ -367,7 +367,7 @@ public class VisitForm extends JPanel {
 	}
 
 	public int getGestation(){
-    return parseInteger(gestationInput.getText(), -1);
+    return parseInteger(gestationInput.getText());
 	}
 
 	public int getIPTDoses(){
@@ -404,7 +404,7 @@ public class VisitForm extends JPanel {
 	 * @return Double value of the fundal height
 	 */
 	public double getFundalHeight(){
-    return parseDouble(fundalHeightInput.getText(), -1.0);
+    return parseDouble(fundalHeightInput.getText());
 	}
 
 	/**
@@ -412,7 +412,7 @@ public class VisitForm extends JPanel {
 	 * @return Double value of the hemoglobin levels at registration
 	 */
 	public double getHBAtReg(){
-    return parseDouble(hbaAtRegInput.getText(), -1.0);
+    return parseDouble(hbaAtRegInput.getText());
 	}
 
 	/**
@@ -420,7 +420,7 @@ public class VisitForm extends JPanel {
 	 * @return Double value of the hemoglobin levels at 36 weeks
 	 */
 	public double getHBAt36Weeks(){
-    return parseDouble(hbaAt36WeeksInput.getText(), -1.0);
+    return parseDouble(hbaAt36WeeksInput.getText());
 	}
 
 	/**
@@ -428,14 +428,14 @@ public class VisitForm extends JPanel {
 	 * @return Double val of the urine sugar test results
 	 */
 	public double getUrineTestSugar(){
-    return parseDouble(urineTestSugarInput.getText(), -1.0);
+    return parseDouble(urineTestSugarInput.getText());
 	}
 	/**
 	 *
 	 * @return Doubleval of the urine protein test results
 	 */
 	public double getUrineTestProtein(){
-    return parseDouble(urineTestProteinInput.getText(), -1.0);
+    return parseDouble(urineTestProteinInput.getText());
 	}
 
 	/**

@@ -21,4 +21,11 @@ public class Utils {
       return defaultValue;
     }
   }
+
+  public static int parseInteger(String string) {
+    return parseInteger(string, 0);
+  }
+  public static double parseDouble(String string) {
+    return parseDouble(string, 0.0);
+  }
 }
