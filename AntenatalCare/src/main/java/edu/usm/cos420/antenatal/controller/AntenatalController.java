@@ -53,6 +53,7 @@ public class AntenatalController implements ActionListener {
 	 * displays the main GUI
 	 */
 	public void displayGUI() {
+    this.view.setHasPreviousVisits(getVisitList().size() > 0);
 		this.view.setVisible(true);
 	}
 
@@ -76,10 +77,10 @@ public class AntenatalController implements ActionListener {
 			break;
 		}
 		case "Find Previous Visits": {
-			List<String> options = service.getAllVisits().stream().map(AntenatalVisit::getID).collect(Collectors.toList());
+			List<String> options = getVisitList();
 			if(!options.isEmpty()){
 				String visitId = this.findPrevious.showDialog(options);
-				if (visitId != null) {
+				if (visitId != null && !visitId.isEmpty()) {
 					AntenatalVisit prevVisit = service.getAntenatalVisitById(visitId);
 					System.out.println("Loading: " + prevVisit);
 					NewVisitController newVisit = new NewVisitController(this, prevVisit);
@@ -109,6 +110,9 @@ public class AntenatalController implements ActionListener {
 	public void submitNewVisit(AntenatalVisit visit) {
 		System.out.println("Inserting New Visit (" + visit.getID() + ")");
 		service.addAntenatalVisit(visit);
+
+    // Update the find previous menu option
+    this.view.setHasPreviousVisits(getVisitList().size() > 0);
 	}
 
 	public void updateVisit(AntenatalVisit visit) {
@@ -119,4 +123,8 @@ public class AntenatalController implements ActionListener {
 	public String getNextId() {
 		return AntenatalService.getNextID();
 	}
+
+  public List<String> getVisitList() {
+    return service.getAllVisits().stream().map(AntenatalVisit::getID).collect(Collectors.toList());
+  }
 }

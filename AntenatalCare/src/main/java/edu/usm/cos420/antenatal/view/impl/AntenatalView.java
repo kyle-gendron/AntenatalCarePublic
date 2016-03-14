@@ -29,8 +29,10 @@ public class AntenatalView extends JFrame {
 	private static JPanel subPane;
 	private static JSplitPane split;
 	private SubController subController;
+  private JMenuItem findPreviousVisitsMenuItem;
+  private JMenuItem showSubVisitsMenuItem;
 
-	/**
+  /**
 	 * Adds the controller so that it can be accessed by the panel
 	 *
 	 * @param antenatalController : the antenatal controller
@@ -44,38 +46,38 @@ public class AntenatalView extends JFrame {
 	 * initializes the user interface
 	 */
 	private void initUI() {
-		
-		
+
+
 		Container pane = getContentPane();
 		createMenuBar();
-		
+
 		newPane = new JPanel();
 		subPane = new JPanel();
-		
+
 		BorderLayout border = new BorderLayout();
 		newPane.setLayout(border);
 		BorderLayout subBorder = new BorderLayout();
 		subPane.setLayout(subBorder);
 		newPane.setMinimumSize(new Dimension(600,600));
 
-		
+
 
 
 		JButton quitButton = new JButton();
 		quitButton = makeQuitButton(newPane);
 
 
-		makeTabbedDisplay(newPane); 
+		makeTabbedDisplay(newPane);
 		newPane.add(quitButton, BorderLayout.SOUTH);
-		
+
 		JPanel panel = new JPanel();
-		
+
 		makeScrollDisplay(panel);
 		JTabbedPane title = new JTabbedPane();
 		title.setMinimumSize(new Dimension(0,0));
 		title.addTab("Subsequent Visits", sPain);
 		subPane.add(title);
-		
+
 		split = new JSplitPane(JSplitPane.VERTICAL_SPLIT,newPane,subPane);
 		split.setDividerLocation(newPane.getHeight()-100);
 		pane.add(split);
@@ -92,11 +94,11 @@ public class AntenatalView extends JFrame {
 		sPain = new JScrollPane(panel);
 		JLabel sub = new JLabel("SubSequent Visits:");
 		sub.setFont(new Font("Courier New",Font.BOLD, 14));
-		
-        
+
+
 		sPain.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		sPain.setViewportBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		
+
 		//panel.setBackground(Color.LIGHT_GRAY);
 		panel.validate();
 	}
@@ -159,23 +161,23 @@ public class AntenatalView extends JFrame {
 		JMenu file = new JMenu("Antenatal");
 		file.setMnemonic(KeyEvent.VK_F);
 
-		JMenuItem eMenuItemOne = new JMenuItem("Create New Visit");
-		JMenuItem eMenuItemTwo = new JMenuItem("Find Previous Visits");
-		JMenuItem eMenuItemThree = new JMenuItem("Show Sub Visits");
-		JMenuItem eMenuItemFour = new JMenuItem("Exit");
+    JMenuItem createNewVisitMenuItem = new JMenuItem("Create New Visit");
+    JMenuItem exitMenuItem = new JMenuItem("Exit");
+    findPreviousVisitsMenuItem = new JMenuItem("Find Previous Visits");
+    showSubVisitsMenuItem = new JMenuItem("Show Sub Visits");
 
-		eMenuItemFour.setMnemonic(KeyEvent.VK_E);
-		eMenuItemFour.setToolTipText("Exit application");
+		exitMenuItem.setMnemonic(KeyEvent.VK_E);
+		exitMenuItem.setToolTipText("Exit application");
 
-		eMenuItemOne.addActionListener(controller);
-		eMenuItemTwo.addActionListener(controller);
-		eMenuItemThree.addActionListener(controller);
-		eMenuItemFour.addActionListener(controller);
+		createNewVisitMenuItem.addActionListener(controller);
+		findPreviousVisitsMenuItem.addActionListener(controller);
+		showSubVisitsMenuItem.addActionListener(controller);
+		exitMenuItem.addActionListener(controller);
 
-		file.add(eMenuItemOne);
-		file.add(eMenuItemTwo);
-		file.add(eMenuItemThree);
-		file.add(eMenuItemFour);
+		file.add(createNewVisitMenuItem);
+		file.add(findPreviousVisitsMenuItem);
+		file.add(showSubVisitsMenuItem);
+		file.add(exitMenuItem);
 		menuBar.add(file);
 
 		setJMenuBar(menuBar);
@@ -225,4 +227,8 @@ public class AntenatalView extends JFrame {
 		P.add(name);
 		P.add(subView);
 	}
+
+  public void setHasPreviousVisits(boolean hasPreviousVisits) {
+    findPreviousVisitsMenuItem.setEnabled(hasPreviousVisits);
+  }
 }
