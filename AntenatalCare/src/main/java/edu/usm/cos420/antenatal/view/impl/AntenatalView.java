@@ -33,15 +33,15 @@ public class AntenatalView extends JFrame {
 	/**
 	 * Adds the controller so that it can be accessed by the panel
 	 *
-	 * @param subController2 : the antenatal controller
+	 * @param antenatalController : the antenatal controller
 	 */
-	public AntenatalView(SubController subController2) {
-		this.subController = subController2;
+	public AntenatalView(AntenatalController antenatalController) {
+		this.controller = antenatalController;
 		initUI();
 	}
 
-	public AntenatalView(AntenatalController antenatalController) {
-		// TODO Auto-generated constructor stub
+	public AntenatalView(SubController subController) {
+		this.subController = subController;
 	}
 
 	/**
