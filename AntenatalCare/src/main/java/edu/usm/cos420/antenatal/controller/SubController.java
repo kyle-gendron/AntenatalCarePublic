@@ -7,6 +7,8 @@ package edu.usm.cos420.antenatal.controller;
 
 import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
 import edu.usm.cos420.antenatal.domain.AntenatalVisit;
+import edu.usm.cos420.antenatal.gui.newVisitTab;
+import edu.usm.cos420.antenatal.gui.subsequentVisit;
 import edu.usm.cos420.antenatal.service.SubVisitService;
 import edu.usm.cos420.antenatal.service.impl.SubVisitService1;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
@@ -14,6 +16,10 @@ import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+
+import javax.swing.JPanel;
+
+import com.sun.prism.paint.Color;
 
 /**
  * A controller class for the antenatal forms.
@@ -23,26 +29,27 @@ import java.time.LocalDate;
 public class SubController implements ActionListener {
 
   private SubVisitService1 service;
-  private AntenatalView view;
+  private final AntenatalController controller;
+  private subsequentVisit panel;
+  private String id = null;
 
   /**
    * Constructor initialized the service and GUI
    */
-  public SubController() {
+  public SubController(AntenatalController controller) {
     this.service = new SubVisitService1();
-    this.view = new AntenatalView(this);
+    this.controller = controller;
+    this.panel = new subsequentVisit(this);
 
     // Debug Test
-    System.out.println("Current Visit Table:");
+    System.out.println("Sub Visit Table:");
     service.getAllSubVisits().forEach(System.out::println);
   }
-
-  /**
-   * displays the GUI
-   */
-  public void displayGUI() {
-    this.view.setVisible(true);
+  
+  public JPanel getPanel(){
+     return panel.getPanel();
   }
+
 
   @Override
   /**
@@ -52,27 +59,25 @@ public class SubController implements ActionListener {
   public void actionPerformed(ActionEvent e) {
 
     switch (e.getActionCommand()) {
-      case "Exit": {
-        System.exit(0);
-        break;
-      }
-      case "Submit": {
-
-        //NewVisitForm form = this.view.getVisitPanel().getForm();
-        
-        //TODO: get the rest of the information from the gui
-        
-
+      case "Save": {
+         LocalDate date = panel.getApptDate();
+         int sysBP = panel.getSystolicBP();
+         int diaBP = panel.getDiastolicBP();
+         double fH = panel.getFundalHeight();
+         double weight = panel.getPatientWeight();
+         String bloodFilm = panel.getBloodFilm();
+         String refer = panel.getRefer();
         String subId = SubVisitService.getNextID();
         
         // Create a new Visit object to pass to the service class.
-        AntenatalSubVisit visit = new AntenatalSubVisit(subId,"", 0, 0, 0, 0, false, false);
+        AntenatalSubVisit visit = new AntenatalSubVisit(subId, "An id", sysBP, diaBP,
+              weight, fH, date, bloodFilm, refer);
         
         
         
         //doesn't do anything right now
         service.addSubVisit(visit);
-        System.out.println("Inserted New Visit (" + subId + ")");
+        System.out.println("Inserted New SubVisit (" + subId + ")");
       }
     }
   }
