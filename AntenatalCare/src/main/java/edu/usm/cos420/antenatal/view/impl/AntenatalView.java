@@ -230,6 +230,5 @@ public class AntenatalView extends JFrame {
 
   public void setHasPreviousVisits(boolean hasPreviousVisits) {
     findPreviousVisitsMenuItem.setEnabled(hasPreviousVisits);
-    this.repaint();
   }
 }
