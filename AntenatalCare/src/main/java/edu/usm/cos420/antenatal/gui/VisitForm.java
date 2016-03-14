@@ -448,21 +448,7 @@ public class VisitForm extends JPanel {
       Date pickerDate = (Date) eedInput.getModel().getValue();
       LocalDate date = pickerDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
       return date;
-//		   try{
-//			String date = eedInput.getValue().;
-//			date = date.replaceAll("\\D", "");
-//			System.out.println(date);
-//			DateTimeFormatter formatter = null;
-//
-//			if(date.length() == 8){
-//			formatter = DateTimeFormatter.ofPattern("MMddyyyy");
-//			}
 
-//			return LocalDate.parse(date, formatter);
-//
-//		}catch(Exception e){
-//			return null;
-//		}
 	}
 
 	/**

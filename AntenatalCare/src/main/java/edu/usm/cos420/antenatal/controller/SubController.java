@@ -57,21 +57,20 @@ public class SubController implements ActionListener {
   public void actionPerformed(ActionEvent e) {
 
     switch (e.getActionCommand()) {
-      case "Exit": {
-        System.exit(0);
-        break;
-      }
-      case "Submit": {
-
-        //NewVisitForm form = this.view.getVisitPanel().getForm();
+      case "Save": {
         
-        //TODO: get the rest of the information from the gui
-        
-
+         LocalDate date = panel.getApptDate();
+         int sysBP = panel.getSystolicBP();
+         int diaBP = panel.getDiastolicBP();
+         double fH = panel.getFundalHeight();
+         double weight = panel.getPatientWeight();
+         String bloodFilm = panel.getBloodFilm();
+         String refer = panel.getRefer();
         String subId = SubVisitService.getNextID();
         
         // Create a new Visit object to pass to the service class.
-        AntenatalSubVisit visit = new AntenatalSubVisit(subId,"", 0, 0, 0, 0, false, false);
+        AntenatalSubVisit visit = new AntenatalSubVisit(subId, "An id", sysBP, diaBP,
+              weight, fH, date, bloodFilm, refer);
         
         
         

@@ -32,8 +32,8 @@ public class AntenatalSubVisit implements Serializable{
    double weight; //weight in kg
    double fundalHeight; //in cm
    LocalDate apptDate; //date of subsequent visit
-   boolean bloodFilm;  //results of malaria blood film test
-   boolean referred;
+   String bloodFilm;  //results of malaria blood film test
+   String referred;
    
    /**
     * Eight-Field Constructor: The constructor to be used when all fields are being set
@@ -49,7 +49,7 @@ public class AntenatalSubVisit implements Serializable{
     * @param referred whether the patient was referred
     */
    public AntenatalSubVisit(String subVisitID, String initialVisitID, int systolicBP, int diastolicBP,
-         double weight, double fundalHeight, LocalDate apptDate, boolean bloodFilm, boolean referred){
+         double weight, double fundalHeight, LocalDate apptDate, String bloodFilm, String referred){
       this.subVisitID = subVisitID;
       this.initialVisitID = initialVisitID;
       this.systolicBP = systolicBP;
@@ -74,7 +74,7 @@ public class AntenatalSubVisit implements Serializable{
     * @param referred whether the patient was referred
     */
    public AntenatalSubVisit(String subVisitID, String initialVisitID, int systolicBP, int diastolicBP,
-         double weight, double fundalHeight, boolean bloodFilm, boolean referred){
+         double weight, double fundalHeight, String bloodFilm, String referred){
       this.subVisitID = subVisitID;
       this.initialVisitID = initialVisitID;
       this.systolicBP = systolicBP;
@@ -205,14 +205,14 @@ public class AntenatalSubVisit implements Serializable{
   /**Returns the results of the blood film test for Malaria
    * @return the bloodFilm
    */
-  public boolean bloodFilmResults() {
+  public String bloodFilmResults() {
      return bloodFilm;
   }
 
   /**Sets the results of the blood film test for Malaria
    * @param bloodFilm the bloodFilm to set
    */
-  public void setBloodFilm(boolean bloodFilm) {
+  public void setBloodFilm(String bloodFilm) {
      this.bloodFilm = bloodFilm;
   }
 
