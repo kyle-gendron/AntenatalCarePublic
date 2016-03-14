@@ -362,7 +362,7 @@ public class VisitForm extends JPanel {
 	public int getSubVisitsInput(){
 		Object selectedSubVis = subVisitsInput.getSelectedItem();
 		//TODO: may or not be correct val
-		int st = (int) Integer.valueOf(selectedSubVis.toString());
+		int st = Integer.valueOf(selectedSubVis.toString());
 		return st;
 	}
 
@@ -392,12 +392,8 @@ public class VisitForm extends JPanel {
 	 *
 	 * @return Returns the number of doses
 	 */
-	public int getTTDoses(){
-		Object TTdoses = ttDosesInput.getSelectedItem();
-		//TODO: may or not be correct val
-		int st = (int) Integer.valueOf(TTdoses.toString());
-		return st;
-
+	public String getTTDoses(){
+		return String.valueOf(ttDosesInput.getSelectedItem());
 	}
 	/**
 	 *
@@ -469,7 +465,7 @@ public class VisitForm extends JPanel {
 	 * @return String representation of sickling status
 	 */
 	public String getSicklingStatus(){
-		Object sickStat = bloodTypeGroup.getSelectedItem();
+		Object sickStat = sicklingStatusInput.getSelectedItem();
 
 		//TODO: may or not be correct val
 		String st = sickStat.toString();
@@ -482,7 +478,7 @@ public class VisitForm extends JPanel {
 	 * @return String representation of sickling type
 	 */
 	public String getSicklingType(){
-		Object sickStat = bloodTypeGroup.getSelectedItem();
+		Object sickStat = sicklingTypeInput.getSelectedItem();
 
 		//TODO: may or not be correct val
 		String st = sickStat.toString();
@@ -540,6 +536,14 @@ public class VisitForm extends JPanel {
     return String.valueOf(this.hivTestInput.getSelectedItem());
   }
 
+  public String getComplaints() {
+    return complaints.getText();
+  }
+
+  public String getRemarks() {
+    return remarks.getText();
+  }
+
   public void setParity(int parity) {
     this.parityInput.setText(String.valueOf(parity));
   }
@@ -549,7 +553,7 @@ public class VisitForm extends JPanel {
   }
 
   public void setDiastolicBP(int diastolicBP) {
-    this.systolicInput.setText(String.valueOf(diastolicBP));
+    this.diastolicInput.setText(String.valueOf(diastolicBP));
   }
 
   public void setTrimester(int trimester) {
@@ -584,8 +588,8 @@ public class VisitForm extends JPanel {
     }
   }
 
-  public void setTTDoses(int TTDoses) {
-    this.ttDosesInput.setSelectedIndex(TTDoses);
+  public void setTTDoses(String TTDoses) {
+    this.ttDosesInput.setSelectedItem(TTDoses);
   }
 
   public void setHeight(double height) {
@@ -624,15 +628,15 @@ public class VisitForm extends JPanel {
   }
 
   public void setBloodGroup(String bloodGroup) {
-//    this.blood
+    this.bloodTypeGroup.setSelectedItem(bloodGroup);
   }
 
   public void setSicklingStatus(String sicklingStatus) {
-//    this.sick
+    this.sicklingStatusInput.setSelectedItem(sicklingStatus);
   }
 
   public void setSicklingType(String sicklingType) {
-//    this.setSicklingType(sicklingType);
+    this.sicklingTypeInput.setSelectedItem(sicklingType);
   }
 
   public void setVDLabResults(String VDLabResults) {
@@ -661,5 +665,21 @@ public class VisitForm extends JPanel {
 
   public void setITN(String itn) {
     this.itnInput.setSelectedItem(itn);
+  }
+
+  public void setMaleInvolvement(String maleInvolvement) {
+    this.malePresentInput.setSelectedItem(maleInvolvement);
+  }
+
+  public void setComplaints(String complaints) {
+    this.complaints.setText(complaints);
+  }
+
+  public void setRemarks(String remarks) {
+    this.remarks.setText(remarks);
+  }
+
+  public void setSubVisits(int subVisits) {
+    this.subVisitsInput.setSelectedItem(String.valueOf(subVisits));
   }
 }

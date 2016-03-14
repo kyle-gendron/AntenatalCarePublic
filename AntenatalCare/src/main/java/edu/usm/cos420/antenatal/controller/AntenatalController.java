@@ -80,7 +80,7 @@ public class AntenatalController implements ActionListener {
 			List<String> options = getVisitList();
 			if(!options.isEmpty()){
 				String visitId = this.findPrevious.showDialog(options);
-				if (visitId != null) {
+				if (visitId != null && !visitId.isEmpty()) {
 					AntenatalVisit prevVisit = service.getAntenatalVisitById(visitId);
 					System.out.println("Loading: " + prevVisit);
 					NewVisitController newVisit = new NewVisitController(this, prevVisit);
