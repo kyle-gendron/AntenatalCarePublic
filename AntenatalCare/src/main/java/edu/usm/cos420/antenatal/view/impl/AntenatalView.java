@@ -33,16 +33,15 @@ public class AntenatalView extends JFrame {
 	/**
 	 * Adds the controller so that it can be accessed by the panel
 	 *
-	 * @param antenatalController : the antenatal controller
+	 * @param subController2 : the antenatal controller
 	 */
-	public AntenatalView(AntenatalController antenatalController) {
-		this.controller = antenatalController;
+	public AntenatalView(SubController subController2) {
+		this.subController = subController2;
 		initUI();
 	}
 
-	public AntenatalView(SubController subController) {
+	public AntenatalView(AntenatalController antenatalController) {
 		// TODO Auto-generated constructor stub
-		this.subController = subController;
 	}
 
 	/**
@@ -82,13 +81,13 @@ public class AntenatalView extends JFrame {
 		subPane.add(title);
 		
 		split = new JSplitPane(JSplitPane.VERTICAL_SPLIT,newPane,subPane);
-		split.setDividerLocation(newPane.getHeight()-100);
+		split.setDividerLocation(getHeight()-200);
 		pane.add(split);
 
 
 		setTitle("MoTech");
 		setMinimumSize(new Dimension(750, 700));
-		setSize(900,750);
+		setSize(1170,850);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
@@ -219,8 +218,8 @@ public class AntenatalView extends JFrame {
 		//}
 	}
 	public void addSub(String title,JPanel panel){
-		if(split.getDividerLocation()==0){
-			split.setDividerLocation(300);
+		if(split.getDividerLocation()==getHeight()-200){
+			split.setDividerLocation(newPane.getHeight()-300);
 			subPane.setMinimumSize(new Dimension(200,600));
 			subPane.setSize(new Dimension(220,600));
 		}
@@ -229,5 +228,6 @@ public class AntenatalView extends JFrame {
 		JPanel P = ((JPanel) sPain.getViewport().getView());
 		P.add(name);
 		P.add(subView);
+		subPane.validate();
 	}
 }
