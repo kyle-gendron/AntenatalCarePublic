@@ -226,8 +226,10 @@ public class AntenatalView extends JFrame {
 		JPanel subView = panel;
 		JLabel name = new JLabel(title);
 		JPanel P = ((JPanel) sPain.getViewport().getView());
+		P.setLayout(new BoxLayout(P,BoxLayout.PAGE_AXIS));
 		P.add(name);
 		P.add(subView);
+		P.add( new Box.Filler(new Dimension(800,60),new Dimension(800,70),new Dimension(800,80)));
 		subPane.validate();
 	}
 }
