@@ -19,6 +19,8 @@ import java.time.LocalDate;
 
 import javax.swing.JPanel;
 
+import com.sun.prism.paint.Color;
+
 /**
  * A controller class for the antenatal forms.
  * It listens for the submit button to be pressed and than grabs
@@ -57,27 +59,25 @@ public class SubController implements ActionListener {
   public void actionPerformed(ActionEvent e) {
 
     switch (e.getActionCommand()) {
-      case "Exit": {
-        System.exit(0);
-        break;
-      }
-      case "Submit": {
-
-        //NewVisitForm form = this.view.getVisitPanel().getForm();
-        
-        //TODO: get the rest of the information from the gui
-        
-
+      case "Save": {
+         LocalDate date = panel.getApptDate();
+         int sysBP = panel.getSystolicBP();
+         int diaBP = panel.getDiastolicBP();
+         double fH = panel.getFundalHeight();
+         double weight = panel.getPatientWeight();
+         String bloodFilm = panel.getBloodFilm();
+         String refer = panel.getRefer();
         String subId = SubVisitService.getNextID();
         
         // Create a new Visit object to pass to the service class.
-        AntenatalSubVisit visit = new AntenatalSubVisit(subId,"", 0, 0, 0, 0, false, false);
+        AntenatalSubVisit visit = new AntenatalSubVisit(subId, "An id", sysBP, diaBP,
+              weight, fH, date, bloodFilm, refer);
         
         
         
         //doesn't do anything right now
         service.addSubVisit(visit);
-        System.out.println("Inserted New Visit (" + subId + ")");
+        System.out.println("Inserted New SubVisit (" + subId + ")");
       }
     }
   }

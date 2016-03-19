@@ -87,32 +87,36 @@ public class newVisitTab extends JPanel {
 		return form;
 	}
 
-  public void setFormData(AntenatalVisit formData) {
-    form.setParity(formData.getParity());
-    form.setSystolicBP(formData.getSystolicBP());
-    form.setDiastolicBP(formData.getDiastolicBP());
-    form.setTrimester(formData.getTrimester());
-    form.setGestation(formData.getGestation());
-    form.setIPTDoses(formData.getIPTDoses());
-    form.setITPDoses(formData.getITPDoses());
-    form.setTTDoses(formData.getTTDoses());
-    form.setHeight(formData.getHeight());
-    form.setWeight(formData.getWeight());
-    form.setFundalHeight(formData.getFundalHeight());
-    form.setHBAtReg(formData.getHBAtReg());
-    form.setHBAt36Weeks(formData.gethBAt36Weeks());
-    form.setUrineTestSugar(formData.getUrineTestSugar());
-    form.setUrineTestProtein(formData.getUrineTestProtein());
-    form.setEDD(formData.getEDD());
-    form.setBloodGroup(formData.getBloodGroup());
-    form.setSicklingStatus(formData.getSicklingStatus());
-    form.setSicklingType(formData.getSicklingType());
-    form.setVDLabResults(formData.getVDLabresults());
-    form.setPreTestCounsel(formData.getPreTestCounsel());
-    form.setHIVResults(formData.getHIVResults());
-    form.setPostTestCounsel(formData.getPostTestCounsel());
-//    form.setARV(formData.getARV());
-    form.setBloodFilm(formData.getBloodFilm());
-    form.setITN(String.valueOf(formData.getITN()));
+  public void setFormData(AntenatalVisit visit) {
+    form.setParity(visit.getParity());
+    form.setHIVResults(visit.getHIVResults());
+    form.setHeight(visit.getHeight());
+    form.setWeight(visit.getWeight());
+    form.setVDLabResults(visit.getVDLabResults());
+    form.setEDD(visit.getEDD());
+    form.setSystolicBP(visit.getSystolicBP());
+    form.setDiastolicBP(visit.getDiastolicBP());
+    form.setTrimester(visit.getTrimester());
+    form.setGestation(visit.getGestation());
+    form.setIPTDoses(visit.getIPTDoses());
+    form.setITPDoses(visit.getITPDoses());
+    form.setTTDoses(visit.getTTDoses());
+    form.setFundalHeight(visit.getFundalHeight());
+    form.setHBAtReg(visit.getHBAtReg());
+    form.setHBAt36Weeks(visit.gethBAt36Weeks());
+    form.setUrineTestSugar(visit.getUrineTestSugar());
+    form.setUrineTestProtein(visit.getUrineTestProtein());
+    form.setBloodGroup(visit.getBloodGroup());
+    form.setBloodFilm(visit.getBloodFilm());
+    form.setSicklingStatus(visit.getSicklingStatus());
+    form.setSicklingType(visit.getSicklingType());
+    form.setPreTestCounsel(visit.getPreTestCounsel());
+    form.setPostTestCounsel(visit.getPostTestCounsel());
+//    form.setARV(visit.getARV());
+    form.setITN(String.valueOf(visit.getITN()));
+    form.setMaleInvolvement(visit.getMaleInvolvement());
+    form.setComplaints(visit.getComplaints());
+    form.setRemarks(visit.getRemarks());
+    form.setSubVisits(visit.getSubVisits());
   }
 }
