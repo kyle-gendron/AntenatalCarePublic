@@ -83,7 +83,7 @@ public class AntenatalView extends JFrame {
 		pane.add(split);
 
 
-		setTitle("MoTech");
+		setTitle("Antenatal Care");
 		setMinimumSize(new Dimension(750, 700));
 		setSize(900,750);
 		setLocationRelativeTo(null);
