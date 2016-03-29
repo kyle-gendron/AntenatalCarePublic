@@ -29,10 +29,10 @@ public class AntenatalView extends JFrame {
 	private static JPanel subPane;
 	private static JSplitPane split;
 	private SubController subController;
-  private JMenuItem findPreviousVisitsMenuItem;
-  private JMenuItem showSubVisitsMenuItem;
+	private JMenuItem findPreviousVisitsMenuItem;
+	private JMenuItem showSubVisitsMenuItem;
 
-  /**
+	/**
 	 * Adds the controller so that it can be accessed by the panel
 	 *
 	 * @param antenatalController : the antenatal controller
@@ -62,7 +62,7 @@ public class AntenatalView extends JFrame {
 		newPane.setLayout(border);
 		BorderLayout subBorder = new BorderLayout();
 		subPane.setLayout(subBorder);
-		newPane.setMinimumSize(new Dimension(600,600));
+		newPane.setMinimumSize(new Dimension(600,500));
 
 
 
@@ -78,18 +78,17 @@ public class AntenatalView extends JFrame {
 
 		makeScrollDisplay(panel);
 		JTabbedPane title = new JTabbedPane();
-		title.setMinimumSize(new Dimension(0,0));
 		title.addTab("Subsequent Visits", sPain);
 		subPane.add(title);
 
 		split = new JSplitPane(JSplitPane.VERTICAL_SPLIT,newPane,subPane);
-		split.setDividerLocation(getHeight()-200);
+		split.setDividerLocation(getHeight()-300);
 		pane.add(split);
 
 
 		setTitle("Antenatal Care");
 		setMinimumSize(new Dimension(750, 700));
-		setSize(1170,850);
+		setSize(1170,750);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
@@ -141,7 +140,7 @@ public class AntenatalView extends JFrame {
 	private Component createSplitData(consultingData holdData) {
 		JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT, holdData.getPanel(controller.getPerson()), tPain);
 		split.setResizeWeight(0.30);
-		split.setDividerLocation(160);
+		split.setDividerLocation(130);
 		return split;
 	}
 
@@ -165,10 +164,10 @@ public class AntenatalView extends JFrame {
 		JMenu file = new JMenu("Antenatal");
 		file.setMnemonic(KeyEvent.VK_F);
 
-    JMenuItem createNewVisitMenuItem = new JMenuItem("Create New Visit");
-    JMenuItem exitMenuItem = new JMenuItem("Exit");
-    findPreviousVisitsMenuItem = new JMenuItem("Find Previous Visits");
-    showSubVisitsMenuItem = new JMenuItem("Show Sub Visits");
+		JMenuItem createNewVisitMenuItem = new JMenuItem("Create New Visit");
+		JMenuItem exitMenuItem = new JMenuItem("Exit");
+		findPreviousVisitsMenuItem = new JMenuItem("Find Previous Visits");
+		showSubVisitsMenuItem = new JMenuItem("Show Sub Visits");
 
 		exitMenuItem.setMnemonic(KeyEvent.VK_E);
 		exitMenuItem.setToolTipText("Exit application");
@@ -220,22 +219,18 @@ public class AntenatalView extends JFrame {
 		//}
 	}
 	public void addSub(String title,JPanel panel){
-		if(split.getDividerLocation()==getHeight()-200){
-			split.setDividerLocation(newPane.getHeight()-300);
-			subPane.setMinimumSize(new Dimension(200,600));
-			subPane.setSize(new Dimension(220,600));
-		}
 		JPanel subView = panel;
 		JLabel name = new JLabel(title);
 		JPanel P = ((JPanel) sPain.getViewport().getView());
 		P.setLayout(new BoxLayout(P,BoxLayout.PAGE_AXIS));
+		//P.setPreferredSize(new Dimension(800,60));
 		P.add(name);
 		P.add(subView);
 		P.add( new Box.Filler(new Dimension(800,60),new Dimension(800,70),new Dimension(800,80)));
 		subPane.validate();
 	}
 
-  public void setHasPreviousVisits(boolean hasPreviousVisits) {
-    findPreviousVisitsMenuItem.setEnabled(hasPreviousVisits);
-  }
+	public void setHasPreviousVisits(boolean hasPreviousVisits) {
+		findPreviousVisitsMenuItem.setEnabled(hasPreviousVisits);
+	}
 }
