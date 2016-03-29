@@ -99,7 +99,6 @@ public class newVisitTab extends JPanel {
     form.setTrimester(visit.getTrimester());
     form.setGestation(visit.getGestation());
     form.setIPTDoses(visit.getIPTDoses());
-    form.setITPDoses(visit.getITPDoses());
     form.setTTDoses(visit.getTTDoses());
     form.setFundalHeight(visit.getFundalHeight());
     form.setHBAtReg(visit.getHBAtReg());

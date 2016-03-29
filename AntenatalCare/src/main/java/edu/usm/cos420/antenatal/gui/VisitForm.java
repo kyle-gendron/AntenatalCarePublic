@@ -55,9 +55,6 @@ public class VisitForm extends JPanel {
 	private final JCheckBox iptThree;
 	private final JCheckBox iptOne;
 	private final JCheckBox iptTwo;
-	private final JCheckBox itpOne;
-	private final JCheckBox itpTwo;
-	private final JCheckBox itpThree;
 	private final JComboBox itnInput;
 	private final JTextArea complaints;
 	private final JTextArea remarks;
@@ -235,16 +232,6 @@ public class VisitForm extends JPanel {
 		IPT.add(iptTwo);
 		IPT.add(iptThree);
 
-		//ITP doses
-		JPanel ITP = new JPanel();
-		itpOne = new JCheckBox("1");
-		itpTwo = new JCheckBox("2");
-		itpThree = new JCheckBox("3");
-		ITP.add(new JLabel("ITP Doses:"));
-		ITP.add(itpOne);
-		ITP.add(itpTwo);
-		ITP.add(itpThree);
-
 		//stuff of ITN
 		JPanel ITN = new JPanel();
 		itnInput = new JComboBox<>(new String[] {"", "Yes", "No"});
@@ -290,7 +277,6 @@ public class VisitForm extends JPanel {
 		panel.add(Sub);
 		panel.add(TT);
 		panel.add(IPT);
-		panel.add(ITP);
 		panel.add(ITN);
 		panel.add(textHold);
 
@@ -573,18 +559,6 @@ public class VisitForm extends JPanel {
     }
     if (IPTDoses > 2) {
       iptThree.setSelected(true);
-    }
-  }
-
-  public void setITPDoses(int ITPDoses) {
-    if (ITPDoses > 0) {
-      itpOne.setSelected(true);
-    }
-    if (ITPDoses > 1) {
-      itpTwo.setSelected(true);
-    }
-    if (ITPDoses > 2) {
-      itpThree.setSelected(true);
     }
   }
 
