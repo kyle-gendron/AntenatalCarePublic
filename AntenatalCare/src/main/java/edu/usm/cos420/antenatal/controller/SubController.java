@@ -50,6 +50,9 @@ public class SubController implements ActionListener {
      return panel.getPanel();
   }
 
+  public void setId(String ID){
+     id = ID;
+  }
 
   @Override
   /**
@@ -70,7 +73,7 @@ public class SubController implements ActionListener {
         String subId = SubVisitService.getNextID();
         
         // Create a new Visit object to pass to the service class.
-        AntenatalSubVisit visit = new AntenatalSubVisit(subId, "An id", sysBP, diaBP,
+        AntenatalSubVisit visit = new AntenatalSubVisit(subId, id, sysBP, diaBP,
               weight, fH, date, bloodFilm, refer);
         
         

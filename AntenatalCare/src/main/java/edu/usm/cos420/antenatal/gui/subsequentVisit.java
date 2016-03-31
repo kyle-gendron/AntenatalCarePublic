@@ -24,6 +24,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 
 import edu.usm.cos420.antenatal.controller.SubController;
@@ -53,11 +54,6 @@ public class subsequentVisit{
 	public subsequentVisit(SubController subC){
 		subVisit = new JPanel();
 		this.subC = subC;
-		//GridLayout layout = new GridLayout();
-		//FlowLayout layout = new FlowLayout();
-		//subVisit.setLayout(layout);
-		//int systolicBP, int diastolicBP,
-		//double weight, double fundalHeight, LocalDate apptDate, boolean bloodFilm, boolean referred
 
 	}
 	public JPanel getPanel(){
@@ -73,18 +69,26 @@ public class subsequentVisit{
 		BorderLayout bl = new BorderLayout();
 		container.setLayout(bl);
 		JPanel data = new JPanel();
+		data.setPreferredSize(new Dimension(800, 50));
 
 		GridLayout layout = new GridLayout(2, 8);
-		layout.setHgap(20);
+		//layout.setHgap(20);
 		data.setLayout(layout);
 
-		sBP = new JLabel("Systolic Blood Pressure: ");
-		dBP = new JLabel("Diastolic Blood Pressure: ");
-		weight = new JLabel("Weight: ");
-		fundalHeight = new JLabel("Fundal Height: ");
-		Date = new JLabel("Appointment Date: ");
-		bloodFilm = new JLabel("Blood Film: ");
-		referred = new JLabel("Referred? ");
+	   sBP = new JLabel("Systolic BP");
+      sBP.setHorizontalAlignment(SwingConstants.CENTER);
+      dBP = new JLabel("Diastolic BP");
+      dBP.setHorizontalAlignment(SwingConstants.CENTER);
+      weight = new JLabel("Weight");
+      weight.setHorizontalAlignment(SwingConstants.CENTER);
+      fundalHeight = new JLabel("Fundal Height");
+      fundalHeight.setHorizontalAlignment(SwingConstants.CENTER);
+      Date = new JLabel("Appointment Date");
+      Date.setHorizontalAlignment(SwingConstants.CENTER);
+      bloodFilm = new JLabel("Blood Film");
+      bloodFilm.setHorizontalAlignment(SwingConstants.CENTER);
+      referred = new JLabel("Referred?");
+      referred.setHorizontalAlignment(SwingConstants.CENTER);
 		sysBP = new JTextField(6);
 		diaBP = new JTextField(6);
 		weigh = new JTextField(3);

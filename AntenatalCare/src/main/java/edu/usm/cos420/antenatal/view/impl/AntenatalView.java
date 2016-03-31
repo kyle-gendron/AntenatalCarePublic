@@ -167,19 +167,16 @@ public class AntenatalView extends JFrame {
 		JMenuItem createNewVisitMenuItem = new JMenuItem("Create New Visit");
 		JMenuItem exitMenuItem = new JMenuItem("Exit");
 		findPreviousVisitsMenuItem = new JMenuItem("Find Previous Visits");
-		showSubVisitsMenuItem = new JMenuItem("Show Sub Visits");
 
 		exitMenuItem.setMnemonic(KeyEvent.VK_E);
 		exitMenuItem.setToolTipText("Exit application");
 
 		createNewVisitMenuItem.addActionListener(controller);
 		findPreviousVisitsMenuItem.addActionListener(controller);
-		showSubVisitsMenuItem.addActionListener(controller);
 		exitMenuItem.addActionListener(controller);
 
 		file.add(createNewVisitMenuItem);
 		file.add(findPreviousVisitsMenuItem);
-		file.add(showSubVisitsMenuItem);
 		file.add(exitMenuItem);
 		menuBar.add(file);
 
@@ -219,7 +216,18 @@ public class AntenatalView extends JFrame {
 		//}
 	}
 	public void addSub(String title,JPanel panel){
-		JPanel subView = panel;
+	   if(split.getDividerLocation()==0){
+         split.setDividerLocation(300);
+         subPane.setMinimumSize(new Dimension(200,600));
+         subPane.setSize(new Dimension(220,600));
+      }
+      JPanel subView = panel;
+      JLabel name = new JLabel(title);
+      JPanel P = ((JPanel) sPain.getViewport().getView());
+      P.add(name);
+      P.add(subView);
+      P.setPreferredSize(new Dimension(800,60));
+/*		JPanel subView = panel;
 		JLabel name = new JLabel(title);
 		JPanel P = ((JPanel) sPain.getViewport().getView());
 		P.setLayout(new BoxLayout(P,BoxLayout.PAGE_AXIS));
@@ -227,7 +235,7 @@ public class AntenatalView extends JFrame {
 		P.add(name);
 		P.add(subView);
 		P.add( new Box.Filler(new Dimension(800,60),new Dimension(800,70),new Dimension(800,80)));
-		subPane.validate();
+		subPane.validate();*/
 	}
 
 	public void setHasPreviousVisits(boolean hasPreviousVisits) {
