@@ -47,9 +47,9 @@ public class subsequentVisit{
 	private JComboBox refer;
 	private SubController subC;
 	private JButton saveButton;
-	
+
 	private JPanel subVisit;
-	
+
 	public subsequentVisit(SubController subC){
 		subVisit = new JPanel();
 		this.subC = subC;
@@ -57,27 +57,27 @@ public class subsequentVisit{
 		//FlowLayout layout = new FlowLayout();
 		//subVisit.setLayout(layout);
 		//int systolicBP, int diastolicBP,
-        //double weight, double fundalHeight, LocalDate apptDate, boolean bloodFilm, boolean referred
-		
+		//double weight, double fundalHeight, LocalDate apptDate, boolean bloodFilm, boolean referred
+
 	}
 	public JPanel getPanel(){
 		subVisit = addForm();
 		subVisit.setMinimumSize(new Dimension(600,200));
 		subVisit.setBackground(Color.LIGHT_GRAY);
 		return subVisit;
-		
+
 	}
 	private JPanel addForm() {
-	   
-	   JPanel container = new JPanel();
-	   BorderLayout bl = new BorderLayout();
-	   container.setLayout(bl);
+
+		JPanel container = new JPanel();
+		BorderLayout bl = new BorderLayout();
+		container.setLayout(bl);
 		JPanel data = new JPanel();
-		
-	    GridLayout layout = new GridLayout(2, 8);
-	      layout.setHgap(20);
-	      data.setLayout(layout);
-		
+
+		GridLayout layout = new GridLayout(2, 8);
+		layout.setHgap(20);
+		data.setLayout(layout);
+
 		sBP = new JLabel("Systolic Blood Pressure: ");
 		dBP = new JLabel("Diastolic Blood Pressure: ");
 		weight = new JLabel("Weight: ");
@@ -95,92 +95,92 @@ public class subsequentVisit{
 		p.put("text.year", "Year");
 		dateModel = new UtilDateModel();
 		JDatePanelImpl datePanel = new JDatePanelImpl(dateModel, p);
-	    apptDate = new JDatePickerImpl(datePanel, new DateLabelFormatter());
-	    bloodF = new JComboBox<>(new String[] {"", "Not Present", "Present"});
-	    refer = new JComboBox<>(new String[] {"", "No", "Yes"});
-	    
-	    //JPanel data = new JPanel();
-	     data.add(Date);
-	    data.add(sBP);
-	    data.add(dBP);
-	    data.add(weight);
-	    data.add(fundalHeight);
-	    data.add(bloodFilm);
-	    data.add(referred);
+		apptDate = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+		bloodF = new JComboBox<>(new String[] {"", "Not Present", "Present"});
+		refer = new JComboBox<>(new String[] {"", "No", "Yes"});
 
-	    //JPanel data = new JPanel();
+		//JPanel data = new JPanel();
+		data.add(Date);
+		data.add(sBP);
+		data.add(dBP);
+		data.add(weight);
+		data.add(fundalHeight);
+		data.add(bloodFilm);
+		data.add(referred);
 
-       data.add(apptDate);
-	     data.add(sysBP);
-	       data.add(diaBP);
-	       data.add(weigh);
-	       data.add(fundalH);
-	       data.add(bloodF);
-	       data.add(refer);
-	   container.add(data, BorderLayout.CENTER);
-	     saveButton = new JButton("Save");
-	      saveButton.addActionListener(subC);
-	      JPanel buttonPane = new JPanel();
-	      buttonPane.setLayout(new FlowLayout());
-	      buttonPane.add(saveButton);
-	      container.add(buttonPane, BorderLayout.SOUTH);
-	    
+		//JPanel data = new JPanel();
+
+		data.add(apptDate);
+		data.add(sysBP);
+		data.add(diaBP);
+		data.add(weigh);
+		data.add(fundalH);
+		data.add(bloodF);
+		data.add(refer);
+		container.add(data, BorderLayout.CENTER);
+		saveButton = new JButton("Save");
+		saveButton.addActionListener(subC);
+		JPanel buttonPane = new JPanel();
+		buttonPane.setLayout(new FlowLayout());
+		buttonPane.add(saveButton);
+		container.add(buttonPane, BorderLayout.SOUTH);
+
 		return container;
 	}
-	
-	  public LocalDate getApptDate(){
-	      //TODO: calculate from gestation
 
-	      Date pickerDate = (Date) apptDate.getModel().getValue();
-	      LocalDate date = pickerDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-	      return date;
-	  }
-	
-	   /**
-	    *
-	    * @return Double value of the fundal height
-	    */
-	   public double getFundalHeight(){
-	    return parseDouble(fundalH.getText(), -1.0);
-	   }
+	public LocalDate getApptDate(){
+		//TODO: calculate from gestation
 
-	   /**
-	    *
-	    * @return Returns double of the patients weight, or -1 if invalid
-	    */
-	   public Double getPatientWeight() {
-	    return parseDouble(weigh.getText(), -1.0);
-	   }
+		Date pickerDate = (Date) apptDate.getModel().getValue();
+		LocalDate date = pickerDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		return date;
+	}
 
-	   /**
-	    *
-	    * @return Returns int val of the patients Systollic blood pressue
-	    */
-	   public int getSystolicBP(){
-	    return parseInteger(sysBP.getText(), -1);
-	   }
-	   /**
-	    *
-	    * @return returns int val of the patients Diastolic blood pressure
-	    */
-	   public int getDiastolicBP(){
-	    return parseInteger(diaBP.getText(), -1);
-	   }
-	   
-	   /**
-	    *
-	    * @return Returns true if malaria pos, else false
-	    */
-	   public String getBloodFilm(){
-	      return String.valueOf(bloodF.getSelectedItem());
-	   }
-	   /**
-	    *
-	    * @return Returns true if male involved, else false
-	    */
-	   public String getRefer(){
-	      return String.valueOf(refer.getSelectedItem());
-	   }
+	/**
+	 *
+	 * @return Double value of the fundal height
+	 */
+	public double getFundalHeight(){
+		return parseDouble(fundalH.getText(), -1.0);
+	}
+
+	/**
+	 *
+	 * @return Returns double of the patients weight, or -1 if invalid
+	 */
+	public Double getPatientWeight() {
+		return parseDouble(weigh.getText(), -1.0);
+	}
+
+	/**
+	 *
+	 * @return Returns int val of the patients Systollic blood pressue
+	 */
+	public int getSystolicBP(){
+		return parseInteger(sysBP.getText(), -1);
+	}
+	/**
+	 *
+	 * @return returns int val of the patients Diastolic blood pressure
+	 */
+	public int getDiastolicBP(){
+		return parseInteger(diaBP.getText(), -1);
+	}
+
+	/**
+	 *
+	 * @return Returns true if malaria pos, else false
+	 */
+	public String getBloodFilm(){
+		return String.valueOf(bloodF.getSelectedItem());
+	}
+	/**
+	 *
+	 * @return Returns true if male involved, else false
+	 */
+	public String getRefer(){
+		return String.valueOf(refer.getSelectedItem());
+	}
 
 
 }

@@ -15,10 +15,10 @@ import edu.usm.cos420.antenatal.domain.DummyPerson;
 public class consultingData extends JPanel{
 	private DummyPerson p;
 	private JPanel hold;
-	private JTabbedPane jTab;
+	private JPanel jTab;
 	public consultingData(){
 		hold = new JPanel();
-		jTab = new JTabbedPane();
+		jTab = new JPanel();
 		
 	}
 	/**
@@ -28,12 +28,10 @@ public class consultingData extends JPanel{
 	 * @param p the person that is currently selected
 	 * @return the new Jtab with the consulting data
 	 */
-	public JTabbedPane getPanel(DummyPerson p){
+	public JPanel getPanel(DummyPerson p){
 		this.p=p;
-		jTab.setTabPlacement(JTabbedPane.TOP);
-		jTab.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
 		setLayout(new BorderLayout());
-		jTab.addTab("Consulting Registry", getConsultingInfo());
+		jTab= getConsultingInfo();
 		return jTab;
 		
 	}
