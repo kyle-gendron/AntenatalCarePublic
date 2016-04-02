@@ -185,6 +185,38 @@ public class subsequentVisit{
 	public String getRefer(){
 		return String.valueOf(refer.getSelectedItem());
 	}
+	
+   public void setApptDate(LocalDate date) {
+      if (date != null) {
+        this.dateModel.setDate(date.getYear(), date.getMonthValue()-1, date.getDayOfMonth());
+        this.dateModel.setSelected(true);
+      }
+    }
+   
+   public void setFundalHeight(double fundalHeight) {
+      this.fundalH.setText(String.valueOf(fundalHeight));
+    }
+   
+   public void setWeight(double weight) {
+      this.weigh.setText(String.valueOf(weight));
+    }
+   
+   public void setSystolicBP(int systolicBP) {
+      this.sysBP.setText(String.valueOf(systolicBP));
+    }
+
+    public void setDiastolicBP(int diastolicBP) {
+      this.diaBP.setText(String.valueOf(diastolicBP));
+    }
+    
+    public void setBloodFilm(String film) {
+       this.bloodF.setSelectedItem(film);
+     }
+	
+
+	  public void setReferral(String reference) {
+	    this.refer.setSelectedItem(reference);
+	  }
 
 
 }
