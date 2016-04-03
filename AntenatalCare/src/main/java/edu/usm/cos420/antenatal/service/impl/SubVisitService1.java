@@ -36,9 +36,14 @@ public class SubVisitService1 implements SubVisitService {
   public void addSubVisit(AntenatalSubVisit visit) {
     dao.add(visit);
   }
+  
+  @Override
+  public void updateSubVisit(AntenatalSubVisit visit){
+     dao.update(visit);
+  }
 
   @Override
-  public AntenatalSubVisit getAntenatalSubVisitById(String id) {
+  public AntenatalSubVisit getSubVisitById(String id) {
     return dao.find(id);
   }
 

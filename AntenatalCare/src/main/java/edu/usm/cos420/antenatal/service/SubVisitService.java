@@ -9,7 +9,9 @@ public interface SubVisitService {
    
    void addSubVisit(AntenatalSubVisit visit);
    
-   AntenatalSubVisit getAntenatalSubVisitById(String id);
+   void updateSubVisit(AntenatalSubVisit visit);
+   
+   AntenatalSubVisit getSubVisitById(String id);
    
    List<AntenatalSubVisit> getAllSubVisits();
    
