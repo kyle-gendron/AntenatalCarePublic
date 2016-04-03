@@ -522,10 +522,6 @@ public class AntenatalVisit implements Serializable {
 		return serialVersionUID;
 	}
 
-  public int getITPDoses() {
-    return this.iTPDoses;
-  }
-
   public String getMaleInvolvement() {
     return maleInvolvement;
   }
