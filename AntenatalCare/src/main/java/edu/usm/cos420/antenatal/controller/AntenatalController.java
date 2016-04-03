@@ -53,7 +53,7 @@ public class AntenatalController implements ActionListener {
 	 * displays the main GUI
 	 */
 	public void displayGUI() {
-    this.view.setHasPreviousVisits(getVisitList().size() > 0);
+		this.view.setHasPreviousVisits(getVisitList().size() > 0);
 		this.view.setVisible(true);
 	}
 
@@ -87,9 +87,9 @@ public class AntenatalController implements ActionListener {
 					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 					String date = sdf.format(new Date());
 					this.view.addTab(date, newVisit.getPanel());
-	             SubController subController = new SubController(this);
-	               subController.setId(visitId);
-	               this.view.addSub("", subController.getPanel());
+					SubController subController = new SubController(this);
+					subController.setId(visitId);
+					this.view.addSub("", subController.getPanel());
 				}
 			}
 			break;
@@ -109,8 +109,8 @@ public class AntenatalController implements ActionListener {
 		System.out.println("Inserting New Visit (" + visit.getID() + ")");
 		service.addAntenatalVisit(visit);
 
-    // Update the find previous menu option
-    this.view.setHasPreviousVisits(getVisitList().size() > 0);
+		// Update the find previous menu option
+		this.view.setHasPreviousVisits(getVisitList().size() > 0);
 	}
 
 	public void updateVisit(AntenatalVisit visit) {
@@ -122,7 +122,7 @@ public class AntenatalController implements ActionListener {
 		return AntenatalService.getNextID();
 	}
 
-  public List<String> getVisitList() {
-    return service.getAllVisits().stream().map(AntenatalVisit::getID).collect(Collectors.toList());
-  }
+	public List<String> getVisitList() {
+		return service.getAllVisits().stream().map(AntenatalVisit::getID).collect(Collectors.toList());
+	}
 }
