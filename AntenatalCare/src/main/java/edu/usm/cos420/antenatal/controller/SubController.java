@@ -30,14 +30,13 @@ public class SubController implements ActionListener {
 
   private SubVisitService1 service;
   private final AntenatalController controller;
-  private subsequentVisit panel;
+  private final subsequentVisit panel;
   private String id = null;
 
   /**
    * Constructor initialized the service and GUI
    */
   public SubController(AntenatalController controller) {
-    this.service = new SubVisitService1();
     this.controller = controller;
     this.panel = new subsequentVisit(this);
 
@@ -84,6 +83,7 @@ public class SubController implements ActionListener {
       }
     }
   }
+  
 
   public static int parseInteger( String string, int defaultValue ) {
     try {

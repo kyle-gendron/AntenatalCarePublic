@@ -186,6 +186,9 @@ public class subsequentVisit{
 		return String.valueOf(refer.getSelectedItem());
 	}
 	
+   /**
+    * @param date is entered into datepicker
+    */
    public void setApptDate(LocalDate date) {
       if (date != null) {
         this.dateModel.setDate(date.getYear(), date.getMonthValue()-1, date.getDayOfMonth());
@@ -193,14 +196,23 @@ public class subsequentVisit{
       }
     }
    
+   /**
+    * @param fundalHeight is set to the text of Label fundalH
+    */
    public void setFundalHeight(double fundalHeight) {
       this.fundalH.setText(String.valueOf(fundalHeight));
     }
    
+   /**
+    * @param weight is set to the text of Label weigh
+    */
    public void setWeight(double weight) {
       this.weigh.setText(String.valueOf(weight));
     }
    
+   /**
+    * @param systolicBP
+    */
    public void setSystolicBP(int systolicBP) {
       this.sysBP.setText(String.valueOf(systolicBP));
     }
