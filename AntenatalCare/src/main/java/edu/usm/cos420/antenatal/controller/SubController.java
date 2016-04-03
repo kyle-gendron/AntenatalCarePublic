@@ -28,7 +28,7 @@ import com.sun.prism.paint.Color;
  */
 public class SubController implements ActionListener {
 
-  private SubVisitService1 service;
+  //private SubVisitService1 service;
   private final AntenatalController controller;
   private final subsequentVisit panel;
   private String id = null;
@@ -39,6 +39,9 @@ public class SubController implements ActionListener {
   public SubController(AntenatalController controller) {
     this.controller = controller;
     this.panel = new subsequentVisit(this);
+    //this.service = new SubVisitService1();
+    
+
 
   }
   
@@ -71,15 +74,17 @@ public class SubController implements ActionListener {
         // Create a new Visit object to pass to the service class.
         AntenatalSubVisit visit = new AntenatalSubVisit(subId, id, sysBP, diaBP,
               weight, fH, date, bloodFilm, refer);
-        
-        
-        
-        //doesn't do anything right now
-        service.addSubVisit(visit);
+ 
+        AntenatalVisit initVisit = controller.getVisit(id);
+        initVisit.setSubID(subId);
+        controller.submitNewSubVisit(visit);
         System.out.println("Inserted New SubVisit (" + subId + ")");
+        
       }
     }
   }
+  
+
   
 
   public static int parseInteger( String string, int defaultValue ) {

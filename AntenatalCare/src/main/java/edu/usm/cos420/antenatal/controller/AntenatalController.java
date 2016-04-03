@@ -131,6 +131,10 @@ public class AntenatalController implements ActionListener {
 		return AntenatalService.getNextID();
 	}
 	
+	public AntenatalVisit getVisit(String id){
+	   return service.getAntenatalVisitById(id);
+	}
+	
 	  public void submitNewSubVisit(AntenatalSubVisit subVisit) {
 	      System.out.println("Inserting New SubVisit (" + subVisit.getID() + ")");
 	      subService.addSubVisit(subVisit);

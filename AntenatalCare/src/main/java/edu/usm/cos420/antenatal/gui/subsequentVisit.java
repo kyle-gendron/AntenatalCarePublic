@@ -28,6 +28,7 @@ import javax.swing.SwingConstants;
 
 
 import edu.usm.cos420.antenatal.controller.SubController;
+import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
 
 public class subsequentVisit{
 
@@ -63,6 +64,19 @@ public class subsequentVisit{
 		return subVisit;
 
 	}
+	
+	public JPanel setForm(AntenatalSubVisit sVisit){
+	   this.setApptDate(sVisit.getApptDate());
+	   this.setFundalHeight(sVisit.getFundalHeight());
+	   this.setWeight(sVisit.getWeight());
+	   this.setSystolicBP(sVisit.getSystolicBP());
+	   this.setDiastolicBP(sVisit.getDiastolicBP());
+	   this.setBloodFilm(sVisit.bloodFilmResults());
+	   this.setReferral(sVisit.getReferral());
+	   return subVisit;
+	   
+	}
+	
 	private JPanel addForm() {
 
 		JPanel container = new JPanel();
