@@ -39,6 +39,11 @@ public class SubController implements ActionListener {
   public SubController(AntenatalController controller) {
     this.controller = controller;
     this.panel = new subsequentVisit(this);
+    this.service = new SubVisitService1();
+    
+    // Debug Test
+    System.out.println("Sub Visit Table:");
+    service.getAllSubVisits().forEach(System.out::println);
 
   }
   
