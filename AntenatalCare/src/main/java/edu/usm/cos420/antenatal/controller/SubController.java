@@ -40,9 +40,6 @@ public class SubController implements ActionListener {
     this.controller = controller;
     this.panel = new subsequentVisit(this);
 
-    // Debug Test
-    System.out.println("Sub Visit Table:");
-    service.getAllSubVisits().forEach(System.out::println);
   }
   
   public JPanel getPanel(){
