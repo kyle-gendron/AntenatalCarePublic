@@ -49,6 +49,10 @@ public class AntenatalController implements ActionListener {
 		// Debug Test
 		System.out.println("Current Visit Table:");
 		service.getAllVisits().forEach(System.out::println);
+		
+	    // Debug Test
+	    System.out.println("Sub Visit Table:");
+	    subService.getAllSubVisits().forEach(System.out::println);
 
 		// Set up the find previous dialog.
 		this.findPrevious = new PreviousVisits(this.view);
@@ -125,6 +129,10 @@ public class AntenatalController implements ActionListener {
 
 	public String getNextId() {
 		return AntenatalService.getNextID();
+	}
+	
+	public AntenatalVisit getVisit(String id){
+	   return service.getAntenatalVisitById(id);
 	}
 	
 	  public void submitNewSubVisit(AntenatalSubVisit subVisit) {
