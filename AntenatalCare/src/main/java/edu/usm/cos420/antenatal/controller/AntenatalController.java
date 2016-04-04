@@ -96,9 +96,23 @@ public class AntenatalController implements ActionListener {
 					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 					String date = sdf.format(new Date());
 					this.view.addTab(date, newVisit.getPanel());
-					SubController subController = new SubController(this);
-					subController.setId(visitId);
-					this.view.addSub("", subController.getPanel());
+				
+	             SubController subController = new SubController(this);
+	               subController.setId(visitId);
+	                 
+	                 if(prevVisit.getSubIDs() == null){
+	                    this.view.addSub("", subController.getPanel());
+	                    break;
+	                 } else {
+	               List<String> subIDs = prevVisit.getSubIDs();
+	               for(String id: subIDs){
+	                  AntenatalSubVisit subVisit = subService.getSubVisitById(id);
+	                  subController.setPanel(subVisit);
+	               }
+	               
+	                 }
+                    this.view.addSub("", subController.getPanel());
+
 				}
 			}
 			break;
@@ -131,6 +145,10 @@ public class AntenatalController implements ActionListener {
 		return AntenatalService.getNextID();
 	}
 	
+	public AntenatalVisit getVisit(String id){
+	   return service.getAntenatalVisitById(id);
+	}
+	
 	  public void submitNewSubVisit(AntenatalSubVisit subVisit) {
 	      System.out.println("Inserting New SubVisit (" + subVisit.getID() + ")");
 	      subService.addSubVisit(subVisit);
@@ -139,6 +157,10 @@ public class AntenatalController implements ActionListener {
 	   public void updateSubVisit(AntenatalSubVisit subVisit) {
 	      System.out.println("Updating SubVisit (" + subVisit.getID() + ")");
 	      subService.updateSubVisit(subVisit);
+	   }
+	   
+	   public AntenatalSubVisit getSubVisit(String id){
+	      return subService.getSubVisitById(id);
 	   }
 
 	   public String getNextSubId() {
