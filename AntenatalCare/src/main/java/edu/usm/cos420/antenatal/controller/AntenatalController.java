@@ -87,14 +87,12 @@ public class AntenatalController implements ActionListener {
 					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 					String date = sdf.format(new Date());
 					this.view.addTab(date, newVisit.getPanel());
+	             SubController subController = new SubController(this);
+	               subController.setId(visitId);
+	               this.view.addSub("", subController.getPanel());
 				}
 			}
 			break;
-		}
-		case "Show Sub Visits":{
-		   SubController subController = new SubController(this);
-	       this.view.addSub("", subController.getPanel());
-	       break;
 		}
 		case "Quit":{
 			System.exit(0);

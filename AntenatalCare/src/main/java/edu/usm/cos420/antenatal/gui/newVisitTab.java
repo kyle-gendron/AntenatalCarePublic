@@ -18,19 +18,17 @@ import edu.usm.cos420.antenatal.view.impl.AntenatalView;
  */
 public class newVisitTab extends JPanel {
 
-	JTabbedPane tabbedPane;
+	JPanel Pane;
 	private VisitForm form;
 	private JButton submitButton;
 
 	/**
 	 * Creates a new tab for the visit and adds in the antenatal fields
 	 *
-   * @param controller : the controller for antenatal
-   */
+	 * @param controller : the controller for antenatal
+	 */
 	public newVisitTab(NewVisitController controller){
-		tabbedPane = new JTabbedPane();
-		tabbedPane.setTabPlacement(JTabbedPane.TOP);
-		tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
+		Pane = new JPanel();
 
 		FlowLayout layout = new FlowLayout();
 		form = new VisitForm(layout);
@@ -38,7 +36,7 @@ public class newVisitTab extends JPanel {
 		submitButton = new JButton("Submit");
 		submitButton.addActionListener(controller);
 
-		tabbedPane.addTab("Antenatal Care Input", form.getPanel());
+		Pane = form.getPanel();
 
 	}
 
@@ -51,7 +49,7 @@ public class newVisitTab extends JPanel {
 	public JPanel getPanel(){
 		JPanel data = new JPanel();
 		data.setLayout(new BorderLayout());
-		data.add(tabbedPane, BorderLayout.CENTER);
+		data.add(Pane, BorderLayout.CENTER);
 		data.add(bottomButtons(),BorderLayout.SOUTH);
 		data.setMinimumSize(new Dimension(600,600));
 
@@ -87,36 +85,35 @@ public class newVisitTab extends JPanel {
 		return form;
 	}
 
-  public void setFormData(AntenatalVisit visit) {
-    form.setParity(visit.getParity());
-    form.setHIVResults(visit.getHIVResults());
-    form.setHeight(visit.getHeight());
-    form.setWeight(visit.getWeight());
-    form.setVDLabResults(visit.getVDLabResults());
-    form.setEDD(visit.getEDD());
-    form.setSystolicBP(visit.getSystolicBP());
-    form.setDiastolicBP(visit.getDiastolicBP());
-    form.setTrimester(visit.getTrimester());
-    form.setGestation(visit.getGestation());
-    form.setIPTDoses(visit.getIPTDoses());
-    form.setITPDoses(visit.getITPDoses());
-    form.setTTDoses(visit.getTTDoses());
-    form.setFundalHeight(visit.getFundalHeight());
-    form.setHBAtReg(visit.getHBAtReg());
-    form.setHBAt36Weeks(visit.gethBAt36Weeks());
-    form.setUrineTestSugar(visit.getUrineTestSugar());
-    form.setUrineTestProtein(visit.getUrineTestProtein());
-    form.setBloodGroup(visit.getBloodGroup());
-    form.setBloodFilm(visit.getBloodFilm());
-    form.setSicklingStatus(visit.getSicklingStatus());
-    form.setSicklingType(visit.getSicklingType());
-    form.setPreTestCounsel(visit.getPreTestCounsel());
-    form.setPostTestCounsel(visit.getPostTestCounsel());
-//    form.setARV(visit.getARV());
-    form.setITN(String.valueOf(visit.getITN()));
-    form.setMaleInvolvement(visit.getMaleInvolvement());
-    form.setComplaints(visit.getComplaints());
-    form.setRemarks(visit.getRemarks());
-    form.setSubVisits(visit.getSubVisits());
-  }
+	public void setFormData(AntenatalVisit visit) {
+		form.setParity(visit.getParity());
+		form.setHIVResults(visit.getHIVResults());
+		form.setHeight(visit.getHeight());
+		form.setWeight(visit.getWeight());
+		form.setVDLabResults(visit.getVDLabResults());
+		form.setEDD(visit.getEDD());
+		form.setSystolicBP(visit.getSystolicBP());
+		form.setDiastolicBP(visit.getDiastolicBP());
+		form.setTrimester(visit.getTrimester());
+		form.setGestation(visit.getGestation());
+		form.setIPTDoses(visit.getIPTDoses());
+		form.setTTDoses(visit.getTTDoses());
+		form.setFundalHeight(visit.getFundalHeight());
+		form.setHBAtReg(visit.getHBAtReg());
+		form.setHBAt36Weeks(visit.gethBAt36Weeks());
+		form.setUrineTestSugar(visit.getUrineTestSugar());
+		form.setUrineTestProtein(visit.getUrineTestProtein());
+		form.setBloodGroup(visit.getBloodGroup());
+		form.setBloodFilm(visit.getBloodFilm());
+		form.setSicklingStatus(visit.getSicklingStatus());
+		form.setSicklingType(visit.getSicklingType());
+		form.setPreTestCounsel(visit.getPreTestCounsel());
+		form.setPostTestCounsel(visit.getPostTestCounsel());
+		//    form.setARV(visit.getARV());
+		form.setITN(String.valueOf(visit.getITN()));
+		form.setMaleInvolvement(visit.getMaleInvolvement());
+		form.setComplaints(visit.getComplaints());
+		form.setRemarks(visit.getRemarks());
+		form.setSubVisits(visit.getSubVisits());
+	}
 }
