@@ -10,6 +10,7 @@ import edu.usm.cos420.antenatal.gui.VisitForm;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -46,7 +47,7 @@ public class AntenatalVisit implements Serializable {
   String maleInvolvement;
   String remarks;
   String complaints;
-  List<String> subIDs;
+  List<String> subIDs = new ArrayList<String>();
 
 
   public AntenatalVisit(String id){

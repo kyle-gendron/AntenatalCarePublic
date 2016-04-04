@@ -98,7 +98,20 @@ public class AntenatalController implements ActionListener {
 					this.view.addTab(date, newVisit.getPanel());
 	             SubController subController = new SubController(this);
 	               subController.setId(visitId);
-	               this.view.addSub("", subController.getPanel());
+	                 
+	                 if(prevVisit.getSubIDs() == null){
+	                    this.view.addSub("", subController.getPanel());
+	                    break;
+	                 } else {
+	               List<String> subIDs = prevVisit.getSubIDs();
+	               for(String id: subIDs){
+	                  AntenatalSubVisit subVisit = subService.getSubVisitById(id);
+	                  subController.setPanel(subVisit);
+	               }
+	               
+	                 }
+                    this.view.addSub("", subController.getPanel());
+
 				}
 			}
 			break;
@@ -143,6 +156,10 @@ public class AntenatalController implements ActionListener {
 	   public void updateSubVisit(AntenatalSubVisit subVisit) {
 	      System.out.println("Updating SubVisit (" + subVisit.getID() + ")");
 	      subService.updateSubVisit(subVisit);
+	   }
+	   
+	   public AntenatalSubVisit getSubVisit(String id){
+	      return subService.getSubVisitById(id);
 	   }
 
 	   public String getNextSubId() {
