@@ -65,7 +65,7 @@ public class VisitForm extends JPanel {
 	private final JComboBox ARVInput;
 	private UtilDateModel dateModel;
 	private final JLabel errorFields;
-	private final JPanel errorField;
+	private final JOptionPane errorField;
 
 	/**
 	 * Fills in the jFrame with all of the field that need to be filled in
@@ -78,9 +78,8 @@ public class VisitForm extends JPanel {
 		panel.setLayout(layout);
 		layout.setHgap(10);
 
-		errorField = new JPanel();
+		errorField = new JOptionPane();
 		errorFields = new JLabel("");
-		errorField.add(errorFields);
 
 		JLabel parity = new JLabel("Parity:"); //integer
 		SpinnerModel paritySpin = new SpinnerNumberModel(0,0,20,1);
@@ -284,7 +283,7 @@ public class VisitForm extends JPanel {
 		hivTestInput.addActionListener(new formListener());
 
 		//add data to frame
-		panel.add(errorFields);
+		
 		panel.add(parity);
 		panel.add(parityInput);
 		panel.add(bloInput);
@@ -311,6 +310,7 @@ public class VisitForm extends JPanel {
 		panel.add(IPT);
 		panel.add(ITN);
 		panel.add(textHold);
+		//panel.add(errorField);
 
 		//disables fields where others are required
 		sicklingTypeInput.setEnabled(false);
@@ -350,10 +350,13 @@ public class VisitForm extends JPanel {
 		if(errorMessage != null){
 			errorFields.setBorder(BorderFactory.createLineBorder(Color.red));
 			errorFields.setText(errorMessage);
-			Dimension size = errorFields.getPreferredSize();
-			size.setSize(size.getWidth() + 10, size.getHeight() + 10);
-			errorField.setSize(size);
-			errorFields.setSize(size);
+			//Dimension size = errorFields.getPreferredSize();
+			//size.setSize(size.getWidth() + 10, size.getHeight() + 10);
+			//errorFields.setSize(size);
+			JOptionPane.showMessageDialog(errorField,
+				    errorFields,
+				    "Input Warning!",
+				    JOptionPane.WARNING_MESSAGE);
 		}else{
 			errorField.setToolTipText("");
 		}
