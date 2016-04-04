@@ -7,7 +7,7 @@ import java.awt.FlowLayout;
 import javax.swing.*;
 
 import edu.usm.cos420.antenatal.controller.NewVisitController;
-import edu.usm.cos420.antenatal.domain.AntenatalVisit;
+import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 
 /**
@@ -86,7 +86,7 @@ public class newVisitTab extends JPanel {
 		return form;
 	}
 
-	public void setFormData(AntenatalVisit visit) {
+	public void setFormData(PregnancyRecord visit) {
 		form.setParity(visit.getParity());
 		form.setHIVResults(visit.getHIVResults());
 		form.setHeight(visit.getHeight());

@@ -6,7 +6,7 @@ package edu.usm.cos420.antenatal.controller;
 
 
 import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
-import edu.usm.cos420.antenatal.domain.AntenatalVisit;
+import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 import edu.usm.cos420.antenatal.gui.newVisitTab;
 import edu.usm.cos420.antenatal.gui.subsequentVisit;
 import edu.usm.cos420.antenatal.service.SubVisitService;
@@ -79,7 +79,7 @@ public class SubController implements ActionListener {
         AntenatalSubVisit visit = new AntenatalSubVisit(subId, id, sysBP, diaBP,
               weight, fH, date, bloodFilm, refer);
  
-        AntenatalVisit initVisit = controller.getVisit(id);
+        PregnancyRecord initVisit = controller.getVisit(id);
         initVisit.setSubID(subId);
         controller.submitNewSubVisit(visit);
         System.out.println("Inserted New SubVisit (" + subId + ")");

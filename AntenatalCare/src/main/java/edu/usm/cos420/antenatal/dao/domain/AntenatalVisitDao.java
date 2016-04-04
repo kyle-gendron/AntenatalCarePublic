@@ -4,16 +4,16 @@ import java.util.List;
 
 import edu.usm.cos420.antenatal.dao.GenericDao;
 import edu.usm.cos420.antenatal.dao.ObjectStreamDao;
-import edu.usm.cos420.antenatal.domain.AntenatalVisit;
+import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 
 /**
  *
- *  A Data Access Object specifically for AntenatalVisit entities
+ *  A Data Access Object specifically for PregnancyRecord entities
  *
  */
 public class AntenatalVisitDao
 {
-	private GenericDao<String,AntenatalVisit> genDao;
+	private GenericDao<String,PregnancyRecord> genDao;
 
 	/**
 	 * Default constructor creates an ObjectStream file called antenatalvisits.ser
@@ -33,42 +33,42 @@ public class AntenatalVisitDao
 
 	/**
 	 * Support for other DAOs is provided
-	 * @param dao a Data Access Object class that implements GenericDao<Long,AntenatalVisit>
+	 * @param dao a Data Access Object class that implements GenericDao<Long,PregnancyRecord>
 	 */
-	public AntenatalVisitDao(GenericDao<String,AntenatalVisit> dao)
+	public AntenatalVisitDao(GenericDao<String,PregnancyRecord> dao)
 	{
 		genDao = dao;
 	}
 
 	/**
 	 * Returns the DAO used in the class
-	 * @return a DAO that implements GenericDao<Long,AntenatalVisit>
+	 * @return a DAO that implements GenericDao<Long,PregnancyRecord>
 	 */
-	public GenericDao<String,AntenatalVisit> getGenDao() {
+	public GenericDao<String,PregnancyRecord> getGenDao() {
 		return genDao;
 	}
 
 	/**
-	 * Add a AntenatalVisit to the DAO repository
-	 * @param entity any AntenatalVisit object
+	 * Add a PregnancyRecord to the DAO repository
+	 * @param entity any PregnancyRecord object
 	 */
-	public void add(AntenatalVisit entity)
+	public void add(PregnancyRecord entity)
 	{
 		genDao.add(entity.getID(), entity);
 	}
 
 	/**
-	 * Update a AntenatalVisit in the DAO repository
-	 * @param entity any AntenatalVisit object
+	 * Update a PregnancyRecord in the DAO repository
+	 * @param entity any PregnancyRecord object
 	 */
-	public void update(AntenatalVisit entity)
+	public void update(PregnancyRecord entity)
 	{
 		genDao.update(entity.getID(), entity);
 	}
 
 	/**
-	 * Remove a AntenatalVisit in the DAO repository
-	 * @param id of the AntenatalVisit object to remove
+	 * Remove a PregnancyRecord in the DAO repository
+	 * @param id of the PregnancyRecord object to remove
 	 */
 
 	public void remove(String id)
@@ -77,11 +77,11 @@ public class AntenatalVisitDao
 	}
 
 	/**
-	 * Find a AntenatalVisit in the DAO repository
-	 * @param key of the AntenatalVisit object to locate
-	 * @return the AntenatalVisit with id field equal to key
+	 * Find a PregnancyRecord in the DAO repository
+	 * @param key of the PregnancyRecord object to locate
+	 * @return the PregnancyRecord with id field equal to key
 	 */
-	public AntenatalVisit find(String key)
+	public PregnancyRecord find(String key)
 	{
 		return genDao.find(key);
 	}
@@ -91,7 +91,7 @@ public class AntenatalVisitDao
 	 * @return List of AntenatalVisits
 	 */
 
-	public List<AntenatalVisit> list() {
+	public List<PregnancyRecord> list() {
 		return genDao.list();
 	}
 

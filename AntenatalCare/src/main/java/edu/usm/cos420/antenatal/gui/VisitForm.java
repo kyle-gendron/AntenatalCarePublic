@@ -58,9 +58,7 @@ public class VisitForm extends JPanel {
 	private final JComboBox trimesterInput;
 	private final JComboBox subVisitsInput;
 	private final JComboBox ttDosesInput;
-	private final JCheckBox iptThree;
-	private final JCheckBox iptOne;
-	private final JCheckBox iptTwo;
+	private final JComboBox iptInput;
 	private final JComboBox itnInput;
 	private final JTextArea complaints;
 	private final JTextArea remarks;
@@ -203,6 +201,12 @@ public class VisitForm extends JPanel {
 		PostTest.add(new JLabel("Post-Test Counseling:"));
 		PostTest.add(postTestCounselInput);
 
+		//ARV Drug Prescription
+		JPanel ARV =new JPanel();
+		ARVInput =  new JComboBox<>(new String[] {"", "Yes", "No"});
+		ARV.add(new JLabel("ARV Drug Use:"));
+		ARV.add(ARVInput);
+		
 		//malaria testing p/np
 		JPanel BloodFilm = new JPanel();
 		bloodFilmInput = new JComboBox<>(new String[] {"", "Not Present", "Present"});
@@ -235,14 +239,10 @@ public class VisitForm extends JPanel {
 
 		//ipt/doses
 		JPanel IPT = new JPanel();
-		iptOne = new JCheckBox("1");
-		iptTwo = new JCheckBox("2");
-		iptThree = new JCheckBox("3");
+		iptInput = new JComboBox<>(new String[] {"","1","2","3"});
 		IPT.add(new JLabel("IPT Doses:"));
-		IPT.add(iptOne);
-		IPT.add(iptTwo);
-		IPT.add(iptThree);
-
+		IPT.add(iptInput);
+		
 		//stuff of ITN
 		JPanel ITN = new JPanel();
 		itnInput = new JComboBox<>(new String[] {"", "Yes", "No"});
@@ -267,7 +267,7 @@ public class VisitForm extends JPanel {
 		//add change listeners
 		sicklingStatusInput.addActionListener(new formListener());
 		bloodFilmInput.addActionListener(new formListener());getInsets();
-		//TODO: Add ARV when available
+		hivTestInput.addActionListener(new formListener());
 
 		//add data to frame
 		panel.add(errorFields);
@@ -288,6 +288,7 @@ public class VisitForm extends JPanel {
 		panel.add(PMTCT);
 		panel.add(TestResult);
 		panel.add(PostTest);
+		panel.add(ARV);
 		panel.add(BloodFilm);
 		panel.add(MaleInvolved);
 		panel.add(Trimester);
@@ -298,13 +299,8 @@ public class VisitForm extends JPanel {
 		panel.add(textHold);
 
 		//disables fields where others are required
-		iptOne.setEnabled(false);
-		iptTwo.setEnabled(false);
-		iptThree.setEnabled(false);
 		sicklingTypeInput.setEnabled(false);
-		//TODO: ARV input to be added
-
-		ARVInput = null;
+		ARVInput.setEnabled(false);
 	}
 
 	/**
@@ -322,24 +318,16 @@ public class VisitForm extends JPanel {
 			//TODO: Verify all Fields
 			//TODO: update error label(s) / add red around erroneous things
 
-			//enable disabled fields if necessary
-			if(getBloodFilm().equals("Present") == true){
-				iptOne.setEnabled(true);
-				iptTwo.setEnabled(true);
-				iptThree.setEnabled(true);
-			}else{
-				iptOne.setEnabled(false);
-				iptTwo.setEnabled(false);
-				iptThree.setEnabled(false);
-			}
-
 			if(getSicklingStatus().equals("Positive") == true){
 				sicklingTypeInput.setEnabled(true);
 			}else{
 				sicklingTypeInput.setEnabled(false);
 			}	
 
-			//TODO add ARV fields
+			if(getHIVTestResults().equals("Positive"))
+				ARVInput.setEnabled(true);
+			else
+				ARVInput.setEnabled(false);
 
 		}
 	}
@@ -425,23 +413,8 @@ public class VisitForm extends JPanel {
 		return parseInteger(gestationInput.getText());
 	}
 
-	public int getIPTDoses(){
-		//TODO: make this better?
-		int doses = 0;
-		int tmp = -1;
-
-		if(iptOne.isSelected()){
-			doses = 1;
-		}
-		if(iptTwo.isSelected()){
-			doses = 2;
-		}
-
-		if(iptThree.isSelected()){
-			doses = 3;
-		}
-
-		return doses;
+	public String getIPTDoses(){
+		return String.valueOf(iptInput.getSelectedItem());
 	}
 	/**
 	 *
@@ -509,7 +482,6 @@ public class VisitForm extends JPanel {
 	public String getBloodGroup(){
 		Object blood = bloodTypeGroup.getSelectedItem();
 
-		//TODO: may or not be correct val
 		String bt = blood.toString();
 
 		return bt;
@@ -522,7 +494,6 @@ public class VisitForm extends JPanel {
 	public String getSicklingStatus(){
 		Object sickStat = sicklingStatusInput.getSelectedItem();
 
-		//TODO: may or not be correct val
 		String st = sickStat.toString();
 
 		return st;
@@ -535,7 +506,6 @@ public class VisitForm extends JPanel {
 	public String getSicklingType(){
 		Object sickStat = sicklingTypeInput.getSelectedItem();
 
-		//TODO: may or not be correct val
 		String st = sickStat.toString();
 
 		return st;
@@ -563,6 +533,14 @@ public class VisitForm extends JPanel {
 		return String.valueOf(postTestCounselInput.getSelectedItem());
 	}
 
+	/**
+	 *
+	 * @return Returns true is yes, else returns false
+	 */
+	public String getARV(){
+		return String.valueOf(ARVInput.getSelectedItem());
+	}
+	
 	/**
 	 *
 	 * @return Returns true if malaria pos, else false
@@ -619,16 +597,8 @@ public class VisitForm extends JPanel {
 		this.gestationInput.setText(String.valueOf(gestation));
 	}
 
-	public void setIPTDoses(int IPTDoses) {
-		if (IPTDoses > 0) {
-			iptOne.setSelected(true);
-		}
-		if (IPTDoses > 1) {
-			iptTwo.setSelected(true);
-		}
-		if (IPTDoses > 2) {
-			iptThree.setSelected(true);
-		}
+	public void setIPTDoses(String IPTDoses) {
+		this.iptInput.setSelectedItem(IPTDoses);
 	}
 
 	public void setTTDoses(String TTDoses) {
