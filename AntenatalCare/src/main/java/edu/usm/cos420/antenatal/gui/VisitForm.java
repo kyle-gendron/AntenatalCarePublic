@@ -310,7 +310,6 @@ public class VisitForm extends JPanel {
 		panel.add(IPT);
 		panel.add(ITN);
 		panel.add(textHold);
-		//panel.add(errorField);
 
 		//disables fields where others are required
 		sicklingTypeInput.setEnabled(false);
@@ -350,9 +349,6 @@ public class VisitForm extends JPanel {
 		if(errorMessage != null){
 			errorFields.setBorder(BorderFactory.createLineBorder(Color.red));
 			errorFields.setText(errorMessage);
-			//Dimension size = errorFields.getPreferredSize();
-			//size.setSize(size.getWidth() + 10, size.getHeight() + 10);
-			//errorFields.setSize(size);
 			JOptionPane.showMessageDialog(errorField,
 				    errorFields,
 				    "Input Warning!",
