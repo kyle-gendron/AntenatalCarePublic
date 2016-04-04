@@ -66,18 +66,89 @@ public class subsequentVisit{
 	}
 	
 	public JPanel setForm(AntenatalSubVisit sVisit){
-	   this.setApptDate(sVisit.getApptDate());
-	   this.setFundalHeight(sVisit.getFundalHeight());
-	   this.setWeight(sVisit.getWeight());
-	   this.setSystolicBP(sVisit.getSystolicBP());
-	   this.setDiastolicBP(sVisit.getDiastolicBP());
-	   this.setBloodFilm(sVisit.bloodFilmResults());
-	   this.setReferral(sVisit.getReferral());
-	   return subVisit;
+	   subVisit = changeForm(sVisit);
+      subVisit.setMinimumSize(new Dimension(600,200));
+      subVisit.setBackground(Color.LIGHT_GRAY);
+	      return subVisit;
 	   
 	}
 	
-	private JPanel addForm() {
+	private JPanel changeForm(AntenatalSubVisit sVisit) {
+
+	     JPanel container = new JPanel();
+	      BorderLayout bl = new BorderLayout();
+	      container.setLayout(bl);
+	      JPanel data = new JPanel();
+	      data.setPreferredSize(new Dimension(800, 50));
+
+	      GridLayout layout = new GridLayout(2, 8);
+	      //layout.setHgap(20);
+	      data.setLayout(layout);
+
+	      sBP = new JLabel("Systolic BP");
+	      sBP.setHorizontalAlignment(SwingConstants.CENTER);
+	      dBP = new JLabel("Diastolic BP");
+	      dBP.setHorizontalAlignment(SwingConstants.CENTER);
+	      weight = new JLabel("Weight");
+	      weight.setHorizontalAlignment(SwingConstants.CENTER);
+	      fundalHeight = new JLabel("Fundal Height");
+	      fundalHeight.setHorizontalAlignment(SwingConstants.CENTER);
+	      Date = new JLabel("Appointment Date");
+	      Date.setHorizontalAlignment(SwingConstants.CENTER);
+	      bloodFilm = new JLabel("Blood Film");
+	      bloodFilm.setHorizontalAlignment(SwingConstants.CENTER);
+	      referred = new JLabel("Referred?");
+	      referred.setHorizontalAlignment(SwingConstants.CENTER);
+	      sysBP = new JTextField(6);
+	      diaBP = new JTextField(6);
+	      weigh = new JTextField(3);
+	      fundalH = new JTextField(4);
+	      Properties p = new Properties();
+	      p.put("text.today", "Today");
+	      p.put("text.month", "Month");
+	      p.put("text.year", "Year");
+	      dateModel = new UtilDateModel();
+	      JDatePanelImpl datePanel = new JDatePanelImpl(dateModel, p);
+	      apptDate = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+	      bloodF = new JComboBox<>(new String[] {"", "Not Present", "Present"});
+	      refer = new JComboBox<>(new String[] {"", "No", "Yes"});
+
+	      //JPanel data = new JPanel();
+	      data.add(Date);
+	      data.add(sBP);
+	      data.add(dBP);
+	      data.add(weight);
+	      data.add(fundalHeight);
+	      data.add(bloodFilm);
+	      data.add(referred);
+
+	      //JPanel data = new JPanel();
+	      this.setApptDate(sVisit.getApptDate());
+	      this.setFundalHeight(sVisit.getFundalHeight());
+	      this.setWeight(sVisit.getWeight());
+	      this.setSystolicBP(sVisit.getSystolicBP());
+	      this.setDiastolicBP(sVisit.getDiastolicBP());
+	      this.setBloodFilm(sVisit.bloodFilmResults());
+	      this.setReferral(sVisit.getReferral());
+	      
+	      data.add(apptDate);
+	      data.add(sysBP);
+	      data.add(diaBP);
+	      data.add(weigh);
+	      data.add(fundalH);
+	      data.add(bloodF);
+	      data.add(refer);
+	      container.add(data, BorderLayout.CENTER);
+	      saveButton = new JButton("Save");
+	      saveButton.addActionListener(subC);
+	      JPanel buttonPane = new JPanel();
+	      buttonPane.setLayout(new FlowLayout());
+	      buttonPane.add(saveButton);
+	      container.add(buttonPane, BorderLayout.SOUTH);
+
+	      return container;
+   }
+   private JPanel addForm() {
 
 		JPanel container = new JPanel();
 		BorderLayout bl = new BorderLayout();
