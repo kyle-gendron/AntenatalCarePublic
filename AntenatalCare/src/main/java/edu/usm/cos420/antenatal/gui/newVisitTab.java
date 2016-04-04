@@ -68,8 +68,9 @@ public class newVisitTab extends JPanel {
 
 		JButton cancelButton = new JButton("Cancel");
 		cancelButton.addActionListener(arg0 -> AntenatalView.removeCurrentTab());
-
-		this.submitButton.addActionListener(arg0 -> AntenatalView.removeCurrentTab());
+		
+		//**Naomi marked out to ensure visit DOESN'T when submit is hit, unless completed
+		//this.submitButton.addActionListener(arg0 -> AntenatalView.removeCurrentTab());
 
 		buttonPane.add(cancelButton);
 		buttonPane.add(submitButton);

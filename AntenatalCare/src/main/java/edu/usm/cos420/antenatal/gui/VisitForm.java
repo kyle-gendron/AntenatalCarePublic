@@ -5,8 +5,14 @@ import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -58,12 +64,12 @@ public class VisitForm extends JPanel {
 	private final JComboBox itnInput;
 	private final JTextArea complaints;
 	private final JTextArea remarks;
-  private final JTextField hbaAtRegInput;
-  private final JComboBox hivTestInput;
-  private final JComboBox ARVInput;
-  private UtilDateModel dateModel;
+	private final JTextField hbaAtRegInput;
+	private final JComboBox hivTestInput;
+	private final JComboBox ARVInput;
+	private UtilDateModel dateModel;
 
-  /**
+	/**
 	 * Fills in the jFrame with all of the field that need to be filled in
 	 * and adds the to a FlowLayout element.
 	 *
@@ -87,7 +93,6 @@ public class VisitForm extends JPanel {
 		bloInput.add(fill);
 		bloInput.add(diastolicInput);
 		bloInput.setLayout(new FlowLayout());
-
 
 		JLabel Height = new JLabel("Height (cm): ");//double
 		heightInput = new JTextField(3);
@@ -114,15 +119,15 @@ public class VisitForm extends JPanel {
 
 		//date baby is due
 		JLabel EEDL = new JLabel("Due Date:");
-//    eedInput = new JTextField(10); //Determine how we want date entered.
+		//    eedInput = new JTextField(10); //Determine how we want date entered.
 
-    Properties p = new Properties();
-    p.put("text.today", "Today");
-    p.put("text.month", "Month");
-    p.put("text.year", "Year");
-    dateModel = new UtilDateModel();
-    JDatePanelImpl datePanel = new JDatePanelImpl(dateModel, p);
-    eedInput = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+		Properties p = new Properties();
+		p.put("text.today", "Today");
+		p.put("text.month", "Month");
+		p.put("text.year", "Year");
+		dateModel = new UtilDateModel();
+		JDatePanelImpl datePanel = new JDatePanelImpl(dateModel, p);
+		eedInput = new JDatePickerImpl(datePanel, new DateLabelFormatter());
 
 		JPanel EED = new JPanel();
 		EED.add(EEDL);
@@ -136,7 +141,7 @@ public class VisitForm extends JPanel {
 		HBatReg.add(hbaAtRegInput);
 
 		// test Hemoglobin @ 36 weeks
-    hbaAt36WeeksInput = new JTextField(3);
+		hbaAt36WeeksInput = new JTextField(3);
 		JPanel HBat36 = new JPanel();
 		HBat36.add(new JLabel("HBat36 (g/dL):"));//double g/dl
 		HBat36.add(hbaAt36WeeksInput);
@@ -182,7 +187,7 @@ public class VisitForm extends JPanel {
 
 		//VD test result
 		JPanel TestResult = new JPanel();
-    hivTestInput = new JComboBox<>(new String[] {"", "Positive", "Negative"});
+		hivTestInput = new JComboBox<>(new String[] {"", "Positive", "Negative"});
 		TestResult.add(new JLabel("Test-Result:"));
 		TestResult.add(hivTestInput);
 
@@ -242,16 +247,21 @@ public class VisitForm extends JPanel {
 		JPanel textHold = new JPanel();
 		complaints = new JTextArea(2,12);
 		remarks = new JTextArea(2,12);
-    complaints.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK),
-      BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-    remarks.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK),
-      BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+		complaints.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK),
+				BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+		remarks.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK),
+				BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 		textHold.add(new JLabel("Complaints:"));
 		textHold.add(complaints);
 
 		//add remarks field
 		textHold.add(new JLabel("Remarks:"));
 		textHold.add(remarks);
+
+		//add change listeners
+		sicklingStatusInput.addActionListener(new formListener());
+		bloodFilmInput.addActionListener(new formListener());getInsets();
+		//TODO: Add ARV when available
 
 		//add data to frame
 		panel.add(parity);
@@ -280,8 +290,15 @@ public class VisitForm extends JPanel {
 		panel.add(ITN);
 		panel.add(textHold);
 
-    ARVInput = null;
-  }
+		//disables fields where others are required
+		iptOne.setEnabled(false);
+		iptTwo.setEnabled(false);
+		iptThree.setEnabled(false);
+		sicklingTypeInput.setEnabled(false);
+		//TODO: ARV input to be added
+
+		ARVInput = null;
+	}
 
 	/**
 	 *
@@ -291,12 +308,41 @@ public class VisitForm extends JPanel {
 		return panel;
 	}
 
+	class formListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			//TODO: Verify all Fields
+			//TODO: update error label(s) / add red around erroneous things
+
+			//enable disabled fields if necessary
+			if(getBloodFilm().equals("Present") == true){
+				iptOne.setEnabled(true);
+				iptTwo.setEnabled(true);
+				iptThree.setEnabled(true);
+			}else{
+				iptOne.setEnabled(false);
+				iptTwo.setEnabled(false);
+				iptThree.setEnabled(false);
+			}
+
+			if(getSicklingStatus().equals("Positive") == true){
+				sicklingTypeInput.setEnabled(true);
+			}else{
+				sicklingTypeInput.setEnabled(false);
+			}	
+
+			//TODO add ARV fields
+			
+		}
+	}
+
 	/**
 	 *
 	 * @return String of the parity field, or -1 if invalid
 	 */
 	public int getParity() {
-    return parseInteger(parityInput.getText(), -1);
+		return parseInteger(parityInput.getText(), -1);
 	}
 
 	/**
@@ -304,7 +350,7 @@ public class VisitForm extends JPanel {
 	 * @return Returns double of the patients height, or -1 if invalid
 	 */
 	public Double getPatientHeight() {
-    return parseDouble(heightInput.getText());
+		return parseDouble(heightInput.getText());
 	}
 
 	/**
@@ -312,7 +358,7 @@ public class VisitForm extends JPanel {
 	 * @return Returns double of the patients weight, or -1 if invalid
 	 */
 	public Double getPatientWeight() {
-    return parseDouble(weightInput.getText());
+		return parseDouble(weightInput.getText());
 	}
 
 	/**
@@ -320,14 +366,14 @@ public class VisitForm extends JPanel {
 	 * @return Returns int val of the patients Systollic blood pressue
 	 */
 	public int getSystolicBP(){
-    return parseInteger(systolicInput.getText());
+		return parseInteger(systolicInput.getText());
 	}
 	/**
 	 *
 	 * @return returns int val of the patients Diastolic blood pressure
 	 */
 	public int getDiastolicBP(){
-    return parseInteger(diastolicInput.getText());
+		return parseInteger(diastolicInput.getText());
 	}
 
 	/**
@@ -335,25 +381,28 @@ public class VisitForm extends JPanel {
 	 * @return returns int val of the trimester, or -1 if error
 	 */
 	public int getTrimester(){
-			int gest = getGestation();
-			if(gest <= 13 ){//tri 1
-				return 1;
-			}else if(gest <= 26){//tri2
-				return 2;
-			}else{
-				return 3;
-			}
+		int gest = getGestation();
+		if(gest <= 13 ){//tri 1
+			return 1;
+		}else if(gest <= 26){//tri2
+			return 2;
+		}else{
+			return 3;
+		}
 	}
 
 	public int getSubVisitsInput(){
 		Object selectedSubVis = subVisitsInput.getSelectedItem();
 		//TODO: may or not be correct val
-		int st = Integer.valueOf(selectedSubVis.toString());
-		return st;
+		String subvis = selectedSubVis.toString();
+		if(subvis.equals("") == false){
+			return Integer.valueOf(subvis);
+		}
+		return 0;
 	}
 
 	public int getGestation(){
-    return parseInteger(gestationInput.getText());
+		return parseInteger(gestationInput.getText());
 	}
 
 	public int getIPTDoses(){
@@ -386,7 +435,7 @@ public class VisitForm extends JPanel {
 	 * @return Double value of the fundal height
 	 */
 	public double getFundalHeight(){
-    return parseDouble(fundalHeightInput.getText());
+		return parseDouble(fundalHeightInput.getText());
 	}
 
 	/**
@@ -394,7 +443,7 @@ public class VisitForm extends JPanel {
 	 * @return Double value of the hemoglobin levels at registration
 	 */
 	public double getHBAtReg(){
-    return parseDouble(hbaAtRegInput.getText());
+		return parseDouble(hbaAtRegInput.getText());
 	}
 
 	/**
@@ -402,7 +451,7 @@ public class VisitForm extends JPanel {
 	 * @return Double value of the hemoglobin levels at 36 weeks
 	 */
 	public double getHBAt36Weeks(){
-    return parseDouble(hbaAt36WeeksInput.getText());
+		return parseDouble(hbaAt36WeeksInput.getText());
 	}
 
 	/**
@@ -410,14 +459,14 @@ public class VisitForm extends JPanel {
 	 * @return Double val of the urine sugar test results
 	 */
 	public double getUrineTestSugar(){
-    return parseDouble(urineTestSugarInput.getText());
+		return parseDouble(urineTestSugarInput.getText());
 	}
 	/**
 	 *
 	 * @return Doubleval of the urine protein test results
 	 */
 	public double getUrineTestProtein(){
-    return parseDouble(urineTestProteinInput.getText());
+		return parseDouble(urineTestProteinInput.getText());
 	}
 
 	/**
@@ -425,12 +474,12 @@ public class VisitForm extends JPanel {
 	 * @return a GregorianCalendar of the estimated due date
 	 */
 	public LocalDate getEDD(){
-    Date pickerDate = (Date) eedInput.getModel().getValue();
-    LocalDate date = null;
-      if (pickerDate != null) {
-        date = pickerDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-      }
-    return date;
+		Date pickerDate = (Date) eedInput.getModel().getValue();
+		LocalDate date = null;
+		if (pickerDate != null) {
+			date = pickerDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		}
+		return date;
 	}
 
 	/**
@@ -483,7 +532,7 @@ public class VisitForm extends JPanel {
 	 * @return Returns True if yes, else returns false
 	 */
 	public String getPreTestCounsel(){
-		 return String.valueOf(preTestCounselInput.getSelectedItem());
+		return String.valueOf(preTestCounselInput.getSelectedItem());
 	}
 
 	/**
@@ -518,142 +567,142 @@ public class VisitForm extends JPanel {
 	}
 
 
-  public String getHIVTestResults() {
-    return String.valueOf(this.hivTestInput.getSelectedItem());
-  }
+	public String getHIVTestResults() {
+		return String.valueOf(this.hivTestInput.getSelectedItem());
+	}
 
-  public String getComplaints() {
-    return complaints.getText();
-  }
+	public String getComplaints() {
+		return complaints.getText();
+	}
 
-  public String getRemarks() {
-    return remarks.getText();
-  }
+	public String getRemarks() {
+		return remarks.getText();
+	}
 
-  public void setParity(int parity) {
-    this.parityInput.setText(String.valueOf(parity));
-  }
+	public void setParity(int parity) {
+		this.parityInput.setText(String.valueOf(parity));
+	}
 
-  public void setSystolicBP(int systolicBP) {
-    this.systolicInput.setText(String.valueOf(systolicBP));
-  }
+	public void setSystolicBP(int systolicBP) {
+		this.systolicInput.setText(String.valueOf(systolicBP));
+	}
 
-  public void setDiastolicBP(int diastolicBP) {
-    this.diastolicInput.setText(String.valueOf(diastolicBP));
-  }
+	public void setDiastolicBP(int diastolicBP) {
+		this.diastolicInput.setText(String.valueOf(diastolicBP));
+	}
 
-  public void setTrimester(int trimester) {
-    this.trimesterInput.setSelectedIndex(trimester);
-  }
+	public void setTrimester(int trimester) {
+		this.trimesterInput.setSelectedIndex(trimester);
+	}
 
-  public void setGestation(int gestation) {
-    this.gestationInput.setText(String.valueOf(gestation));
-  }
+	public void setGestation(int gestation) {
+		this.gestationInput.setText(String.valueOf(gestation));
+	}
 
-  public void setIPTDoses(int IPTDoses) {
-    if (IPTDoses > 0) {
-      iptOne.setSelected(true);
-    }
-    if (IPTDoses > 1) {
-      iptTwo.setSelected(true);
-    }
-    if (IPTDoses > 2) {
-      iptThree.setSelected(true);
-    }
-  }
+	public void setIPTDoses(int IPTDoses) {
+		if (IPTDoses > 0) {
+			iptOne.setSelected(true);
+		}
+		if (IPTDoses > 1) {
+			iptTwo.setSelected(true);
+		}
+		if (IPTDoses > 2) {
+			iptThree.setSelected(true);
+		}
+	}
 
-  public void setTTDoses(String TTDoses) {
-    this.ttDosesInput.setSelectedItem(TTDoses);
-  }
+	public void setTTDoses(String TTDoses) {
+		this.ttDosesInput.setSelectedItem(TTDoses);
+	}
 
-  public void setHeight(double height) {
-    this.heightInput.setText(String.valueOf(height));
-  }
+	public void setHeight(double height) {
+		this.heightInput.setText(String.valueOf(height));
+	}
 
-  public void setWeight(double weight) {
-    this.weightInput.setText(String.valueOf(weight));
-  }
+	public void setWeight(double weight) {
+		this.weightInput.setText(String.valueOf(weight));
+	}
 
-  public void setFundalHeight(double fundalHeight) {
-    this.fundalHeightInput.setText(String.valueOf(fundalHeight));
-  }
+	public void setFundalHeight(double fundalHeight) {
+		this.fundalHeightInput.setText(String.valueOf(fundalHeight));
+	}
 
-  public void setHBAtReg(double HBAtReg) {
-    this.hbaAtRegInput.setText(String.valueOf(HBAtReg));
-  }
+	public void setHBAtReg(double HBAtReg) {
+		this.hbaAtRegInput.setText(String.valueOf(HBAtReg));
+	}
 
-  public void setHBAt36Weeks(double HBAt36Weeks) {
-    this.hbaAt36WeeksInput.setText(String.valueOf(HBAt36Weeks));
-  }
+	public void setHBAt36Weeks(double HBAt36Weeks) {
+		this.hbaAt36WeeksInput.setText(String.valueOf(HBAt36Weeks));
+	}
 
-  public void setUrineTestSugar(double urineTestSugar) {
-    this.urineTestSugarInput.setText(String.valueOf(urineTestSugar));
-  }
+	public void setUrineTestSugar(double urineTestSugar) {
+		this.urineTestSugarInput.setText(String.valueOf(urineTestSugar));
+	}
 
-  public void setUrineTestProtein(double urineTestProtein) {
-    this.urineTestProteinInput.setText(String.valueOf(urineTestProtein));
-  }
+	public void setUrineTestProtein(double urineTestProtein) {
+		this.urineTestProteinInput.setText(String.valueOf(urineTestProtein));
+	}
 
-  public void setEDD(LocalDate EDD) {
-    if (EDD != null) {
-      this.dateModel.setDate(EDD.getYear(), EDD.getMonthValue()-1, EDD.getDayOfMonth());
-      this.dateModel.setSelected(true);
-    }
-  }
+	public void setEDD(LocalDate EDD) {
+		if (EDD != null) {
+			this.dateModel.setDate(EDD.getYear(), EDD.getMonthValue()-1, EDD.getDayOfMonth());
+			this.dateModel.setSelected(true);
+		}
+	}
 
-  public void setBloodGroup(String bloodGroup) {
-    this.bloodTypeGroup.setSelectedItem(bloodGroup);
-  }
+	public void setBloodGroup(String bloodGroup) {
+		this.bloodTypeGroup.setSelectedItem(bloodGroup);
+	}
 
-  public void setSicklingStatus(String sicklingStatus) {
-    this.sicklingStatusInput.setSelectedItem(sicklingStatus);
-  }
+	public void setSicklingStatus(String sicklingStatus) {
+		this.sicklingStatusInput.setSelectedItem(sicklingStatus);
+	}
 
-  public void setSicklingType(String sicklingType) {
-    this.sicklingTypeInput.setSelectedItem(sicklingType);
-  }
+	public void setSicklingType(String sicklingType) {
+		this.sicklingTypeInput.setSelectedItem(sicklingType);
+	}
 
-  public void setVDLabResults(String VDLabResults) {
-    this.resultsVDLabInput.setSelectedItem(VDLabResults);
-  }
+	public void setVDLabResults(String VDLabResults) {
+		this.resultsVDLabInput.setSelectedItem(VDLabResults);
+	}
 
-  public void setPreTestCounsel(String preTestCounsel) {
-    this.preTestCounselInput.setSelectedItem(preTestCounsel);
-  }
+	public void setPreTestCounsel(String preTestCounsel) {
+		this.preTestCounselInput.setSelectedItem(preTestCounsel);
+	}
 
-  public void setHIVResults(String HIVResults) {
-    this.hivTestInput.setSelectedItem(HIVResults);
-  }
+	public void setHIVResults(String HIVResults) {
+		this.hivTestInput.setSelectedItem(HIVResults);
+	}
 
-  public void setPostTestCounsel(String postTestCounsel) {
-    this.postTestCounselInput.setSelectedItem(postTestCounsel);
-  }
+	public void setPostTestCounsel(String postTestCounsel) {
+		this.postTestCounselInput.setSelectedItem(postTestCounsel);
+	}
 
-  public void setARV(String ARV) {
-    this.ARVInput.setSelectedItem(ARV);
-  }
+	public void setARV(String ARV) {
+		this.ARVInput.setSelectedItem(ARV);
+	}
 
-  public void setBloodFilm(String bloodFilm) {
-    this.bloodFilmInput.setSelectedItem(bloodFilm);
-  }
+	public void setBloodFilm(String bloodFilm) {
+		this.bloodFilmInput.setSelectedItem(bloodFilm);
+	}
 
-  public void setITN(String itn) {
-    this.itnInput.setSelectedItem(itn);
-  }
+	public void setITN(String itn) {
+		this.itnInput.setSelectedItem(itn);
+	}
 
-  public void setMaleInvolvement(String maleInvolvement) {
-    this.malePresentInput.setSelectedItem(maleInvolvement);
-  }
+	public void setMaleInvolvement(String maleInvolvement) {
+		this.malePresentInput.setSelectedItem(maleInvolvement);
+	}
 
-  public void setComplaints(String complaints) {
-    this.complaints.setText(complaints);
-  }
+	public void setComplaints(String complaints) {
+		this.complaints.setText(complaints);
+	}
 
-  public void setRemarks(String remarks) {
-    this.remarks.setText(remarks);
-  }
+	public void setRemarks(String remarks) {
+		this.remarks.setText(remarks);
+	}
 
-  public void setSubVisits(int subVisits) {
-    this.subVisitsInput.setSelectedItem(String.valueOf(subVisits));
-  }
+	public void setSubVisits(int subVisits) {
+		this.subVisitsInput.setSelectedItem(String.valueOf(subVisits));
+	}
 }
