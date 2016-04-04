@@ -85,7 +85,7 @@ public class VisitForm extends JPanel {
 		errorField = new JPanel();
 		errorFields = new JLabel("");
 		errorField.add(errorFields);
-		
+
 		JLabel parity = new JLabel("Parity:"); //integer
 		parityInput = new JTextField(2);
 		JLabel BloodPressure = new JLabel("Blood Pressure:");
@@ -270,6 +270,7 @@ public class VisitForm extends JPanel {
 		//TODO: Add ARV when available
 
 		//add data to frame
+		panel.add(errorFields);
 		panel.add(parity);
 		panel.add(parityInput);
 		panel.add(bloInput);
@@ -339,20 +340,23 @@ public class VisitForm extends JPanel {
 			}	
 
 			//TODO add ARV fields
-			
+
 		}
 	}
 
 	public void errorMessage(String errorMessage) {
-		//TODO: match VisitForm
-		errorFields.setText(errorMessage);
-		//TODO: resize to fit text
-		Dimension size = errorFields.getPreferredSize();
-		errorField.setSize(size);
-		errorFields.setSize(size);
-		System.out.println(errorFields.getText());
+		if(errorMessage != null){
+			errorFields.setBorder(BorderFactory.createLineBorder(Color.red));
+			errorFields.setText(errorMessage);
+			Dimension size = errorFields.getPreferredSize();
+			size.setSize(size.getWidth() + 10, size.getHeight() + 10);
+			errorField.setSize(size);
+			errorFields.setSize(size);
+		}else{
+			errorField.setToolTipText("");
+		}
 	}
-	
+
 	/**
 	 *
 	 * @return String of the parity field, or -1 if invalid

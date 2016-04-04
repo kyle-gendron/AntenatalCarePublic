@@ -332,14 +332,17 @@ public class NewVisitForm extends JPanel {
 		return panel;
 	}
 	
-	public void errorMessage(String errorMessages){
-		//TODO: match VisitForm
-		errorFields.setText(errorMessages);
-		//TODO: resize to fit text
-		Dimension size = errorFields.getPreferredSize();
-		errorField.setSize(size);
-		errorFields.setSize(size);
-		System.out.println(errorFields.getText());
+	public void errorMessage(String errorMessage){
+		if(errorMessage != null){
+			errorFields.setBorder(BorderFactory.createLineBorder(Color.red));
+			errorFields.setText(errorMessage);
+			Dimension size = errorFields.getPreferredSize();
+			size.setSize(size.getWidth() + 10, size.getHeight() + 10);
+			errorField.setSize(size);
+			errorFields.setSize(size);
+		}else{
+			errorField.setToolTipText("");
+		}
 	}
 
 	/**
