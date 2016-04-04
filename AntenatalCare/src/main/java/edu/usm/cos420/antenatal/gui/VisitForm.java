@@ -201,6 +201,12 @@ public class VisitForm extends JPanel {
 		PostTest.add(new JLabel("Post-Test Counseling:"));
 		PostTest.add(postTestCounselInput);
 
+		//ARV Drug Prescription
+		JPanel ARV =new JPanel();
+		ARVInput =  new JComboBox<>(new String[] {"", "Yes", "No"});
+		ARV.add(new JLabel("ARV Drug Use:"));
+		ARV.add(ARVInput);
+		
 		//malaria testing p/np
 		JPanel BloodFilm = new JPanel();
 		bloodFilmInput = new JComboBox<>(new String[] {"", "Not Present", "Present"});
@@ -261,7 +267,7 @@ public class VisitForm extends JPanel {
 		//add change listeners
 		sicklingStatusInput.addActionListener(new formListener());
 		bloodFilmInput.addActionListener(new formListener());getInsets();
-		//TODO: Add ARV when available
+		hivTestInput.addActionListener(new formListener());
 
 		//add data to frame
 		panel.add(errorFields);
@@ -282,6 +288,7 @@ public class VisitForm extends JPanel {
 		panel.add(PMTCT);
 		panel.add(TestResult);
 		panel.add(PostTest);
+		panel.add(ARV);
 		panel.add(BloodFilm);
 		panel.add(MaleInvolved);
 		panel.add(Trimester);
@@ -293,9 +300,7 @@ public class VisitForm extends JPanel {
 
 		//disables fields where others are required
 		sicklingTypeInput.setEnabled(false);
-		//TODO: ARV input to be added
-
-		ARVInput = null;
+		ARVInput.setEnabled(false);
 	}
 
 	/**
@@ -319,7 +324,10 @@ public class VisitForm extends JPanel {
 				sicklingTypeInput.setEnabled(false);
 			}	
 
-			//TODO add ARV fields
+			if(getHIVTestResults().equals("Positive"))
+				ARVInput.setEnabled(true);
+			else
+				ARVInput.setEnabled(false);
 
 		}
 	}
@@ -474,7 +482,6 @@ public class VisitForm extends JPanel {
 	public String getBloodGroup(){
 		Object blood = bloodTypeGroup.getSelectedItem();
 
-		//TODO: may or not be correct val
 		String bt = blood.toString();
 
 		return bt;
@@ -487,7 +494,6 @@ public class VisitForm extends JPanel {
 	public String getSicklingStatus(){
 		Object sickStat = sicklingStatusInput.getSelectedItem();
 
-		//TODO: may or not be correct val
 		String st = sickStat.toString();
 
 		return st;
@@ -500,7 +506,6 @@ public class VisitForm extends JPanel {
 	public String getSicklingType(){
 		Object sickStat = sicklingTypeInput.getSelectedItem();
 
-		//TODO: may or not be correct val
 		String st = sickStat.toString();
 
 		return st;
@@ -528,6 +533,14 @@ public class VisitForm extends JPanel {
 		return String.valueOf(postTestCounselInput.getSelectedItem());
 	}
 
+	/**
+	 *
+	 * @return Returns true is yes, else returns false
+	 */
+	public String getARV(){
+		return String.valueOf(ARVInput.getSelectedItem());
+	}
+	
 	/**
 	 *
 	 * @return Returns true if malaria pos, else false

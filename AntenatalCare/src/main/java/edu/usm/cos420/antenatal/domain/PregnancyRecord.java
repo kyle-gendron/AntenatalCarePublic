@@ -41,7 +41,7 @@ public class PregnancyRecord implements Serializable {
 	String bloodGroup, sicklingStatus, sicklingType;
 	String vDLabResults, preTestCounsel, hIVResults, postTestCounsel, ARV;
 	String bloodFilm;  //results of malaria blood film test
-	int iTN;
+	String iTN;
 	String id;  //id used to identify a particular set of antenatal visits
   String maleInvolvement;
   String remarks;
@@ -80,8 +80,8 @@ public class PregnancyRecord implements Serializable {
     setSicklingType(form.getSicklingType());
     setPreTestCounsel(form.getPreTestCounsel());
     setPostTestCounsel(form.getPostTestCounsel());
-//    setITN(form.getITN()); // are these still things?
-//    setARV(form.getARV()); // are these still things?
+    setITN(form.getITN()); 
+    setARV(form.getARV());
     setMaleInvolvement(form.getMaleInvolvement());
     setComplaints(form.getComplaints());
     setRemarks(form.getRemarks());
@@ -506,14 +506,14 @@ public class PregnancyRecord implements Serializable {
 	/**Returns whether the client uses Insecticide-Treated Nets
 	 * @return the iTN
 	 */
-	public int getITN() {
+	public String getITN() {
 		return iTN;
 	}
 
 	/**Sets whether the client uses Insecticide-Treated Nets
    * @param iTN the iTN to set
    */
-	public void setITN(int iTN) {
+	public void setITN(String iTN) {
 		this.iTN = iTN;
 	}
 
