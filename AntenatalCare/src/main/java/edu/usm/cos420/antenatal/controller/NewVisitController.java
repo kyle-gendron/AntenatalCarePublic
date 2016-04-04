@@ -4,7 +4,6 @@ import edu.usm.cos420.antenatal.domain.AntenatalVisit;
 import edu.usm.cos420.antenatal.gui.VisitForm;
 import edu.usm.cos420.antenatal.gui.newVisitTab;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
