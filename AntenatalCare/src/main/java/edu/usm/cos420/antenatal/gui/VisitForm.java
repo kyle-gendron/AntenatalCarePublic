@@ -68,6 +68,8 @@ public class VisitForm extends JPanel {
 	private final JComboBox hivTestInput;
 	private final JComboBox ARVInput;
 	private UtilDateModel dateModel;
+	private final JLabel errorFields;
+	private final JPanel errorField;
 
 	/**
 	 * Fills in the jFrame with all of the field that need to be filled in
@@ -79,6 +81,10 @@ public class VisitForm extends JPanel {
 		panel = new JPanel();
 		panel.setLayout(layout);
 		layout.setHgap(10);
+
+		errorField = new JPanel();
+		errorFields = new JLabel("");
+		errorField.add(errorFields);
 
 		JLabel parity = new JLabel("Parity:"); //integer
 		parityInput = new JTextField(2);
@@ -264,6 +270,7 @@ public class VisitForm extends JPanel {
 		//TODO: Add ARV when available
 
 		//add data to frame
+		panel.add(errorFields);
 		panel.add(parity);
 		panel.add(parityInput);
 		panel.add(bloInput);
@@ -333,7 +340,20 @@ public class VisitForm extends JPanel {
 			}	
 
 			//TODO add ARV fields
-			
+
+		}
+	}
+
+	public void errorMessage(String errorMessage) {
+		if(errorMessage != null){
+			errorFields.setBorder(BorderFactory.createLineBorder(Color.red));
+			errorFields.setText(errorMessage);
+			Dimension size = errorFields.getPreferredSize();
+			size.setSize(size.getWidth() + 10, size.getHeight() + 10);
+			errorField.setSize(size);
+			errorFields.setSize(size);
+		}else{
+			errorField.setToolTipText("");
 		}
 	}
 

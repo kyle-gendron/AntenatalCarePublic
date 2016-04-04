@@ -61,31 +61,31 @@ public class NewVisitController implements ActionListener {
 
 	public static boolean verifyFields(VisitForm form){
 		//holds the window view word contents
-		String errorMessage = "Invalid Data Entries: \n";
+		String errorMessage = "<html><div style='text-align=center;'>Invalid Data Entries: <br>";
 		Boolean errorsExist = false;
 
 		//test blood pressure sys/dia
 		//sys
 		if(form.getSystolicBP() <= 0){
 			errorsExist = true;
-			errorMessage += "-Invalid Systolic Blood Pressure\n";
+			errorMessage += "-Invalid Systolic Blood Pressure<br>";
 		}
 		//dia
 		if(form.getDiastolicBP() <= 0){
 			errorsExist = true;
-			errorMessage += "-Invalid Diastolic Blood Pressure\n";
+			errorMessage += "-Invalid Diastolic Blood Pressure<br>";
 		}
 
 		//test weight
 		if(form.getPatientWeight() <= 0){
 			errorsExist = true;
-			errorMessage += "-Invalid Patient Height\n";
+			errorMessage += "-Invalid Patient Height<br>";
 		}
 
 		//test height
 		if(form.getPatientHeight() <= 0){
 			errorsExist = true;
-			errorMessage += "-Invalid Patient Weight\n";
+			errorMessage += "-Invalid Patient Weight<br>";
 		}
 
 		//test more specific things
@@ -100,7 +100,10 @@ public class NewVisitController implements ActionListener {
 
 		//if error found produce pop up
 		if(errorsExist == true){
-			JOptionPane.showMessageDialog(null, errorMessage);
+			//TODO: Remove once everything works okay
+			//JOptionPane.showMessageDialog(null, errorMessage);
+
+			form.errorMessage(errorMessage);
 			return false;
 		}
 		return true;
