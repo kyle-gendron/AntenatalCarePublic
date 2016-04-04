@@ -81,6 +81,7 @@ public class SubController implements ActionListener {
  
         PregnancyRecord initVisit = controller.getVisit(id);
         initVisit.setSubID(subId);
+        controller.updateVisit(initVisit);
         controller.submitNewSubVisit(visit);
         System.out.println("Inserted New SubVisit (" + subId + ")");
         
