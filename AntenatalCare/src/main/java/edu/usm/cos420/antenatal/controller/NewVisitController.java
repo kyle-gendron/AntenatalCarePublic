@@ -3,6 +3,7 @@ package edu.usm.cos420.antenatal.controller;
 import edu.usm.cos420.antenatal.domain.AntenatalVisit;
 import edu.usm.cos420.antenatal.gui.VisitForm;
 import edu.usm.cos420.antenatal.gui.newVisitTab;
+import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -30,13 +31,13 @@ public class NewVisitController implements ActionListener {
 		this.panel.setFormData(visitInfo);
 
 	}
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch (e.getActionCommand()) {
 		case "Submit": {
 
-			VisitForm form = this.panel.getForm();
+			VisitForm form = panel.getForm();
 			//verify fields
 			if(verifyFields(form) == true){
 				AntenatalVisit visit = getVisitObject();
@@ -44,6 +45,7 @@ public class NewVisitController implements ActionListener {
 					String nextId = controller.getNextId();
 					visit.setId(nextId);
 					controller.submitNewVisit(visit);
+					AntenatalView.removeCurrentTab();
 				}
 				else{
 					visit.setId(id);
@@ -53,44 +55,43 @@ public class NewVisitController implements ActionListener {
 				System.out.println("Required fields are not valid.");
 			}
 
-			System.exit(0);
 		}
 		}
 	}
 
 	public static boolean verifyFields(VisitForm form){
 		//holds the window view word contents
-		String errorMessage = "Invalid Data Entries: \n";
+		String errorMessage = "<html><div style='text-align=center;'>Invalid Data Entries: <br>";
 		Boolean errorsExist = false;
 
 		//test blood pressure sys/dia
 		//sys
-		if(form.getSystolicBP() == -1){
+		if(form.getSystolicBP() <= 0){
 			errorsExist = true;
-			errorMessage += "-Invalid Systolic Blood Pressure\n";
+			errorMessage += "-Invalid Systolic Blood Pressure<br>";
 		}
 		//dia
-		if(form.getDiastolicBP() == -1){
+		if(form.getDiastolicBP() <= 0){
 			errorsExist = true;
-			errorMessage += "-Invalid Diastolic Blood Pressure\n";
+			errorMessage += "-Invalid Diastolic Blood Pressure<br>";
 		}
 
 		//test weight
-		if(form.getPatientWeight() < 0){
+		if(form.getPatientWeight() <= 0){
 			errorsExist = true;
-			errorMessage += "-Invalid Patient Height\n";
+			errorMessage += "-Invalid Patient Height<br>";
 		}
 
 		//test height
-		if(form.getPatientHeight() < 0){
+		if(form.getPatientHeight() <= 0){
 			errorsExist = true;
-			errorMessage += "-Invalid Patient Weight\n";
+			errorMessage += "-Invalid Patient Weight<br>";
 		}
 
 		//test more specific things
 
 		//if pos sickle cell ensure type is selected
-		if(form.getSicklingStatus().equals("Positive") && form.getSicklingStatus().equals("")){
+		if(form.getSicklingStatus().equals("Positive") && form.getSicklingType().equals("")){
 			errorsExist = true;
 			errorMessage += "-Please Add Sickling Type, or select N/A";
 		}
@@ -99,9 +100,13 @@ public class NewVisitController implements ActionListener {
 
 		//if error found produce pop up
 		if(errorsExist == true){
-			JOptionPane.showMessageDialog(null, errorMessage);
+			//TODO: Remove once everything works okay
+			//JOptionPane.showMessageDialog(null, errorMessage);
+
+			form.errorMessage(errorMessage);
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 	public JPanel getPanel() {
