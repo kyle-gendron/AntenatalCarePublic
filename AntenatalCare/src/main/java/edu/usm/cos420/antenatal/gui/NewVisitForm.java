@@ -54,12 +54,7 @@ public class NewVisitForm extends JPanel {
 	private final JComboBox tb;
 	private final JComboBox sg;
 	private final JComboBox ttb;
-	private final JCheckBox iptThree;
-	private final JCheckBox iptOne;
-	private final JCheckBox iptTwo;
-	private final JCheckBox itpOne;
-	private final JCheckBox itpTwo;
-	private final JCheckBox itpThree;
+	private final JComboBox iptInput;
 	private final JCheckBox itnYes;
 	private final JTextArea complaints;
 	private final JTextArea remarks;
@@ -250,28 +245,10 @@ public class NewVisitForm extends JPanel {
 		TT.add(ttb);
 
 		//ipt/doses
-		JLabel IPTl = new JLabel("IPT: ");//check 1,2, or 3 doses
 		JPanel IPT = new JPanel();
-		iptOne = new JCheckBox("1");
-		iptTwo = new JCheckBox("2");
-		iptThree = new JCheckBox("3");
-		IPT.add(IPTl);
-		IPT.add(iptOne);
-		IPT.add(iptTwo);
-		IPT.add(iptThree);
-		IPT.add(new JLabel(" Doses"));
-
-		//ITP doses
-		JLabel ITPl = new JLabel("ITP: ");//3 doses tick for each
-		JPanel ITP = new JPanel();
-		itpOne = new JCheckBox("1");
-		itpTwo = new JCheckBox("2");
-		itpThree = new JCheckBox("3");
-		ITP.add(ITPl);
-		ITP.add(itpOne);
-		ITP.add(itpTwo);
-		ITP.add(itpThree);
-		ITP.add(new JLabel(" Doses"));
+		iptInput = new JComboBox<>(new String[] {"","1","2","3"});
+		IPT.add(new JLabel("IPT Doses:"));
+		IPT.add(iptInput);
 
 		//stuff of ITN
 		JLabel ITNl = new JLabel("ITN: ");//Yes 
@@ -318,7 +295,6 @@ public class NewVisitForm extends JPanel {
 		panel.add(Sub);
 		panel.add(TT);
 		panel.add(IPT);
-		panel.add(ITP);
 		panel.add(ITN);
 		panel.add(texthold);
 
@@ -462,23 +438,8 @@ public class NewVisitForm extends JPanel {
 		}
 	}
 
-	public int getIPTDoses(){
-		//TODO: make this better?
-		int doses = 0;
-		int tmp = -1;
-
-		if(iptOne.isSelected()){
-			doses = 1;
-		}
-		if(iptTwo.isSelected()){
-			doses = 2;
-		}
-
-		if(iptThree.isSelected()){
-			doses = 3;
-		}
-
-		return doses;		
+	public String getIPTDoses(){
+		return String.valueOf(iptInput.getSelectedItem());
 	}
 	/**
 	 * 

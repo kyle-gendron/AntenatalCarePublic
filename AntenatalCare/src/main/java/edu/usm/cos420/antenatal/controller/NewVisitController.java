@@ -1,10 +1,9 @@
 package edu.usm.cos420.antenatal.controller;
 
-import edu.usm.cos420.antenatal.domain.AntenatalVisit;
+import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 import edu.usm.cos420.antenatal.gui.VisitForm;
 import edu.usm.cos420.antenatal.gui.newVisitTab;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,7 +22,7 @@ public class NewVisitController implements ActionListener {
 		this.panel = new newVisitTab(this);
 	}
 
-	public NewVisitController(AntenatalController controller, AntenatalVisit visitInfo) {
+	public NewVisitController(AntenatalController controller, PregnancyRecord visitInfo) {
 		this(controller);
 		this.id = visitInfo.getID();
 
@@ -40,7 +39,7 @@ public class NewVisitController implements ActionListener {
 			VisitForm form = panel.getForm();
 			//verify fields
 			if(verifyFields(form) == true){
-				AntenatalVisit visit = getVisitObject();
+				PregnancyRecord visit = getVisitObject();
 				if (id == null){
 					String nextId = controller.getNextId();
 					visit.setId(nextId);
@@ -113,8 +112,8 @@ public class NewVisitController implements ActionListener {
 		return panel.getPanel();
 	}
 
-	public AntenatalVisit getVisitObject() {
+	public PregnancyRecord getVisitObject() {
 		VisitForm form = panel.getForm();
-		return new AntenatalVisit(form);
+		return new PregnancyRecord(form);
 	}
 }

@@ -6,7 +6,7 @@ package edu.usm.cos420.antenatal.controller;
 
 
 import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
-import edu.usm.cos420.antenatal.domain.AntenatalVisit;
+import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 import edu.usm.cos420.antenatal.gui.newVisitTab;
 import edu.usm.cos420.antenatal.gui.subsequentVisit;
 import edu.usm.cos420.antenatal.service.SubVisitService;
@@ -28,26 +28,29 @@ import com.sun.prism.paint.Color;
  */
 public class SubController implements ActionListener {
 
-  private SubVisitService1 service;
+  //private SubVisitService1 service;
   private final AntenatalController controller;
-  private subsequentVisit panel;
+  private final subsequentVisit panel;
   private String id = null;
 
   /**
    * Constructor initialized the service and GUI
    */
   public SubController(AntenatalController controller) {
-    this.service = new SubVisitService1();
     this.controller = controller;
     this.panel = new subsequentVisit(this);
+    //this.service = new SubVisitService1();
+    
 
-    // Debug Test
-    System.out.println("Sub Visit Table:");
-    service.getAllSubVisits().forEach(System.out::println);
+
   }
   
   public JPanel getPanel(){
      return panel.getPanel();
+  }
+  
+  public JPanel setPanel(AntenatalSubVisit subVisit){
+     return panel.setForm(subVisit);
   }
 
   public void setId(String ID){
@@ -75,15 +78,18 @@ public class SubController implements ActionListener {
         // Create a new Visit object to pass to the service class.
         AntenatalSubVisit visit = new AntenatalSubVisit(subId, id, sysBP, diaBP,
               weight, fH, date, bloodFilm, refer);
-        
-        
-        
-        //doesn't do anything right now
-        service.addSubVisit(visit);
+ 
+        PregnancyRecord initVisit = controller.getVisit(id);
+        initVisit.setSubID(subId);
+        controller.submitNewSubVisit(visit);
         System.out.println("Inserted New SubVisit (" + subId + ")");
+        
       }
     }
   }
+  
+
+  
 
   public static int parseInteger( String string, int defaultValue ) {
     try {

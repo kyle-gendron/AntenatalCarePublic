@@ -215,6 +215,17 @@ public class AntenatalSubVisit implements Serializable{
   public void setBloodFilm(String bloodFilm) {
      this.bloodFilm = bloodFilm;
   }
+  
+  public String getReferral() {
+     return bloodFilm;
+  }
+
+  /**Sets the results of the blood film test for Malaria
+   * @param bloodFilm the bloodFilm to set
+   */
+  public void setReferrel(String refer) {
+     this.referred = refer;
+  }
 
   /**
    * @return the serialVersionUID
