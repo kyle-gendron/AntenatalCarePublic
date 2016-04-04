@@ -5,8 +5,6 @@ import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -36,13 +34,13 @@ import static edu.usm.cos420.antenatal.controller.Utils.parseInteger;
 public class VisitForm extends JPanel {
 
 	private final JPanel panel;
-	private final JTextField parityInput;
-	private final JTextField systolicInput;
-	private final JTextField diastolicInput;
-	private final JTextField heightInput;
-	private final JTextField weightInput;
+	private final JSpinner parityInput;
+	private final JSpinner systolicInput;
+	private final JSpinner diastolicInput;
+	private final JSpinner heightInput;
+	private final JSpinner weightInput;
 	private final JTextField gestationInput;
-	private final JTextField fundalHeightInput;
+	private final JSpinner fundalHeightInput;
 	private final JDatePickerImpl eedInput;
 	private final JTextField hbaAt36WeeksInput;
 	private final JTextField urineTestSugarInput;
@@ -85,29 +83,42 @@ public class VisitForm extends JPanel {
 		errorField.add(errorFields);
 
 		JLabel parity = new JLabel("Parity:"); //integer
-		parityInput = new JTextField(2);
+		SpinnerModel paritySpin = new SpinnerNumberModel(0,0,20,1);
+		parityInput = new JSpinner(paritySpin);
 		JLabel BloodPressure = new JLabel("Blood Pressure:");
-		systolicInput = new JTextField(2);//ADD TWO Fields int/int
+		SpinnerModel systolicSpinModel = new SpinnerNumberModel(120,80,200,1);//ADD TWO Fields int/int
+		systolicInput = new JSpinner(systolicSpinModel);
+		JLabel bloSys = new JLabel("Systolic BP"); 
 		JLabel fill = new JLabel("/");
-		diastolicInput = new JTextField(2);
+		SpinnerModel diastolicSpinModel = new SpinnerNumberModel(80,40,140,1);;
+		diastolicInput = new JSpinner(diastolicSpinModel);
+		JLabel bloDia = new JLabel("Diastolic BP"); 
 
 		JPanel bloInput = new JPanel();
 		bloInput.add(BloodPressure);
-		bloInput.add(systolicInput);
+		bloInput.add(systolicInput,BorderLayout.CENTER);
+		bloInput.add(bloSys);
 		bloInput.add(fill);
 		bloInput.add(diastolicInput);
+		bloInput.add(bloDia);
 		bloInput.setLayout(new FlowLayout());
 
-		JLabel Height = new JLabel("Height (cm): ");//double
-		heightInput = new JTextField(3);
-		JLabel Weight = new JLabel("Weight (kg): ");//double
-		weightInput = new JTextField(3);
+		JLabel Height = new JLabel("Height: ");//double
+		SpinnerModel heightSpin =  new SpinnerNumberModel(152.4,20.0,243.84,1.0);
+		heightInput = new JSpinner(heightSpin);
+		JLabel cm1 = new JLabel("(cm)");
+		JLabel Weight = new JLabel("Weight: ");//double
+		SpinnerModel weightSpin = new SpinnerNumberModel(68.0,22.6,300.0,1.0);
+		weightInput = new JSpinner(weightSpin);
+		JLabel kg = new JLabel("(kg)");
 
 		JPanel size = new JPanel();
 		size.add(Height);
 		size.add(heightInput);
+		size.add(cm1);
 		size.add(Weight);
 		size.add(weightInput);
+		size.add(kg);
 		size.setLayout(new GridLayout(2,3));
 
 		//number of weeks pregnant
@@ -115,11 +126,14 @@ public class VisitForm extends JPanel {
 		gestationInput = new JTextField(3);//How to Calculate
 
 		//measurement of uterus in CM
-		JLabel FHeight = new JLabel("Fundal Height (cm):");//Double
-		fundalHeightInput = new JTextField(3);
+		JLabel FHeight = new JLabel("Fundal Height:");//Double
+		SpinnerModel FSpin =  new SpinnerNumberModel(0.0,0.0,45.0,1.0);
+		fundalHeightInput = new JSpinner(FSpin );
+		JLabel cm2 = new JLabel("(cm)");
 		JPanel FundalHeight = new JPanel();
 		FundalHeight.add(FHeight);
 		FundalHeight.add(fundalHeightInput);
+		FundalHeight.add(cm2);
 
 		//date baby is due
 		JLabel EEDL = new JLabel("Due Date:");
@@ -350,7 +364,7 @@ public class VisitForm extends JPanel {
 	 * @return String of the parity field, or -1 if invalid
 	 */
 	public int getParity() {
-		return parseInteger(parityInput.getText(), -1);
+		return (int) (parityInput.getValue());
 	}
 
 	/**
@@ -358,7 +372,7 @@ public class VisitForm extends JPanel {
 	 * @return Returns double of the patients height, or -1 if invalid
 	 */
 	public Double getPatientHeight() {
-		return parseDouble(heightInput.getText());
+		return (Double) (heightInput.getValue());
 	}
 
 	/**
@@ -366,7 +380,7 @@ public class VisitForm extends JPanel {
 	 * @return Returns double of the patients weight, or -1 if invalid
 	 */
 	public Double getPatientWeight() {
-		return parseDouble(weightInput.getText());
+		return (Double) (weightInput.getValue());
 	}
 
 	/**
@@ -374,14 +388,14 @@ public class VisitForm extends JPanel {
 	 * @return Returns int val of the patients Systollic blood pressue
 	 */
 	public int getSystolicBP(){
-		return parseInteger(systolicInput.getText());
+		return (int) systolicInput.getValue();
 	}
 	/**
 	 *
 	 * @return returns int val of the patients Diastolic blood pressure
 	 */
 	public int getDiastolicBP(){
-		return parseInteger(diastolicInput.getText());
+		return (int) (diastolicInput.getValue());
 	}
 
 	/**
@@ -428,7 +442,7 @@ public class VisitForm extends JPanel {
 	 * @return Double value of the fundal height
 	 */
 	public double getFundalHeight(){
-		return parseDouble(fundalHeightInput.getText());
+		return (double)(fundalHeightInput.getValue());
 	}
 
 	/**
@@ -578,15 +592,15 @@ public class VisitForm extends JPanel {
 	}
 
 	public void setParity(int parity) {
-		this.parityInput.setText(String.valueOf(parity));
+		this.parityInput.setValue(parity);
 	}
 
 	public void setSystolicBP(int systolicBP) {
-		this.systolicInput.setText(String.valueOf(systolicBP));
+		this.systolicInput.setValue(systolicBP);
 	}
 
 	public void setDiastolicBP(int diastolicBP) {
-		this.diastolicInput.setText(String.valueOf(diastolicBP));
+		this.diastolicInput.setValue(diastolicBP);
 	}
 
 	public void setTrimester(int trimester) {
@@ -606,15 +620,15 @@ public class VisitForm extends JPanel {
 	}
 
 	public void setHeight(double height) {
-		this.heightInput.setText(String.valueOf(height));
+		this.heightInput.setValue(height);
 	}
 
 	public void setWeight(double weight) {
-		this.weightInput.setText(String.valueOf(weight));
+		this.weightInput.setValue(weight);
 	}
 
 	public void setFundalHeight(double fundalHeight) {
-		this.fundalHeightInput.setText(String.valueOf(fundalHeight));
+		this.fundalHeightInput.setValue(fundalHeight);
 	}
 
 	public void setHBAtReg(double HBAtReg) {

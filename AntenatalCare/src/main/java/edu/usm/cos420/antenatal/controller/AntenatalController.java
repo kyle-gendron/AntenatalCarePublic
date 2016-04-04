@@ -69,7 +69,7 @@ public class AntenatalController implements ActionListener {
 	@Override
 	/**
 	 * listens for the form to quit or be submitted
-	 * @params e : an ActionEvent that it lists to
+	 * @param e : an ActionEvent that it lists to
 	 */
 	public void actionPerformed(ActionEvent e) {
 
@@ -82,7 +82,7 @@ public class AntenatalController implements ActionListener {
 			NewVisitController newVisit = new NewVisitController(this);
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			String date = sdf.format(new Date());
-			this.view.addTab(date, newVisit.getPanel());
+			this.view.addNewPregnancy(date, newVisit.getPanel());
 			break;
 		}
 		case "Find Previous Visits": {
@@ -95,7 +95,7 @@ public class AntenatalController implements ActionListener {
 					NewVisitController newVisit = new NewVisitController(this, prevVisit);
 					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 					String date = sdf.format(new Date());
-					this.view.addTab(date, newVisit.getPanel());
+					this.view.addNewPregnancy(date, newVisit.getPanel());
 				
 	             SubController subController = new SubController(this);
 	               subController.setId(visitId);

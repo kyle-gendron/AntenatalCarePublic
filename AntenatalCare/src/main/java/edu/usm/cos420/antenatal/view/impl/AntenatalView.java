@@ -102,7 +102,6 @@ public class AntenatalView extends JFrame {
 		sPain.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		sPain.setViewportBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
-		//panel.setBackground(Color.LIGHT_GRAY);
 		panel.validate();
 	}
 
@@ -198,7 +197,7 @@ public class AntenatalView extends JFrame {
 	 * @param title tab name
 	 * @param panel panel to attach to the pane.
 	 */
-	public void addTab(String title, JPanel panel) {
+	public void addNewPregnancy(String title, JPanel panel) {
 		if (count == 1) {
 			newPane.remove(newPane.getComponentCount() - 1);
 		}
@@ -211,9 +210,7 @@ public class AntenatalView extends JFrame {
 		panel.setMinimumSize(new Dimension(600,650));
 		tPain.addTab(title, panel);
 		validate();
-		//}else{
-		//get previous tabs to display and make new subsequent tab
-		//}
+		
 	}
 	public void addSub(String title,JPanel panel){
 	   if(split.getDividerLocation()==0){
