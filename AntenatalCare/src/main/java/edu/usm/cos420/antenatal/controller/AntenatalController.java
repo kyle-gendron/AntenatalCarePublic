@@ -1,7 +1,7 @@
 package edu.usm.cos420.antenatal.controller;
 
 import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
-import edu.usm.cos420.antenatal.domain.AntenatalVisit;
+import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 import edu.usm.cos420.antenatal.domain.DummyPerson;
 import edu.usm.cos420.antenatal.gui.VisitForm;
 import edu.usm.cos420.antenatal.gui.PreviousVisits;
@@ -90,7 +90,7 @@ public class AntenatalController implements ActionListener {
 			if(!options.isEmpty()){
 				String visitId = this.findPrevious.showDialog(options);
 				if (visitId != null && !visitId.isEmpty()) {
-					AntenatalVisit prevVisit = service.getAntenatalVisitById(visitId);
+					PregnancyRecord prevVisit = service.getAntenatalVisitById(visitId);
 					System.out.println("Loading: " + prevVisit);
 					NewVisitController newVisit = new NewVisitController(this, prevVisit);
 					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -128,7 +128,7 @@ public class AntenatalController implements ActionListener {
 		return dummyPerson;
 	}
 
-	public void submitNewVisit(AntenatalVisit visit) {
+	public void submitNewVisit(PregnancyRecord visit) {
 		System.out.println("Inserting New Visit (" + visit.getID() + ")");
 		service.addAntenatalVisit(visit);
 
@@ -136,7 +136,7 @@ public class AntenatalController implements ActionListener {
 		this.view.setHasPreviousVisits(getVisitList().size() > 0);
 	}
 
-	public void updateVisit(AntenatalVisit visit) {
+	public void updateVisit(PregnancyRecord visit) {
 		System.out.println("Updating Visit (" + visit.getID() + ")");
 		service.updateAntenatalVisit(visit);
 	}
@@ -145,7 +145,7 @@ public class AntenatalController implements ActionListener {
 		return AntenatalService.getNextID();
 	}
 	
-	public AntenatalVisit getVisit(String id){
+	public PregnancyRecord getVisit(String id){
 	   return service.getAntenatalVisitById(id);
 	}
 	
@@ -168,6 +168,6 @@ public class AntenatalController implements ActionListener {
 	   }
 
 	public List<String> getVisitList() {
-		return service.getAllVisits().stream().map(AntenatalVisit::getID).collect(Collectors.toList());
+		return service.getAllVisits().stream().map(PregnancyRecord::getID).collect(Collectors.toList());
 	}
 }

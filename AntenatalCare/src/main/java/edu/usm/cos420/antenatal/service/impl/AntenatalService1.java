@@ -1,7 +1,7 @@
 package edu.usm.cos420.antenatal.service.impl;
 
 import edu.usm.cos420.antenatal.dao.domain.AntenatalVisitDao;
-import edu.usm.cos420.antenatal.domain.AntenatalVisit;
+import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 import edu.usm.cos420.antenatal.service.AntenatalService;
 
 import java.util.List;
@@ -33,21 +33,21 @@ public class AntenatalService1 implements AntenatalService {
   }
 
   @Override
-  public void addAntenatalVisit(AntenatalVisit visit) {
+  public void addAntenatalVisit(PregnancyRecord visit) {
     dao.add(visit);
   }
 
   @Override
-  public AntenatalVisit getAntenatalVisitById(String id) {
+  public PregnancyRecord getAntenatalVisitById(String id) {
     return dao.find(id);
   }
 
   @Override
-  public List<AntenatalVisit> getAllVisits() {
+  public List<PregnancyRecord> getAllVisits() {
     return dao.list();
   }
 
-  public void updateAntenatalVisit(AntenatalVisit visit) {
+  public void updateAntenatalVisit(PregnancyRecord visit) {
     dao.update(visit);
   }
 }

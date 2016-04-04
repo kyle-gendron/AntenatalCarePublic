@@ -58,9 +58,7 @@ public class VisitForm extends JPanel {
 	private final JComboBox trimesterInput;
 	private final JComboBox subVisitsInput;
 	private final JComboBox ttDosesInput;
-	private final JCheckBox iptThree;
-	private final JCheckBox iptOne;
-	private final JCheckBox iptTwo;
+	private final JComboBox iptInput;
 	private final JComboBox itnInput;
 	private final JTextArea complaints;
 	private final JTextArea remarks;
@@ -235,14 +233,10 @@ public class VisitForm extends JPanel {
 
 		//ipt/doses
 		JPanel IPT = new JPanel();
-		iptOne = new JCheckBox("1");
-		iptTwo = new JCheckBox("2");
-		iptThree = new JCheckBox("3");
+		iptInput = new JComboBox<>(new String[] {"","1","2","3"});
 		IPT.add(new JLabel("IPT Doses:"));
-		IPT.add(iptOne);
-		IPT.add(iptTwo);
-		IPT.add(iptThree);
-
+		IPT.add(iptInput);
+		
 		//stuff of ITN
 		JPanel ITN = new JPanel();
 		itnInput = new JComboBox<>(new String[] {"", "Yes", "No"});
@@ -298,9 +292,6 @@ public class VisitForm extends JPanel {
 		panel.add(textHold);
 
 		//disables fields where others are required
-		iptOne.setEnabled(false);
-		iptTwo.setEnabled(false);
-		iptThree.setEnabled(false);
 		sicklingTypeInput.setEnabled(false);
 		//TODO: ARV input to be added
 
@@ -321,17 +312,6 @@ public class VisitForm extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			//TODO: Verify all Fields
 			//TODO: update error label(s) / add red around erroneous things
-
-			//enable disabled fields if necessary
-			if(getBloodFilm().equals("Present") == true){
-				iptOne.setEnabled(true);
-				iptTwo.setEnabled(true);
-				iptThree.setEnabled(true);
-			}else{
-				iptOne.setEnabled(false);
-				iptTwo.setEnabled(false);
-				iptThree.setEnabled(false);
-			}
 
 			if(getSicklingStatus().equals("Positive") == true){
 				sicklingTypeInput.setEnabled(true);
@@ -425,23 +405,8 @@ public class VisitForm extends JPanel {
 		return parseInteger(gestationInput.getText());
 	}
 
-	public int getIPTDoses(){
-		//TODO: make this better?
-		int doses = 0;
-		int tmp = -1;
-
-		if(iptOne.isSelected()){
-			doses = 1;
-		}
-		if(iptTwo.isSelected()){
-			doses = 2;
-		}
-
-		if(iptThree.isSelected()){
-			doses = 3;
-		}
-
-		return doses;
+	public String getIPTDoses(){
+		return String.valueOf(iptInput.getSelectedItem());
 	}
 	/**
 	 *
@@ -619,16 +584,8 @@ public class VisitForm extends JPanel {
 		this.gestationInput.setText(String.valueOf(gestation));
 	}
 
-	public void setIPTDoses(int IPTDoses) {
-		if (IPTDoses > 0) {
-			iptOne.setSelected(true);
-		}
-		if (IPTDoses > 1) {
-			iptTwo.setSelected(true);
-		}
-		if (IPTDoses > 2) {
-			iptThree.setSelected(true);
-		}
+	public void setIPTDoses(String IPTDoses) {
+		this.iptInput.setSelectedItem(IPTDoses);
 	}
 
 	public void setTTDoses(String TTDoses) {

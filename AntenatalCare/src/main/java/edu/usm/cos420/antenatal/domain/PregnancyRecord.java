@@ -1,5 +1,5 @@
 /*
- * AntenatalVisit.java
+ * PregnancyRecord.java
  *
  * Created on February 22, 2016
  */
@@ -25,13 +25,13 @@ import java.util.List;
  *  be recorded in order and linked to this initial visit object.
  *
  */
-public class AntenatalVisit implements Serializable {
+public class PregnancyRecord implements Serializable {
 
 	private static final long serialVersionUID = 7526472295622776147L;
 
 	int parity, systolicBP, diastolicBP, trimester, subVisits;
 	int gestation; //num weeks of pregnancy, calculated from last period
-	int iPTDoses;
+	String iPTDoses;
   String TTDoses; //added together from tick marks
 	double height, weight; //height in cm, weight in kg
 	double fundalHeight; //in cm
@@ -43,20 +43,19 @@ public class AntenatalVisit implements Serializable {
 	String bloodFilm;  //results of malaria blood film test
 	int iTN;
 	String id;  //id used to identify a particular set of antenatal visits
-  int iTPDoses;
   String maleInvolvement;
   String remarks;
   String complaints;
   List<String> subIDs = new ArrayList<String>();
 
 
-  public AntenatalVisit(String id){
+  public PregnancyRecord(String id){
 		this.id = id;
 	}
 
-  public AntenatalVisit() {}
+  public PregnancyRecord() {}
 
-  public AntenatalVisit(VisitForm form) {
+  public PregnancyRecord(VisitForm form) {
     setParity(form.getParity());
     setHIVResults(form.getHIVTestResults());
     setHeight(form.getPatientHeight());
@@ -90,7 +89,7 @@ public class AntenatalVisit implements Serializable {
 
   @Override
   public String toString() {
-    return "AntenatalVisit{" +
+    return "PregnancyRecord{" +
       "id='" + id + '\'' +
       ", parity=" + parity +
       ", systolicBP=" + systolicBP +
@@ -229,14 +228,14 @@ public class AntenatalVisit implements Serializable {
 	/**Returns the number of IPT Doses given
 	 * @return the iPTDoses
 	 */
-	public int getIPTDoses() {
+	public String getIPTDoses() {
 		return iPTDoses;
 	}
 
 	/** Sets the number of IPT Doses given
 	 * @param iPTDoses the iPTDoses to set
 	 */
-	public void setIPTDoses(int iPTDoses) {
+	public void setIPTDoses(String iPTDoses) {
 		this.iPTDoses = iPTDoses;
 	}
 
