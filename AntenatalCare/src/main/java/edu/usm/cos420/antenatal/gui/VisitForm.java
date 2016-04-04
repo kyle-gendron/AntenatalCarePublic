@@ -68,6 +68,8 @@ public class VisitForm extends JPanel {
 	private final JComboBox hivTestInput;
 	private final JComboBox ARVInput;
 	private UtilDateModel dateModel;
+	private final JLabel errorFields;
+	private final JPanel errorField;
 
 	/**
 	 * Fills in the jFrame with all of the field that need to be filled in
@@ -80,6 +82,10 @@ public class VisitForm extends JPanel {
 		panel.setLayout(layout);
 		layout.setHgap(10);
 
+		errorField = new JPanel();
+		errorFields = new JLabel("");
+		errorField.add(errorFields);
+		
 		JLabel parity = new JLabel("Parity:"); //integer
 		parityInput = new JTextField(2);
 		JLabel BloodPressure = new JLabel("Blood Pressure:");
@@ -337,6 +343,16 @@ public class VisitForm extends JPanel {
 		}
 	}
 
+	public void errorMessage(String errorMessage) {
+		//TODO: match VisitForm
+		errorFields.setText(errorMessage);
+		//TODO: resize to fit text
+		Dimension size = errorFields.getPreferredSize();
+		errorField.setSize(size);
+		errorFields.setSize(size);
+		System.out.println(errorFields.getText());
+	}
+	
 	/**
 	 *
 	 * @return String of the parity field, or -1 if invalid

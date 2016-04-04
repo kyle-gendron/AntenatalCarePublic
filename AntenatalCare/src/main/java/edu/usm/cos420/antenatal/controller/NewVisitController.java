@@ -100,7 +100,10 @@ public class NewVisitController implements ActionListener {
 
 		//if error found produce pop up
 		if(errorsExist == true){
-			JOptionPane.showMessageDialog(null, errorMessage);
+			//TODO: Remove once everything works okay
+			//JOptionPane.showMessageDialog(null, errorMessage);
+
+			form.errorMessage(errorMessage);
 			return false;
 		}
 		return true;
