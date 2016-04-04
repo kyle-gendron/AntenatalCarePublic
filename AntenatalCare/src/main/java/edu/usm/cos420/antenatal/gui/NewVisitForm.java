@@ -63,6 +63,8 @@ public class NewVisitForm extends JPanel {
 	private final JCheckBox itnYes;
 	private final JTextArea complaints;
 	private final JTextArea remarks;
+	private final JLabel errorFields;
+	private final JPanel errorField;
 
 	/**
 	 * Fills in the jFrame with all of the field that need to be filled in
@@ -74,7 +76,12 @@ public class NewVisitForm extends JPanel {
 		panel = new JPanel();
 		panel.setLayout(layout);
 		layout.setHgap(10);
-
+		
+		errorField = new JPanel();
+		errorFields = new JLabel("");
+		errorField.add(errorFields);
+		
+		
 		JLabel parity = new JLabel("Parity: "); //integer
 		parInput = new JTextField(2);
 		JLabel BloodPressure = new JLabel("Blood Pressure: ");
@@ -287,6 +294,7 @@ public class NewVisitForm extends JPanel {
 		texthold.add(remarks);
 
 		//add data to frame
+		panel.add(errorFields);
 		panel.add(parity);
 		panel.add(parInput);
 		panel.add(bloInput);
@@ -322,6 +330,19 @@ public class NewVisitForm extends JPanel {
 	 */
 	public JPanel getPanel() {
 		return panel;
+	}
+	
+	public void errorMessage(String errorMessage){
+		if(errorMessage != null){
+			errorFields.setBorder(BorderFactory.createLineBorder(Color.red));
+			errorFields.setText(errorMessage);
+			Dimension size = errorFields.getPreferredSize();
+			size.setSize(size.getWidth() + 10, size.getHeight() + 10);
+			errorField.setSize(size);
+			errorFields.setSize(size);
+		}else{
+			errorField.setToolTipText("");
+		}
 	}
 
 	/**

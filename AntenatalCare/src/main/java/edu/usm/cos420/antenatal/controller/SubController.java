@@ -48,6 +48,10 @@ public class SubController implements ActionListener {
   public JPanel getPanel(){
      return panel.getPanel();
   }
+  
+  public JPanel setPanel(AntenatalSubVisit subVisit){
+     return panel.setForm(subVisit);
+  }
 
   public void setId(String ID){
      id = ID;

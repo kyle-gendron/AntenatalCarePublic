@@ -45,8 +45,8 @@ public class subsequentVisit{
 	private JTextField fundalH;
 	private JDatePickerImpl apptDate;
 	private UtilDateModel dateModel;
-	private JComboBox bloodF;
-	private JComboBox refer;
+	private JComboBox<String> bloodF;
+	private JComboBox<String> refer;
 	private SubController subC;
 	private JButton saveButton;
 
