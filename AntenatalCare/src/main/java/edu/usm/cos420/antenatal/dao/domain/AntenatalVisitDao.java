@@ -28,7 +28,7 @@ public class AntenatalVisitDao
 	 */
 	public AntenatalVisitDao(String fileName)
 	{
-		genDao = new ObjectStreamDao<>(fileName);;
+		genDao = new ObjectStreamDao<>(fileName);
 	}
 
 	/**
