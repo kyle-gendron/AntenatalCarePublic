@@ -125,6 +125,10 @@ public class AntenatalController implements ActionListener {
 			System.exit(0);
 			break;
 		}
+      default: {
+        System.out.println("\"" + e.getActionCommand() + "\" action is not implemented.");
+        break;
+      }
 		}
 	}
 
