@@ -5,6 +5,9 @@ import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -288,9 +291,19 @@ public class VisitForm extends JPanel {
 		bloodFilmInput.addActionListener(new formListener());//getInsets();
 		hivTestInput.addActionListener(new formListener());
 		
-
+		//Add listeners for spinners
+		parityInput.addChangeListener(new changeListener());
+		systolicInput.addChangeListener(new changeListener());
+		diastolicInput.addChangeListener(new changeListener());
+		heightInput.addChangeListener(new changeListener());
+		weightInput.addChangeListener(new changeListener());
+		fundalHeightInput.addChangeListener(new changeListener());
+		hbaAtRegInput.addChangeListener(new changeListener());
+		hbaAt36WeeksInput.addChangeListener(new changeListener());
+		urineTestSugarInput.addChangeListener(new changeListener());
+		urineTestProteinInput.addChangeListener(new changeListener());
+		
 		//add data to frame
-
 		panel.add(parity);
 		panel.add(parityInput);
 		panel.add(bloInput);
@@ -330,14 +343,11 @@ public class VisitForm extends JPanel {
 	public JPanel getPanel() {
 		return panel;
 	}
-
-	class formListener implements ActionListener {
+	class formListener implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//TODO: Verify all Fields
-			//TODO: update error label(s) / add red around erroneous things
-
+			////TODO: Verify all Fields
 			if(getSicklingStatus().equals("Positive") == true){
 				sicklingTypeInput.setEnabled(true);
 			}else{
@@ -356,33 +366,59 @@ public class VisitForm extends JPanel {
 				ARVInput.setEnabled(false);
 			}
 			
+		}
+		
+	}
+	class changeListener implements ChangeListener {
+
+		@Override
+		public void stateChanged(ChangeEvent e) {
+			//TODO: Verify all Fields
+			//TODO: update error label(s) / add red around erroneous things
+			Border look = parityInput.getBorder();
+			
+			
 			//Creates red boxes around errorenous data
+			
 			if(getSystolicBP() <= 0){
 				systolicInput.setBorder(BorderFactory.createLineBorder(Color.red));
+			}else{
+				systolicInput.setBorder(look);
 			}
 			//dia
 			if(getDiastolicBP() <= 0){
 				diastolicInput.setBorder(BorderFactory.createLineBorder(Color.red));
+			}else{
+				diastolicInput.setBorder(look);
 			}
 
 			//test weight
 			if(getPatientWeight() <= 0){
 				weightInput.setBorder(BorderFactory.createLineBorder(Color.red));
+			}else{
+				weightInput.setBorder(look);
 			}
 
 			//test height
 			if(getPatientHeight() <= 0){
 				heightInput.setBorder(BorderFactory.createLineBorder(Color.red));
+			}else{
+				heightInput.setBorder(look);
 			}
 
 			//if pos sickle cell ensure type is selected
 			if(getSicklingStatus().equals("Positive") && getSicklingType().equals("")){
 				sicklingTypeInput.setBorder(BorderFactory.createLineBorder(Color.red));
+			}else{
+				sicklingTypeInput.setBorder(look);
 			}
 			
 			if(getHIVTestResults().equals("Positive") && getARV().equals("")){
 				ARVInput.setBorder(BorderFactory.createLineBorder(Color.red));
+			}else{
+				ARVInput.setBorder(look);
 			}
+			
 		}
 	}
 
