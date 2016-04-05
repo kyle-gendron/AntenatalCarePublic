@@ -96,7 +96,6 @@ public class NewVisitController implements ActionListener {
 		}
 
 		//TODO: Add more error messages
-
 		//if error found produce pop up
 		if(errorsExist == true){
 			//TODO: Remove once everything works okay
