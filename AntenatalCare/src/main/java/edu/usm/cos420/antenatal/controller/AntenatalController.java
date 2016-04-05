@@ -13,6 +13,7 @@ import edu.usm.cos420.antenatal.service.impl.AntenatalService1;
 import edu.usm.cos420.antenatal.service.impl.SubVisitService1;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -39,12 +40,14 @@ public class AntenatalController implements ActionListener {
 	 * Constructor initialized the service and GUI
 	 */
 	public AntenatalController() {
-		// Dummy person object
-		dummyPerson = new DummyPerson();
+    this(new DummyPerson());
+	}
 
-		this.service = new AntenatalService1();
+  public AntenatalController(DummyPerson person) {
+    dummyPerson = person;
+    this.service = new AntenatalService1();
 		this.subService = new SubVisitService1();
-		this.view = new AntenatalView(this);
+    this.view = new AntenatalView(this);
 
 		// Debug Test
 		System.out.println("Current Visit Table:");
@@ -69,7 +72,7 @@ public class AntenatalController implements ActionListener {
 	@Override
 	/**
 	 * listens for the form to quit or be submitted
-	 * @param e : an ActionEvent that it lists to
+	 * @params e : an ActionEvent that it lists to
 	 */
 	public void actionPerformed(ActionEvent e) {
 
@@ -170,5 +173,9 @@ public class AntenatalController implements ActionListener {
 
 	public List<String> getVisitList() {
 		return service.getAllVisits().stream().map(PregnancyRecord::getID).collect(Collectors.toList());
+  }
+
+  public JPanel getPanel() {
+    return (JPanel) this.view.getContentPane();
 	}
 }

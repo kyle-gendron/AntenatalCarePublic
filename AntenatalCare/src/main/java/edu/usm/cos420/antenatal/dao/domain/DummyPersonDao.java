@@ -53,16 +53,16 @@ public class DummyPersonDao {
        */
       public void add(DummyPerson entity)
       {
-         genDao.add(entity.getId(), entity);
+         genDao.add(Long.valueOf(entity.getId()), entity);
       }
       
       /**
        * Update a DummyPerson in the DAO repository
        * @param entity any DummyPerson object
        */
-      public void update(DummyPerson entity) 
+      public void update(DummyPerson entity)
       {
-         genDao.update(entity.getId(), entity);
+         genDao.update(Long.valueOf(entity.getId()), entity);
       }
       
       /**
