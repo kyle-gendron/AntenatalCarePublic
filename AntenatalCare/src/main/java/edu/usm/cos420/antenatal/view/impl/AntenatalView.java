@@ -219,7 +219,7 @@ public class AntenatalView extends JFrame {
 	   if(split.getDividerLocation()==0){
          split.setDividerLocation(300);
          subPane.setMinimumSize(new Dimension(200,600));
-         subPane.setSize(new Dimension(220,600));
+         subPane.setSize(new Dimension(225,600));
       }
       JPanel subView = panel;
       JLabel name = new JLabel(title);
@@ -227,7 +227,7 @@ public class AntenatalView extends JFrame {
       P.setLayout(new BoxLayout(P,BoxLayout.PAGE_AXIS));
       P.add(name);
       P.add(subView);
-	  P.add( new Box.Filler(new Dimension(800,45),new Dimension(800,45),new Dimension(800,45)));
+	  P.add( new Box.Filler(new Dimension(800,10),new Dimension(800,10),new Dimension(800,10)));
 	  subPane.validate();
 	}
 

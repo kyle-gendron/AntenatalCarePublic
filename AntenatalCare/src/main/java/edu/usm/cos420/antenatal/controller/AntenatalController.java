@@ -107,7 +107,6 @@ public class AntenatalController implements ActionListener {
 	               List<String> subIDs = prevVisit.getSubIDs();
 	               for(String id: subIDs){
 	                  AntenatalSubVisit subVisit = subService.getSubVisitById(id);
-	                  
 	                  this.view.addSub("", subController.setPanel(subVisit));
 	               }
 	               
