@@ -266,8 +266,9 @@ public class VisitForm extends JPanel {
 
 		//add change listeners
 		sicklingStatusInput.addActionListener(new formListener());
-		bloodFilmInput.addActionListener(new formListener());getInsets();
+		bloodFilmInput.addActionListener(new formListener());//getInsets();
 		hivTestInput.addActionListener(new formListener());
+		
 
 		//add data to frame
 		panel.add(errorFields);
@@ -323,12 +324,46 @@ public class VisitForm extends JPanel {
 			}else{
 				sicklingTypeInput.setEnabled(false);
 			}	
-
-			if(getHIVTestResults().equals("Positive"))
+			//TODO: may not need?
+//			if(getBloodFilm().equals("Present") == true){
+//				iptInput.setEnabled(true);
+//			}else{
+//				iptInput.setEnabled(false);
+//			}
+			
+			if(getHIVTestResults().equals("Positive")){
 				ARVInput.setEnabled(true);
-			else
+			}else{
 				ARVInput.setEnabled(false);
+			}
+			
+			//Creates red boxes around errorenous data
+			if(getSystolicBP() <= 0){
+				systolicInput.setBorder(BorderFactory.createLineBorder(Color.red));
+			}
+			//dia
+			if(getDiastolicBP() <= 0){
+				diastolicInput.setBorder(BorderFactory.createLineBorder(Color.red));
+			}
 
+			//test weight
+			if(getPatientWeight() <= 0){
+				weightInput.setBorder(BorderFactory.createLineBorder(Color.red));
+			}
+
+			//test height
+			if(getPatientHeight() <= 0){
+				heightInput.setBorder(BorderFactory.createLineBorder(Color.red));
+			}
+
+			//if pos sickle cell ensure type is selected
+			if(getSicklingStatus().equals("Positive") && getSicklingType().equals("")){
+				sicklingTypeInput.setBorder(BorderFactory.createLineBorder(Color.red));
+			}
+			
+			if(getHIVTestResults().equals("Positive") && getARV().equals("")){
+				ARVInput.setBorder(BorderFactory.createLineBorder(Color.red));
+			}
 		}
 	}
 
@@ -343,6 +378,9 @@ public class VisitForm extends JPanel {
 		}else{
 			errorField.setToolTipText("");
 		}
+		
+		//TODO: Hookey way to do this, but it works for now
+		sicklingStatusInput.setSelectedIndex(sicklingTypeInput.getSelectedIndex());
 	}
 
 	/**
