@@ -99,8 +99,10 @@ public class AntenatalController implements ActionListener {
 				
 	             SubController subController = new SubController(this);
 	               subController.setId(visitId);
+	               this.view.clearSub();
 	                 
 	                 if(prevVisit.getSubIDs().isEmpty()){
+	                    this.view.addSub("", subController.getTitle());
 	                    this.view.addSub("", subController.getPanel());
 	                    break;
 	                 } else {
