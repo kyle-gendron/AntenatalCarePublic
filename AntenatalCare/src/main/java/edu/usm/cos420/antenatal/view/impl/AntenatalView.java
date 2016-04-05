@@ -201,12 +201,10 @@ public class AntenatalView extends JFrame {
 		if (count == 1) {
 			newPane.remove(newPane.getComponentCount() - 1);
 		}
-
 		count++;
 		if (Objects.equals(tPain.getTitleAt(0), "-------")) {
 			tPain.remove(0);
 		}
-		//if(!controller.getPregnancy()){//if they don't have an open pregnancy session ###CODE THIS###
 		panel.setMinimumSize(new Dimension(600,650));
 		tPain.addTab(title, panel);
 		validate();

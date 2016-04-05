@@ -447,7 +447,7 @@ public class VisitForm extends JPanel {
 	 * @return Double value of the fundal height
 	 */
 	public double getFundalHeight(){
-		return (double)(fundalHeightInput.getValue());
+		return (double) (fundalHeightInput.getValue());
 	}
 
 	/**
