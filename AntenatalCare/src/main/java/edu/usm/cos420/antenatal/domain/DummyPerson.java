@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DummyPerson implements Serializable{
+public class DummyPerson implements Serializable, Person{
    
    /**
     * Stub person object to populate fields in GUI coming from the consulting register

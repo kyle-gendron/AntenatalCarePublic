@@ -3,6 +3,7 @@ package edu.usm.cos420.antenatal.controller;
 import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
 import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 import edu.usm.cos420.antenatal.domain.DummyPerson;
+import edu.usm.cos420.antenatal.domain.Person;
 import edu.usm.cos420.antenatal.gui.VisitForm;
 import edu.usm.cos420.antenatal.gui.PreviousVisits;
 import edu.usm.cos420.antenatal.gui.newVisitTab;
@@ -33,7 +34,7 @@ public class AntenatalController implements ActionListener {
 	private AntenatalService1 service;
 	private SubVisitService1 subService;
 	private AntenatalView view;
-	private DummyPerson dummyPerson;
+	private Person person;
 	//private newVisitTab currentForm;
 
 	/**
@@ -43,8 +44,8 @@ public class AntenatalController implements ActionListener {
     this(new DummyPerson());
 	}
 
-  public AntenatalController(DummyPerson person) {
-    dummyPerson = person;
+  public AntenatalController(Person p) {
+    person = p;
     this.service = new AntenatalService1();
 		this.subService = new SubVisitService1();
     this.view = new AntenatalView(this);
@@ -132,8 +133,8 @@ public class AntenatalController implements ActionListener {
 		}
 	}
 
-	public DummyPerson getPerson() {
-		return dummyPerson;
+	public Person getPerson() {
+		return person;
 	}
 
 	public void submitNewVisit(PregnancyRecord visit) {
