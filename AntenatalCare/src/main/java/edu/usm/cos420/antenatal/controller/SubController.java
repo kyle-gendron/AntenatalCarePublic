@@ -45,6 +45,11 @@ public class SubController implements ActionListener {
 
   }
   
+  
+  public JPanel getTitle(){
+     return panel.getTitle();
+  }
+  
   public JPanel getPanel(){
      return panel.getPanel();
   }
