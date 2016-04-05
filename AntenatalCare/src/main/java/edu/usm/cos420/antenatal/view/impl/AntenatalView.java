@@ -64,12 +64,7 @@ public class AntenatalView extends JFrame {
 		subPane.setLayout(subBorder);
 		newPane.setMinimumSize(new Dimension(600,500));
 
-
-
-
-		JButton quitButton = new JButton();
-		quitButton = makeQuitButton(newPane);
-
+		JButton quitButton = makeQuitButton(newPane);
 
 		makeTabbedDisplay(newPane);
 		newPane.add(quitButton, BorderLayout.SOUTH);
@@ -167,15 +162,20 @@ public class AntenatalView extends JFrame {
 		JMenuItem exitMenuItem = new JMenuItem("Exit");
 		findPreviousVisitsMenuItem = new JMenuItem("Find Previous Visits");
 
+    JMenuItem generateReport = new JMenuItem("Generate Monthly Report");
+
 		exitMenuItem.setMnemonic(KeyEvent.VK_E);
 		exitMenuItem.setToolTipText("Exit application");
 
 		createNewVisitMenuItem.addActionListener(controller);
 		findPreviousVisitsMenuItem.addActionListener(controller);
+    generateReport.addActionListener(controller);
 		exitMenuItem.addActionListener(controller);
 
 		file.add(createNewVisitMenuItem);
 		file.add(findPreviousVisitsMenuItem);
+    file.add(generateReport);
+    file.addSeparator();
 		file.add(exitMenuItem);
 		menuBar.add(file);
 
