@@ -207,6 +207,7 @@ public class AntenatalView extends JFrame {
 		}
 		panel.setMinimumSize(new Dimension(600,650));
 		tPain.addTab(title, panel);
+    tPain.setSelectedIndex(tPain.getTabCount() - 1);
 		validate();
 
 	}
