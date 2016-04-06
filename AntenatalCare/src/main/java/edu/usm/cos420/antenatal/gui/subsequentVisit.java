@@ -139,9 +139,9 @@ public class subsequentVisit{
 		sysBP = new JSpinner(sysSpin);
 		SpinnerModel diaSpin = new SpinnerNumberModel(0,0,200,1);
 		diaBP = new JSpinner(diaSpin);
-		SpinnerModel weighSpin = new SpinnerNumberModel(0,0,500,1);
+		SpinnerModel weighSpin = new SpinnerNumberModel(0.0,0.0,500.0,1.0);
 		weigh = new JSpinner(weighSpin);
-		SpinnerModel fundalSpin = new SpinnerNumberModel(0,0,500,1);
+		SpinnerModel fundalSpin = new SpinnerNumberModel(0.0,0.0,500.0,1.0);
 		fundalH = new JSpinner(fundalSpin);
 		Properties p = new Properties();
 		p.put("text.today", "Today");
