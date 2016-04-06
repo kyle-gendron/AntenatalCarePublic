@@ -207,6 +207,7 @@ public class AntenatalView extends JFrame {
 		}
 		panel.setMinimumSize(new Dimension(600,650));
 		tPain.addTab(title, panel);
+    tPain.setSelectedIndex(tPain.getTabCount() - 1);
 		validate();
 
 	}
@@ -217,13 +218,14 @@ public class AntenatalView extends JFrame {
 		P.setLayout(new BoxLayout(P,BoxLayout.PAGE_AXIS));
 		P.add(name);
 		P.add(subView);
-		P.add( new Box.Filler(new Dimension(800,45),new Dimension(800,45),new Dimension(800,45)));
+		P.add( new Box.Filler(new Dimension(800,10),new Dimension(800,10),new Dimension(800,10)));
 		subPane.validate();
 	}
 	
 	public void clearSub(){
 	   JPanel P = ((JPanel) sPain.getViewport().getView());
 	   P.removeAll();
+	   subPane.validate();
 	}
 
 	public void setHasPreviousVisits(boolean hasPreviousVisits) {
