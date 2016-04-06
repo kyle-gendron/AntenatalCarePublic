@@ -23,7 +23,10 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 
 
@@ -40,10 +43,10 @@ public class subsequentVisit{
 	private JLabel bloodFilm;
 	private JLabel referred;
 	private JLabel saved;
-	private JTextField sysBP;
-	private JTextField diaBP;
-	private JTextField weigh;
-	private JTextField fundalH;
+	private JSpinner sysBP;
+	private JSpinner diaBP;
+	private JSpinner weigh;
+	private JSpinner fundalH;
 	private JDatePickerImpl apptDate;
 	private UtilDateModel dateModel;
 	private JComboBox<String> bloodF;
@@ -132,10 +135,14 @@ public class subsequentVisit{
 	      data.setLayout(layout);
 
 	      
-	      sysBP = new JTextField(6);
-	      diaBP = new JTextField(6);
-	      weigh = new JTextField(3);
-	      fundalH = new JTextField(4);
+	      SpinnerModel sysSpin= new SpinnerNumberModel(0,0,200,1);
+		sysBP = new JSpinner(sysSpin);
+	      SpinnerModel diaSpin = new SpinnerNumberModel(0,0,200,1);
+		diaBP = new JSpinner(diaSpin);
+	      SpinnerModel weighSpin = new SpinnerNumberModel(0,0,500,1);
+		weigh = new JSpinner(weighSpin);
+	      SpinnerModel fundalSpin = new SpinnerNumberModel(0,0,500,1);
+		fundalH = new JSpinner(fundalSpin);
 	      Properties p = new Properties();
 	      p.put("text.today", "Today");
 	      p.put("text.month", "Month");
@@ -184,10 +191,13 @@ public class subsequentVisit{
 		//layout.setHgap(20);
 		data.setLayout(layout);
 
-		sysBP = new JTextField(6);
-		diaBP = new JTextField(6);
-		weigh = new JTextField(3);
-		fundalH = new JTextField(4);
+		SpinnerModel sysSpin= new SpinnerNumberModel(0,0,200,1);
+		sysBP = new JSpinner(sysSpin);
+	      SpinnerModel diaSpin = new SpinnerNumberModel(0,0,200,1);
+		diaBP = new JSpinner(diaSpin);
+	      SpinnerModel weighSpin = new SpinnerNumberModel(0,0,500,1);
+		weigh = new JSpinner(weighSpin);
+	      SpinnerModel fundalSpin = new SpinnerNumberModel(0,0,500,1);
 		Properties p = new Properties();
 		p.put("text.today", "Today");
 		p.put("text.month", "Month");
@@ -227,7 +237,7 @@ public class subsequentVisit{
 	 * @return Double value of the fundal height
 	 */
 	public double getFundalHeight(){
-		return parseDouble(fundalH.getText(), -1.0);
+		return (double) (fundalH.getValue());
 	}
 
 	/**
@@ -235,7 +245,7 @@ public class subsequentVisit{
 	 * @return Returns double of the patients weight, or -1 if invalid
 	 */
 	public Double getPatientWeight() {
-		return parseDouble(weigh.getText(), -1.0);
+		return (double) (weigh.getValue());
 	}
 
 	/**
@@ -243,14 +253,14 @@ public class subsequentVisit{
 	 * @return Returns int val of the patients Systollic blood pressue
 	 */
 	public int getSystolicBP(){
-		return parseInteger(sysBP.getText(), -1);
+		return (int) (sysBP.getValue());
 	}
 	/**
 	 *
 	 * @return returns int val of the patients Diastolic blood pressure
 	 */
 	public int getDiastolicBP(){
-		return parseInteger(diaBP.getText(), -1);
+		return (int) (diaBP.getValue());
 	}
 
 	/**
@@ -282,25 +292,25 @@ public class subsequentVisit{
     * @param fundalHeight is set to the text of Label fundalH
     */
    public void setFundalHeight(double fundalHeight) {
-      this.fundalH.setText(String.valueOf(fundalHeight));
+      this.fundalH.setValue(fundalHeight);
     }
    
    /**
     * @param weight is set to the text of Label weigh
     */
    public void setWeight(double weight) {
-      this.weigh.setText(String.valueOf(weight));
+      this.weigh.setValue(weight);
     }
    
    /**
     * @param systolicBP
     */
    public void setSystolicBP(int systolicBP) {
-      this.sysBP.setText(String.valueOf(systolicBP));
+      this.sysBP.setValue(systolicBP);
     }
 
     public void setDiastolicBP(int diastolicBP) {
-      this.diaBP.setText(String.valueOf(diastolicBP));
+      this.diaBP.setValue(diastolicBP);
     }
     
     public void setBloodFilm(String film) {

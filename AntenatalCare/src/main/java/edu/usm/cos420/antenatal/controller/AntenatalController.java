@@ -49,10 +49,10 @@ public class AntenatalController implements ActionListener {
 		// Debug Test
 		System.out.println("Current Visit Table:");
 		service.getAllVisits().forEach(System.out::println);
-		
-	    // Debug Test
-	    System.out.println("Sub Visit Table:");
-	    subService.getAllSubVisits().forEach(System.out::println);
+
+		// Debug Test
+		System.out.println("Sub Visit Table:");
+		subService.getAllSubVisits().forEach(System.out::println);
 
 		// Set up the find previous dialog.
 		this.findPrevious = new PreviousVisits(this.view);
@@ -96,26 +96,26 @@ public class AntenatalController implements ActionListener {
 					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 					String date = sdf.format(new Date());
 					this.view.addNewPregnancy(date, newVisit.getPanel());
-				
-	             SubController subController = new SubController(this);
-	               subController.setId(visitId);
-	               this.view.clearSub();
-	                 
-	                 if(prevVisit.getSubIDs().isEmpty()){
-	                    this.view.addSub("", subController.getTitle());
-	                    this.view.addSub("", subController.getPanel());
-	                    break;
-	                 } else {
-	               List<String> subIDs = prevVisit.getSubIDs();
-	               this.view.addSub("", subController.getTitle());
-	               for(String id: subIDs){
-	                  AntenatalSubVisit subVisit = subService.getSubVisitById(id);
-	                  this.view.addSub("", subController.setPanel(subVisit));
-	               }
-	               this.view.addSub("", subController.getPanel());
-	               
-	                 }
-                    
+
+					SubController subController = new SubController(this);
+					subController.setId(visitId);
+					this.view.clearSub();
+
+					if(prevVisit.getSubIDs().isEmpty()){
+						this.view.addSub("", subController.getTitle());
+						this.view.addSub("", subController.getPanel());
+						break;
+					} else {
+						List<String> subIDs = prevVisit.getSubIDs();
+						this.view.addSub("", subController.getTitle());
+						for(String id: subIDs){
+							AntenatalSubVisit subVisit = subService.getSubVisitById(id);
+							this.view.addSub("", subController.setPanel(subVisit));
+						}
+						this.view.addSub("", subController.getPanel());
+
+					}
+
 
 				}
 			}
@@ -148,28 +148,28 @@ public class AntenatalController implements ActionListener {
 	public String getNextId() {
 		return AntenatalService.getNextID();
 	}
-	
+
 	public PregnancyRecord getVisit(String id){
-	   return service.getAntenatalVisitById(id);
+		return service.getAntenatalVisitById(id);
 	}
-	
-	  public void submitNewSubVisit(AntenatalSubVisit subVisit) {
-	      System.out.println("Inserting New SubVisit (" + subVisit.getID() + ")");
-	      subService.addSubVisit(subVisit);
-	  }
 
-	   public void updateSubVisit(AntenatalSubVisit subVisit) {
-	      System.out.println("Updating SubVisit (" + subVisit.getID() + ")");
-	      subService.updateSubVisit(subVisit);
-	   }
-	   
-	   public AntenatalSubVisit getSubVisit(String id){
-	      return subService.getSubVisitById(id);
-	   }
+	public void submitNewSubVisit(AntenatalSubVisit subVisit) {
+		System.out.println("Inserting New SubVisit (" + subVisit.getID() + ")");
+		subService.addSubVisit(subVisit);
+	}
 
-	   public String getNextSubId() {
-	      return SubVisitService.getNextID();
-	   }
+	public void updateSubVisit(AntenatalSubVisit subVisit) {
+		System.out.println("Updating SubVisit (" + subVisit.getID() + ")");
+		subService.updateSubVisit(subVisit);
+	}
+
+	public AntenatalSubVisit getSubVisit(String id){
+		return subService.getSubVisitById(id);
+	}
+
+	public String getNextSubId() {
+		return SubVisitService.getNextID();
+	}
 
 	public List<String> getVisitList() {
 		return service.getAllVisits().stream().map(PregnancyRecord::getID).collect(Collectors.toList());

@@ -217,14 +217,14 @@ public class AntenatalView extends JFrame {
 		P.setLayout(new BoxLayout(P,BoxLayout.PAGE_AXIS));
 		P.add(name);
 		P.add(subView);
-		P.add( new Box.Filler(new Dimension(800,10),new Dimension(800,10),new Dimension(800,10)));
+		P.add( new Box.Filler(new Dimension(800,10),new Dimension(800,40),new Dimension(800,40)));
 		subPane.validate();
 	}
 	
 	public void clearSub(){
 	   JPanel P = ((JPanel) sPain.getViewport().getView());
 	   P.removeAll();
-	   subPane.validate();
+	   //subPane.validate();
 	}
 
 	public void setHasPreviousVisits(boolean hasPreviousVisits) {
