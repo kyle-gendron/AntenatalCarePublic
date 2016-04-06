@@ -224,6 +224,7 @@ public class AntenatalView extends JFrame {
 	public void clearSub(){
 	   JPanel P = ((JPanel) sPain.getViewport().getView());
 	   P.removeAll();
+	   subPane.validate();
 	}
 
 	public void setHasPreviousVisits(boolean hasPreviousVisits) {
