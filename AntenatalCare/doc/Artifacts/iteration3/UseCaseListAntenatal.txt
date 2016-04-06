@@ -1,2 +1,5 @@
 Use Cases
 
+* The client needs to enter valid data
+* The client wants to retrieve, and update, previous visits for a given pregnancy.
+
