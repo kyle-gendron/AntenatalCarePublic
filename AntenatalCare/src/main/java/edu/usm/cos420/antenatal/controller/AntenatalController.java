@@ -105,17 +105,19 @@ public class AntenatalController implements ActionListener {
 					subController.setId(visitId);
 
 					if(prevVisit.getSubIDs().isEmpty()){
-						this.view.addSub("", subController.getPanel());
-						break;
-					} else {
-						List<String> subIDs = prevVisit.getSubIDs();
-						for(String id: subIDs){
-							AntenatalSubVisit subVisit = subService.getSubVisitById(id);
-
-							this.view.addSub("", subController.setPanel(subVisit));
-						}
-
-					}
+	                    this.view.addSub("", subController.getTitle());
+	                    this.view.addSub("", subController.getPanel());
+	                    break;
+	                 } else {
+	               List<String> subIDs = prevVisit.getSubIDs();
+	               this.view.addSub("", subController.getTitle());
+	               for(String id: subIDs){
+	                  AntenatalSubVisit subVisit = subService.getSubVisitById(id);
+	                  this.view.addSub("", subController.setPanel(subVisit));
+	               }
+	               this.view.addSub("", subController.getPanel());
+	               
+	                 }
 
 
 				}
