@@ -39,6 +39,7 @@ public class subsequentVisit{
 	private JLabel Date;
 	private JLabel bloodFilm;
 	private JLabel referred;
+	private JLabel saved;
 	private JTextField sysBP;
 	private JTextField diaBP;
 	private JTextField weigh;
@@ -50,6 +51,8 @@ public class subsequentVisit{
 	private SubController subC;
 	private JButton saveButton;
 
+	private JPanel container;
+	private JPanel title;
 	private JPanel subVisit;
 
 	public subsequentVisit(SubController subC){
@@ -57,6 +60,12 @@ public class subsequentVisit{
 		this.subC = subC;
 
 	}
+	
+	public JPanel getTitle(){
+	   return title = addTitle();
+	}
+	
+	
 	public JPanel getPanel(){
 		subVisit = addForm();
 		subVisit.setMinimumSize(new Dimension(600,200));
@@ -66,39 +75,63 @@ public class subsequentVisit{
 	}
 	
 	public JPanel setForm(AntenatalSubVisit sVisit){
+	   
 	   subVisit = changeForm(sVisit);
       subVisit.setMinimumSize(new Dimension(600,200));
       subVisit.setBackground(Color.LIGHT_GRAY);
-	      return subVisit;
+	   return subVisit;
 	   
 	}
 	
+	private JPanel addTitle() {
+
+      JPanel data = new JPanel();
+      data.setPreferredSize(new Dimension(800, 25));
+
+      GridLayout layout = new GridLayout(1, 9);
+      //layout.setHgap(20);
+      data.setLayout(layout);
+
+      sBP = new JLabel("Systolic BP");
+      sBP.setHorizontalAlignment(SwingConstants.CENTER);
+      dBP = new JLabel("Diastolic BP");
+      dBP.setHorizontalAlignment(SwingConstants.CENTER);
+      weight = new JLabel("Weight");
+      weight.setHorizontalAlignment(SwingConstants.CENTER);
+      fundalHeight = new JLabel("Fundal Height");
+      fundalHeight.setHorizontalAlignment(SwingConstants.CENTER);
+      Date = new JLabel("Appointment Date");
+      Date.setHorizontalAlignment(SwingConstants.CENTER);
+      bloodFilm = new JLabel("Blood Film");
+      bloodFilm.setHorizontalAlignment(SwingConstants.CENTER);
+      referred = new JLabel("Referred?");
+      referred.setHorizontalAlignment(SwingConstants.CENTER);
+      saved = new JLabel("Save");
+      saved.setHorizontalAlignment(SwingConstants.CENTER);
+
+      //JPanel data = new JPanel();
+      data.add(Date);
+      data.add(sBP);
+      data.add(dBP);
+      data.add(weight);
+      data.add(fundalHeight);
+      data.add(bloodFilm);
+      data.add(referred);
+      data.add(saved);
+      
+      return data;
+   }
+	
 	private JPanel changeForm(AntenatalSubVisit sVisit) {
 
-	     JPanel container = new JPanel();
-	      BorderLayout bl = new BorderLayout();
-	      container.setLayout(bl);
 	      JPanel data = new JPanel();
-	      data.setPreferredSize(new Dimension(800, 50));
+	      data.setPreferredSize(new Dimension(800, 25));
 
-	      GridLayout layout = new GridLayout(2, 8);
+	      GridLayout layout = new GridLayout(1, 9);
 	      //layout.setHgap(20);
 	      data.setLayout(layout);
 
-	      sBP = new JLabel("Systolic BP");
-	      sBP.setHorizontalAlignment(SwingConstants.CENTER);
-	      dBP = new JLabel("Diastolic BP");
-	      dBP.setHorizontalAlignment(SwingConstants.CENTER);
-	      weight = new JLabel("Weight");
-	      weight.setHorizontalAlignment(SwingConstants.CENTER);
-	      fundalHeight = new JLabel("Fundal Height");
-	      fundalHeight.setHorizontalAlignment(SwingConstants.CENTER);
-	      Date = new JLabel("Appointment Date");
-	      Date.setHorizontalAlignment(SwingConstants.CENTER);
-	      bloodFilm = new JLabel("Blood Film");
-	      bloodFilm.setHorizontalAlignment(SwingConstants.CENTER);
-	      referred = new JLabel("Referred?");
-	      referred.setHorizontalAlignment(SwingConstants.CENTER);
+	      
 	      sysBP = new JTextField(6);
 	      diaBP = new JTextField(6);
 	      weigh = new JTextField(3);
@@ -113,14 +146,6 @@ public class subsequentVisit{
 	      bloodF = new JComboBox<>(new String[] {"", "Not Present", "Present"});
 	      refer = new JComboBox<>(new String[] {"", "No", "Yes"});
 
-	      //JPanel data = new JPanel();
-	      data.add(Date);
-	      data.add(sBP);
-	      data.add(dBP);
-	      data.add(weight);
-	      data.add(fundalHeight);
-	      data.add(bloodFilm);
-	      data.add(referred);
 
 	      //JPanel data = new JPanel();
 	      this.setApptDate(sVisit.getApptDate());
@@ -138,42 +163,27 @@ public class subsequentVisit{
 	      data.add(fundalH);
 	      data.add(bloodF);
 	      data.add(refer);
-	      container.add(data, BorderLayout.CENTER);
-	      saveButton = new JButton("Save");
+	      //container.add(data, BorderLayout.CENTER);
+	      saveButton = new JButton("Update");
 	      saveButton.addActionListener(subC);
-	      JPanel buttonPane = new JPanel();
-	      buttonPane.setLayout(new FlowLayout());
-	      buttonPane.add(saveButton);
-	      container.add(buttonPane, BorderLayout.SOUTH);
+	      //JPanel buttonPane = new JPanel();
+	      //buttonPane.setLayout(new FlowLayout());
+	      //buttonPane.add(saveButton);
+	      //container.add(buttonPane, BorderLayout.SOUTH);
 
-	      return container;
+	      data.add(saveButton);
+	      return data;
+	      //return container;
    }
    private JPanel addForm() {
 
-		JPanel container = new JPanel();
-		BorderLayout bl = new BorderLayout();
-		container.setLayout(bl);
 		JPanel data = new JPanel();
-		data.setPreferredSize(new Dimension(800, 50));
+		data.setPreferredSize(new Dimension(800, 25));
 
-		GridLayout layout = new GridLayout(2, 8);
+		GridLayout layout = new GridLayout(1, 9);
 		//layout.setHgap(20);
 		data.setLayout(layout);
 
-		sBP = new JLabel("Systolic BP");
-		sBP.setHorizontalAlignment(SwingConstants.CENTER);
-		dBP = new JLabel("Diastolic BP");
-		dBP.setHorizontalAlignment(SwingConstants.CENTER);
-		weight = new JLabel("Weight");
-		weight.setHorizontalAlignment(SwingConstants.CENTER);
-		fundalHeight = new JLabel("Fundal Height");
-		fundalHeight.setHorizontalAlignment(SwingConstants.CENTER);
-		Date = new JLabel("Appointment Date");
-		Date.setHorizontalAlignment(SwingConstants.CENTER);
-		bloodFilm = new JLabel("Blood Film");
-		bloodFilm.setHorizontalAlignment(SwingConstants.CENTER);
-		referred = new JLabel("Referred?");
-		referred.setHorizontalAlignment(SwingConstants.CENTER);
 		sysBP = new JTextField(6);
 		diaBP = new JTextField(6);
 		weigh = new JTextField(3);
@@ -189,15 +199,6 @@ public class subsequentVisit{
 		refer = new JComboBox<>(new String[] {"", "No", "Yes"});
 
 		//JPanel data = new JPanel();
-		data.add(Date);
-		data.add(sBP);
-		data.add(dBP);
-		data.add(weight);
-		data.add(fundalHeight);
-		data.add(bloodFilm);
-		data.add(referred);
-
-		//JPanel data = new JPanel();
 
 		data.add(apptDate);
 		data.add(sysBP);
@@ -206,15 +207,11 @@ public class subsequentVisit{
 		data.add(fundalH);
 		data.add(bloodF);
 		data.add(refer);
-		container.add(data, BorderLayout.CENTER);
 		saveButton = new JButton("Save");
 		saveButton.addActionListener(subC);
-		JPanel buttonPane = new JPanel();
-		buttonPane.setLayout(new FlowLayout());
-		buttonPane.add(saveButton);
-		container.add(buttonPane, BorderLayout.SOUTH);
-
-		return container;
+		data.add(saveButton);
+		
+		return data;
 	}
 
 	public LocalDate getApptDate(){

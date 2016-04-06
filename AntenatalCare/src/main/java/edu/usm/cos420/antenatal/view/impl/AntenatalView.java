@@ -220,6 +220,11 @@ public class AntenatalView extends JFrame {
 		P.add( new Box.Filler(new Dimension(800,45),new Dimension(800,45),new Dimension(800,45)));
 		subPane.validate();
 	}
+	
+	public void clearSub(){
+	   JPanel P = ((JPanel) sPain.getViewport().getView());
+	   P.removeAll();
+	}
 
 	public void setHasPreviousVisits(boolean hasPreviousVisits) {
 		findPreviousVisitsMenuItem.setEnabled(hasPreviousVisits);

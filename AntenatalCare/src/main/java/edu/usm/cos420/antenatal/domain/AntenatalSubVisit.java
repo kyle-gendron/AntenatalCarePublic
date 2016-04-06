@@ -217,7 +217,7 @@ public class AntenatalSubVisit implements Serializable{
   }
   
   public String getReferral() {
-     return bloodFilm;
+     return referred;
   }
 
   /**Sets the results of the blood film test for Malaria
