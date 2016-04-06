@@ -30,7 +30,7 @@ public class NewVisitController implements ActionListener {
 		this.panel.setFormData(visitInfo);
 
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch (e.getActionCommand()) {
@@ -38,7 +38,7 @@ public class NewVisitController implements ActionListener {
 
 			VisitForm form = panel.getForm();
 			//verify fields
-			if(verifyFields(form) == true){
+			if(verifyFields(form)){
 				PregnancyRecord visit = getVisitObject();
 				if (id == null){
 					String nextId = controller.getNextId();

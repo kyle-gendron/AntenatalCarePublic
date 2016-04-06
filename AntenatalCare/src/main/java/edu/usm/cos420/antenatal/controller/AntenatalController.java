@@ -99,7 +99,7 @@ public class AntenatalController implements ActionListener {
 
 					SubController subController = new SubController(this);
 					subController.setId(visitId);
-					this.view.clearSub();
+					AntenatalView.clearSub();
 
 					if(prevVisit.getSubIDs().isEmpty()){
 						this.view.addSub("", subController.getTitle());
@@ -135,6 +135,7 @@ public class AntenatalController implements ActionListener {
 	public void submitNewVisit(PregnancyRecord visit) {
 		System.out.println("Inserting New Visit (" + visit.getID() + ")");
 		service.addAntenatalVisit(visit);
+    AntenatalView.removeCurrentTab();
 
 		// Update the find previous menu option
 		this.view.setHasPreviousVisits(getVisitList().size() > 0);
@@ -143,6 +144,7 @@ public class AntenatalController implements ActionListener {
 	public void updateVisit(PregnancyRecord visit) {
 		System.out.println("Updating Visit (" + visit.getID() + ")");
 		service.updateAntenatalVisit(visit);
+    AntenatalView.removeCurrentTab();
 	}
 
 	public String getNextId() {
@@ -156,11 +158,13 @@ public class AntenatalController implements ActionListener {
 	public void submitNewSubVisit(AntenatalSubVisit subVisit) {
 		System.out.println("Inserting New SubVisit (" + subVisit.getID() + ")");
 		subService.addSubVisit(subVisit);
+    AntenatalView.removeCurrentTab();
 	}
 
 	public void updateSubVisit(AntenatalSubVisit subVisit) {
 		System.out.println("Updating SubVisit (" + subVisit.getID() + ")");
 		subService.updateSubVisit(subVisit);
+    AntenatalView.removeCurrentTab();
 	}
 
 	public AntenatalSubVisit getSubVisit(String id){

@@ -189,6 +189,7 @@ public class AntenatalView extends JFrame {
 		tPain.removeTabAt(tPain.getSelectedIndex());
 		if (tPain.getTabCount() == 0) {
 			fillEmpty();
+      clearSub();
 		}
 	}
 
@@ -221,11 +222,12 @@ public class AntenatalView extends JFrame {
 		P.add( new Box.Filler(new Dimension(800,10),new Dimension(800,40),new Dimension(800,40)));
 		subPane.validate();
 	}
-	
-	public void clearSub(){
+
+	public static void clearSub(){
 	   JPanel P = ((JPanel) sPain.getViewport().getView());
 	   P.removeAll();
-	   //subPane.validate();
+//	   subPane.validate();
+    subPane.repaint();
 	}
 
 	public void setHasPreviousVisits(boolean hasPreviousVisits) {
