@@ -3,6 +3,7 @@ package edu.usm.cos420.antenatal.controller;
 import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
 import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 import edu.usm.cos420.antenatal.domain.DummyPerson;
+import edu.usm.cos420.antenatal.domain.Person;
 import edu.usm.cos420.antenatal.gui.VisitForm;
 import edu.usm.cos420.antenatal.gui.PreviousVisits;
 import edu.usm.cos420.antenatal.gui.newVisitTab;
@@ -13,6 +14,7 @@ import edu.usm.cos420.antenatal.service.impl.AntenatalService1;
 import edu.usm.cos420.antenatal.service.impl.SubVisitService1;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -32,27 +34,29 @@ public class AntenatalController implements ActionListener {
 	private AntenatalService1 service;
 	private SubVisitService1 subService;
 	private AntenatalView view;
-	private DummyPerson dummyPerson;
+	private Person person;
 	//private newVisitTab currentForm;
 
 	/**
 	 * Constructor initialized the service and GUI
 	 */
 	public AntenatalController() {
-		// Dummy person object
-		dummyPerson = new DummyPerson();
+    this(new DummyPerson());
+	}
 
-		this.service = new AntenatalService1();
+  public AntenatalController(Person p) {
+    person = p;
+    this.service = new AntenatalService1();
 		this.subService = new SubVisitService1();
-		this.view = new AntenatalView(this);
+    this.view = new AntenatalView(this);
 
 		// Debug Test
 		System.out.println("Current Visit Table:");
 		service.getAllVisits().forEach(System.out::println);
-		
-	    // Debug Test
-	    System.out.println("Sub Visit Table:");
-	    subService.getAllSubVisits().forEach(System.out::println);
+
+		// Debug Test
+		System.out.println("Sub Visit Table:");
+		subService.getAllSubVisits().forEach(System.out::println);
 
 		// Set up the find previous dialog.
 		this.findPrevious = new PreviousVisits(this.view);
@@ -82,7 +86,7 @@ public class AntenatalController implements ActionListener {
 			NewVisitController newVisit = new NewVisitController(this);
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			String date = sdf.format(new Date());
-			this.view.addTab(date, newVisit.getPanel());
+			this.view.addNewPregnancy(date, newVisit.getPanel());
 			break;
 		}
 		case "Find Previous Visits": {
@@ -95,27 +99,24 @@ public class AntenatalController implements ActionListener {
 					NewVisitController newVisit = new NewVisitController(this, prevVisit);
 					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 					String date = sdf.format(new Date());
-					this.view.addTab(date, newVisit.getPanel());
-				
-	             SubController subController = new SubController(this);
-	               subController.setId(visitId);
-	               this.view.clearSub();
-	                 
-	                 if(prevVisit.getSubIDs().isEmpty()){
-	                    this.view.addSub("", subController.getTitle());
-	                    this.view.addSub("", subController.getPanel());
-	                    break;
-	                 } else {
-	               List<String> subIDs = prevVisit.getSubIDs();
-	               this.view.addSub("", subController.getTitle());
-	               for(String id: subIDs){
-	                  AntenatalSubVisit subVisit = subService.getSubVisitById(id);
-	                  this.view.addSub("", subController.setPanel(subVisit));
-	               }
-	               this.view.addSub("", subController.getPanel());
-	               
-	                 }
-                    
+					this.view.addNewPregnancy(date, newVisit.getPanel());
+
+					SubController subController = new SubController(this);
+					subController.setId(visitId);
+
+					if(prevVisit.getSubIDs().isEmpty()){
+						this.view.addSub("", subController.getPanel());
+						break;
+					} else {
+						List<String> subIDs = prevVisit.getSubIDs();
+						for(String id: subIDs){
+							AntenatalSubVisit subVisit = subService.getSubVisitById(id);
+
+							this.view.addSub("", subController.setPanel(subVisit));
+						}
+
+					}
+
 
 				}
 			}
@@ -125,11 +126,15 @@ public class AntenatalController implements ActionListener {
 			System.exit(0);
 			break;
 		}
+      default: {
+        System.out.println("\"" + e.getActionCommand() + "\" action is not implemented.");
+        break;
+      }
 		}
 	}
 
-	public DummyPerson getPerson() {
-		return dummyPerson;
+	public Person getPerson() {
+		return person;
 	}
 
 	public void submitNewVisit(PregnancyRecord visit) {
@@ -148,30 +153,34 @@ public class AntenatalController implements ActionListener {
 	public String getNextId() {
 		return AntenatalService.getNextID();
 	}
-	
+
 	public PregnancyRecord getVisit(String id){
-	   return service.getAntenatalVisitById(id);
+		return service.getAntenatalVisitById(id);
 	}
-	
-	  public void submitNewSubVisit(AntenatalSubVisit subVisit) {
-	      System.out.println("Inserting New SubVisit (" + subVisit.getID() + ")");
-	      subService.addSubVisit(subVisit);
-	  }
 
-	   public void updateSubVisit(AntenatalSubVisit subVisit) {
-	      System.out.println("Updating SubVisit (" + subVisit.getID() + ")");
-	      subService.updateSubVisit(subVisit);
-	   }
-	   
-	   public AntenatalSubVisit getSubVisit(String id){
-	      return subService.getSubVisitById(id);
-	   }
+	public void submitNewSubVisit(AntenatalSubVisit subVisit) {
+		System.out.println("Inserting New SubVisit (" + subVisit.getID() + ")");
+		subService.addSubVisit(subVisit);
+	}
 
-	   public String getNextSubId() {
-	      return SubVisitService.getNextID();
-	   }
+	public void updateSubVisit(AntenatalSubVisit subVisit) {
+		System.out.println("Updating SubVisit (" + subVisit.getID() + ")");
+		subService.updateSubVisit(subVisit);
+	}
+
+	public AntenatalSubVisit getSubVisit(String id){
+		return subService.getSubVisitById(id);
+	}
+
+	public String getNextSubId() {
+		return SubVisitService.getNextID();
+	}
 
 	public List<String> getVisitList() {
 		return service.getAllVisits().stream().map(PregnancyRecord::getID).collect(Collectors.toList());
+  }
+
+  public JPanel getPanel() {
+    return (JPanel) this.view.getContentPane();
 	}
 }

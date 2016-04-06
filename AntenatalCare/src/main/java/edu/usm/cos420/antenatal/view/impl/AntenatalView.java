@@ -64,12 +64,7 @@ public class AntenatalView extends JFrame {
 		subPane.setLayout(subBorder);
 		newPane.setMinimumSize(new Dimension(600,500));
 
-
-
-
-		JButton quitButton = new JButton();
-		quitButton = makeQuitButton(newPane);
-
+		JButton quitButton = makeQuitButton(newPane);
 
 		makeTabbedDisplay(newPane);
 		newPane.add(quitButton, BorderLayout.SOUTH);
@@ -102,7 +97,6 @@ public class AntenatalView extends JFrame {
 		sPain.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		sPain.setViewportBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
-		//panel.setBackground(Color.LIGHT_GRAY);
 		panel.validate();
 	}
 
@@ -168,15 +162,20 @@ public class AntenatalView extends JFrame {
 		JMenuItem exitMenuItem = new JMenuItem("Exit");
 		findPreviousVisitsMenuItem = new JMenuItem("Find Previous Visits");
 
+    JMenuItem generateReport = new JMenuItem("Generate Monthly Report");
+
 		exitMenuItem.setMnemonic(KeyEvent.VK_E);
 		exitMenuItem.setToolTipText("Exit application");
 
 		createNewVisitMenuItem.addActionListener(controller);
 		findPreviousVisitsMenuItem.addActionListener(controller);
+    generateReport.addActionListener(controller);
 		exitMenuItem.addActionListener(controller);
 
 		file.add(createNewVisitMenuItem);
 		file.add(findPreviousVisitsMenuItem);
+    file.add(generateReport);
+    file.addSeparator();
 		file.add(exitMenuItem);
 		menuBar.add(file);
 
@@ -198,37 +197,28 @@ public class AntenatalView extends JFrame {
 	 * @param title tab name
 	 * @param panel panel to attach to the pane.
 	 */
-	public void addTab(String title, JPanel panel) {
+	public void addNewPregnancy(String title, JPanel panel) {
 		if (count == 1) {
 			newPane.remove(newPane.getComponentCount() - 1);
 		}
-
 		count++;
 		if (Objects.equals(tPain.getTitleAt(0), "-------")) {
 			tPain.remove(0);
 		}
-		//if(!controller.getPregnancy()){//if they don't have an open pregnancy session ###CODE THIS###
 		panel.setMinimumSize(new Dimension(600,650));
 		tPain.addTab(title, panel);
 		validate();
-		//}else{
-		//get previous tabs to display and make new subsequent tab
-		//}
+
 	}
 	public void addSub(String title,JPanel panel){
-	   if(split.getDividerLocation()==0){
-         split.setDividerLocation(300);
-         subPane.setMinimumSize(new Dimension(50,600));
-         subPane.setSize(new Dimension(50,600));
-      }
-      JPanel subView = panel;
-      JLabel name = new JLabel(title);
-      JPanel P = ((JPanel) sPain.getViewport().getView());
-      P.setLayout(new BoxLayout(P,BoxLayout.PAGE_AXIS));
-      P.add(name);
-      P.add(subView);
-	  P.add( new Box.Filler(new Dimension(800,10),new Dimension(800,10),new Dimension(800,10)));
-	  subPane.validate();
+		JPanel subView = panel;
+		JLabel name = new JLabel(title);
+		JPanel P = ((JPanel) sPain.getViewport().getView());
+		P.setLayout(new BoxLayout(P,BoxLayout.PAGE_AXIS));
+		P.add(name);
+		P.add(subView);
+		P.add( new Box.Filler(new Dimension(800,45),new Dimension(800,45),new Dimension(800,45)));
+		subPane.validate();
 	}
 	
 	public void clearSub(){

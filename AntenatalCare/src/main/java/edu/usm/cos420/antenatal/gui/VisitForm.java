@@ -5,6 +5,7 @@ import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -36,17 +37,17 @@ import static edu.usm.cos420.antenatal.controller.Utils.parseInteger;
 public class VisitForm extends JPanel {
 
 	private final JPanel panel;
-	private final JTextField parityInput;
-	private final JTextField systolicInput;
-	private final JTextField diastolicInput;
-	private final JTextField heightInput;
-	private final JTextField weightInput;
+	private final JSpinner parityInput;
+	private final JSpinner systolicInput;
+	private final JSpinner diastolicInput;
+	private final JSpinner heightInput;
+	private final JSpinner weightInput;
 	private final JTextField gestationInput;
-	private final JTextField fundalHeightInput;
+	private final JSpinner fundalHeightInput;
 	private final JDatePickerImpl eedInput;
-	private final JTextField hbaAt36WeeksInput;
-	private final JTextField urineTestSugarInput;
-	private final JTextField urineTestProteinInput;
+	private final JSpinner hbaAt36WeeksInput;
+	private final JSpinner urineTestSugarInput;
+	private final JSpinner urineTestProteinInput;
 	private final JComboBox bloodTypeGroup;
 	private final JComboBox sicklingStatusInput;
 	private final JComboBox sicklingTypeInput;
@@ -62,12 +63,12 @@ public class VisitForm extends JPanel {
 	private final JComboBox itnInput;
 	private final JTextArea complaints;
 	private final JTextArea remarks;
-	private final JTextField hbaAtRegInput;
+	private final JSpinner hbaAtRegInput;
 	private final JComboBox hivTestInput;
 	private final JComboBox ARVInput;
 	private UtilDateModel dateModel;
 	private final JLabel errorFields;
-	private final JPanel errorField;
+	private final JOptionPane errorField;
 
 	/**
 	 * Fills in the jFrame with all of the field that need to be filled in
@@ -80,34 +81,46 @@ public class VisitForm extends JPanel {
 		panel.setLayout(layout);
 		layout.setHgap(10);
 
-		errorField = new JPanel();
+		errorField = new JOptionPane();
 		errorFields = new JLabel("");
-		errorField.add(errorFields);
 
 		JLabel parity = new JLabel("Parity:"); //integer
-		parityInput = new JTextField(2);
+		SpinnerModel paritySpin = new SpinnerNumberModel(0,0,20,1);
+		parityInput = new JSpinner(paritySpin);
 		JLabel BloodPressure = new JLabel("Blood Pressure:");
-		systolicInput = new JTextField(2);//ADD TWO Fields int/int
+		SpinnerModel systolicSpinModel = new SpinnerNumberModel(0,0,200,1);//ADD TWO Fields int/int
+		systolicInput = new JSpinner(systolicSpinModel);
+		JLabel bloSys = new JLabel("Systolic BP"); 
 		JLabel fill = new JLabel("/");
-		diastolicInput = new JTextField(2);
+		SpinnerModel diastolicSpinModel = new SpinnerNumberModel(0,0,140,1);;
+		diastolicInput = new JSpinner(diastolicSpinModel);
+		JLabel bloDia = new JLabel("Diastolic BP"); 
 
 		JPanel bloInput = new JPanel();
 		bloInput.add(BloodPressure);
-		bloInput.add(systolicInput);
+		bloInput.add(systolicInput,BorderLayout.CENTER);
+		bloInput.add(bloSys);
 		bloInput.add(fill);
 		bloInput.add(diastolicInput);
+		bloInput.add(bloDia);
 		bloInput.setLayout(new FlowLayout());
 
-		JLabel Height = new JLabel("Height (cm): ");//double
-		heightInput = new JTextField(3);
-		JLabel Weight = new JLabel("Weight (kg): ");//double
-		weightInput = new JTextField(3);
+		JLabel Height = new JLabel("Height: ");//double
+		SpinnerModel heightSpin =  new SpinnerNumberModel(0.0,0.0,243.84,1.0);
+		heightInput = new JSpinner(heightSpin);
+		JLabel cm1 = new JLabel("(cm)");
+		JLabel Weight = new JLabel("Weight: ");//double
+		SpinnerModel weightSpin = new SpinnerNumberModel(0.0,0.0,300.0,1.0);
+		weightInput = new JSpinner(weightSpin);
+		JLabel kg = new JLabel("(kg)");
 
 		JPanel size = new JPanel();
 		size.add(Height);
 		size.add(heightInput);
+		size.add(cm1);
 		size.add(Weight);
 		size.add(weightInput);
+		size.add(kg);
 		size.setLayout(new GridLayout(2,3));
 
 		//number of weeks pregnant
@@ -115,11 +128,14 @@ public class VisitForm extends JPanel {
 		gestationInput = new JTextField(3);//How to Calculate
 
 		//measurement of uterus in CM
-		JLabel FHeight = new JLabel("Fundal Height (cm):");//Double
-		fundalHeightInput = new JTextField(3);
+		JLabel FHeight = new JLabel("Fundal Height:");//Double
+		SpinnerModel FSpin =  new SpinnerNumberModel(0.0,0.0,45.0,1.0);
+		fundalHeightInput = new JSpinner(FSpin );
+		JLabel cm2 = new JLabel("(cm)");
 		JPanel FundalHeight = new JPanel();
 		FundalHeight.add(FHeight);
 		FundalHeight.add(fundalHeightInput);
+		FundalHeight.add(cm2);
 
 		//date baby is due
 		JLabel EEDL = new JLabel("Due Date:");
@@ -139,20 +155,26 @@ public class VisitForm extends JPanel {
 
 		//test hemoglobin
 		JLabel HBatR = new JLabel("HBatReg (g/dL):");//Double grams/deciliter
-		hbaAtRegInput = new JTextField(3);//how to calculate
+		SpinnerModel hbaSpin = new SpinnerNumberModel(0.0,0.0,100.0,1.0);
+		hbaAtRegInput = new JSpinner(hbaSpin );
 		JPanel HBatReg = new JPanel();
 		HBatReg.add(HBatR);
 		HBatReg.add(hbaAtRegInput);
 
 		// test Hemoglobin @ 36 weeks
-		hbaAt36WeeksInput = new JTextField(3);
+		SpinnerModel hb36Spin = new SpinnerNumberModel(0.0,0.0,100.0,1.0);
+		hbaAt36WeeksInput =  new JSpinner(hb36Spin);
 		JPanel HBat36 = new JPanel();
 		HBat36.add(new JLabel("HBat36 (g/dL):"));//double g/dl
 		HBat36.add(hbaAt36WeeksInput);
 
+		
 		//testing for sugar & protein in urine
-		urineTestSugarInput = new JTextField(3);
-		urineTestProteinInput = new JTextField(3);
+		
+		SpinnerModel utsSpin=new SpinnerNumberModel(0.0,0.0,200.0,1.0);
+		urineTestSugarInput = new JSpinner(utsSpin);
+		SpinnerModel utpSpin=new SpinnerNumberModel(0.0,0.0,200.0,1.0);
+		urineTestProteinInput = new JSpinner(utpSpin);
 		JPanel UrineTest = new JPanel();
 		UrineTest.add(new JLabel("Urine Test (Sugar):"));//Sugar/Protein- double mmol/L / double mg/dL
 		UrineTest.add(urineTestSugarInput);
@@ -206,7 +228,7 @@ public class VisitForm extends JPanel {
 		ARVInput =  new JComboBox<>(new String[] {"", "Yes", "No"});
 		ARV.add(new JLabel("ARV Drug Use:"));
 		ARV.add(ARVInput);
-		
+
 		//malaria testing p/np
 		JPanel BloodFilm = new JPanel();
 		bloodFilmInput = new JComboBox<>(new String[] {"", "Not Present", "Present"});
@@ -242,7 +264,7 @@ public class VisitForm extends JPanel {
 		iptInput = new JComboBox<>(new String[] {"","1","2","3"});
 		IPT.add(new JLabel("IPT Doses:"));
 		IPT.add(iptInput);
-		
+
 		//stuff of ITN
 		JPanel ITN = new JPanel();
 		itnInput = new JComboBox<>(new String[] {"", "Yes", "No"});
@@ -269,9 +291,19 @@ public class VisitForm extends JPanel {
 		bloodFilmInput.addActionListener(new formListener());//getInsets();
 		hivTestInput.addActionListener(new formListener());
 		
-
+		//Add listeners for spinners
+		parityInput.addChangeListener(new changeListener());
+		systolicInput.addChangeListener(new changeListener());
+		diastolicInput.addChangeListener(new changeListener());
+		heightInput.addChangeListener(new changeListener());
+		weightInput.addChangeListener(new changeListener());
+		fundalHeightInput.addChangeListener(new changeListener());
+		hbaAtRegInput.addChangeListener(new changeListener());
+		hbaAt36WeeksInput.addChangeListener(new changeListener());
+		urineTestSugarInput.addChangeListener(new changeListener());
+		urineTestProteinInput.addChangeListener(new changeListener());
+		
 		//add data to frame
-		panel.add(errorFields);
 		panel.add(parity);
 		panel.add(parityInput);
 		panel.add(bloInput);
@@ -311,14 +343,11 @@ public class VisitForm extends JPanel {
 	public JPanel getPanel() {
 		return panel;
 	}
-
-	class formListener implements ActionListener {
+	class formListener implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//TODO: Verify all Fields
-			//TODO: update error label(s) / add red around erroneous things
-
+			////TODO: Verify all Fields
 			if(getSicklingStatus().equals("Positive") == true){
 				sicklingTypeInput.setEnabled(true);
 			}else{
@@ -337,33 +366,59 @@ public class VisitForm extends JPanel {
 				ARVInput.setEnabled(false);
 			}
 			
+		}
+		
+	}
+	class changeListener implements ChangeListener {
+
+		@Override
+		public void stateChanged(ChangeEvent e) {
+			//TODO: Verify all Fields
+			//TODO: update error label(s) / add red around erroneous things
+			Border look = parityInput.getBorder();
+			
+			
 			//Creates red boxes around errorenous data
+			
 			if(getSystolicBP() <= 0){
 				systolicInput.setBorder(BorderFactory.createLineBorder(Color.red));
+			}else{
+				systolicInput.setBorder(look);
 			}
 			//dia
 			if(getDiastolicBP() <= 0){
 				diastolicInput.setBorder(BorderFactory.createLineBorder(Color.red));
+			}else{
+				diastolicInput.setBorder(look);
 			}
 
 			//test weight
 			if(getPatientWeight() <= 0){
 				weightInput.setBorder(BorderFactory.createLineBorder(Color.red));
+			}else{
+				weightInput.setBorder(look);
 			}
 
 			//test height
 			if(getPatientHeight() <= 0){
 				heightInput.setBorder(BorderFactory.createLineBorder(Color.red));
+			}else{
+				heightInput.setBorder(look);
 			}
 
 			//if pos sickle cell ensure type is selected
 			if(getSicklingStatus().equals("Positive") && getSicklingType().equals("")){
 				sicklingTypeInput.setBorder(BorderFactory.createLineBorder(Color.red));
+			}else{
+				sicklingTypeInput.setBorder(look);
 			}
 			
 			if(getHIVTestResults().equals("Positive") && getARV().equals("")){
 				ARVInput.setBorder(BorderFactory.createLineBorder(Color.red));
+			}else{
+				ARVInput.setBorder(look);
 			}
+			
 		}
 	}
 
@@ -371,10 +426,10 @@ public class VisitForm extends JPanel {
 		if(errorMessage != null){
 			errorFields.setBorder(BorderFactory.createLineBorder(Color.red));
 			errorFields.setText(errorMessage);
-			Dimension size = errorFields.getPreferredSize();
-			size.setSize(size.getWidth() + 10, size.getHeight() + 10);
-			errorField.setSize(size);
-			errorFields.setSize(size);
+			JOptionPane.showMessageDialog(errorField,
+					errorFields,
+					"Input Warning!",
+					JOptionPane.WARNING_MESSAGE);
 		}else{
 			errorField.setToolTipText("");
 		}
@@ -388,7 +443,7 @@ public class VisitForm extends JPanel {
 	 * @return String of the parity field, or -1 if invalid
 	 */
 	public int getParity() {
-		return parseInteger(parityInput.getText(), -1);
+		return (int) (parityInput.getValue());
 	}
 
 	/**
@@ -396,7 +451,7 @@ public class VisitForm extends JPanel {
 	 * @return Returns double of the patients height, or -1 if invalid
 	 */
 	public Double getPatientHeight() {
-		return parseDouble(heightInput.getText());
+		return (Double) (heightInput.getValue());
 	}
 
 	/**
@@ -404,7 +459,7 @@ public class VisitForm extends JPanel {
 	 * @return Returns double of the patients weight, or -1 if invalid
 	 */
 	public Double getPatientWeight() {
-		return parseDouble(weightInput.getText());
+		return (Double) (weightInput.getValue());
 	}
 
 	/**
@@ -412,14 +467,14 @@ public class VisitForm extends JPanel {
 	 * @return Returns int val of the patients Systollic blood pressue
 	 */
 	public int getSystolicBP(){
-		return parseInteger(systolicInput.getText());
+		return (int) systolicInput.getValue();
 	}
 	/**
 	 *
 	 * @return returns int val of the patients Diastolic blood pressure
 	 */
 	public int getDiastolicBP(){
-		return parseInteger(diastolicInput.getText());
+		return (int) (diastolicInput.getValue());
 	}
 
 	/**
@@ -466,7 +521,7 @@ public class VisitForm extends JPanel {
 	 * @return Double value of the fundal height
 	 */
 	public double getFundalHeight(){
-		return parseDouble(fundalHeightInput.getText());
+		return (double) (fundalHeightInput.getValue());
 	}
 
 	/**
@@ -474,7 +529,7 @@ public class VisitForm extends JPanel {
 	 * @return Double value of the hemoglobin levels at registration
 	 */
 	public double getHBAtReg(){
-		return parseDouble(hbaAtRegInput.getText());
+		return (double) (hbaAtRegInput.getValue());
 	}
 
 	/**
@@ -482,7 +537,7 @@ public class VisitForm extends JPanel {
 	 * @return Double value of the hemoglobin levels at 36 weeks
 	 */
 	public double getHBAt36Weeks(){
-		return parseDouble(hbaAt36WeeksInput.getText());
+		return (double) (hbaAt36WeeksInput.getValue());
 	}
 
 	/**
@@ -490,14 +545,14 @@ public class VisitForm extends JPanel {
 	 * @return Double val of the urine sugar test results
 	 */
 	public double getUrineTestSugar(){
-		return parseDouble(urineTestSugarInput.getText());
+		return (double)(urineTestSugarInput.getValue());
 	}
 	/**
 	 *
 	 * @return Doubleval of the urine protein test results
 	 */
 	public double getUrineTestProtein(){
-		return parseDouble(urineTestProteinInput.getText());
+		return (double)(urineTestProteinInput.getValue());
 	}
 
 	/**
@@ -578,7 +633,7 @@ public class VisitForm extends JPanel {
 	public String getARV(){
 		return String.valueOf(ARVInput.getSelectedItem());
 	}
-	
+
 	/**
 	 *
 	 * @return Returns true if malaria pos, else false
@@ -616,15 +671,15 @@ public class VisitForm extends JPanel {
 	}
 
 	public void setParity(int parity) {
-		this.parityInput.setText(String.valueOf(parity));
+		this.parityInput.setValue(parity);
 	}
 
 	public void setSystolicBP(int systolicBP) {
-		this.systolicInput.setText(String.valueOf(systolicBP));
+		this.systolicInput.setValue(systolicBP);
 	}
 
 	public void setDiastolicBP(int diastolicBP) {
-		this.diastolicInput.setText(String.valueOf(diastolicBP));
+		this.diastolicInput.setValue(diastolicBP);
 	}
 
 	public void setTrimester(int trimester) {
@@ -644,31 +699,31 @@ public class VisitForm extends JPanel {
 	}
 
 	public void setHeight(double height) {
-		this.heightInput.setText(String.valueOf(height));
+		this.heightInput.setValue(height);
 	}
 
 	public void setWeight(double weight) {
-		this.weightInput.setText(String.valueOf(weight));
+		this.weightInput.setValue(weight);
 	}
 
 	public void setFundalHeight(double fundalHeight) {
-		this.fundalHeightInput.setText(String.valueOf(fundalHeight));
+		this.fundalHeightInput.setValue(fundalHeight);
 	}
 
 	public void setHBAtReg(double HBAtReg) {
-		this.hbaAtRegInput.setText(String.valueOf(HBAtReg));
+		this.hbaAtRegInput.setValue(HBAtReg);
 	}
 
 	public void setHBAt36Weeks(double HBAt36Weeks) {
-		this.hbaAt36WeeksInput.setText(String.valueOf(HBAt36Weeks));
+		this.hbaAt36WeeksInput.setValue(HBAt36Weeks);
 	}
 
 	public void setUrineTestSugar(double urineTestSugar) {
-		this.urineTestSugarInput.setText(String.valueOf(urineTestSugar));
+		this.urineTestSugarInput.setValue(urineTestSugar);
 	}
 
 	public void setUrineTestProtein(double urineTestProtein) {
-		this.urineTestProteinInput.setText(String.valueOf(urineTestProtein));
+		this.urineTestProteinInput.setValue(urineTestProtein);
 	}
 
 	public void setEDD(LocalDate EDD) {

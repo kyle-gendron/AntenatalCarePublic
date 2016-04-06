@@ -60,31 +60,31 @@ public class NewVisitController implements ActionListener {
 
 	public static boolean verifyFields(VisitForm form){
 		//holds the window view word contents
-		String errorMessage = "<html><div style='text-align=center;'>Invalid Data Entries: <br>";
+		StringBuilder errorMessage = new StringBuilder( "<html><div style='text-align=center;'>Invalid Data Entries: <br>\n");
 		Boolean errorsExist = false;
 
 		//test blood pressure sys/dia
 		//sys
 		if(form.getSystolicBP() <= 0){
 			errorsExist = true;
-			errorMessage += "-Invalid Systolic Blood Pressure<br>";
+			errorMessage.append( "-Invalid Systolic Blood Pressure<br>\n");
 		}
 		//dia
 		if(form.getDiastolicBP() <= 0){
 			errorsExist = true;
-			errorMessage += "-Invalid Diastolic Blood Pressure<br>";
+			errorMessage.append( "-Invalid Diastolic Blood Pressure<br>\n");
 		}
 
 		//test weight
 		if(form.getPatientWeight() <= 0){
 			errorsExist = true;
-			errorMessage += "-Invalid Patient Height<br>";
+			errorMessage.append( "-Invalid Patient Height<br>\n");
 		}
 
 		//test height
 		if(form.getPatientHeight() <= 0){
 			errorsExist = true;
-			errorMessage += "-Invalid Patient Weight<br>";
+			errorMessage.append("-Invalid Patient Weight<br>\n");
 		}
 
 		//test more specific things
@@ -92,17 +92,14 @@ public class NewVisitController implements ActionListener {
 		//if pos sickle cell ensure type is selected
 		if(form.getSicklingStatus().equals("Positive") && form.getSicklingType().equals("")){
 			errorsExist = true;
-			errorMessage += "-Please Add Sickling Type, or select N/A";
+			errorMessage .append( "-Please Add Sickling Type, or select N/A");
 		}
 
 		//TODO: Add more error messages
-
 		//if error found produce pop up
 		if(errorsExist == true){
 			//TODO: Remove once everything works okay
-			//JOptionPane.showMessageDialog(null, errorMessage);
-
-			form.errorMessage(errorMessage);
+			form.errorMessage(errorMessage.toString());
 			return false;
 		}
 		return true;

@@ -4,37 +4,38 @@ import java.util.List;
 import edu.usm.cos420.antenatal.dao.GenericDao;
 import edu.usm.cos420.antenatal.dao.ObjectStreamDao;
 import edu.usm.cos420.antenatal.domain.DummyPerson;
+import edu.usm.cos420.antenatal.domain.Person;
 
 /**
  * 
  *  A Data Access Object specifically for DummyPerson entities 
  *     
  */
-public class DummyPersonDao {
+public class PersonDao {
 
-      private GenericDao<Long, DummyPerson> genDao;
+      private GenericDao<Long, Person> genDao;
 
       /**
        * Default constructor creates an ObjectStream file called person.ser
        */
-      public DummyPersonDao()
+      public PersonDao()
       {
-         genDao = new ObjectStreamDao<Long, DummyPerson>("person.ser");
+         genDao = new ObjectStreamDao<Long, Person>("person.ser");
       }
 
       /**
        * Constructor where the filename is provided 
        */
-      public DummyPersonDao(String fileName)
+      public PersonDao(String fileName)
       {
-         genDao = new ObjectStreamDao<Long, DummyPerson>(fileName);
+         genDao = new ObjectStreamDao<Long, Person>(fileName);
       }
 
       /**
        * Support for other DAOs is provided
        * @param dao a Data Access Object class that implements GenericDao<Long,DummyPerson> 
        */
-      public DummyPersonDao(GenericDao<Long, DummyPerson> dao)
+      public PersonDao(GenericDao<Long, Person> dao)
       {
          genDao = dao;
       }
@@ -43,7 +44,7 @@ public class DummyPersonDao {
        * Returns the DAO used in the class
        * @return a DAO that implements GenericDao<Long,DummyPerson> 
        */
-      public GenericDao<Long, DummyPerson> getGenDao() {
+      public GenericDao<Long, Person> getGenDao() {
          return genDao;
       }
 
@@ -51,18 +52,18 @@ public class DummyPersonDao {
        * Add a DummyPerson to the DAO repository
        * @param entity any DummyPerson object
        */
-      public void add(DummyPerson entity)
+      public void add(Person entity)
       {
-         genDao.add(entity.getId(), entity);
+         genDao.add(Long.valueOf(entity.getId()), entity);
       }
       
       /**
        * Update a DummyPerson in the DAO repository
        * @param entity any DummyPerson object
        */
-      public void update(DummyPerson entity) 
+      public void update(Person entity)
       {
-         genDao.update(entity.getId(), entity);
+         genDao.update(Long.valueOf(entity.getId()), entity);
       }
       
       /**
@@ -80,7 +81,7 @@ public class DummyPersonDao {
        * @param key of the DummyPerson object to locate
        * @return the DummyPerson with id field equal to key
        */
-      public DummyPerson find(Long key)
+      public Person find(Long key)
       {
          return genDao.find(key);
       }
@@ -90,7 +91,7 @@ public class DummyPersonDao {
        * @return List of DummyPersons 
        */
 
-      public List<DummyPerson> list() {
+      public List<Person> list() {
          return genDao.list();
       }
 
