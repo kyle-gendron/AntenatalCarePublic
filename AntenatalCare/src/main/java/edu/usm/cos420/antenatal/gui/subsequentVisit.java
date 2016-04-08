@@ -23,7 +23,10 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 
 
@@ -39,10 +42,11 @@ public class subsequentVisit{
 	private JLabel Date;
 	private JLabel bloodFilm;
 	private JLabel referred;
-	private JTextField sysBP;
-	private JTextField diaBP;
-	private JTextField weigh;
-	private JTextField fundalH;
+	private JLabel saved;
+	private JSpinner sysBP;
+	private JSpinner diaBP;
+	private JSpinner weigh;
+	private JSpinner fundalH;
 	private JDatePickerImpl apptDate;
 	private UtilDateModel dateModel;
 	private JComboBox<String> bloodF;
@@ -50,6 +54,8 @@ public class subsequentVisit{
 	private SubController subC;
 	private JButton saveButton;
 
+	private JPanel container;
+	private JPanel title;
 	private JPanel subVisit;
 
 	public subsequentVisit(SubController subC){
@@ -57,6 +63,12 @@ public class subsequentVisit{
 		this.subC = subC;
 
 	}
+
+	public JPanel getTitle(){
+		return title = addTitle();
+	}
+
+
 	public JPanel getPanel(){
 		subVisit = addForm();
 		subVisit.setMinimumSize(new Dimension(600,200));
@@ -64,28 +76,22 @@ public class subsequentVisit{
 		return subVisit;
 
 	}
-	
+
 	public JPanel setForm(AntenatalSubVisit sVisit){
-	   this.setApptDate(sVisit.getApptDate());
-	   this.setFundalHeight(sVisit.getFundalHeight());
-	   this.setWeight(sVisit.getWeight());
-	   this.setSystolicBP(sVisit.getSystolicBP());
-	   this.setDiastolicBP(sVisit.getDiastolicBP());
-	   this.setBloodFilm(sVisit.bloodFilmResults());
-	   this.setReferral(sVisit.getReferral());
-	   return subVisit;
-	   
+
+		subVisit = changeForm(sVisit);
+		subVisit.setMinimumSize(new Dimension(600,200));
+		subVisit.setBackground(Color.LIGHT_GRAY);
+		return subVisit;
+
 	}
-	
-	private JPanel addForm() {
 
-		JPanel container = new JPanel();
-		BorderLayout bl = new BorderLayout();
-		container.setLayout(bl);
+	private JPanel addTitle() {
+
 		JPanel data = new JPanel();
-		data.setPreferredSize(new Dimension(800, 50));
+		data.setPreferredSize(new Dimension(800, 25));
 
-		GridLayout layout = new GridLayout(2, 8);
+		GridLayout layout = new GridLayout(1, 9);
 		//layout.setHgap(20);
 		data.setLayout(layout);
 
@@ -103,10 +109,96 @@ public class subsequentVisit{
 		bloodFilm.setHorizontalAlignment(SwingConstants.CENTER);
 		referred = new JLabel("Referred?");
 		referred.setHorizontalAlignment(SwingConstants.CENTER);
-		sysBP = new JTextField(6);
-		diaBP = new JTextField(6);
-		weigh = new JTextField(3);
-		fundalH = new JTextField(4);
+		saved = new JLabel("Save");
+		saved.setHorizontalAlignment(SwingConstants.CENTER);
+
+		//JPanel data = new JPanel();
+		data.add(Date);
+		data.add(sBP);
+		data.add(dBP);
+		data.add(weight);
+		data.add(fundalHeight);
+		data.add(bloodFilm);
+		data.add(referred);
+		data.add(saved);
+
+		return data;
+	}
+
+	private JPanel changeForm(AntenatalSubVisit sVisit) {
+
+		JPanel data = new JPanel();
+		data.setPreferredSize(new Dimension(800, 25));
+
+		GridLayout layout = new GridLayout(1, 9);
+		//layout.setHgap(20);
+		data.setLayout(layout);
+
+
+		SpinnerModel sysSpin= new SpinnerNumberModel(0,0,200,1);
+		sysBP = new JSpinner(sysSpin);
+		SpinnerModel diaSpin = new SpinnerNumberModel(0,0,200,1);
+		diaBP = new JSpinner(diaSpin);
+		SpinnerModel weighSpin = new SpinnerNumberModel(0.0,0.0,500.0,1.0);
+		weigh = new JSpinner(weighSpin);
+		SpinnerModel fundalSpin = new SpinnerNumberModel(0.0,0.0,500.0,1.0);
+		fundalH = new JSpinner(fundalSpin);
+		Properties p = new Properties();
+		p.put("text.today", "Today");
+		p.put("text.month", "Month");
+		p.put("text.year", "Year");
+		dateModel = new UtilDateModel();
+		JDatePanelImpl datePanel = new JDatePanelImpl(dateModel, p);
+		apptDate = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+		bloodF = new JComboBox<>(new String[] {"", "Not Present", "Present"});
+		refer = new JComboBox<>(new String[] {"", "No", "Yes"});
+
+
+		//JPanel data = new JPanel();
+		this.setApptDate(sVisit.getApptDate());
+		this.setFundalHeight(sVisit.getFundalHeight());
+		this.setWeight(sVisit.getWeight());
+		this.setSystolicBP(sVisit.getSystolicBP());
+		this.setDiastolicBP(sVisit.getDiastolicBP());
+		this.setBloodFilm(sVisit.bloodFilmResults());
+		this.setReferral(sVisit.getReferral());
+
+		data.add(apptDate);
+		data.add(sysBP);
+		data.add(diaBP);
+		data.add(weigh);
+		data.add(fundalH);
+		data.add(bloodF);
+		data.add(refer);
+		//container.add(data, BorderLayout.CENTER);
+		saveButton = new JButton("Update");
+		saveButton.addActionListener(subC);
+		//JPanel buttonPane = new JPanel();
+		//buttonPane.setLayout(new FlowLayout());
+		//buttonPane.add(saveButton);
+		//container.add(buttonPane, BorderLayout.SOUTH);
+
+		data.add(saveButton);
+		return data;
+		//return container;
+	}
+	private JPanel addForm() {
+
+		JPanel data = new JPanel();
+		data.setPreferredSize(new Dimension(800, 25));
+
+		GridLayout layout = new GridLayout(1, 9);
+		//layout.setHgap(20);
+		data.setLayout(layout);
+
+		SpinnerModel sysSpin= new SpinnerNumberModel(0,0,200,1);
+		sysBP = new JSpinner(sysSpin);
+		SpinnerModel diaSpin = new SpinnerNumberModel(0,0,200,1);
+		diaBP = new JSpinner(diaSpin);
+		SpinnerModel weighSpin = new SpinnerNumberModel(0.0,0.0,500.0,1.0);
+		weigh = new JSpinner(weighSpin);
+		SpinnerModel fundalSpin = new SpinnerNumberModel(0.0,0.0,500.0,1.0);
+		fundalH = new JSpinner(fundalSpin);
 		Properties p = new Properties();
 		p.put("text.today", "Today");
 		p.put("text.month", "Month");
@@ -118,15 +210,6 @@ public class subsequentVisit{
 		refer = new JComboBox<>(new String[] {"", "No", "Yes"});
 
 		//JPanel data = new JPanel();
-		data.add(Date);
-		data.add(sBP);
-		data.add(dBP);
-		data.add(weight);
-		data.add(fundalHeight);
-		data.add(bloodFilm);
-		data.add(referred);
-
-		//JPanel data = new JPanel();
 
 		data.add(apptDate);
 		data.add(sysBP);
@@ -135,15 +218,11 @@ public class subsequentVisit{
 		data.add(fundalH);
 		data.add(bloodF);
 		data.add(refer);
-		container.add(data, BorderLayout.CENTER);
 		saveButton = new JButton("Save");
 		saveButton.addActionListener(subC);
-		JPanel buttonPane = new JPanel();
-		buttonPane.setLayout(new FlowLayout());
-		buttonPane.add(saveButton);
-		container.add(buttonPane, BorderLayout.SOUTH);
+		data.add(saveButton);
 
-		return container;
+		return data;
 	}
 
 	public LocalDate getApptDate(){
@@ -159,7 +238,7 @@ public class subsequentVisit{
 	 * @return Double value of the fundal height
 	 */
 	public double getFundalHeight(){
-		return parseDouble(fundalH.getText(), -1.0);
+		return (double) (fundalH.getValue());
 	}
 
 	/**
@@ -167,7 +246,7 @@ public class subsequentVisit{
 	 * @return Returns double of the patients weight, or -1 if invalid
 	 */
 	public Double getPatientWeight() {
-		return parseDouble(weigh.getText(), -1.0);
+		return (double) (weigh.getValue());
 	}
 
 	/**
@@ -175,14 +254,14 @@ public class subsequentVisit{
 	 * @return Returns int val of the patients Systollic blood pressue
 	 */
 	public int getSystolicBP(){
-		return parseInteger(sysBP.getText(), -1);
+		return (int) (sysBP.getValue());
 	}
 	/**
 	 *
 	 * @return returns int val of the patients Diastolic blood pressure
 	 */
 	public int getDiastolicBP(){
-		return parseInteger(diaBP.getText(), -1);
+		return (int) (diaBP.getValue());
 	}
 
 	/**
@@ -199,50 +278,50 @@ public class subsequentVisit{
 	public String getRefer(){
 		return String.valueOf(refer.getSelectedItem());
 	}
-	
-   /**
-    * @param date is entered into datepicker
-    */
-   public void setApptDate(LocalDate date) {
-      if (date != null) {
-        this.dateModel.setDate(date.getYear(), date.getMonthValue()-1, date.getDayOfMonth());
-        this.dateModel.setSelected(true);
-      }
-    }
-   
-   /**
-    * @param fundalHeight is set to the text of Label fundalH
-    */
-   public void setFundalHeight(double fundalHeight) {
-      this.fundalH.setText(String.valueOf(fundalHeight));
-    }
-   
-   /**
-    * @param weight is set to the text of Label weigh
-    */
-   public void setWeight(double weight) {
-      this.weigh.setText(String.valueOf(weight));
-    }
-   
-   /**
-    * @param systolicBP
-    */
-   public void setSystolicBP(int systolicBP) {
-      this.sysBP.setText(String.valueOf(systolicBP));
-    }
 
-    public void setDiastolicBP(int diastolicBP) {
-      this.diaBP.setText(String.valueOf(diastolicBP));
-    }
-    
-    public void setBloodFilm(String film) {
-       this.bloodF.setSelectedItem(film);
-     }
-	
+	/**
+	 * @param date is entered into datepicker
+	 */
+	public void setApptDate(LocalDate date) {
+		if (date != null) {
+			this.dateModel.setDate(date.getYear(), date.getMonthValue()-1, date.getDayOfMonth());
+			this.dateModel.setSelected(true);
+		}
+	}
 
-	  public void setReferral(String reference) {
-	    this.refer.setSelectedItem(reference);
-	  }
+	/**
+	 * @param fundalHeight is set to the text of Label fundalH
+	 */
+	public void setFundalHeight(double fundalHeight) {
+		this.fundalH.setValue(fundalHeight);
+	}
+
+	/**
+	 * @param weight is set to the text of Label weigh
+	 */
+	public void setWeight(double weight) {
+		this.weigh.setValue(weight);
+	}
+
+	/**
+	 * @param systolicBP
+	 */
+	public void setSystolicBP(int systolicBP) {
+		this.sysBP.setValue(systolicBP);
+	}
+
+	public void setDiastolicBP(int diastolicBP) {
+		this.diaBP.setValue(diastolicBP);
+	}
+
+	public void setBloodFilm(String film) {
+		this.bloodF.setSelectedItem(film);
+	}
+
+
+	public void setReferral(String reference) {
+		this.refer.setSelectedItem(reference);
+	}
 
 
 }

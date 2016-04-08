@@ -110,7 +110,7 @@ public class newVisitTab extends JPanel {
 		form.setSicklingType(visit.getSicklingType());
 		form.setPreTestCounsel(visit.getPreTestCounsel());
 		form.setPostTestCounsel(visit.getPostTestCounsel());
-		//    form.setARV(visit.getARV());
+		//form.setARV(visit.getARV());
 		form.setITN(String.valueOf(visit.getITN()));
 		form.setMaleInvolvement(visit.getMaleInvolvement());
 		form.setComplaints(visit.getComplaints());
