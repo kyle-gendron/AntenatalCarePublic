@@ -1,7 +1,5 @@
 package edu.usm.cos420.antenatal;
 
-import static org.junit.Assert.*;
-
 import java.time.LocalDate;
 
 import org.junit.After;
