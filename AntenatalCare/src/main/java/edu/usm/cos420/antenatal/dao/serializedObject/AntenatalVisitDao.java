@@ -51,31 +51,34 @@ public class AntenatalVisitDao implements IAntenatalVisit
 
 	/**
 	 * Add a PregnancyRecord to the DAO repository
-	 * @param entity any PregnancyRecord object
-	 */
-	public void add(PregnancyRecord entity)
+   * @param entity any PregnancyRecord object
+   */
+	public int add(PregnancyRecord entity)
 	{
 		genDao.add(entity.getID(), entity);
+    return 1;
 	}
 
 	/**
 	 * Update a PregnancyRecord in the DAO repository
-	 * @param entity any PregnancyRecord object
-	 */
-	public void update(PregnancyRecord entity)
+   * @param entity any PregnancyRecord object
+   */
+	public int update(PregnancyRecord entity)
 	{
 		genDao.update(entity.getID(), entity);
+    return 1;
 	}
 
 	/**
 	 * Remove a PregnancyRecord in the DAO repository
-	 * @param id of the PregnancyRecord object to remove
-	 */
+   * @param id of the PregnancyRecord object to remove
+   */
 
-	public void remove(String id)
+	public int remove(String id)
 	{
 		genDao.remove(id);
-	}
+    return 1;
+  }
 
 	/**
 	 * Find a PregnancyRecord in the DAO repository
