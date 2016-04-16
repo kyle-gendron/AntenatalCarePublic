@@ -10,18 +10,16 @@ import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.time.LocalDate;
 
+import edu.usm.cos420.antenatal.dao.serializedObject.AntenatalSubVisitDao;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.usm.cos420.antenatal.dao.GenericDao;
-import edu.usm.cos420.antenatal.dao.ObjectStreamDao;
 import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
-import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 
 public class TestAntenatalSubVisitDAO {
 	private static AntenatalSubVisitDao dao;
-	
+
 	@Before
 	public void setUp() throws Exception {
 		dao = new AntenatalSubVisitDao("_antenatalsubvisittest.ser");
@@ -45,16 +43,16 @@ public class TestAntenatalSubVisitDAO {
 
 	@Test
 	public final void testAdd() {
-		
+
 		//create data
 		AntenatalSubVisit a = new AntenatalSubVisit("01", "01", 120, 80,
 		         100, 20, LocalDate.now(), "Non-Reactive", "No");
-		
-		dao.add(a);	
-		
+
+		dao.add(a);
+
 		//get and test values to confirm.
 		AntenatalSubVisit b = dao.find(a.getID());
-		
+
 		assertEquals("The retrieved ID is different from the original ID.", a.getID(), b.getID());
 		assertEquals("The retrieved Initial ID is different from the original Initial ID.", a.getInitialID(), b.getInitialID());
 		assertEquals("The retrieved Systolic BP is different from the original Systolic BP.", a.getSystolicBP(), b.getSystolicBP());
@@ -71,14 +69,14 @@ public class TestAntenatalSubVisitDAO {
 		//create data
 				AntenatalSubVisit c = new AntenatalSubVisit("02", "02", 120, 80,
 				         100, 20, LocalDate.now(), "Non-Reactive", "No");
-				
-				dao.add(c);	
-				
+
+				dao.add(c);
+
 				//update, retrieve, and check values
 				c.setReferrel("Yes");
 				dao.update(c);
 				AntenatalSubVisit d = dao.find(c.getID());
-				
+
 				assertEquals("The retrieved ID is different from the original ID.", c.getID(), d.getID());
 				assertEquals("The retrieved Initial ID is different from the original Initial ID.", c.getInitialID(), d.getInitialID());
 				assertEquals("The retrieved Systolic BP is different from the original Systolic BP.", c.getSystolicBP(), d.getSystolicBP());
@@ -95,12 +93,12 @@ public class TestAntenatalSubVisitDAO {
 		//create data
 		AntenatalSubVisit e = new AntenatalSubVisit("03", "03", 120, 80,
 		         100, 20, LocalDate.now(), "Non-Reactive", "No");
-		
-		dao.add(e);	
+
+		dao.add(e);
 		dao.remove(e.getID());
 		AntenatalSubVisit f = dao.find(e.getID());
-		
-		assertNull("The database returned a value that was supposed to be removed.", f);
+
+		assertNull("The PostgresDatabase returned a value that was supposed to be removed.", f);
 	}
 
 	@Test
@@ -108,12 +106,12 @@ public class TestAntenatalSubVisitDAO {
 		//create data
 				AntenatalSubVisit g = new AntenatalSubVisit("03", "03", 120, 80,
 				         100, 20, LocalDate.now(), "Non-Reactive", "No");
-				
-				
+
+
 				//get and test values to confirm.
 				dao.add(g);
 				AntenatalSubVisit h = dao.find(g.getID());
-				
+
 				assertEquals("The retrieved ID is different from the original ID.", g.getID(), h.getID());
 				assertEquals("The retrieved Initial ID is different from the original Initial ID.", g.getInitialID(), h.getInitialID());
 				assertEquals("The retrieved Systolic BP is different from the original Systolic BP.", g.getSystolicBP(), h.getSystolicBP());

@@ -15,7 +15,7 @@ import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
 import edu.usm.cos420.antenatal.gui.subsequentVisit;
 
 public class SubVisitTest {
-   
+
    subsequentVisit visit;
    AntenatalSubVisit subVisit;
    AntenatalController control;
@@ -36,7 +36,7 @@ public class SubVisitTest {
       visit = new subsequentVisit(subController);
       subVisit = new AntenatalSubVisit(null, null, 0, 0, 0, 0, LocalDate.now(), null, null);
       //visit.changeForm(subVisit);
-      
+
    }
 
    @After

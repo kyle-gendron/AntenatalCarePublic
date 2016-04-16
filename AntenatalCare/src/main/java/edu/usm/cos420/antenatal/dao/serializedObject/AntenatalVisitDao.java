@@ -1,9 +1,10 @@
-package edu.usm.cos420.antenatal.dao.domain;
+package edu.usm.cos420.antenatal.dao.serializedObject;
 
 import java.util.List;
 
 import edu.usm.cos420.antenatal.dao.GenericDao;
 import edu.usm.cos420.antenatal.dao.ObjectStreamDao;
+import edu.usm.cos420.antenatal.dao.interfaces.IAntenatalVisit;
 import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 
 /**
@@ -11,7 +12,7 @@ import edu.usm.cos420.antenatal.domain.PregnancyRecord;
  *  A Data Access Object specifically for PregnancyRecord entities
  *
  */
-public class AntenatalVisitDao
+public class AntenatalVisitDao implements IAntenatalVisit
 {
 	private GenericDao<String,PregnancyRecord> genDao;
 

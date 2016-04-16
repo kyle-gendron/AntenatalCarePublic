@@ -3,10 +3,7 @@ package edu.usm.cos420.antenatal.controller;
 import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
 import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 import edu.usm.cos420.antenatal.domain.DummyPerson;
-import edu.usm.cos420.antenatal.gui.VisitForm;
 import edu.usm.cos420.antenatal.gui.PreviousVisits;
-import edu.usm.cos420.antenatal.gui.newVisitTab;
-import edu.usm.cos420.antenatal.gui.subsequentVisit;
 import edu.usm.cos420.antenatal.service.AntenatalService;
 import edu.usm.cos420.antenatal.service.SubVisitService;
 import edu.usm.cos420.antenatal.service.impl.AntenatalService1;
@@ -16,9 +13,9 @@ import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 import java.util.stream.Collectors;
 
 /**
@@ -37,7 +34,7 @@ public class AntenatalController implements ActionListener {
 
 	/**
 	 * Constructor initialized the service and GUI
-	 */
+   */
 	public AntenatalController() {
 		// Dummy person object
 		dummyPerson = new DummyPerson();

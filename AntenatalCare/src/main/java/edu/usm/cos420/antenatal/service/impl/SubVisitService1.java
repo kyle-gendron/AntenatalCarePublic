@@ -1,6 +1,6 @@
 package edu.usm.cos420.antenatal.service.impl;
 
-import edu.usm.cos420.antenatal.dao.domain.AntenatalSubVisitDao;
+import edu.usm.cos420.antenatal.dao.serializedObject.AntenatalSubVisitDao;
 import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
 import edu.usm.cos420.antenatal.service.SubVisitService;
 
@@ -36,7 +36,7 @@ public class SubVisitService1 implements SubVisitService {
   public void addSubVisit(AntenatalSubVisit visit) {
     dao.add(visit);
   }
-  
+
   @Override
   public void updateSubVisit(AntenatalSubVisit visit){
      dao.update(visit);

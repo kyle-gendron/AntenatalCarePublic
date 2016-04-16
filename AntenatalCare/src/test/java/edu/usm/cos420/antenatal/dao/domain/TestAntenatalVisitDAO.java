@@ -58,17 +58,17 @@ public class TestAntenatalVisitDAO {
 		p.setSicklingType("Hemoglobin SS");
 		p.setPreTestCounsel("Yes");
 		p.setPostTestCounsel("No");
-		p.setITN("Yes"); 
+		p.setITN("Yes");
 		p.setARV("No");
 		p.setMaleInvolvement("Present");
 		p.setComplaints("None");
 		p.setRemarks("None");
 
-		//add to database, retrieve, and test values to ensure correctness
+		//add to PostgresDatabase, retrieve, and test values to ensure correctness
 		dao.add(p.getID(), p);
 
 		PregnancyRecord retrievedRecord = dao.find(p.getID());
-		
+
 		assertEquals("Stored ID and original ID are not equal", p.getID(), retrievedRecord.getID());
 		assertEquals("Stored HIVResults and original HIVResults are not equal", p.getHIVResults(), retrievedRecord.getHIVResults());
 //		assertEquals("Stored Height and original Height are not equal", p.getHeight(), retrievedRecord.getHeight());
@@ -128,13 +128,13 @@ public class TestAntenatalVisitDAO {
 		p1.setSicklingType("Hemoglobin SS");
 		p1.setPreTestCounsel("Yes");
 		p1.setPostTestCounsel("No");
-		p1.setITN("Yes"); 
+		p1.setITN("Yes");
 		p1.setARV("No");
 		p1.setMaleInvolvement("Present");
 		p1.setComplaints("None");
 		p1.setRemarks("None");
 
-		//add to database
+		//add to PostgresDatabase
 		dao.add(p1.getID(), p1);
 
 
@@ -162,7 +162,7 @@ public class TestAntenatalVisitDAO {
 		p1.setSicklingType("N/a");
 		p1.setPreTestCounsel("No");
 		p1.setPostTestCounsel("Yes");
-		p1.setITN("No"); 
+		p1.setITN("No");
 		p1.setARV("Yes");
 		p1.setMaleInvolvement("Not Present");
 		p1.setComplaints("Some");
@@ -234,7 +234,7 @@ public class TestAntenatalVisitDAO {
 		p.setSicklingType("Hemoglobin SS");
 		p.setPreTestCounsel("Yes");
 		p.setPostTestCounsel("No");
-		p.setITN("Yes"); 
+		p.setITN("Yes");
 		p.setARV("No");
 		p.setMaleInvolvement("Present");
 		p.setComplaints("None");
@@ -280,13 +280,13 @@ public class TestAntenatalVisitDAO {
 		p.setSicklingType("Hemoglobin SS");
 		p.setPreTestCounsel("Yes");
 		p.setPostTestCounsel("No");
-		p.setITN("Yes"); 
+		p.setITN("Yes");
 		p.setARV("No");
 		p.setMaleInvolvement("Present");
 		p.setComplaints("None");
 		p.setRemarks("None");
 
-		//add to database, retrieve, and test value
+		//add to PostgresDatabase, retrieve, and test value
 		dao.add(p.getID(), p);
 
 		PregnancyRecord retrievedRecord = dao.find(p.getID());
@@ -309,5 +309,5 @@ public class TestAntenatalVisitDAO {
 			System.err.println(x);
 		}
 	}
-	
+
 }
