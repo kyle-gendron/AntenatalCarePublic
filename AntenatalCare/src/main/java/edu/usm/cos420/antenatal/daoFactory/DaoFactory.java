@@ -20,7 +20,7 @@ public abstract class DaoFactory {
   public abstract PregnancyRecordDao getAntenatalVisitDao();
   public abstract PregnancySubVisitDao getAntenatalSubVisitDao();
 
-  public static DaoFactory getDatabase() throws Exception {
+  public static PostgresDao getDatabase() throws Exception {
     return new PostgresDao();
   }
 

@@ -37,11 +37,7 @@ public class AntenatalVisitDaoTest {
   @AfterClass
   public static void tearDown() throws Exception {
     idList.forEach(s -> {
-      try {
-        dao.remove(s);
-      } catch (SQLException e) {
-        e.printStackTrace();
-      }
+      dao.remove(s);
     });
     System.out.println("Cleaning up leftover IDs");
 
