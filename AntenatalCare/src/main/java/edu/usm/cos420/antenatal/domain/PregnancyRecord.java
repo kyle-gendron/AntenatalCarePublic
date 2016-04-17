@@ -9,7 +9,11 @@ package edu.usm.cos420.antenatal.domain;
 import edu.usm.cos420.antenatal.gui.VisitForm;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,24 +32,25 @@ import java.util.List;
 public class PregnancyRecord implements Serializable {
 
 	private static final long serialVersionUID = 7526472295622776147L;
-	int parity, systolicBP, diastolicBP, trimester, subVisits;
-	int gestation; //num weeks of pregnancy, calculated from last period
-	String iPTDoses;
-	String TTDoses; //added together from tick marks
-	double height, weight; //height in cm, weight in kg
-	double fundalHeight; //in cm
-	double hBAtReg, hBAt36Weeks; //Hemoglobin (hB) in grams/deciliter
-	double urineTestSugar, urineTestProtein; // sug in mmol/Liter, prot in mg/dL
-	LocalDate EDD; //Estimated day of delivery
-	String bloodGroup, sicklingStatus, sicklingType;
-	String vDLabResults, preTestCounsel, hIVResults, postTestCounsel, ARV;
-	String bloodFilm;  //results of malaria blood film test
-	String iTN;
-	String id;  //id used to identify a particular set of antenatal visits
-	String maleInvolvement;
-	String remarks;
-	String complaints;
-	List<String> subIDs = new ArrayList<String>();
+
+	private int parity, systolicBP, diastolicBP, trimester, subVisits;
+	private int gestation; //num weeks of pregnancy, calculated from last period
+	private String iPTDoses;
+	private String TTDoses; //added together from tick marks
+	private double height, weight; //height in cm, weight in kg
+	private double fundalHeight; //in cm
+	private double hBAtReg, hBAt36Weeks; //Hemoglobin (hB) in grams/deciliter
+	private double urineTestSugar, urineTestProtein; // sug in mmol/Liter, prot in mg/dL
+	private LocalDate EDD; //Estimated day of delivery
+	private String bloodGroup, sicklingStatus, sicklingType;
+	private String vDLabResults, preTestCounsel, hIVResults, postTestCounsel, ARV;
+	private String bloodFilm;  //results of malaria blood film test
+	private String iTN;
+	private String id;  //id used to identify a particular set of antenatal visits
+	private String maleInvolvement;
+	private String remarks;
+	private String complaints;
+	private List<String> subIDs = new ArrayList<String>();
 
 
 	public PregnancyRecord(String id){
@@ -53,38 +58,80 @@ public class PregnancyRecord implements Serializable {
 	}
 
 	public PregnancyRecord() {}
-
+	
 	public PregnancyRecord(VisitForm form) {
 		setParity(form.getParity());
-		setHIVResults(form.getHIVTestResults());
-		setHeight(form.getPatientHeight());
-		setWeight(form.getPatientWeight());
-		setvDLabResults(form.getVDLabResults());
-		setEDD(form.getEDD());
-		setSystolicBP(form.getSystolicBP());
-		setDiastolicBP(form.getDiastolicBP());
-		setTrimester(form.getTrimester());
-		setSubVisits(form.getSubVisitsInput());
-		setGestation(form.getGestation());
-		setIPTDoses(form.getIPTDoses());
-		setTTDoses(form.getTTDoses());
-		setFundalHeight(form.getFundalHeight());
-		sethBAtReg(form.getHBAtReg());
-		sethBAt36Weeks(form.getHBAt36Weeks());
-		setUrineTestSugar(form.getUrineTestSugar());
-		setUrineTestProtein(form.getUrineTestProtein());
+    setGestation(form.getGestation());
+    setIPTDoses(form.getIPTDoses());
+    setTTDoses(form.getTTDoses());
+    setHeight(form.getPatientHeight());
+    setWeight(form.getPatientWeight());
+    setFundalHeight(form.getFundalHeight());
+    sethBAtReg(form.getHBAtReg());
+    sethBAt36Weeks(form.getHBAt36Weeks());
+    setHIVResults(form.getHIVTestResults());
+    setUrineTestSugar(form.getUrineTestSugar());
+    setUrineTestProtein(form.getUrineTestProtein());
+    setEDD(form.getEDD());
+    setvDLabResults(form.getVDLabResults());
+    setSystolicBP(form.getSystolicBP());
+    setDiastolicBP(form.getDiastolicBP());
+    setTrimester(form.getTrimester());
+    setSubVisits(form.getSubVisitsInput());
 		setBloodGroup(form.getBloodGroup());
 		setBloodFilm(form.getBloodFilm());
 		setSicklingStatus(form.getSicklingStatus());
 		setSicklingType(form.getSicklingType());
 		setPreTestCounsel(form.getPreTestCounsel());
 		setPostTestCounsel(form.getPostTestCounsel());
-		setITN(form.getITN()); 
+		setITN(form.getITN());
 		setARV(form.getARV());
 		setMaleInvolvement(form.getMaleInvolvement());
 		setComplaints(form.getComplaints());
 		setRemarks(form.getRemarks());
 	}
+
+  public PregnancyRecord(ResultSet rs) throws SQLException {
+
+    Date edd = rs.getDate("EDD");
+    LocalDate edDate = null;
+
+    if (edd != null) {
+      edDate = edd.toLocalDate();
+    }
+
+    setId(rs.getString("id"));
+    setParity(rs.getInt("parity"));
+    setHIVResults(rs.getString("hIVResults"));
+    setHeight(rs.getDouble("height"));
+    setWeight(rs.getDouble("weight"));
+    setvDLabResults(rs.getString("vDLabResults"));
+    setEDD(edDate);
+    setSystolicBP(rs.getInt("systolicBP"));
+    setDiastolicBP(rs.getInt("diastolicBP"));
+    setTrimester(rs.getInt("trimester"));
+    setSubVisits(rs.getInt("subVisits"));
+    setGestation(rs.getInt("gestation"));
+    setIPTDoses(rs.getString("iPTDoses"));
+    setTTDoses(rs.getString("TTDoses"));
+    setFundalHeight(rs.getDouble("fundalHeight"));
+    sethBAtReg(rs.getDouble("hBAtReg"));
+    sethBAt36Weeks(rs.getDouble("hBAt36Weeks"));
+    setUrineTestSugar(rs.getDouble("urineTestSugar"));
+    setUrineTestProtein(rs.getDouble("urineTestProtein"));
+    setBloodGroup(rs.getString("bloodGroup"));
+    setBloodFilm(rs.getString("bloodFilm"));
+    setSicklingStatus(rs.getString("sicklingStatus"));
+    setSicklingType(rs.getString("sicklingType"));
+    setPreTestCounsel(rs.getString("preTestCounsel"));
+    setPostTestCounsel(rs.getString("postTestCounsel"));
+    setITN(rs.getString("iTN"));
+    setARV(rs.getString("ARV"));
+    setMaleInvolvement(rs.getString("maleInvolvement"));
+    setComplaints(rs.getString("complaints"));
+    setRemarks(rs.getString("remarks"));
+    // TODO: Add timestamp
+  }
 
 	@Override
 	public String toString() {

@@ -47,7 +47,7 @@ public class AntenatalView extends JFrame {
 	}
 
 	/**
-	 * initializes the user interface
+	 * initializes the user interfaces
 	 */
 	private void initUI() {
 

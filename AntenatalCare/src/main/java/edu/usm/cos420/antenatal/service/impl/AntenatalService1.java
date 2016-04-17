@@ -1,6 +1,6 @@
 package edu.usm.cos420.antenatal.service.impl;
 
-import edu.usm.cos420.antenatal.dao.domain.AntenatalVisitDao;
+import edu.usm.cos420.antenatal.dao.serializedObject.AntenatalVisitDao;
 import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 import edu.usm.cos420.antenatal.service.AntenatalService;
 

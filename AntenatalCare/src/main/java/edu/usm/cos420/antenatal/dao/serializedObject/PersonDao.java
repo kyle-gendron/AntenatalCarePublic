@@ -1,17 +1,17 @@
-package edu.usm.cos420.antenatal.dao.domain;
+package edu.usm.cos420.antenatal.dao.serializedObject;
 import java.util.List;
 
 import edu.usm.cos420.antenatal.dao.GenericDao;
 import edu.usm.cos420.antenatal.dao.ObjectStreamDao;
-import edu.usm.cos420.antenatal.domain.DummyPerson;
+import edu.usm.cos420.antenatal.dao.interfaces.IPerson;
 import edu.usm.cos420.antenatal.domain.Person;
 
 /**
- * 
- *  A Data Access Object specifically for DummyPerson entities 
- *     
+ *
+ *  A Data Access Object specifically for DummyPerson entities
+ *
  */
-public class PersonDao {
+public class PersonDao implements IPerson {
 
       private GenericDao<Long, Person> genDao;
 
@@ -24,7 +24,7 @@ public class PersonDao {
       }
 
       /**
-       * Constructor where the filename is provided 
+       * Constructor where the filename is provided
        */
       public PersonDao(String fileName)
       {
@@ -33,16 +33,16 @@ public class PersonDao {
 
       /**
        * Support for other DAOs is provided
-       * @param dao a Data Access Object class that implements GenericDao<Long,DummyPerson> 
+       * @param dao a Data Access Object class that implements GenericDao<Long,DummyPerson>
        */
       public PersonDao(GenericDao<Long, Person> dao)
       {
          genDao = dao;
       }
-      
+
       /**
        * Returns the DAO used in the class
-       * @return a DAO that implements GenericDao<Long,DummyPerson> 
+       * @return a DAO that implements GenericDao<Long,DummyPerson>
        */
       public GenericDao<Long, Person> getGenDao() {
          return genDao;
@@ -56,7 +56,7 @@ public class PersonDao {
       {
          genDao.add(Long.valueOf(entity.getId()), entity);
       }
-      
+
       /**
        * Update a DummyPerson in the DAO repository
        * @param entity any DummyPerson object
@@ -65,7 +65,7 @@ public class PersonDao {
       {
          genDao.update(Long.valueOf(entity.getId()), entity);
       }
-      
+
       /**
        * Remove a DummyPerson in the DAO repository
        * @param id of the DummyPerson object to remove
@@ -75,7 +75,7 @@ public class PersonDao {
       {
          genDao.remove(id);
       }
-      
+
       /**
        * Find a DummyPerson in the DAO repository
        * @param key of the DummyPerson object to locate
@@ -85,10 +85,10 @@ public class PersonDao {
       {
          return genDao.find(key);
       }
-       
+
       /**
        * Generate a list of DummyPersons in the DAO repository
-       * @return List of DummyPersons 
+       * @return List of DummyPersons
        */
 
       public List<Person> list() {
