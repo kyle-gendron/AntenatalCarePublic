@@ -1,7 +1,7 @@
 package edu.usm.cos420.antenatal.service.impl;
 
 import edu.usm.cos420.antenatal.dao.serializedObject.AntenatalSubVisitDao;
-import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
+import edu.usm.cos420.antenatal.domain.PregnancySubVisit;
 import edu.usm.cos420.antenatal.service.SubVisitService;
 
 import java.util.List;
@@ -33,22 +33,22 @@ public class SubVisitService1 implements SubVisitService {
   }
 
   @Override
-  public void addSubVisit(AntenatalSubVisit visit) {
+  public void addSubVisit(PregnancySubVisit visit) {
     dao.add(visit);
   }
 
   @Override
-  public void updateSubVisit(AntenatalSubVisit visit){
+  public void updateSubVisit(PregnancySubVisit visit){
      dao.update(visit);
   }
 
   @Override
-  public AntenatalSubVisit getSubVisitById(String id) {
+  public PregnancySubVisit getSubVisitById(String id) {
     return dao.find(id);
   }
 
   @Override
-  public List<AntenatalSubVisit> getAllSubVisits() {
+  public List<PregnancySubVisit> getAllSubVisits() {
     return dao.list();
   }
 }

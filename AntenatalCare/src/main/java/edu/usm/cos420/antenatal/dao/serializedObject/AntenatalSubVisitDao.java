@@ -5,7 +5,7 @@ import java.util.List;
 import edu.usm.cos420.antenatal.dao.GenericDao;
 import edu.usm.cos420.antenatal.dao.ObjectStreamDao;
 import edu.usm.cos420.antenatal.dao.interfaces.IAntenatalSubVisit;
-import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
+import edu.usm.cos420.antenatal.domain.PregnancySubVisit;
 
 /**
  *
@@ -14,7 +14,7 @@ import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
  */
 public class AntenatalSubVisitDao implements IAntenatalSubVisit
 {
-   private GenericDao<String,AntenatalSubVisit> genDao;
+   private GenericDao<String,PregnancySubVisit> genDao;
 
    /**
     * Default constructor creates an ObjectStream file called subvisits.ser
@@ -36,7 +36,7 @@ public class AntenatalSubVisitDao implements IAntenatalSubVisit
     * Support for other DAOs is provided
     * @param dao a Data Access Object class that implements GenericDao<Long,AntenatalSubVisit>
     */
-   public AntenatalSubVisitDao(GenericDao<String,AntenatalSubVisit> dao)
+   public AntenatalSubVisitDao(GenericDao<String,PregnancySubVisit> dao)
    {
       genDao = dao;
    }
@@ -45,7 +45,7 @@ public class AntenatalSubVisitDao implements IAntenatalSubVisit
     * Returns the DAO used in the class
     * @return a DAO that implements GenericDao<Long,AntenatalSubVisit>
     */
-   public GenericDao<String,AntenatalSubVisit> getGenDao() {
+   public GenericDao<String,PregnancySubVisit> getGenDao() {
       return genDao;
    }
 
@@ -53,18 +53,20 @@ public class AntenatalSubVisitDao implements IAntenatalSubVisit
     * Add a AntenatalSubVisit to the DAO repository
     * @param entity any AntenatalSubVisit object
     */
-   public void add(AntenatalSubVisit entity)
+   public int add(PregnancySubVisit entity)
    {
       genDao.add(entity.getID(), entity);
+	return 1;
    }
 
    /**
     * Update a AntenatalSubVisit in the DAO repository
     * @param entity any AntenatalSubVisit object
     */
-   public void update(AntenatalSubVisit entity)
+   public int update(PregnancySubVisit entity)
    {
       genDao.update(entity.getID(), entity);
+	return 1;
    }
 
    /**
@@ -72,9 +74,10 @@ public class AntenatalSubVisitDao implements IAntenatalSubVisit
     * @param id of the AntenatalSubVisit object to remove
     */
 
-   public void remove(String id)
+   public int remove(String id)
    {
       genDao.remove(id);
+	return 1;
    }
 
    /**
@@ -82,7 +85,7 @@ public class AntenatalSubVisitDao implements IAntenatalSubVisit
     * @param key of the AntenatalSubVisit object to locate
     * @return the AntenatalSubVisit with id field equal to key
     */
-   public AntenatalSubVisit find(String key)
+   public PregnancySubVisit find(String key)
    {
       return genDao.find(key);
    }
@@ -92,7 +95,7 @@ public class AntenatalSubVisitDao implements IAntenatalSubVisit
     * @return List of AntenatalSubVisits
     */
 
-   public List<AntenatalSubVisit> list() {
+   public List<PregnancySubVisit> list() {
       return genDao.list();
    }
 

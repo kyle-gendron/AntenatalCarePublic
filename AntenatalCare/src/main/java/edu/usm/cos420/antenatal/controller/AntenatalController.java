@@ -1,6 +1,6 @@
 package edu.usm.cos420.antenatal.controller;
 
-import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
+import edu.usm.cos420.antenatal.domain.PregnancySubVisit;
 import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 import edu.usm.cos420.antenatal.domain.DummyPerson;
 import edu.usm.cos420.antenatal.gui.PreviousVisits;
@@ -34,7 +34,7 @@ public class AntenatalController implements ActionListener {
 
 	/**
 	 * Constructor initialized the service and GUI
-   */
+	 */
 	public AntenatalController() {
 		// Dummy person object
 		dummyPerson = new DummyPerson();
@@ -106,7 +106,7 @@ public class AntenatalController implements ActionListener {
 						List<String> subIDs = prevVisit.getSubIDs();
 						this.view.addSub("", subController.getTitle());
 						for(String id: subIDs){
-							AntenatalSubVisit subVisit = subService.getSubVisitById(id);
+							PregnancySubVisit subVisit = subService.getSubVisitById(id);
 							this.view.addSub("", subController.setPanel(subVisit));
 						}
 						this.view.addSub("", subController.getPanel());
@@ -132,7 +132,7 @@ public class AntenatalController implements ActionListener {
 	public void submitNewVisit(PregnancyRecord visit) {
 		System.out.println("Inserting New Visit (" + visit.getID() + ")");
 		service.addAntenatalVisit(visit);
-    AntenatalView.removeCurrentTab();
+		AntenatalView.removeCurrentTab();
 
 		// Update the find previous menu option
 		this.view.setHasPreviousVisits(getVisitList().size() > 0);
@@ -141,7 +141,7 @@ public class AntenatalController implements ActionListener {
 	public void updateVisit(PregnancyRecord visit) {
 		System.out.println("Updating Visit (" + visit.getID() + ")");
 		service.updateAntenatalVisit(visit);
-    AntenatalView.removeCurrentTab();
+		AntenatalView.removeCurrentTab();
 	}
 
 	public String getNextId() {
@@ -152,19 +152,19 @@ public class AntenatalController implements ActionListener {
 		return service.getAntenatalVisitById(id);
 	}
 
-	public void submitNewSubVisit(AntenatalSubVisit subVisit) {
+	public void submitNewSubVisit(PregnancySubVisit subVisit) {
 		System.out.println("Inserting New SubVisit (" + subVisit.getID() + ")");
 		subService.addSubVisit(subVisit);
-    AntenatalView.removeCurrentTab();
+		AntenatalView.removeCurrentTab();
 	}
 
-	public void updateSubVisit(AntenatalSubVisit subVisit) {
+	public void updateSubVisit(PregnancySubVisit subVisit) {
 		System.out.println("Updating SubVisit (" + subVisit.getID() + ")");
 		subService.updateSubVisit(subVisit);
-    AntenatalView.removeCurrentTab();
+		AntenatalView.removeCurrentTab();
 	}
 
-	public AntenatalSubVisit getSubVisit(String id){
+	public PregnancySubVisit getSubVisit(String id){
 		return subService.getSubVisitById(id);
 	}
 

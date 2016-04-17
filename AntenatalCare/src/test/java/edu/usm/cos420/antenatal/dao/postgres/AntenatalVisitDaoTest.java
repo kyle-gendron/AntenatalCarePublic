@@ -19,7 +19,7 @@ import java.util.UUID;
  */
 public class AntenatalVisitDaoTest {
   private static PostgresDao db;
-  private static AntenatalVisitDao dao;
+  private static PregnancyRecordDao dao;
   private static PregnancyRecord record;
   private static ArrayList<String> idList;
 

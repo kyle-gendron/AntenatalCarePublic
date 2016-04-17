@@ -1,8 +1,8 @@
 package edu.usm.cos420.antenatal.daoFactory;
 
 import com.jcraft.jsch.JSchException;
-import edu.usm.cos420.antenatal.dao.postgres.AntenatalSubVisitDao;
-import edu.usm.cos420.antenatal.dao.postgres.AntenatalVisitDao;
+import edu.usm.cos420.antenatal.dao.postgres.PregnancySubVisitDao;
+import edu.usm.cos420.antenatal.dao.postgres.PregnancyRecordDao;
 import edu.usm.cos420.antenatal.utils.SSHTunnel;
 import edu.usm.cos420.antenatal.dao.serializedObject.PersonDao;
 
@@ -19,8 +19,8 @@ import java.util.Properties;
 public class PostgresDao extends DaoFactory {
   protected Connection connection = null;
 
-  private AntenatalVisitDao visitDao;
-  private AntenatalSubVisitDao subVisitDao;
+  private PregnancyRecordDao visitDao;
+  private PregnancySubVisitDao subVisitDao;
   private PersonDao personDao;
 
   public PostgresDao() throws IOException, ClassNotFoundException, SQLException, InstantiationException, JSchException, IllegalAccessException {
@@ -37,8 +37,8 @@ public class PostgresDao extends DaoFactory {
 
     connection = openConnection();
 
-    visitDao = new AntenatalVisitDao(connection);
-    subVisitDao = new AntenatalSubVisitDao(connection);
+    visitDao = new PregnancyRecordDao(connection);
+    subVisitDao = new PregnancySubVisitDao(connection);
     personDao = new PersonDao();
   }
 
@@ -87,12 +87,12 @@ public class PostgresDao extends DaoFactory {
   }
 
   @Override
-  public AntenatalVisitDao getAntenatalVisitDao() {
+  public PregnancyRecordDao getAntenatalVisitDao() {
     return visitDao;
   }
 
   @Override
-  public AntenatalSubVisitDao getAntenatalSubVisitDao() {
+  public PregnancySubVisitDao getAntenatalSubVisitDao() {
     return subVisitDao;
   }
 }

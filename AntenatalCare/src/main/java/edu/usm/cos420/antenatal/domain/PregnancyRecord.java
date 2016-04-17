@@ -58,26 +58,26 @@ public class PregnancyRecord implements Serializable {
 	}
 
 	public PregnancyRecord() {}
-	
+
 	public PregnancyRecord(VisitForm form) {
 		setParity(form.getParity());
-    setGestation(form.getGestation());
-    setIPTDoses(form.getIPTDoses());
-    setTTDoses(form.getTTDoses());
-    setHeight(form.getPatientHeight());
-    setWeight(form.getPatientWeight());
-    setFundalHeight(form.getFundalHeight());
-    sethBAtReg(form.getHBAtReg());
-    sethBAt36Weeks(form.getHBAt36Weeks());
-    setHIVResults(form.getHIVTestResults());
-    setUrineTestSugar(form.getUrineTestSugar());
-    setUrineTestProtein(form.getUrineTestProtein());
-    setEDD(form.getEDD());
-    setvDLabResults(form.getVDLabResults());
-    setSystolicBP(form.getSystolicBP());
-    setDiastolicBP(form.getDiastolicBP());
-    setTrimester(form.getTrimester());
-    setSubVisits(form.getSubVisitsInput());
+		setGestation(form.getGestation());
+		setIPTDoses(form.getIPTDoses());
+		setTTDoses(form.getTTDoses());
+		setHeight(form.getPatientHeight());
+		setWeight(form.getPatientWeight());
+		setFundalHeight(form.getFundalHeight());
+		sethBAtReg(form.getHBAtReg());
+		sethBAt36Weeks(form.getHBAt36Weeks());
+		setHIVResults(form.getHIVTestResults());
+		setUrineTestSugar(form.getUrineTestSugar());
+		setUrineTestProtein(form.getUrineTestProtein());
+		setEDD(form.getEDD());
+		setvDLabResults(form.getVDLabResults());
+		setSystolicBP(form.getSystolicBP());
+		setDiastolicBP(form.getDiastolicBP());
+		setTrimester(form.getTrimester());
+		setSubVisits(form.getSubVisitsInput());
 		setBloodGroup(form.getBloodGroup());
 		setBloodFilm(form.getBloodFilm());
 		setSicklingStatus(form.getSicklingStatus());
@@ -91,47 +91,47 @@ public class PregnancyRecord implements Serializable {
 		setRemarks(form.getRemarks());
 	}
 
-  public PregnancyRecord(ResultSet rs) throws SQLException {
+	public PregnancyRecord(ResultSet rs) throws SQLException {
 
-    Date edd = rs.getDate("EDD");
-    LocalDate edDate = null;
+		Date edd = rs.getDate("EDD");
+		LocalDate edDate = null;
 
-    if (edd != null) {
-      edDate = edd.toLocalDate();
-    }
+		if (edd != null) {
+			edDate = edd.toLocalDate();
+		}
 
-    setId(rs.getString("id"));
-    setParity(rs.getInt("parity"));
-    setHIVResults(rs.getString("hIVResults"));
-    setHeight(rs.getDouble("height"));
-    setWeight(rs.getDouble("weight"));
-    setvDLabResults(rs.getString("vDLabResults"));
-    setEDD(edDate);
-    setSystolicBP(rs.getInt("systolicBP"));
-    setDiastolicBP(rs.getInt("diastolicBP"));
-    setTrimester(rs.getInt("trimester"));
-    setSubVisits(rs.getInt("subVisits"));
-    setGestation(rs.getInt("gestation"));
-    setIPTDoses(rs.getString("iPTDoses"));
-    setTTDoses(rs.getString("TTDoses"));
-    setFundalHeight(rs.getDouble("fundalHeight"));
-    sethBAtReg(rs.getDouble("hBAtReg"));
-    sethBAt36Weeks(rs.getDouble("hBAt36Weeks"));
-    setUrineTestSugar(rs.getDouble("urineTestSugar"));
-    setUrineTestProtein(rs.getDouble("urineTestProtein"));
-    setBloodGroup(rs.getString("bloodGroup"));
-    setBloodFilm(rs.getString("bloodFilm"));
-    setSicklingStatus(rs.getString("sicklingStatus"));
-    setSicklingType(rs.getString("sicklingType"));
-    setPreTestCounsel(rs.getString("preTestCounsel"));
-    setPostTestCounsel(rs.getString("postTestCounsel"));
-    setITN(rs.getString("iTN"));
-    setARV(rs.getString("ARV"));
-    setMaleInvolvement(rs.getString("maleInvolvement"));
-    setComplaints(rs.getString("complaints"));
-    setRemarks(rs.getString("remarks"));
-    // TODO: Add timestamp
-  }
+		setId(rs.getString("id"));
+		setParity(rs.getInt("parity"));
+		setHIVResults(rs.getString("hIVResults"));
+		setHeight(rs.getDouble("height"));
+		setWeight(rs.getDouble("weight"));
+		setvDLabResults(rs.getString("vDLabResults"));
+		setEDD(edDate);
+		setSystolicBP(rs.getInt("systolicBP"));
+		setDiastolicBP(rs.getInt("diastolicBP"));
+		setTrimester(rs.getInt("trimester"));
+		setSubVisits(rs.getInt("subVisits"));
+		setGestation(rs.getInt("gestation"));
+		setIPTDoses(rs.getString("iPTDoses"));
+		setTTDoses(rs.getString("TTDoses"));
+		setFundalHeight(rs.getDouble("fundalHeight"));
+		sethBAtReg(rs.getDouble("hBAtReg"));
+		sethBAt36Weeks(rs.getDouble("hBAt36Weeks"));
+		setUrineTestSugar(rs.getDouble("urineTestSugar"));
+		setUrineTestProtein(rs.getDouble("urineTestProtein"));
+		setBloodGroup(rs.getString("bloodGroup"));
+		setBloodFilm(rs.getString("bloodFilm"));
+		setSicklingStatus(rs.getString("sicklingStatus"));
+		setSicklingType(rs.getString("sicklingType"));
+		setPreTestCounsel(rs.getString("preTestCounsel"));
+		setPostTestCounsel(rs.getString("postTestCounsel"));
+		setITN(rs.getString("iTN"));
+		setARV(rs.getString("ARV"));
+		setMaleInvolvement(rs.getString("maleInvolvement"));
+		setComplaints(rs.getString("complaints"));
+		setRemarks(rs.getString("remarks"));
+		// TODO: Add timestamp
+	}
 
 	@Override
 	public String toString() {

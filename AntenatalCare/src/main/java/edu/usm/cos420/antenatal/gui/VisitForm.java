@@ -380,27 +380,27 @@ public class VisitForm extends JPanel {
 			
 			//Creates red boxes around errorenous data
 			
-			if(getSystolicBP() <= 0){
+			if(getSystolicBP() < 0){
 				systolicInput.setBorder(BorderFactory.createLineBorder(Color.red));
 			}else{
 				systolicInput.setBorder(look);
 			}
 			//dia
-			if(getDiastolicBP() <= 0){
+			if(getDiastolicBP() < 0){
 				diastolicInput.setBorder(BorderFactory.createLineBorder(Color.red));
 			}else{
 				diastolicInput.setBorder(look);
 			}
 
 			//test weight
-			if(getPatientWeight() <= 0){
+			if(getPatientWeight() < 0){
 				weightInput.setBorder(BorderFactory.createLineBorder(Color.red));
 			}else{
 				weightInput.setBorder(look);
 			}
 
 			//test height
-			if(getPatientHeight() <= 0){
+			if(getPatientHeight() < 0){
 				heightInput.setBorder(BorderFactory.createLineBorder(Color.red));
 			}else{
 				heightInput.setBorder(look);

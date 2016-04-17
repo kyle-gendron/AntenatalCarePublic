@@ -162,20 +162,20 @@ public class AntenatalView extends JFrame {
 		JMenuItem exitMenuItem = new JMenuItem("Exit");
 		findPreviousVisitsMenuItem = new JMenuItem("Find Previous Visits");
 
-    JMenuItem generateReport = new JMenuItem("Generate Monthly Report");
+		JMenuItem generateReport = new JMenuItem("Generate Monthly Report");
 
 		exitMenuItem.setMnemonic(KeyEvent.VK_E);
 		exitMenuItem.setToolTipText("Exit application");
 
 		createNewVisitMenuItem.addActionListener(controller);
 		findPreviousVisitsMenuItem.addActionListener(controller);
-    generateReport.addActionListener(controller);
+		generateReport.addActionListener(controller);
 		exitMenuItem.addActionListener(controller);
 
 		file.add(createNewVisitMenuItem);
 		file.add(findPreviousVisitsMenuItem);
-    file.add(generateReport);
-    file.addSeparator();
+		file.add(generateReport);
+		file.addSeparator();
 		file.add(exitMenuItem);
 		menuBar.add(file);
 
@@ -189,7 +189,7 @@ public class AntenatalView extends JFrame {
 		tPain.removeTabAt(tPain.getSelectedIndex());
 		if (tPain.getTabCount() == 0) {
 			fillEmpty();
-      clearSub();
+			clearSub();
 		}
 	}
 
@@ -208,7 +208,7 @@ public class AntenatalView extends JFrame {
 		}
 		panel.setMinimumSize(new Dimension(600,650));
 		tPain.addTab(title, panel);
-    tPain.setSelectedIndex(tPain.getTabCount() - 1);
+		tPain.setSelectedIndex(tPain.getTabCount() - 1);
 		validate();
 
 	}
@@ -224,10 +224,10 @@ public class AntenatalView extends JFrame {
 	}
 
 	public static void clearSub(){
-	   JPanel P = ((JPanel) sPain.getViewport().getView());
-	   P.removeAll();
-//	   subPane.validate();
-    subPane.repaint();
+		JPanel P = ((JPanel) sPain.getViewport().getView());
+		P.removeAll();
+		//	   subPane.validate();
+		subPane.repaint();
 	}
 
 	public void setHasPreviousVisits(boolean hasPreviousVisits) {

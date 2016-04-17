@@ -1,7 +1,8 @@
 package edu.usm.cos420.antenatal.dao.interfaces;
 
-import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
+import edu.usm.cos420.antenatal.domain.PregnancySubVisit;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -11,34 +12,35 @@ public interface IAntenatalSubVisit {
 
   /**
    * Add a AntenatalSubVisit to the DAO repository
-   * @param entity any AntenatalSubVisit object
+   * @param record any AntenatalSubVisit object
+ * @throws SQLException 
    */
-  void add(AntenatalSubVisit entity);
+  int add(PregnancySubVisit record) throws SQLException;
 
   /**
    * Update a AntenatalSubVisit in the DAO repository
    * @param entity any AntenatalSubVisit object
    */
-  void update(AntenatalSubVisit entity);
+  int update(PregnancySubVisit record) throws SQLException;
 
   /**
    * Remove a AntenatalSubVisit in the DAO repository
    * @param id of the AntenatalSubVisit object to remove
    */
 
-  void remove(String id);
+  int remove(String id) throws SQLException;
 
   /**
    * Find a AntenatalSubVisit in the DAO repository
    * @param key of the AntenatalSubVisit object to locate
    * @return the AntenatalSubVisit with id field equal to key
    */
-  AntenatalSubVisit find(String key);
+  PregnancySubVisit find(String key)throws SQLException;
 
   /**
    * Generate a list of AntenatalSubVisits in the DAO repository
    * @return List of AntenatalSubVisits
    */
 
-  List<AntenatalSubVisit> list();
+  List<PregnancySubVisit> list()throws SQLException;
 }

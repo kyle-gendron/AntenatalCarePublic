@@ -7,6 +7,9 @@
 package edu.usm.cos420.antenatal.domain;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 
@@ -19,7 +22,7 @@ import java.time.LocalDate;
 *  blood film, and referred. 
 *
 */
-public class AntenatalSubVisit implements Serializable{
+public class PregnancySubVisit implements Serializable{
    
    /**
     * 
@@ -48,7 +51,7 @@ public class AntenatalSubVisit implements Serializable{
     * @param bloodFilm whether the malaria parasite is present
     * @param referred whether the patient was referred
     */
-   public AntenatalSubVisit(String subVisitID, String initialVisitID, int systolicBP, int diastolicBP,
+   public PregnancySubVisit(String subVisitID, String initialVisitID, int systolicBP, int diastolicBP,
          double weight, double fundalHeight, LocalDate apptDate, String bloodFilm, String referred){
       this.subVisitID = subVisitID;
       this.initialVisitID = initialVisitID;
@@ -73,7 +76,7 @@ public class AntenatalSubVisit implements Serializable{
     * @param bloodFilm whether the malaria parasite is present
     * @param referred whether the patient was referred
     */
-   public AntenatalSubVisit(String subVisitID, String initialVisitID, int systolicBP, int diastolicBP,
+   public PregnancySubVisit(String subVisitID, String initialVisitID, int systolicBP, int diastolicBP,
          double weight, double fundalHeight, String bloodFilm, String referred){
       this.subVisitID = subVisitID;
       this.initialVisitID = initialVisitID;
@@ -84,6 +87,30 @@ public class AntenatalSubVisit implements Serializable{
       this.apptDate = LocalDate.now();
       this.bloodFilm = bloodFilm;
       this.referred = referred;
+   }
+   /**
+ * @param rs is a resultset from the sql database containing all values.
+ * @throws SQLException
+ * 
+ */
+public PregnancySubVisit(ResultSet rs) throws SQLException{
+	   Date apptdate = rs.getDate("apptdate");
+	   LocalDate apDate = null;
+	   if(apptdate !=null){
+		   apDate = apptdate.toLocalDate();
+	   }
+	   
+	   setID(rs.getString("subid"));
+	   setInitialID(rs.getString("pregnancyid"));
+	   setSystolicBP(rs.getInt("systolicbp"));
+	   setDiastolicBP(rs.getInt("diastolicBP"));
+	   setWeight(rs.getDouble("weight"));
+	   setFundalHeight(rs.getDouble("fh"));
+	   setApptDate(apDate);
+	   setBloodFilm(rs.getString("bloodfilm"));
+	   setReferral(rs.getString("refer"));
+	   
+	   //ADD timestamp
    }
    
    @Override
@@ -223,7 +250,7 @@ public class AntenatalSubVisit implements Serializable{
   /**Sets the results of the blood film test for Malaria
    * @param bloodFilm the bloodFilm to set
    */
-  public void setReferrel(String refer) {
+  public void setReferral(String refer) {
      this.referred = refer;
   }
 

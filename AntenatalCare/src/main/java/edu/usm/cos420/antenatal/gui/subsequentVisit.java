@@ -31,7 +31,7 @@ import javax.swing.SwingConstants;
 
 
 import edu.usm.cos420.antenatal.controller.SubController;
-import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
+import edu.usm.cos420.antenatal.domain.PregnancySubVisit;
 
 public class subsequentVisit{
 
@@ -77,7 +77,7 @@ public class subsequentVisit{
 
 	}
 
-	public JPanel setForm(AntenatalSubVisit sVisit){
+	public JPanel setForm(PregnancySubVisit sVisit){
 
 		subVisit = changeForm(sVisit);
 		subVisit.setMinimumSize(new Dimension(600,200));
@@ -125,7 +125,7 @@ public class subsequentVisit{
 		return data;
 	}
 
-	private JPanel changeForm(AntenatalSubVisit sVisit) {
+	private JPanel changeForm(PregnancySubVisit sVisit) {
 
 		JPanel data = new JPanel();
 		data.setPreferredSize(new Dimension(800, 25));

@@ -1,7 +1,7 @@
 package edu.usm.cos420.antenatal.daoFactory;
 
-import edu.usm.cos420.antenatal.dao.postgres.AntenatalVisitDao;
-import edu.usm.cos420.antenatal.dao.postgres.AntenatalSubVisitDao;
+import edu.usm.cos420.antenatal.dao.postgres.PregnancyRecordDao;
+import edu.usm.cos420.antenatal.dao.postgres.PregnancySubVisitDao;
 import edu.usm.cos420.antenatal.dao.serializedObject.PersonDao;
 
 import java.io.IOException;
@@ -17,8 +17,8 @@ public abstract class DaoFactory {
   public abstract Connection openConnection() throws Exception;
   public abstract void closeConnection();
   public abstract PersonDao getPersonDao();
-  public abstract AntenatalVisitDao getAntenatalVisitDao();
-  public abstract AntenatalSubVisitDao getAntenatalSubVisitDao();
+  public abstract PregnancyRecordDao getAntenatalVisitDao();
+  public abstract PregnancySubVisitDao getAntenatalSubVisitDao();
 
   public static DaoFactory getDatabase() throws Exception {
     return new PostgresDao();
