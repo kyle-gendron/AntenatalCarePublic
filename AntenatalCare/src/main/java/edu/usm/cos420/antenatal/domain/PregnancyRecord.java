@@ -29,116 +29,116 @@ public class PregnancyRecord implements Serializable {
 
 	private static final long serialVersionUID = 7526472295622776147L;
 
-	int parity, systolicBP, diastolicBP, trimester, subVisits;
-	int gestation; //num weeks of pregnancy, calculated from last period
-	String iPTDoses;
-  String TTDoses; //added together from tick marks
-	double height, weight; //height in cm, weight in kg
-	double fundalHeight; //in cm
-	double hBAtReg, hBAt36Weeks; //Hemoglobin (hB) in grams/deciliter
-	double urineTestSugar, urineTestProtein; // sug in mmol/Liter, prot in mg/dL
-	LocalDate EDD; //Estimated day of delivery
-	String bloodGroup, sicklingStatus, sicklingType;
-	String vDLabResults, preTestCounsel, hIVResults, postTestCounsel, ARV;
-	String bloodFilm;  //results of malaria blood film test
-	String iTN;
-	String id;  //id used to identify a particular set of antenatal visits
-  String maleInvolvement;
-  String remarks;
-  String complaints;
-  List<String> subIDs = new ArrayList<String>();
+	private int parity, systolicBP, diastolicBP, trimester, subVisits;
+	private int gestation; //num weeks of pregnancy, calculated from last period
+	private String iPTDoses;
+	private String TTDoses; //added together from tick marks
+	private double height, weight; //height in cm, weight in kg
+	private double fundalHeight; //in cm
+	private double hBAtReg, hBAt36Weeks; //Hemoglobin (hB) in grams/deciliter
+	private double urineTestSugar, urineTestProtein; // sug in mmol/Liter, prot in mg/dL
+	private LocalDate EDD; //Estimated day of delivery
+	private String bloodGroup, sicklingStatus, sicklingType;
+	private String vDLabResults, preTestCounsel, hIVResults, postTestCounsel, ARV;
+	private String bloodFilm;  //results of malaria blood film test
+	private String iTN;
+	private String id;  //id used to identify a particular set of antenatal visits
+	private String maleInvolvement;
+	private String remarks;
+	private String complaints;
+	private List<String> subIDs = new ArrayList<String>();
 
 
-  public PregnancyRecord(String id){
+	public PregnancyRecord(String id){
 		this.id = id;
 	}
 
-  public PregnancyRecord() {}
+	public PregnancyRecord() {}
 
-  public PregnancyRecord(VisitForm form) {
-    setParity(form.getParity());
-    setHIVResults(form.getHIVTestResults());
-    setHeight(form.getPatientHeight());
-    setWeight(form.getPatientWeight());
-    setvDLabResults(form.getVDLabResults());
-    setEDD(form.getEDD());
-    setSystolicBP(form.getSystolicBP());
-    setDiastolicBP(form.getDiastolicBP());
-    setTrimester(form.getTrimester());
-    setSubVisits(form.getSubVisitsInput());
-    setGestation(form.getGestation());
-    setIPTDoses(form.getIPTDoses());
-    setTTDoses(form.getTTDoses());
-    setFundalHeight(form.getFundalHeight());
-    sethBAtReg(form.getHBAtReg());
-    sethBAt36Weeks(form.getHBAt36Weeks());
-    setUrineTestSugar(form.getUrineTestSugar());
-    setUrineTestProtein(form.getUrineTestProtein());
-    setBloodGroup(form.getBloodGroup());
-    setBloodFilm(form.getBloodFilm());
-    setSicklingStatus(form.getSicklingStatus());
-    setSicklingType(form.getSicklingType());
-    setPreTestCounsel(form.getPreTestCounsel());
-    setPostTestCounsel(form.getPostTestCounsel());
-    setITN(form.getITN()); 
-    setARV(form.getARV());
-    setMaleInvolvement(form.getMaleInvolvement());
-    setComplaints(form.getComplaints());
-    setRemarks(form.getRemarks());
-  }
+	public PregnancyRecord(VisitForm form) {
+		setParity(form.getParity());
+		setHIVResults(form.getHIVTestResults());
+		setHeight(form.getPatientHeight());
+		setWeight(form.getPatientWeight());
+		setvDLabResults(form.getVDLabResults());
+		setEDD(form.getEDD());
+		setSystolicBP(form.getSystolicBP());
+		setDiastolicBP(form.getDiastolicBP());
+		setTrimester(form.getTrimester());
+		setSubVisits(form.getSubVisitsInput());
+		setGestation(form.getGestation());
+		setIPTDoses(form.getIPTDoses());
+		setTTDoses(form.getTTDoses());
+		setFundalHeight(form.getFundalHeight());
+		sethBAtReg(form.getHBAtReg());
+		sethBAt36Weeks(form.getHBAt36Weeks());
+		setUrineTestSugar(form.getUrineTestSugar());
+		setUrineTestProtein(form.getUrineTestProtein());
+		setBloodGroup(form.getBloodGroup());
+		setBloodFilm(form.getBloodFilm());
+		setSicklingStatus(form.getSicklingStatus());
+		setSicklingType(form.getSicklingType());
+		setPreTestCounsel(form.getPreTestCounsel());
+		setPostTestCounsel(form.getPostTestCounsel());
+		setITN(form.getITN()); 
+		setARV(form.getARV());
+		setMaleInvolvement(form.getMaleInvolvement());
+		setComplaints(form.getComplaints());
+		setRemarks(form.getRemarks());
+	}
 
-  @Override
-  public String toString() {
-    return "PregnancyRecord{" +
-      "id='" + id + '\'' +
-      ", parity=" + parity +
-      ", systolicBP=" + systolicBP +
-      ", diastolicBP=" + diastolicBP +
-      ", trimester=" + trimester +
-      ", subVisits=" + subVisits +
-      ", gestation=" + gestation +
-      ", iPTDoses=" + iPTDoses +
-      ", TTDoses=" + TTDoses +
-      ", height=" + height +
-      ", weight=" + weight +
-      ", fundalHeight=" + fundalHeight +
-      ", hBAtReg=" + hBAtReg +
-      ", hBAt36Weeks=" + hBAt36Weeks +
-      ", urineTestSugar=" + urineTestSugar +
-      ", urineTestProtein=" + urineTestProtein +
-      ", EDD=" + EDD +
-      ", bloodGroup='" + bloodGroup + '\'' +
-      ", sicklingStatus='" + sicklingStatus + '\'' +
-      ", sicklingType='" + sicklingType + '\'' +
-      ", vDLabResults=" + vDLabResults +
-      ", preTestCounsel=" + preTestCounsel +
-      ", hIVResults=" + hIVResults +
-      ", postTestCounsel=" + postTestCounsel +
-      ", ARV=" + ARV +
-      ", bloodFilm=" + bloodFilm +
-      ", iTN=" + iTN +
-      ", maleInvolvement=" + maleInvolvement +
-      ", complaints=" + complaints +
-      ", remarks=" + remarks +
-      ", subVisits='" + subVisits + '\'' +
-      '}';
-  }
+	@Override
+	public String toString() {
+		return "PregnancyRecord{" +
+				"id='" + id + '\'' +
+				", parity=" + parity +
+				", systolicBP=" + systolicBP +
+				", diastolicBP=" + diastolicBP +
+				", trimester=" + trimester +
+				", subVisits=" + subVisits +
+				", gestation=" + gestation +
+				", iPTDoses=" + iPTDoses +
+				", TTDoses=" + TTDoses +
+				", height=" + height +
+				", weight=" + weight +
+				", fundalHeight=" + fundalHeight +
+				", hBAtReg=" + hBAtReg +
+				", hBAt36Weeks=" + hBAt36Weeks +
+				", urineTestSugar=" + urineTestSugar +
+				", urineTestProtein=" + urineTestProtein +
+				", EDD=" + EDD +
+				", bloodGroup='" + bloodGroup + '\'' +
+				", sicklingStatus='" + sicklingStatus + '\'' +
+				", sicklingType='" + sicklingType + '\'' +
+				", vDLabResults=" + vDLabResults +
+				", preTestCounsel=" + preTestCounsel +
+				", hIVResults=" + hIVResults +
+				", postTestCounsel=" + postTestCounsel +
+				", ARV=" + ARV +
+				", bloodFilm=" + bloodFilm +
+				", iTN=" + iTN +
+				", maleInvolvement=" + maleInvolvement +
+				", complaints=" + complaints +
+				", remarks=" + remarks +
+				", subVisits='" + subVisits + '\'' +
+				'}';
+	}
 
-  /**
-     * Returns ID of Antenatal Visit
-     * @return id
-     */
-    public String getID(){
-    	return id;
-    }
+	/**
+	 * Returns ID of Antenatal Visit
+	 * @return id
+	 */
+	public String getID(){
+		return id;
+	}
 
-    /**
-     * Sets the id of the Antenatal Visit
-     * @param id the id to set
-     */
-    public void setId(String id){
-    	this.id = id;
-    }
+	/**
+	 * Sets the id of the Antenatal Visit
+	 * @param id the id to set
+	 */
+	public void setId(String id){
+		this.id = id;
+	}
 
 	/**
 	 * returns the parity of the client
@@ -247,8 +247,8 @@ public class PregnancyRecord implements Serializable {
 	}
 
 	/**Sets the number of ITP Doses given
-   * @param TTDoses the iTPDoses to set
-   */
+	 * @param TTDoses the iTPDoses to set
+	 */
 	public void setTTDoses(String TTDoses) {
 		this.TTDoses = TTDoses;
 	}
@@ -415,8 +415,8 @@ public class PregnancyRecord implements Serializable {
 	}
 
 	/**Sets the Venereal Disease lab results
-   * @param vDLabResults the vDLabResults to set
-   */
+	 * @param vDLabResults the vDLabResults to set
+	 */
 	public void setvDLabResults(String vDLabResults) {
 		this.vDLabResults = vDLabResults;
 	}
@@ -429,8 +429,8 @@ public class PregnancyRecord implements Serializable {
 	}
 
 	/**Sets whether the client has had an HIV Pre-Test Counsel
-   * @param preTestCounsel the preTestCounsel to set
-   */
+	 * @param preTestCounsel the preTestCounsel to set
+	 */
 	public void setPreTestCounsel(String preTestCounsel) {
 		this.preTestCounsel = preTestCounsel;
 	}
@@ -443,8 +443,8 @@ public class PregnancyRecord implements Serializable {
 	}
 
 	/**Sets the HIV test results of the client
-   * @param hIVResults the hIVResults to set
-   */
+	 * @param hIVResults the hIVResults to set
+	 */
 	public void setHIVResults(String hIVResults) {
 		this.hIVResults = hIVResults;
 	}
@@ -457,8 +457,8 @@ public class PregnancyRecord implements Serializable {
 	}
 
 	/**Sets whether the client has had a Post-Test Counsel
-   * @param postTestCounsel the postTestCounsel to set
-   */
+	 * @param postTestCounsel the postTestCounsel to set
+	 */
 	public void setPostTestCounsel(String postTestCounsel) {
 		this.postTestCounsel = postTestCounsel;
 	}
@@ -471,8 +471,8 @@ public class PregnancyRecord implements Serializable {
 	}
 
 	/**Sets whether the client is on Anti-Retroviral drugs
-   * @param aRV the aRV to set
-   */
+	 * @param aRV the aRV to set
+	 */
 	public void setARV(String aRV) {
 		ARV = aRV;
 	}
@@ -485,23 +485,23 @@ public class PregnancyRecord implements Serializable {
 	}
 
 	/**Sets the results of the blood film test for Malaria
-   * @param bloodFilm the bloodFilm to set
-   */
+	 * @param bloodFilm the bloodFilm to set
+	 */
 	public void setBloodFilm(String bloodFilm) {
 		this.bloodFilm = bloodFilm;
 	}
 
-  public void setMaleInvolvement(String maleInvolvement) {
-    this.maleInvolvement = maleInvolvement;
-  }
+	public void setMaleInvolvement(String maleInvolvement) {
+		this.maleInvolvement = maleInvolvement;
+	}
 
-  public void setComplaints(String complaints) {
-    this.complaints = complaints;
-  }
+	public void setComplaints(String complaints) {
+		this.complaints = complaints;
+	}
 
-  public void setRemarks(String remarks) {
-    this.remarks = remarks;
-  }
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
 
 	/**Returns whether the client uses Insecticide-Treated Nets
 	 * @return the iTN
@@ -511,8 +511,8 @@ public class PregnancyRecord implements Serializable {
 	}
 
 	/**Sets whether the client uses Insecticide-Treated Nets
-   * @param iTN the iTN to set
-   */
+	 * @param iTN the iTN to set
+	 */
 	public void setITN(String iTN) {
 		this.iTN = iTN;
 	}
@@ -524,23 +524,23 @@ public class PregnancyRecord implements Serializable {
 		return serialVersionUID;
 	}
 
-  public String getMaleInvolvement() {
-    return maleInvolvement;
-  }
+	public String getMaleInvolvement() {
+		return maleInvolvement;
+	}
 
-  public String getRemarks() {
-    return remarks;
-  }
+	public String getRemarks() {
+		return remarks;
+	}
 
-  public String getComplaints() {
-    return complaints;
-  }
-  
-  public List<String> getSubIDs(){
-     return subIDs;
-  }
-  
-  public void setSubID(String subID){
-     subIDs.add(subID);
-  }
+	public String getComplaints() {
+		return complaints;
+	}
+
+	public List<String> getSubIDs(){
+		return subIDs;
+	}
+
+	public void setSubID(String subID){
+		subIDs.add(subID);
+	}
 }

@@ -25,15 +25,15 @@ public class AntenatalSubVisit implements Serializable{
     * 
     */
    private static final long serialVersionUID = -1091510392443704764L;
-   String subVisitID;
+   private String subVisitID;
    
-   String initialVisitID;
-   int systolicBP, diastolicBP;
-   double weight; //weight in kg
-   double fundalHeight; //in cm
-   LocalDate apptDate; //date of subsequent visit
-   String bloodFilm;  //results of malaria blood film test
-   String referred;
+   private String initialVisitID;
+   private int systolicBP, diastolicBP;
+   private double weight; //weight in kg
+   private double fundalHeight; //in cm
+   private LocalDate apptDate; //date of subsequent visit
+   private String bloodFilm;  //results of malaria blood film test
+   private String referred;
    
    /**
     * Eight-Field Constructor: The constructor to be used when all fields are being set
