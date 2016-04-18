@@ -21,6 +21,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 /**
  * A controller class for the antenatal forms.
  * It listens for the submit button to be pressed and than grabs
@@ -177,5 +180,9 @@ public class AntenatalController implements ActionListener {
 
 	public List<String> getVisitList() {
 		return service.getAllVisits().stream().map(PregnancyRecord::getID).collect(Collectors.toList());
+	}
+	
+	public AntenatalView getView(){
+	   return this.view;
 	}
 }

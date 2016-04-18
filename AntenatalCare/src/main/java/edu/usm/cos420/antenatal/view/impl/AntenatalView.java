@@ -20,7 +20,7 @@ import edu.usm.cos420.antenatal.gui.consultingData;
  * adds a place for the antenatal visit tab
  * and puts them together in one frame
  */
-public class AntenatalView extends JFrame {
+public class AntenatalView extends JPanel {
 
 	private AntenatalController controller;
 	private static JTabbedPane tPain;
@@ -28,9 +28,7 @@ public class AntenatalView extends JFrame {
 	private static JPanel newPane;
 	private static JPanel subPane;
 	private static JSplitPane split;
-	private SubController subController;
 	private JMenuItem findPreviousVisitsMenuItem;
-	private JMenuItem showSubVisitsMenuItem;
 
 	/**
 	 * Adds the controller so that it can be accessed by the panel
@@ -42,17 +40,14 @@ public class AntenatalView extends JFrame {
 		initUI();
 	}
 
-	public AntenatalView(SubController subController) {
-		this.subController = subController;
-	}
-
 	/**
 	 * initializes the user interface
 	 */
 	private void initUI() {
 
 
-		Container pane = getContentPane();
+		//Container pane = getContentPane();
+	   JPanel pane = new JPanel();
 		createMenuBar();
 
 		newPane = new JPanel();
@@ -81,11 +76,9 @@ public class AntenatalView extends JFrame {
 		pane.add(split);
 
 
-		setTitle("Antenatal Care");
-		setMinimumSize(new Dimension(750, 700));
-		setSize(1170,750);
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		
+		//setMinimumSize(new Dimension(750, 700));
+		//setSize(1170,750);
 	}
 
 	private void makeScrollDisplay(JPanel panel) {
@@ -179,7 +172,7 @@ public class AntenatalView extends JFrame {
 		file.add(exitMenuItem);
 		menuBar.add(file);
 
-		setJMenuBar(menuBar);
+		//setJMenuBar(menuBar);
 	}
 
 	/**
@@ -226,7 +219,6 @@ public class AntenatalView extends JFrame {
 	public static void clearSub(){
 	   JPanel P = ((JPanel) sPain.getViewport().getView());
 	   P.removeAll();
-//	   subPane.validate();
     subPane.repaint();
 	}
 
