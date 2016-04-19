@@ -1,6 +1,7 @@
 package edu.usm.cos420.antenatal;
 
 import edu.usm.cos420.antenatal.controller.AntenatalController;
+import edu.usm.cos420.health.controller.Controller;
 
 import java.awt.*;
 
@@ -15,7 +16,9 @@ public class App {
 	 *            main program arguments, currently not used
 	 */
 	public static void main(String[] args) {
-      AntenatalController controller = new AntenatalController();
-      EventQueue.invokeLater(controller::displayGUI);
+	   
+      //AntenatalController anteController = new AntenatalController();
+		//EventQueue.invokeLater(anteController::displayGUI);
+		Controller controller = new Controller();
 	}
 }
