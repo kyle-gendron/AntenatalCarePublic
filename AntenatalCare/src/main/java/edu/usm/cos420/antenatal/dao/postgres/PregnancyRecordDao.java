@@ -16,7 +16,47 @@ import java.util.UUID;
 public class PregnancyRecordDao implements IAntenatalVisit  {
 
 	private static final String
-	INSERT = "INSERT INTO antenatal_record (id, parity) VALUES (?, ?)";
+	INSERT = "INSERT INTO antenatal_record (" +
+    "parity, " +
+    "gestation ," +
+    "iPTDoses ," +
+    "TTDoses ," +
+    "height ," +
+    "weight ," +
+    "fundalHeight ," +
+    "hBAtReg ," +
+    "hBAt36Weeks ," +
+    "urineTestSugar ," +
+    "urineTestProtein ," +
+    "EDD ," +
+    "bloodGroup ," +
+    "vDLabResults ," +
+    "preTestCounsel ," +
+    "postTestCounsel ," +
+    "bloodFilm ," +
+    "ARV ," +
+    "iTN ," +
+    "complaints ," +
+    "remarks ," +
+    "maleInvolvement ," +
+    "systolicBP ," +
+    "diastolicBP ," +
+    "trimester ," +
+    "subVisits ," +
+    "hIVResults ," +
+    "sicklingStatus ," +
+    "sicklingType, " +
+    "updated, " +
+    "created, " +
+    "id" +
+    ") VALUES (" +
+    "?, ?, ?, ?, ?," +
+    "?, ?, ?, ?, ?," +
+    "?, ?, ?, ?, ?," +
+    "?, ?, ?, ?, ?," +
+    "?, ?, ?, ?, ?," +
+    "?, ?, ?, ?, ?," +
+    "?, ?)";
 
 	private static final String
 	ALL = "SELECT * FROM antenatal_record";
@@ -71,14 +111,51 @@ public class PregnancyRecordDao implements IAntenatalVisit  {
 	public int add(PregnancyRecord record) {
 		try{
 			PreparedStatement query = connection.prepareStatement(INSERT);
-			query.setObject(1, UUID.fromString(record.getID()));
-			query.setInt(2, record.getParity());
+
+      Date edd = null;
+      if (record.getEDD() != null) {
+        edd = Date.valueOf(record.getEDD());
+      }
+
+      query.setInt(1, record.getParity());
+      query.setInt(2, record.getGestation());
+      query.setString(3, record.getIPTDoses());
+      query.setString(4, record.getTTDoses());
+      query.setDouble(5, record.getHeight());
+      query.setDouble(6, record.getWeight());
+      query.setDouble(7, record.getFundalHeight());
+      query.setDouble(8, record.getHBAtReg());
+      query.setDouble(9, record.gethBAt36Weeks());
+      query.setDouble(10, record.getUrineTestSugar());
+      query.setDouble(11, record.getUrineTestProtein());
+      query.setDate(12, edd);
+      query.setString(13, record.getBloodGroup());
+      query.setString(14, record.getVDLabResults());
+      query.setString(15, record.getPreTestCounsel());
+      query.setString(16, record.getPostTestCounsel());
+      query.setString(17, record.getBloodFilm());
+      query.setString(18, record.getARV());
+      query.setString(19, record.getITN());
+      query.setString(20, record.getComplaints());
+      query.setString(21, record.getRemarks());
+      query.setString(22, record.getMaleInvolvement());
+      query.setInt(23, record.getSystolicBP());
+      query.setInt(24, record.getDiastolicBP());
+      query.setInt(25, record.getTrimester());
+      query.setInt(26, record.getSubVisits());
+      query.setString(27, record.getHIVResults());
+      query.setString(28, record.getSicklingStatus());
+      query.setString(29, record.getSicklingType());
+
+      query.setDate(30, new Date(Calendar.getInstance().getTimeInMillis()));
+      query.setDate(31, new Date(Calendar.getInstance().getTimeInMillis()));
+
+			query.setObject(32, UUID.fromString(record.getID()));
 			return query.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
 		return 0;
-
 	}
 
 	@Override

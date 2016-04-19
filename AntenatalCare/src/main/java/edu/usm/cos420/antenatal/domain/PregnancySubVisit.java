@@ -1,5 +1,5 @@
 /*
- * AntenatalSubVisit.java
+ * PregnancySubVisit.java
  *
  * Created on March 5, 2016
  */
@@ -15,21 +15,21 @@ import java.time.LocalDate;
 
 /**
 *
-*  The AntenatalSubVisit class represents a follow up visit
+*  The PregnancySubVisit class represents a follow up visit
 *  of the initial visit with the id given. These visits record
 *  only a subset of the information from the initial visit,
 *  including date, blood pressure, weight, fundal height,
-*  blood film, and referred. 
+*  blood film, and referred.
 *
 */
 public class PregnancySubVisit implements Serializable{
-   
+
    /**
-    * 
+    *
     */
    private static final long serialVersionUID = -1091510392443704764L;
    private String subVisitID;
-   
+
    private String initialVisitID;
    private int systolicBP, diastolicBP;
    private double weight; //weight in kg
@@ -37,10 +37,10 @@ public class PregnancySubVisit implements Serializable{
    private LocalDate apptDate; //date of subsequent visit
    private String bloodFilm;  //results of malaria blood film test
    private String referred;
-   
+
    /**
     * Eight-Field Constructor: The constructor to be used when all fields are being set
-    * 
+    *
     * @param subVisitID the id of this subsequent visit
     * @param initialVisitID the id of the initial visit for the pregnancy
     * @param systolicBP the systolic blood pressure
@@ -63,11 +63,11 @@ public class PregnancySubVisit implements Serializable{
       this.bloodFilm = bloodFilm;
       this.referred = referred;
    }
-   
+
    /**
     * Seven-Field Constructor: The constructor to be used when the appointment date
     * is defaulted to today's date
-    * 
+    *
     * @param initialVisitID the id of the initial visit for the pregnancy
     * @param systolicBP the systolic blood pressure
     * @param diastolicBP the diastolic blood pressure
@@ -91,7 +91,7 @@ public class PregnancySubVisit implements Serializable{
    /**
  * @param rs is a resultset from the sql database containing all values.
  * @throws SQLException
- * 
+ *
  */
 public PregnancySubVisit(ResultSet rs) throws SQLException{
 	   Date apptdate = rs.getDate("apptdate");
@@ -99,7 +99,7 @@ public PregnancySubVisit(ResultSet rs) throws SQLException{
 	   if(apptdate !=null){
 		   apDate = apptdate.toLocalDate();
 	   }
-	   
+
 	   setID(rs.getString("subid"));
 	   setInitialID(rs.getString("pregnancyid"));
 	   setSystolicBP(rs.getInt("systolicbp"));
@@ -109,13 +109,13 @@ public PregnancySubVisit(ResultSet rs) throws SQLException{
 	   setApptDate(apDate);
 	   setBloodFilm(rs.getString("bloodfilm"));
 	   setReferral(rs.getString("refer"));
-	   
+
 	   //ADD timestamp
    }
-   
+
    @Override
    public String toString() {
-     return "AntenatalSubVisit{" +
+     return "PregnancySubVisit{" +
       "InitVisitID=" + initialVisitID +
        ", systolicBP=" + systolicBP +
        ", diastolicBP=" + diastolicBP +
@@ -126,7 +126,7 @@ public PregnancySubVisit(ResultSet rs) throws SQLException{
        ", referred=" + referred +
        '}';
    }
-   
+
    /**
     * Returns ID of Subsequent Visit
     * @return id
@@ -142,7 +142,7 @@ public PregnancySubVisit(ResultSet rs) throws SQLException{
    public void setID(String id){
      this.subVisitID = id;
    }
-   
+
    /**
     * Returns ID of initial Antenatal Visit
     * @return id
@@ -223,7 +223,7 @@ public PregnancySubVisit(ResultSet rs) throws SQLException{
   }
 
   /**Sets the Estimated Date of Delivery
-   * @param eDD the eDD to set
+   * @param date the eDD to set
    */
   public void setApptDate(LocalDate date) {
      apptDate = date;
@@ -242,13 +242,13 @@ public PregnancySubVisit(ResultSet rs) throws SQLException{
   public void setBloodFilm(String bloodFilm) {
      this.bloodFilm = bloodFilm;
   }
-  
+
   public String getReferral() {
      return referred;
   }
 
   /**Sets the results of the blood film test for Malaria
-   * @param bloodFilm the bloodFilm to set
+   * @param refer the bloodFilm to set
    */
   public void setReferral(String refer) {
      this.referred = refer;
