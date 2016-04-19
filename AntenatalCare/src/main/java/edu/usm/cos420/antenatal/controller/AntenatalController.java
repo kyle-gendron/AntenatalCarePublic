@@ -12,6 +12,7 @@ import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -49,7 +50,12 @@ public class AntenatalController implements ActionListener {
 
 		// Debug Test
 		System.out.println("Sub Visit Table:");
-		subService.getAllSubVisits().forEach(System.out::println);
+		try {
+			subService.getAllSubVisits().forEach(System.out::println);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		// Set up the find previous dialog.
 		this.findPrevious = new PreviousVisits(this.view);
@@ -106,7 +112,12 @@ public class AntenatalController implements ActionListener {
 						List<String> subIDs = prevVisit.getSubIDs();
 						this.view.addSub("", subController.getTitle());
 						for(String id: subIDs){
-							PregnancySubVisit subVisit = subService.getSubVisitById(id);
+							PregnancySubVisit subVisit = null;
+							try {
+								subVisit = subService.getSubVisitById(id);
+							} catch (SQLException e1) {
+								e1.printStackTrace();
+							}
 							this.view.addSub("", subController.setPanel(subVisit));
 						}
 						this.view.addSub("", subController.getPanel());
@@ -154,18 +165,34 @@ public class AntenatalController implements ActionListener {
 
 	public void submitNewSubVisit(PregnancySubVisit subVisit) {
 		System.out.println("Inserting New SubVisit (" + subVisit.getID() + ")");
-		subService.addSubVisit(subVisit);
+		try {
+			subService.addSubVisit(subVisit);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		AntenatalView.removeCurrentTab();
 	}
 
 	public void updateSubVisit(PregnancySubVisit subVisit) {
 		System.out.println("Updating SubVisit (" + subVisit.getID() + ")");
-		subService.updateSubVisit(subVisit);
+		try {
+			subService.updateSubVisit(subVisit);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		AntenatalView.removeCurrentTab();
 	}
 
 	public PregnancySubVisit getSubVisit(String id){
-		return subService.getSubVisitById(id);
+		try {
+			return subService.getSubVisitById(id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new PregnancySubVisit();
 	}
 
 	public String getNextSubId() {
