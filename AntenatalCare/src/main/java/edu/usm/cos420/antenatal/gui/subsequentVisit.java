@@ -228,9 +228,13 @@ public class subsequentVisit{
 	public LocalDate getApptDate(){
 		//TODO: calculate from gestation
 
+		
 		Date pickerDate = (Date) apptDate.getModel().getValue();
+		if(pickerDate != null){
 		LocalDate date = pickerDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		return date;
+		}
+		return null;
 	}
 
 	/**
