@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DummyPerson implements Serializable, Person{
+public class DummyPerson implements Serializable, Person {
 
 	/**
 	 * Stub person object to populate fields in GUI coming from the consulting register
@@ -47,22 +47,22 @@ public class DummyPerson implements Serializable, Person{
 		return Subdistrict;
 	}
 	public String getDistrict(){
-		return District; 
+		return District;
 	}
 	public String getYear(){
-		return Year; 
+		return Year;
 	}
 	public int getSerialNumber(){
 		return SerialNumber;
 	}
 	public LocalDate getDate(){
-		return Date; 
+		return Date;
 	}
 	public int getRegNumber(){
-		return RegNumber; 
+		return RegNumber;
 	}
 	public int getHININumber(){
-		return HININumber; 
+		return HININumber;
 	}
 	public String getName(){
 		return name;

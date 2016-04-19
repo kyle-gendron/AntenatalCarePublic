@@ -4,7 +4,6 @@ import edu.usm.cos420.antenatal.dao.interfaces.IAntenatalVisit;
 import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 
 import java.sql.*;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -50,12 +49,8 @@ public class PregnancyRecordDao implements IAntenatalVisit  {
     "created, " +
     "id" +
     ") VALUES (" +
-    "?, ?, ?, ?, ?," +
-    "?, ?, ?, ?, ?," +
-    "?, ?, ?, ?, ?," +
-    "?, ?, ?, ?, ?," +
-    "?, ?, ?, ?, ?," +
-    "?, ?, ?, ?, ?," +
+    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?," +
+    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?," +
     "?, ?)";
 
 	private static final String

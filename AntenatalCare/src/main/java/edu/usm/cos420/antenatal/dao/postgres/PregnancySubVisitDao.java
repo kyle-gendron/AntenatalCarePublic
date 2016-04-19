@@ -1,9 +1,6 @@
 package edu.usm.cos420.antenatal.dao.postgres;
-
 import edu.usm.cos420.antenatal.dao.interfaces.IAntenatalSubVisit;
-import edu.usm.cos420.antenatal.dao.interfaces.IAntenatalVisit;
 import edu.usm.cos420.antenatal.domain.PregnancySubVisit;
-import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -18,7 +15,7 @@ public class PregnancySubVisitDao implements IAntenatalSubVisit {
 
 	private static final String
 	INSERT = "INSERT INTO subvisit_record (subid, pregnancyid,"
-			+ "systolicbp,diastolicbp,weight,fh,apptdate,bloodfilm,refer,created ) VALUES (?, ?)";
+			+ "systolicbp, diastolicbp, weight, fh, apptdate, bloodfilm, refer,created ) VALUES (?, ?)";
 	private static final String
 	ALL = "SELECT * FROM subvisit_record";
 	private static final String
@@ -36,8 +33,6 @@ public class PregnancySubVisitDao implements IAntenatalSubVisit {
 			"refer = ? "+
 			"updated = ? "+
 			"WHERE id = ?";
-
-
 
 	private final Connection connection;
 
@@ -62,29 +57,29 @@ public class PregnancySubVisitDao implements IAntenatalSubVisit {
 		query.setString(9, record.getReferral());
 		Calendar date = Calendar.getInstance();
 		query.setTimestamp(10, new Timestamp(date.getTime().getTime()));
-		
+
 		return query.executeUpdate();
 	}
 
 	@Override
 	public int update(PregnancySubVisit record) throws SQLException {
 		PreparedStatement query  =  connection.prepareStatement(UPDATE);
-		
+
+    Date aptDate = null;
+    if (record.getApptDate() != null) {
+      aptDate = Date.valueOf(record.getApptDate());
+    }
+
 		query.setInt(1, record.getSystolicBP());
 		query.setInt(2, record.getDiastolicBP());
 		query.setDouble(3, record.getWeight());
 		query.setDouble(4, record.getFundalHeight());
-		Date apptdate = null;
-		if (record.getApptDate() != null) {
-			apptdate = Date.valueOf(record.getApptDate());
-		}
-		query.setDate(5, apptdate);
+		query.setDate(5, aptDate);
 		query.setString(6, record.bloodFilmResults());
 		query.setString(7, record.getReferral());
 		Calendar date = Calendar.getInstance();
 		query.setTimestamp(8, new Timestamp(date.getTime().getTime()));
 		return query.executeUpdate();
-		
 	}
 
 	@Override
@@ -92,7 +87,7 @@ public class PregnancySubVisitDao implements IAntenatalSubVisit {
 		PreparedStatement query  =  connection.prepareStatement(DELETE);
 		query.setObject(1, UUID.fromString(id));
 		return query.executeUpdate();
-		
+
 	}
 
 	@Override
@@ -108,7 +103,7 @@ public class PregnancySubVisitDao implements IAntenatalSubVisit {
 	public List<PregnancySubVisit> list() throws SQLException {
 		PreparedStatement query = connection.prepareStatement(ALL);
 		ResultSet rs = query.executeQuery();
-		
+
 		List<PregnancySubVisit> results = new ArrayList<>();
 		while(rs.next()) results.add(createRecord(rs));
 		return results;
