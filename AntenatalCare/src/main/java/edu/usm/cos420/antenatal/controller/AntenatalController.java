@@ -12,6 +12,7 @@ import edu.usm.cos420.antenatal.service.SubVisitService;
 import edu.usm.cos420.antenatal.service.impl.AntenatalService1;
 import edu.usm.cos420.antenatal.service.impl.SubVisitService1;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
+import edu.usm.cos420.health.controller.Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,6 +36,7 @@ public class AntenatalController implements ActionListener {
 	private AntenatalService1 service;
 	private SubVisitService1 subService;
 	private AntenatalView view;
+	private Controller controller;
 	private DummyPerson dummyPerson;
 	//private newVisitTab currentForm;
 
@@ -44,7 +46,6 @@ public class AntenatalController implements ActionListener {
 	public AntenatalController() {
 		// Dummy person object
 		dummyPerson = new DummyPerson();
-
 		this.service = new AntenatalService1();
 		this.subService = new SubVisitService1();
 		this.view = new AntenatalView(this);

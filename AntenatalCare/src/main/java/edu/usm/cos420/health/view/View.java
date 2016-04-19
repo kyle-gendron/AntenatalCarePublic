@@ -1,7 +1,9 @@
 package edu.usm.cos420.health.view;
 
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
@@ -19,7 +21,7 @@ import java.awt.GraphicsEnvironment;
 
 import edu.usm.cos420.health.consultingregister.view.PersonView;
 import edu.usm.cos420.health.consultingregister.view.RegisterItemView;
-import edu.usm.cos420.antenatal.controller.AntenatalController;
+import edu.usm.cos420.antenatal.AntenatalInitialization;
 import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 import edu.usm.cos420.health.consultingregister.controller.PersonController;
 import edu.usm.cos420.health.consultingregister.controller.RegisterItemController;
@@ -56,9 +58,6 @@ public class View implements ChangeListener
 
     private RegisterItemView register_view;
     private RegisterItemController register_controller;
-
-    private AntenatalController anteControl;
-    private AntenatalView anteView;
     
     private Controller controller;
 
@@ -89,7 +88,7 @@ public class View implements ChangeListener
     private class UIPanel extends JPanel
     {
         private JPanel person_panel;
-        private JPanel content_panel;
+        private JComponent content_panel;
         private final int PANEL_WIDTH;
         private final int PANEL_HEIGHT;
 
@@ -100,7 +99,7 @@ public class View implements ChangeListener
          * 
          * @param cp each projects content.
          */
-        private UIPanel(JPanel cp)
+        private UIPanel(JComponent cp)
         {
             super();
             /* These sizing values are based off of the Mac OSX default look
@@ -122,7 +121,7 @@ public class View implements ChangeListener
          *
          * @param cp the content panel
          */
-        private void init(JPanel cp)
+        private void init(JComponent cp)
         {
             // Clear the panel
             this.removeAll();
@@ -188,13 +187,11 @@ public class View implements ChangeListener
      * @param c main controller
      * @param pc person controller
      */
-    public View(Controller c, PersonController pc, RegisterItemController rc, AntenatalController ac)
+    public View(Controller c, PersonController pc, RegisterItemController rc)
     {
         controller = c;
         person_controller = pc;
         person_view = pc.getView();
-        anteControl = ac;
-        anteView = ac.getView();
         register_controller = rc;
         register_view = rc.getView();
         init();
@@ -207,7 +204,7 @@ public class View implements ChangeListener
      * @param c_p the content to put in the tab
      *
      */
-    public void addTab(String name, JPanel c_p)
+    public void addTab(String name, JComponent c_p)
     {
         UIPanel panel = new UIPanel(c_p);
 
@@ -272,8 +269,8 @@ public class View implements ChangeListener
         user_interface.setContentPane(application_pane);
 
         // Make blank content panels for the other projects.
-        JPanel antenatal_panel = new JPanel();
-        antenatal_panel.add(anteView);
+        //JPanel antenatal_panel = new JPanel();
+        //antenatal_panel.setBackground(Color.BLACK);
         JPanel disease_panel = new JPanel();
         disease_panel.setBackground(Color.green);
         JPanel birth_panel = new JPanel();
@@ -285,11 +282,12 @@ public class View implements ChangeListener
 
         // Add tabs for all the projects, including ours
         addTab("Register", register_view.getPanel());
-        addTab("Antenatal Care", antenatal_panel);
+        addTab("Antenatal Care", AntenatalInitialization.initializeGUI());
         addTab("Disease Surveillance", disease_panel);
         addTab("Birth and Deliveries", birth_panel);
         addTab("Family Planning", family_panel);
         addTab("Childhood Immunizations", childhood_panel);
+        
 
         // need a header pane for the PersonView stuff 
         refreshPersonPanel();
@@ -324,5 +322,6 @@ public class View implements ChangeListener
     public void stateChanged(ChangeEvent e)
     {
         refreshPersonPanel();
+        
     }
 }

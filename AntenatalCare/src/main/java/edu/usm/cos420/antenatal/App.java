@@ -16,8 +16,9 @@ public class App {
 	 *            main program arguments, currently not used
 	 */
 	public static void main(String[] args) {
-	   Controller controller = new Controller();
-
-		//EventQueue.invokeLater(controller::displayGUI);
+	   
+      //AntenatalController anteController = new AntenatalController();
+		//EventQueue.invokeLater(anteController::displayGUI);
+		Controller controller = new Controller();
 	}
 }

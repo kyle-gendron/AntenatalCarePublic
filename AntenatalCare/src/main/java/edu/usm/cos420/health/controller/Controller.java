@@ -47,9 +47,9 @@ public class Controller implements ActionListener
     {
         person_controller = new PersonController(this);
         register_controller = new RegisterItemController(this);
-        antenatal_controller = new AntenatalController();
         
-        view = new View(this, person_controller, register_controller, antenatal_controller);
+        
+        view = new View(this, person_controller, register_controller);
     }
 
     /** 
