@@ -2,8 +2,12 @@ package edu.usm.cos420.antenatal.dao.interfaces;
 
 import edu.usm.cos420.antenatal.domain.PregnancySubVisit;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by aaron on 4/16/2016.
@@ -43,4 +47,6 @@ public interface IAntenatalSubVisit {
    */
 
   List<PregnancySubVisit> list()throws SQLException;
+  
+  List<PregnancySubVisit> pregList(String key) throws SQLException ;
 }

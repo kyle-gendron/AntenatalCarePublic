@@ -16,8 +16,11 @@ public interface SubVisitService {
    
    List<PregnancySubVisit> getAllSubVisits() throws SQLException;
    
+   List<PregnancySubVisit> getSubVisitsByPregnancy(String key) throws SQLException;
+   
    static String getNextID() {
       return UUID.randomUUID().toString();
   }
+   
 
 }

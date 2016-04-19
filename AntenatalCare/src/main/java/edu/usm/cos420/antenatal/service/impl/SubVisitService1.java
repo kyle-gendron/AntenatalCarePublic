@@ -59,4 +59,13 @@ public class SubVisitService1 implements SubVisitService {
   public List<PregnancySubVisit> getAllSubVisits() throws SQLException {
     return dao.list();
   }
+  public List<PregnancySubVisit> getSubVisitsByPregnancy(String key) {
+	  try{
+	  return dao.pregList(key);
+	  }catch(SQLException e){
+		  e.printStackTrace();
+	  }
+	return null;
+	  
+  }
 }

@@ -19,6 +19,8 @@ public class PregnancySubVisitDao implements IAntenatalSubVisit {
 	private static final String
 	ALL = "SELECT * FROM subvisit_record";
 	private static final String
+	ALLKEY = "SELECT * FROM subvisit_record WHERE pregnancyid = ?";
+	private static final String
 	FIND_BY_ID = "SELECT * FROM subvisit_record WHERE subid = ?";
 	private static final String
 	DELETE =  "DELETE FROM subvisit_record WHERE subid = ?";
@@ -103,6 +105,16 @@ public class PregnancySubVisitDao implements IAntenatalSubVisit {
 	@Override
 	public List<PregnancySubVisit> list() throws SQLException {
 		PreparedStatement query = connection.prepareStatement(ALL);
+		ResultSet rs = query.executeQuery();
+
+		List<PregnancySubVisit> results = new ArrayList<>();
+		while(rs.next()) results.add(createRecord(rs));
+		return results;
+	}
+	@Override
+	public List<PregnancySubVisit> pregList(String key) throws SQLException {
+		PreparedStatement query = connection.prepareStatement(ALLKEY);
+		query.setObject(1,UUID.fromString(key));
 		ResultSet rs = query.executeQuery();
 
 		List<PregnancySubVisit> results = new ArrayList<>();

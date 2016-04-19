@@ -20,7 +20,7 @@ import edu.usm.cos420.antenatal.gui.consultingData;
  * adds a place for the antenatal visit tab
  * and puts them together in one frame
  */
-public class AntenatalView extends JInternalFrame {
+public class AntenatalView extends JFrame {
 
 	/**
     * 
@@ -49,10 +49,14 @@ public class AntenatalView extends JInternalFrame {
 	 */
 	private void initUI() {
 
-
-		Container pane = getContentPane();
-	   //JPanel pane = new JPanel();
-		createMenuBar();
+		
+		//Container pane = getRootPane();
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setSize(900,900);
+	    JPanel pane = new JPanel();
+	    pane.setLayout(new BorderLayout());
+	    pane.setSize(this.getSize());
+		createMenuBar(pane);
 
 		newPane = new JPanel();
 		subPane = new JPanel();
@@ -61,7 +65,7 @@ public class AntenatalView extends JInternalFrame {
 		newPane.setLayout(border);
 		BorderLayout subBorder = new BorderLayout();
 		subPane.setLayout(subBorder);
-		newPane.setMinimumSize(new Dimension(600,500));
+		newPane.setMinimumSize(new Dimension(600,700));
 
 		JButton quitButton = makeQuitButton(newPane);
 
@@ -82,7 +86,9 @@ public class AntenatalView extends JInternalFrame {
 
 		
 		setMinimumSize(new Dimension(750, 700));
-		setSize(1170,750);
+		
+		add(pane,BorderLayout.CENTER);
+		setVisible(true);
 	}
 
 	private void makeScrollDisplay(JPanel panel) {
@@ -149,7 +155,7 @@ public class AntenatalView extends JInternalFrame {
 	/**
 	 * Creates the menu bar across the top of the screen to give selectable options
 	 */
-	private void createMenuBar() {
+	private void createMenuBar(Container pane) {
 		JMenuBar menuBar = new JMenuBar();
 
 		JMenu file = new JMenu("Antenatal");
@@ -176,7 +182,8 @@ public class AntenatalView extends JInternalFrame {
 		file.add(exitMenuItem);
 		menuBar.add(file);
 
-		setJMenuBar(menuBar);
+		pane.add(menuBar,BorderLayout.NORTH);
+		pane.validate();
 	}
 
 	/**

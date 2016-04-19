@@ -1,5 +1,6 @@
 package edu.usm.cos420.antenatal.dao.serializedObject;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import edu.usm.cos420.antenatal.dao.GenericDao;
@@ -98,6 +99,12 @@ public class AntenatalSubVisitDao implements IAntenatalSubVisit
    public List<PregnancySubVisit> list() {
       return genDao.list();
    }
+
+@Override
+public List<PregnancySubVisit> pregList(String key) throws SQLException {
+	// TODO Auto-generated method stub
+	return null;
+}
 
 }
 
