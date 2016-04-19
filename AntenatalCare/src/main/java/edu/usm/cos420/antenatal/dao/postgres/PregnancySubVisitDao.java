@@ -15,7 +15,7 @@ public class PregnancySubVisitDao implements IAntenatalSubVisit {
 
 	private static final String
 	INSERT = "INSERT INTO subvisit_record (subid, pregnancyid,"
-			+ "systolicbp, diastolicbp, weight, fh, apptdate, bloodfilm, refer,created ) VALUES (?, ?)";
+			+ "systolicbp,diastolicbp,weight,fh,apptdate,bloodfilm,refer,created ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String
 	ALL = "SELECT * FROM subvisit_record";
 	private static final String
@@ -32,7 +32,7 @@ public class PregnancySubVisitDao implements IAntenatalSubVisit {
 			"bloodfilm =  ? "+
 			"refer = ? "+
 			"updated = ? "+
-			"WHERE id = ?";
+			"WHERE subid = ?";
 
 	private final Connection connection;
 
@@ -79,6 +79,7 @@ public class PregnancySubVisitDao implements IAntenatalSubVisit {
 		query.setString(7, record.getReferral());
 		Calendar date = Calendar.getInstance();
 		query.setTimestamp(8, new Timestamp(date.getTime().getTime()));
+		query.setObject(9, record.getID());
 		return query.executeUpdate();
 	}
 
