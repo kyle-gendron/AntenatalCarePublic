@@ -16,7 +16,7 @@ import java.util.UUID;
 public class PregnancyRecordDao implements IAntenatalVisit  {
 
 	private static final String
-	INSERT = "INSERT INTO antenatal_record (id, parity, gestation,iPTDoses) VALUES (?, ?, ?, ?)";
+	INSERT = "INSERT INTO antenatal_record (id, parity, gestation, iPTDoses) VALUES (?, ?, ?, ?)";
 
 	private static final String
 	ALL = "SELECT * FROM antenatal_record";
