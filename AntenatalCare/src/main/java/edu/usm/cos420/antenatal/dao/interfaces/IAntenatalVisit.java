@@ -1,5 +1,6 @@
 package edu.usm.cos420.antenatal.dao.interfaces;
 
+import edu.usm.cos420.antenatal.dao.GenericDao;
 import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.concurrent.ExecutionException;
 /**
  * Created by aaron on 4/16/2016.
  */
-public interface IAntenatalVisit {
+public interface IAntenatalVisit extends GenericDao {
   /**
    * Add a PregnancyRecord to the DAO repository
    * @param record any PregnancyRecord object

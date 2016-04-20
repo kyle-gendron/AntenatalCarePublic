@@ -1,23 +1,20 @@
 package edu.usm.cos420.antenatal.dao.interfaces;
 
+import edu.usm.cos420.antenatal.dao.GenericDao;
 import edu.usm.cos420.antenatal.domain.PregnancySubVisit;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Created by aaron on 4/16/2016.
  */
-public interface IAntenatalSubVisit {
+public interface IAntenatalSubVisit extends GenericDao {
 
   /**
    * Add a AntenatalSubVisit to the DAO repository
    * @param record any AntenatalSubVisit object
- * @throws SQLException 
+ * @throws SQLException
    */
   int add(PregnancySubVisit record) throws SQLException;
 
@@ -46,7 +43,7 @@ public interface IAntenatalSubVisit {
    * @return List of AntenatalSubVisits
    */
 
-  List<PregnancySubVisit> list()throws SQLException;
+  List<PregnancySubVisit> list();
   
   List<PregnancySubVisit> pregList(String key) throws SQLException ;
 }
