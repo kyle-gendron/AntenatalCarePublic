@@ -1,12 +1,12 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf460
 {\fonttbl\f0\fnil\fcharset0 Georgia;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\colortbl;\red255\green255\blue255;}
 {\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
 {\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid102\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid2}
 {\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
 {\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}}
 {\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}}
-\margl1011\margr1011\margb1445\margt1011\vieww13700\viewh15100\viewkind1\viewscale102
+\margl1011\margr1011\margb1445\margt1011\vieww13700\viewh14660\viewkind1\viewscale102
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\fi2\sl288\slmult1\pardirnatural\qc
 
 \f0\b\fs28 \cf0 Antenatal Care Iteration 4 Report
@@ -30,59 +30,62 @@ This team was tasked on setting up the database and making sure that we could ad
 \b Iteration Four Use Case list:
 \b0 \
 \pard\tx220\tx720\pardeftab720\li720\fi-720\sl280
-\ls1\ilvl0\cf2 1. \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 The client wants to generate / access a monthly Midwifes Report report\
-\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 2. \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 The client wants the data saved in a database\
+\ls1\ilvl0\cf0 1. \expnd0\expndtw0\kerning0
+The client wants to generate / access a monthly Midwifes Report report\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl280
+\ls1\ilvl0\cf0 \kerning1\expnd0\expndtw0 2. \expnd0\expndtw0\kerning0
+The client wants the data saved in a database\
 3. Integrate with the consulting registry.\
-\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 4. \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 Reduce integration conflicts\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\ls1\ilvl0\kerning1\expnd0\expndtw0 4. \expnd0\expndtw0\kerning0
+Reduce integration conflicts\kerning1\expnd0\expndtw0 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\fi2\sl288\slmult1\pardirnatural
 \cf0 \
 
 \b Tasks:
 \b0 \
 \pard\tx220\tx720\pardeftab720\li720\fi-720\sl280
-\ls2\ilvl0\cf2 \'95	\expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 Refactoring: Estimated Time: 6h Actual: 2h\
+\ls2\ilvl0\cf0 \'95	\expnd0\expndtw0\kerning0
+Refactoring: Estimated Time: 6h Actual: 2h\
 \pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sl280
-\ls2\ilvl1\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 	\expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 Remove commented out code\
+\ls2\ilvl1\cf0 \kerning1\expnd0\expndtw0 	\expnd0\expndtw0\kerning0
+Remove commented out code\
 	Fields in domain objects should be private\
 	Better names for sub visits\
 	Separate view and controller\
 \pard\tx220\tx720\pardeftab720\li720\fi-720\sl280
-\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \'95	\expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 Generate Midwife report - Estimated Time: 10h  Actual: 8h\
+\ls2\ilvl0\cf0 \kerning1\expnd0\expndtw0 \'95	\expnd0\expndtw0\kerning0
+Generate Midwife report - Estimated Time: 10h  Actual: 8h\
 \pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sl280
-\ls2\ilvl1\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0  \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 	Check out other groups\
-\ls2\ilvl1\kerning1\expnd0\expndtw0 \outl0\strokewidth0  \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 	Integrate with Birth and Deliveries Report generation\
-\ls2\ilvl1\kerning1\expnd0\expndtw0 \outl0\strokewidth0  \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 	Export as a PDF?\
+\ls2\ilvl1\cf0 \kerning1\expnd0\expndtw0  \expnd0\expndtw0\kerning0
+	Check out other groups\
+\ls2\ilvl1\kerning1\expnd0\expndtw0  \expnd0\expndtw0\kerning0
+	Integrate with Birth and Deliveries Report generation\
+\ls2\ilvl1\kerning1\expnd0\expndtw0  \expnd0\expndtw0\kerning0
+	Export as a PDF?\
 \pard\tx220\tx720\pardeftab720\li720\fi-720\sl280
-\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \'95	\expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 Database - Estimate Time: 6h Actual: 2h\
+\ls2\ilvl0\cf0 \kerning1\expnd0\expndtw0 \'95	\expnd0\expndtw0\kerning0
+Database - Estimate Time: 6h Actual: 2h\
 \pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sl280
-\ls2\ilvl1\cf2 	Postgres support\
-\ls2\ilvl1\kerning1\expnd0\expndtw0 \outl0\strokewidth0 	\expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 Connecting to server\
-\ls2\ilvl1\kerning1\expnd0\expndtw0 \outl0\strokewidth0 	\expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 setting up tables\
-\ls2\ilvl1\kerning1\expnd0\expndtw0 \outl0\strokewidth0 	\expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 putting stuff onto those tables\
+\ls2\ilvl1\cf0 	Postgres support\
+\ls2\ilvl1\kerning1\expnd0\expndtw0 	\expnd0\expndtw0\kerning0
+Connecting to server\
+\ls2\ilvl1\kerning1\expnd0\expndtw0 	\expnd0\expndtw0\kerning0
+setting up tables\
+\ls2\ilvl1\kerning1\expnd0\expndtw0 	\expnd0\expndtw0\kerning0
+putting stuff onto those tables\
 \pard\tx220\tx720\pardeftab720\li720\fi-720\sl280
-\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \'95	\expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 Integration with consulting - Estimated Time: 15h Actual: 7h\
+\ls2\ilvl0\cf0 \kerning1\expnd0\expndtw0 \'95	\expnd0\expndtw0\kerning0
+Integration with consulting - Estimated Time: 15h Actual: 7h\
 \pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sl280
-\ls2\ilvl1\cf2 	Working With other\'92s code\
+\ls2\ilvl1\cf0 	Working With other\'92s code\
 {\listtext	Making our program fit into their frame	}\
 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sl280
 \ls2\ilvl1
-\b \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 Accomplishments:\
+\b \cf0 \kerning1\expnd0\expndtw0 Accomplishments:\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sl280
 \ls2\ilvl1
-\b0 Database integration\
+\b0 \cf0 Database integration\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\fi2\sl288\slmult1\pardirnatural
 \cf0 Fully Integration with Consulting register\
 Start of the midwife report\
@@ -91,19 +94,19 @@ Start of the midwife report\
 \b0 \
 Midwife report was started, but isn\'92t functional - next iteration\
 Difficulty retrieving ID from the consulting register\
-More refactoring to be done, better View and control seperation\
+More refactoring to be done, better View and control separation\
 \
 
 \b Risks:\
 \pard\tx220\tx720\pardeftab720\li720\fi-720\sl280
 \ls3\ilvl0
-\b0 \cf2 \'95	\expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 integration with consulting\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\b0 \cf0 \'95	\expnd0\expndtw0\kerning0
+integration with consulting\kerning1\expnd0\expndtw0 \
 \pard\tx220\tx720\pardeftab720\li720\fi-720\sl280
-\ls4\ilvl0\cf2 \'95	\expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 postgres\
-\ls4\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 \'95	\expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 integrating with database\
+\ls4\ilvl0\cf0 \'95	\expnd0\expndtw0\kerning0
+postgres\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 \'95	\expnd0\expndtw0\kerning0
+integrating with database\
 \
 		
 {\*\beandata789c9d935d6f82301486aff157748db752d876b12d8851c1c4cc2099b86497153a65e32ba5cef1ef57444aeb66b68c1bda73fabe4f7b4e6b8d3ed3047c105ac6793684a66e4040b2308fe26c3b84eb6036b88323bb675d39cb69f0e2bba048e292017f3d59cca7000e101a17454210720207f88bf92a00dc0321d78300ee182b1e103a1c0e3aae57e9619ed60b4be4d3bc2094550b6e36e0023d6211e498c65dd90e8f4671c8ec9e66bd93caee631aee62bec242f594474b46f9666d6ff5482a128d45fa146f75f9e68d84ac14324c29ae07c2a09fed934492692d573b3984092e855e4e37f9e9acbf9e3b5d5eb3e28c912da1f6ad85dae1518854636fa5f39fec2cf6a6502e603aceb5ca5140a8f36ca16715f93ff7e64fdc2eda567ce28ebd27f6ead6f78d778ef1e866cf48f9dcf4dfdba71ba591d2490dd334ee0df5c03ff68b5c3a9fb8360e57711aa6958c92572c8f8552b2dfead9d0329c1289f70b4354a4736bbc585e887b2a8a56cf2704670e665830cece7cde24513053ad540756ded6e9e109b6501bf52759b43a0b1d5facddfb02aa1d4161}}
