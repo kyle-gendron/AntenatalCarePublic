@@ -22,15 +22,17 @@ import edu.usm.cos420.antenatal.gui.consultingData;
  */
 public class AntenatalView extends JFrame {
 
-	private AntenatalController controller;
+	/**
+    * 
+    */
+   private static final long serialVersionUID = -5325581904260654110L;
+   private AntenatalController controller;
 	private static JTabbedPane tPain;
 	private static JScrollPane sPain;
 	private static JPanel newPane;
 	private static JPanel subPane;
 	private static JSplitPane split;
-	private SubController subController;
 	private JMenuItem findPreviousVisitsMenuItem;
-	private JMenuItem showSubVisitsMenuItem;
 
 	/**
 	 * Adds the controller so that it can be accessed by the panel
@@ -42,18 +44,19 @@ public class AntenatalView extends JFrame {
 		initUI();
 	}
 
-	public AntenatalView(SubController subController) {
-		this.subController = subController;
-	}
-
 	/**
-	 * initializes the user interface
+	 * initializes the user interfaces
 	 */
 	private void initUI() {
 
-
-		Container pane = getContentPane();
-		createMenuBar();
+		
+		//Container pane = getRootPane();
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setSize(900,900);
+	    JPanel pane = new JPanel();
+	    pane.setLayout(new BorderLayout());
+	    pane.setSize(this.getSize());
+		createMenuBar(pane);
 
 		newPane = new JPanel();
 		subPane = new JPanel();
@@ -62,7 +65,7 @@ public class AntenatalView extends JFrame {
 		newPane.setLayout(border);
 		BorderLayout subBorder = new BorderLayout();
 		subPane.setLayout(subBorder);
-		newPane.setMinimumSize(new Dimension(600,500));
+		newPane.setMinimumSize(new Dimension(600,700));
 
 		JButton quitButton = makeQuitButton(newPane);
 
@@ -81,11 +84,11 @@ public class AntenatalView extends JFrame {
 		pane.add(split);
 
 
-		setTitle("Antenatal Care");
+		
 		setMinimumSize(new Dimension(750, 700));
-		setSize(1170,750);
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		
+		add(pane,BorderLayout.CENTER);
+		setVisible(true);
 	}
 
 	private void makeScrollDisplay(JPanel panel) {
@@ -152,7 +155,7 @@ public class AntenatalView extends JFrame {
 	/**
 	 * Creates the menu bar across the top of the screen to give selectable options
 	 */
-	private void createMenuBar() {
+	private void createMenuBar(Container pane) {
 		JMenuBar menuBar = new JMenuBar();
 
 		JMenu file = new JMenu("Antenatal");
@@ -162,24 +165,25 @@ public class AntenatalView extends JFrame {
 		JMenuItem exitMenuItem = new JMenuItem("Exit");
 		findPreviousVisitsMenuItem = new JMenuItem("Find Previous Visits");
 
-    JMenuItem generateReport = new JMenuItem("Generate Monthly Report");
+		JMenuItem generateReport = new JMenuItem("Generate Monthly Report");
 
 		exitMenuItem.setMnemonic(KeyEvent.VK_E);
 		exitMenuItem.setToolTipText("Exit application");
 
 		createNewVisitMenuItem.addActionListener(controller);
 		findPreviousVisitsMenuItem.addActionListener(controller);
-    generateReport.addActionListener(controller);
+		generateReport.addActionListener(controller);
 		exitMenuItem.addActionListener(controller);
 
 		file.add(createNewVisitMenuItem);
 		file.add(findPreviousVisitsMenuItem);
-    file.add(generateReport);
-    file.addSeparator();
+		file.add(generateReport);
+		file.addSeparator();
 		file.add(exitMenuItem);
 		menuBar.add(file);
 
-		setJMenuBar(menuBar);
+		pane.add(menuBar,BorderLayout.NORTH);
+		pane.validate();
 	}
 
 	/**
@@ -189,7 +193,7 @@ public class AntenatalView extends JFrame {
 		tPain.removeTabAt(tPain.getSelectedIndex());
 		if (tPain.getTabCount() == 0) {
 			fillEmpty();
-      clearSub();
+			clearSub();
 		}
 	}
 
@@ -208,7 +212,7 @@ public class AntenatalView extends JFrame {
 		}
 		panel.setMinimumSize(new Dimension(600,650));
 		tPain.addTab(title, panel);
-    tPain.setSelectedIndex(tPain.getTabCount() - 1);
+		tPain.setSelectedIndex(tPain.getTabCount() - 1);
 		validate();
 
 	}
@@ -224,13 +228,15 @@ public class AntenatalView extends JFrame {
 	}
 
 	public static void clearSub(){
-	   JPanel P = ((JPanel) sPain.getViewport().getView());
-	   P.removeAll();
-//	   subPane.validate();
-    subPane.repaint();
+		JPanel P = ((JPanel) sPain.getViewport().getView());
+		P.removeAll();
+		subPane.repaint();
 	}
 
 	public void setHasPreviousVisits(boolean hasPreviousVisits) {
 		findPreviousVisitsMenuItem.setEnabled(hasPreviousVisits);
 	}
+	
+
+	
 }

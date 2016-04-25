@@ -11,13 +11,13 @@ import org.junit.Test;
 
 import edu.usm.cos420.antenatal.controller.AntenatalController;
 import edu.usm.cos420.antenatal.controller.SubController;
-import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
+import edu.usm.cos420.antenatal.domain.PregnancySubVisit;
 import edu.usm.cos420.antenatal.gui.subsequentVisit;
 
 public class SubVisitTest {
-   
+
    subsequentVisit visit;
-   AntenatalSubVisit subVisit;
+   PregnancySubVisit subVisit;
    AntenatalController control;
    SubController subController;
 
@@ -34,9 +34,9 @@ public class SubVisitTest {
       control = new AntenatalController();
       subController = new SubController(control);
       visit = new subsequentVisit(subController);
-      subVisit = new AntenatalSubVisit(null, null, 0, 0, 0, 0, LocalDate.now(), null, null);
+      subVisit = new PregnancySubVisit(null, null, 0, 0, 0, 0, LocalDate.now(), null, null);
       //visit.changeForm(subVisit);
-      
+
    }
 
    @After
@@ -132,7 +132,7 @@ public class SubVisitTest {
 
    @Test
    public void testSetReferral() {
-      subVisit.setReferrel("No");
+      subVisit.setReferral("No");
    }
 
 }

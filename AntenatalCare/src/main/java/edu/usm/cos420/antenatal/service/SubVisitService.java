@@ -1,22 +1,26 @@
 package edu.usm.cos420.antenatal.service;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
 
-import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
+import edu.usm.cos420.antenatal.domain.PregnancySubVisit;
 
 public interface SubVisitService {
    
-   void addSubVisit(AntenatalSubVisit visit);
+   void addSubVisit(PregnancySubVisit visit) throws SQLException;
    
-   void updateSubVisit(AntenatalSubVisit visit);
+   void updateSubVisit(PregnancySubVisit visit) throws SQLException;
    
-   AntenatalSubVisit getSubVisitById(String id);
+   PregnancySubVisit getSubVisitById(String id) throws SQLException;
    
-   List<AntenatalSubVisit> getAllSubVisits();
+   List<PregnancySubVisit> getAllSubVisits() throws SQLException;
+   
+   List<PregnancySubVisit> getSubVisitsByPregnancy(String key) throws SQLException;
    
    static String getNextID() {
       return UUID.randomUUID().toString();
   }
+   
 
 }

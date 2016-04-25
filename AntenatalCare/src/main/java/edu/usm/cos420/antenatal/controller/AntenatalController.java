@@ -1,12 +1,9 @@
 package edu.usm.cos420.antenatal.controller;
 
-import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
+import edu.usm.cos420.antenatal.domain.PregnancySubVisit;
 import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 import edu.usm.cos420.antenatal.domain.DummyPerson;
-import edu.usm.cos420.antenatal.gui.VisitForm;
 import edu.usm.cos420.antenatal.gui.PreviousVisits;
-import edu.usm.cos420.antenatal.gui.newVisitTab;
-import edu.usm.cos420.antenatal.gui.subsequentVisit;
 import edu.usm.cos420.antenatal.service.AntenatalService;
 import edu.usm.cos420.antenatal.service.SubVisitService;
 import edu.usm.cos420.antenatal.service.impl.AntenatalService1;
@@ -15,11 +12,15 @@ import edu.usm.cos420.antenatal.view.impl.AntenatalView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 import java.util.stream.Collectors;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  * A controller class for the antenatal forms.
@@ -41,7 +42,6 @@ public class AntenatalController implements ActionListener {
 	public AntenatalController() {
 		// Dummy person object
 		dummyPerson = new DummyPerson();
-
 		this.service = new AntenatalService1();
 		this.subService = new SubVisitService1();
 		this.view = new AntenatalView(this);
@@ -52,7 +52,12 @@ public class AntenatalController implements ActionListener {
 
 		// Debug Test
 		System.out.println("Sub Visit Table:");
-		subService.getAllSubVisits().forEach(System.out::println);
+		try {
+			subService.getAllSubVisits().forEach(System.out::println);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		// Set up the find previous dialog.
 		this.findPrevious = new PreviousVisits(this.view);
@@ -82,7 +87,7 @@ public class AntenatalController implements ActionListener {
 			NewVisitController newVisit = new NewVisitController(this);
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			String date = sdf.format(new Date());
-			this.view.addNewPregnancy(date, newVisit.getPanel());
+			(this.view).addNewPregnancy(date, newVisit.getPanel());
 			break;
 		}
 		case "Find Previous Visits": {
@@ -95,24 +100,25 @@ public class AntenatalController implements ActionListener {
 					NewVisitController newVisit = new NewVisitController(this, prevVisit);
 					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 					String date = sdf.format(new Date());
-					this.view.addNewPregnancy(date, newVisit.getPanel());
+					(this.view).addNewPregnancy(date, newVisit.getPanel());
 
 					SubController subController = new SubController(this);
 					subController.setId(visitId);
 					AntenatalView.clearSub();
-
-					if(prevVisit.getSubIDs().isEmpty()){
-						this.view.addSub("", subController.getTitle());
-						this.view.addSub("", subController.getPanel());
+					String pregnancyid = prevVisit.getID();
+					
+					if(subService.getSubVisitsByPregnancy(pregnancyid).isEmpty()){
+						((AntenatalView) this.view).addSub("", subController.getTitle());
+						((AntenatalView) this.view).addSub("", subController.getPanel());
 						break;
 					} else {
-						List<String> subIDs = prevVisit.getSubIDs();
-						this.view.addSub("", subController.getTitle());
-						for(String id: subIDs){
-							AntenatalSubVisit subVisit = subService.getSubVisitById(id);
-							this.view.addSub("", subController.setPanel(subVisit));
+						List<PregnancySubVisit> sub = subService.getSubVisitsByPregnancy(pregnancyid);
+						((AntenatalView) this.view).addSub("", subController.getTitle());
+						for(PregnancySubVisit s: sub){
+							PregnancySubVisit subVisit = s;
+							(this.view).addSub("", subController.setPanel(subVisit));
 						}
-						this.view.addSub("", subController.getPanel());
+						(this.view).addSub("", subController.getPanel());
 
 					}
 
@@ -135,16 +141,16 @@ public class AntenatalController implements ActionListener {
 	public void submitNewVisit(PregnancyRecord visit) {
 		System.out.println("Inserting New Visit (" + visit.getID() + ")");
 		service.addAntenatalVisit(visit);
-    AntenatalView.removeCurrentTab();
+		AntenatalView.removeCurrentTab();
 
 		// Update the find previous menu option
-		this.view.setHasPreviousVisits(getVisitList().size() > 0);
+		(this.view).setHasPreviousVisits(getVisitList().size() > 0);
 	}
 
 	public void updateVisit(PregnancyRecord visit) {
 		System.out.println("Updating Visit (" + visit.getID() + ")");
 		service.updateAntenatalVisit(visit);
-    AntenatalView.removeCurrentTab();
+		AntenatalView.removeCurrentTab();
 	}
 
 	public String getNextId() {
@@ -155,20 +161,33 @@ public class AntenatalController implements ActionListener {
 		return service.getAntenatalVisitById(id);
 	}
 
-	public void submitNewSubVisit(AntenatalSubVisit subVisit) {
+	public void submitNewSubVisit(PregnancySubVisit subVisit) {
 		System.out.println("Inserting New SubVisit (" + subVisit.getID() + ")");
-		subService.addSubVisit(subVisit);
-    AntenatalView.removeCurrentTab();
+		try {
+			subService.addSubVisit(subVisit);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		AntenatalView.removeCurrentTab();
 	}
 
-	public void updateSubVisit(AntenatalSubVisit subVisit) {
+	public void updateSubVisit(PregnancySubVisit subVisit) {
 		System.out.println("Updating SubVisit (" + subVisit.getID() + ")");
-		subService.updateSubVisit(subVisit);
-    AntenatalView.removeCurrentTab();
+		try {
+			subService.updateSubVisit(subVisit);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		AntenatalView.removeCurrentTab();
 	}
 
-	public AntenatalSubVisit getSubVisit(String id){
-		return subService.getSubVisitById(id);
+	public PregnancySubVisit getSubVisit(String id){
+		try {
+			return subService.getSubVisitById(id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return new PregnancySubVisit();
 	}
 
 	public String getNextSubId() {
@@ -177,5 +196,9 @@ public class AntenatalController implements ActionListener {
 
 	public List<String> getVisitList() {
 		return service.getAllVisits().stream().map(PregnancyRecord::getID).collect(Collectors.toList());
+	}
+	
+	public JPanel getView(){
+	   return (JPanel) this.view.getContentPane();
 	}
 }

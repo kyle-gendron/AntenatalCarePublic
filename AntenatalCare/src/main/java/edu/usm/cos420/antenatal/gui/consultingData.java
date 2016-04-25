@@ -7,10 +7,8 @@ import java.awt.GridLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
-import edu.usm.cos420.antenatal.domain.DummyPerson;
 import edu.usm.cos420.antenatal.domain.Person;
 
 public class consultingData extends JPanel{
@@ -25,7 +23,7 @@ public class consultingData extends JPanel{
 	/**
 	 * Creates a consulting tab with the consulting data of a person
 	 * this currently uses a DummyPerson class
-	 * 
+	 *
 	 * @param p the person that is currently selected
 	 * @return the new Jtab with the consulting data
 	 */

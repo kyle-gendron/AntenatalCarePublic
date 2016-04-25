@@ -1,9 +1,15 @@
 package edu.usm.cos420.antenatal.service.impl;
 
-import edu.usm.cos420.antenatal.dao.domain.AntenatalSubVisitDao;
-import edu.usm.cos420.antenatal.domain.AntenatalSubVisit;
+import edu.usm.cos420.antenatal.dao.interfaces.IAntenatalSubVisit;
+import edu.usm.cos420.antenatal.dao.postgres.PregnancySubVisitDao;
+import edu.usm.cos420.antenatal.dao.serializedObject.AntenatalSubVisitDao;
+import edu.usm.cos420.antenatal.daoFactory.DaoFactory;
+import edu.usm.cos420.antenatal.daoFactory.PostgresDao;
+import edu.usm.cos420.antenatal.domain.PregnancySubVisit;
 import edu.usm.cos420.antenatal.service.SubVisitService;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -14,13 +20,15 @@ import java.util.List;
  */
 public class SubVisitService1 implements SubVisitService {
 
-  AntenatalSubVisitDao dao;
+ IAntenatalSubVisit dao;
 
   /**
    * Default Constructor creates a default CItemDao object
    */
   public SubVisitService1() {
-    this.dao = new AntenatalSubVisitDao();
+	  PostgresDao p = DaoFactory.getDatabase();
+	  Connection c = p.getConnection();
+    this.dao = new PregnancySubVisitDao(c);
   }
 
   /**
@@ -33,22 +41,31 @@ public class SubVisitService1 implements SubVisitService {
   }
 
   @Override
-  public void addSubVisit(AntenatalSubVisit visit) {
+  public void addSubVisit(PregnancySubVisit visit) throws SQLException {
     dao.add(visit);
   }
-  
+
   @Override
-  public void updateSubVisit(AntenatalSubVisit visit){
+  public void updateSubVisit(PregnancySubVisit visit) throws SQLException{
      dao.update(visit);
   }
 
   @Override
-  public AntenatalSubVisit getSubVisitById(String id) {
+  public PregnancySubVisit getSubVisitById(String id) throws SQLException {
     return dao.find(id);
   }
 
   @Override
-  public List<AntenatalSubVisit> getAllSubVisits() {
+  public List<PregnancySubVisit> getAllSubVisits() throws SQLException {
     return dao.list();
+  }
+  public List<PregnancySubVisit> getSubVisitsByPregnancy(String key) {
+	  try{
+	  return dao.pregList(key);
+	  }catch(SQLException e){
+		  e.printStackTrace();
+	  }
+	return null;
+	  
   }
 }

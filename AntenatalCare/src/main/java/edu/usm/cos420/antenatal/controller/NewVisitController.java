@@ -65,24 +65,24 @@ public class NewVisitController implements ActionListener {
 
 		//test blood pressure sys/dia
 		//sys
-		if(form.getSystolicBP() <= 0){
+		if(form.getSystolicBP() < 0){
 			errorsExist = true;
 			errorMessage.append( "-Invalid Systolic Blood Pressure<br>\n");
 		}
 		//dia
-		if(form.getDiastolicBP() <= 0){
+		if(form.getDiastolicBP() < 0){
 			errorsExist = true;
 			errorMessage.append( "-Invalid Diastolic Blood Pressure<br>\n");
 		}
 
 		//test weight
-		if(form.getPatientWeight() <= 0){
+		if(form.getPatientWeight() < 0){
 			errorsExist = true;
 			errorMessage.append( "-Invalid Patient Height<br>\n");
 		}
 
 		//test height
-		if(form.getPatientHeight() <= 0){
+		if(form.getPatientHeight() < 0){
 			errorsExist = true;
 			errorMessage.append("-Invalid Patient Weight<br>\n");
 		}
