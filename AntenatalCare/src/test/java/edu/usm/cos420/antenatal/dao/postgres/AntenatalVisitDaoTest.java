@@ -1,6 +1,7 @@
 package edu.usm.cos420.antenatal.dao.postgres;
 
-import edu.usm.cos420.antenatal.daoFactory.PostgresDao;
+import edu.usm.cos420.antenatal.dao.concete.PostgresVisitDao;
+import edu.usm.cos420.antenatal.daoFactory.Postgres;
 import edu.usm.cos420.antenatal.domain.PregnancyVisit;
 import edu.usm.cos420.antenatal.view.VisitForm;
 import junit.framework.Assert;
@@ -17,14 +18,14 @@ import java.util.UUID;
  * Created by aaron on 4/16/2016.
  */
 public class AntenatalVisitDaoTest {
-  private static PostgresDao db;
-  private static PregnancyRecordDao dao;
+  private static Postgres db;
+  private static PostgresVisitDao dao;
   private static PregnancyVisit record;
   private static ArrayList<String> idList;
 
   @BeforeClass
   public static void setUp() throws Exception {
-    db = new PostgresDao();
+    db = new Postgres();
     dao = db.getAntenatalVisitDao();
     Assert.assertNotNull(dao);
     idList = new ArrayList<>();

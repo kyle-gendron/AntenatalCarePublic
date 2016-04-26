@@ -3,9 +3,9 @@ package edu.usm.cos420.antenatal.daoFactory;
 import com.jcraft.jsch.JSchException;
 import edu.usm.cos420.antenatal.PropertyHandler;
 import edu.usm.cos420.antenatal.SSHTunnelHandler;
-import edu.usm.cos420.antenatal.dao.postgres.PersonDao;
-import edu.usm.cos420.antenatal.dao.postgres.PregnancyRecordDao;
-import edu.usm.cos420.antenatal.dao.postgres.PregnancySubVisitDao;
+import edu.usm.cos420.antenatal.dao.concete.PostgresPersonDao;
+import edu.usm.cos420.antenatal.dao.concete.PostgresVisitDao;
+import edu.usm.cos420.antenatal.dao.concete.PregnancyFollowUpDao;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -15,24 +15,24 @@ import java.sql.SQLException;
 /**
  * Created by aaron on 4/16/2016.
  */
-public class PostgresDao extends DaoFactory {
+public class Postgres extends DaoFactory {
   protected Connection connection = null;
 
-  private PregnancyRecordDao visitDao;
-  private PregnancySubVisitDao subVisitDao;
-  private PersonDao personDao;
+  private PostgresVisitDao visitDao;
+  private PregnancyFollowUpDao subVisitDao;
+  private PostgresPersonDao personDao;
 
-  public PostgresDao() throws IOException, ClassNotFoundException, SQLException, InstantiationException, JSchException, IllegalAccessException {
+  public Postgres() throws IOException, ClassNotFoundException, SQLException, InstantiationException, JSchException, IllegalAccessException {
     this(5670);
   }
 
-  public PostgresDao(int port) throws IOException, ClassNotFoundException, SQLException, InstantiationException, JSchException, IllegalAccessException {
+  public Postgres(int port) throws IOException, ClassNotFoundException, SQLException, InstantiationException, JSchException, IllegalAccessException {
 
     PropertyHandler.getInstance().setPort(port);
     properties = PropertyHandler.getInstance().getProps();
-    visitDao = new PregnancyRecordDao();
-    subVisitDao = new PregnancySubVisitDao();
-    personDao = new PersonDao();
+    visitDao = new PostgresVisitDao();
+    subVisitDao = new PregnancyFollowUpDao();
+    personDao = new PostgresPersonDao();
   }
 
   @Override
@@ -79,17 +79,17 @@ public class PostgresDao extends DaoFactory {
   }
 
   @Override
-  public PersonDao getPersonDao() {
+  public PostgresPersonDao getPersonDao() {
     return personDao;
   }
 
   @Override
-  public PregnancyRecordDao getAntenatalVisitDao() {
+  public PostgresVisitDao getAntenatalVisitDao() {
     return visitDao;
   }
 
   @Override
-  public PregnancySubVisitDao getAntenatalSubVisitDao() {
+  public PregnancyFollowUpDao getAntenatalSubVisitDao() {
     return subVisitDao;
   }
 }

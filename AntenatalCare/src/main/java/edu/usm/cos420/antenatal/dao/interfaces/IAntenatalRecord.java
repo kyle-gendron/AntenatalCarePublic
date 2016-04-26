@@ -1,7 +1,5 @@
 package edu.usm.cos420.antenatal.dao.interfaces;
 
-import edu.usm.cos420.antenatal.dao.GenericDao;
-
 import java.util.List;
 
 /**

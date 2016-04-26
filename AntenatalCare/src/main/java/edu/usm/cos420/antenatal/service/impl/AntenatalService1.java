@@ -1,8 +1,8 @@
 package edu.usm.cos420.antenatal.service.impl;
 
-import edu.usm.cos420.antenatal.dao.postgres.PregnancyRecordDao;
+import edu.usm.cos420.antenatal.daoFactory.Postgres;
+import edu.usm.cos420.antenatal.dao.concete.PostgresVisitDao;
 import edu.usm.cos420.antenatal.daoFactory.DaoFactory;
-import edu.usm.cos420.antenatal.daoFactory.PostgresDao;
 import edu.usm.cos420.antenatal.domain.PregnancyVisit;
 import edu.usm.cos420.antenatal.service.AntenatalService;
 
@@ -16,13 +16,13 @@ import java.util.List;
  */
 public class AntenatalService1 implements AntenatalService {
 
-  PregnancyRecordDao dao;
+  PostgresVisitDao dao;
 
   /**
    * Default Constructor creates a default CItemDao object
    */
   public AntenatalService1() {
-    PostgresDao p = null;
+    Postgres p = null;
     try {
       p = DaoFactory.getDatabase();
     } catch (Exception e) {
@@ -30,7 +30,7 @@ public class AntenatalService1 implements AntenatalService {
       e.printStackTrace();
     }
     if (p != null) {
-      this.dao = new PregnancyRecordDao();
+      this.dao = new PostgresVisitDao();
     } else {
       System.out.println("Could not Initialize DAO");
     }
