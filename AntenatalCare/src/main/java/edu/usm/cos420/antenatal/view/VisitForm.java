@@ -16,7 +16,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.Properties;
 
-import static edu.usm.cos420.antenatal.controller.Utils.parseInteger;
+import static edu.usm.cos420.antenatal.utils.Parsers.parseInteger;
 
 
 /**

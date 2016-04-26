@@ -1,9 +1,9 @@
-package edu.usm.cos420.antenatal.controller;
+package edu.usm.cos420.antenatal.utils;
 
 /**
  * Created by aaron on 3/11/2016.
  */
-public class Utils {
+public class Parsers {
   public static int parseInteger(String string, int defaultValue) {
     try {
       return Integer.parseInt(string);
