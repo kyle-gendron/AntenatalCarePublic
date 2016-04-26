@@ -5,11 +5,11 @@ import edu.usm.cos420.antenatal.domain.Person;
 import javax.swing.*;
 import java.awt.*;
 
-public class consultingData extends JPanel{
+public class ConsultingData extends JPanel{
 	private Person p;
 	private JPanel hold;
 	private JPanel jTab;
-	public consultingData(){
+	public ConsultingData(){
 		hold = new JPanel();
 		jTab = new JPanel();
 

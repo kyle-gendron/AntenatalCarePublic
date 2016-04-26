@@ -1,7 +1,7 @@
 package edu.usm.cos420.antenatal.view;
 
 import edu.usm.cos420.antenatal.controller.AntenatalController;
-import edu.usm.cos420.antenatal.gui.consultingData;
+import edu.usm.cos420.antenatal.gui.ConsultingData;
 
 import javax.swing.*;
 import java.awt.*;
@@ -113,7 +113,7 @@ public class AntenatalView extends JFrame {
 
     pane.setBackground(Color.LIGHT_GRAY);
 
-    consultingData holdData = new consultingData();
+    ConsultingData holdData = new ConsultingData();
     holdData.setMinimumSize(new Dimension(600, 600));
     pane.add(createSplitData(holdData), BorderLayout.CENTER);
 
@@ -125,7 +125,7 @@ public class AntenatalView extends JFrame {
    * @param holdData current person data panel
    * @return returns a divider in the form
    */
-  private Component createSplitData(consultingData holdData) {
+  private Component createSplitData(ConsultingData holdData) {
     JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT, holdData.getPanel(controller.getPerson()), tPain);
     split.setResizeWeight(0.30);
     split.setDividerLocation(130);
