@@ -9,7 +9,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.awt.*;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -36,11 +35,8 @@ public class AntenatalVisitDaoTest {
 
   @AfterClass
   public static void tearDown() throws Exception {
-    idList.forEach(s -> {
-      dao.remove(s);
-    });
+    idList.forEach(s -> dao.remove(s));
     System.out.println("Cleaning up leftover IDs");
-
     db.closeConnection();
   }
 
@@ -48,7 +44,7 @@ public class AntenatalVisitDaoTest {
   public void testAdd() throws Exception {
     String id = UUID.randomUUID().toString();
     record.setId(id);
-    int result = dao.add(record);
+    int result = dao.add(id, record);
     idList.add(id);
 
     Assert.assertEquals(true, result > 0);
@@ -58,10 +54,10 @@ public class AntenatalVisitDaoTest {
   public void testUpdate() throws Exception {
     String id = UUID.randomUUID().toString();
     record.setId(id);
-    dao.add(record);
+    dao.add(id, record);
     record.setParity(99);
     record.setEDD(LocalDate.now());
-    int updateResult = dao.update(record);
+    int updateResult = dao.update(id, record);
     idList.add(id);
 
     Assert.assertEquals(true, updateResult > 0);
@@ -71,7 +67,7 @@ public class AntenatalVisitDaoTest {
   public void testRemove() throws Exception {
     String id = UUID.randomUUID().toString();
     record.setId(id);
-    dao.add(record);
+    dao.add(id, record);
     int removeResult = dao.remove(id);
 
     Assert.assertEquals(true, removeResult > 0);
@@ -81,7 +77,7 @@ public class AntenatalVisitDaoTest {
   public void testFind() throws Exception {
     String id = UUID.randomUUID().toString();
     record.setId(id);
-    dao.add(record);
+    dao.add(id, record);
     PregnancyRecord result = dao.find(id);
     idList.add(id);
     Assert.assertNotNull(result);

@@ -2,7 +2,6 @@ package edu.usm.cos420.antenatal.gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,14 +17,15 @@ public class PreviousVisits {
 
   /**
    * Shows the Find Previous Visits dialog with a set of options.
-   * @param options    a list of menu options.
+   *
+   * @param options a list of menu options.
    * @return the selected item as a string.
-     */
-  public String showDialog(List options) {
+   */
+  public String showDialog(List<String> options) {
     // Add an empty option to the beginning of the list.
     options.add(0, "");
 
-    String s = (String)JOptionPane.showInputDialog(
+    return (String) JOptionPane.showInputDialog(
       frame,
       "Please pick a previous visit to load:\n",
       "Find Previous Visit",
@@ -33,7 +33,5 @@ public class PreviousVisits {
       null,
       options.toArray(),
       null);
-    
-    return s;
   }
 }

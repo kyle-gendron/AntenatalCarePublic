@@ -1,15 +1,9 @@
 package edu.usm.cos420.antenatal.gui;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 import edu.usm.cos420.antenatal.domain.Person;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class consultingData extends JPanel{
 	private Person p;
@@ -54,7 +48,7 @@ public class consultingData extends JPanel{
 
 		JLabel SubDistrict = new JLabel("SubDistrict: ");
 		JTextField subInput = new JTextField(10);
-		subInput.setText(p.getSubdistrict());
+		subInput.setText(p.getSubDistrict());
 		subInput.setEnabled(false);
 
 

@@ -11,18 +11,21 @@ public interface IPerson {
 
   /**
    * Add a DummyPerson to the DAO repository
+   *
    * @param entity any DummyPerson object
    */
   void add(Person entity);
 
   /**
    * Update a DummyPerson in the DAO repository
+   *
    * @param entity any DummyPerson object
    */
   void update(Person entity);
 
   /**
    * Remove a DummyPerson in the DAO repository
+   *
    * @param id of the DummyPerson object to remove
    */
 
@@ -30,6 +33,7 @@ public interface IPerson {
 
   /**
    * Find a DummyPerson in the DAO repository
+   *
    * @param key of the DummyPerson object to locate
    * @return the DummyPerson with id field equal to key
    */
@@ -37,6 +41,7 @@ public interface IPerson {
 
   /**
    * Generate a list of DummyPersons in the DAO repository
+   *
    * @return List of DummyPersons
    */
 

@@ -6,30 +6,30 @@ import java.util.List;
 
 public interface Person extends Serializable {
 
-	String getFacZone();
+  String getFacZone();
 
-	String getSubdistrict();
+  String getSubDistrict();
 
-	String getDistrict();
+  String getDistrict();
 
-	String getYear();
+  String getYear();
 
-	int getSerialNumber();
+  int getSerialNumber();
 
-	LocalDate getDate();
+  LocalDate getDate();
 
-	int getRegNumber();
+  int getRegNumber();
 
-	int getHININumber();
+  int getHININumber();
 
-	String getName();
+  String getName();
 
-	String getAddress();
+  String getAddress();
 
-	int getAge();
+  int getAge();
 
-	List<Long> getVisitIDs();
+  List<Long> getVisitIDs();
 
-	String getId();
+  String getId();
 
 }

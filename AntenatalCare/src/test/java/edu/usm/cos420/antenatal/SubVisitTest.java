@@ -1,22 +1,16 @@
 package edu.usm.cos420.antenatal;
 
-import java.time.LocalDate;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
 import edu.usm.cos420.antenatal.controller.AntenatalController;
 import edu.usm.cos420.antenatal.controller.SubController;
 import edu.usm.cos420.antenatal.domain.PregnancySubVisit;
-import edu.usm.cos420.antenatal.gui.subsequentVisit;
+import edu.usm.cos420.antenatal.gui.SubsequentVisit;
+import org.junit.*;
+
+import java.time.LocalDate;
 
 public class SubVisitTest {
 
-   subsequentVisit visit;
+   SubsequentVisit visit;
    PregnancySubVisit subVisit;
    AntenatalController control;
    SubController subController;
@@ -33,7 +27,7 @@ public class SubVisitTest {
    public void setUp() throws Exception {
       control = new AntenatalController();
       subController = new SubController(control);
-      visit = new subsequentVisit(subController);
+      visit = new SubsequentVisit(subController);
       subVisit = new PregnancySubVisit(null, null, 0, 0, 0, 0, LocalDate.now(), null, null);
       //visit.changeForm(subVisit);
 
@@ -45,7 +39,7 @@ public class SubVisitTest {
 
    @Test
    public void testSubsequentVisit() {
-      subsequentVisit sub = new subsequentVisit(subController);
+      SubsequentVisit sub = new SubsequentVisit(subController);
 
    }
 

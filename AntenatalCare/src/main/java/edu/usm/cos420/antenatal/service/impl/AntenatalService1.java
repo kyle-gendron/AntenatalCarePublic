@@ -1,14 +1,12 @@
 package edu.usm.cos420.antenatal.service.impl;
 
-import edu.usm.cos420.antenatal.dao.serializedObject.AntenatalVisitDao;
-import edu.usm.cos420.antenatal.daoFactory.DaoFactory;
-import edu.usm.cos420.antenatal.daoFactory.PostgresDao;
 import edu.usm.cos420.antenatal.dao.interfaces.IAntenatalVisit;
 import edu.usm.cos420.antenatal.dao.postgres.PregnancyRecordDao;
+import edu.usm.cos420.antenatal.daoFactory.DaoFactory;
+import edu.usm.cos420.antenatal.daoFactory.PostgresDao;
 import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 import edu.usm.cos420.antenatal.service.AntenatalService;
 
-import java.sql.Connection;
 import java.util.List;
 
 /**
@@ -20,39 +18,29 @@ import java.util.List;
 public class AntenatalService1 implements AntenatalService {
 
   IAntenatalVisit dao;
-  Connection connection;
 
   /**
    * Default Constructor creates a default CItemDao object
    */
   public AntenatalService1() {
-	PostgresDao p = null;
-	try {
-		p = DaoFactory.getDatabase();
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	if(p!=null){
-    this.dao = new PregnancyRecordDao(p.getConnection());
-	}else{
-		System.out.println("Could not Initialize DAO");
-	}
-  }
-
-  /**
-   * Constructor with the DAO provided
-   *
-   * @param dao Data Access Object to use in the service
-   */
-  public AntenatalService1(AntenatalVisitDao dao) {
-    this.dao = dao;
+    PostgresDao p = null;
+    try {
+      p = DaoFactory.getDatabase();
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    if (p != null) {
+      this.dao = new PregnancyRecordDao();
+    } else {
+      System.out.println("Could not Initialize DAO");
+    }
   }
 
   @Override
   public void addAntenatalVisit(PregnancyRecord visit) {
-    if(dao.add(visit)==1){
-    	System.out.println("Inserted: "+visit.getID()+" Into Serializable Database");
+    if (dao.add(visit.getID(), visit) == 1) {
+      System.out.println("Inserted: " + visit.getID() + " Into Database");
     }
   }
 
@@ -67,6 +55,6 @@ public class AntenatalService1 implements AntenatalService {
   }
 
   public void updateAntenatalVisit(PregnancyRecord visit) {
-    dao.update(visit);
+    dao.update(visit.getID(), visit);
   }
 }
