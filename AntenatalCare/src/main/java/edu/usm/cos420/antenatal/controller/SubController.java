@@ -6,7 +6,7 @@ package edu.usm.cos420.antenatal.controller;
 
 import edu.usm.cos420.antenatal.domain.PregnancyVisit;
 import edu.usm.cos420.antenatal.domain.PregnancyFollowUp;
-import edu.usm.cos420.antenatal.gui.SubsequentVisit;
+import edu.usm.cos420.antenatal.view.SubsequentVisit;
 import edu.usm.cos420.antenatal.service.SubVisitService;
 
 import javax.swing.*;

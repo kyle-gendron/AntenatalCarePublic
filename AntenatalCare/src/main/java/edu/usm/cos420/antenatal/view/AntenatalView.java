@@ -1,7 +1,6 @@
 package edu.usm.cos420.antenatal.view;
 
 import edu.usm.cos420.antenatal.controller.AntenatalController;
-import edu.usm.cos420.antenatal.gui.ConsultingData;
 
 import javax.swing.*;
 import java.awt.*;

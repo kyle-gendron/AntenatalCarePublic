@@ -3,7 +3,7 @@ package edu.usm.cos420.antenatal;
 import edu.usm.cos420.antenatal.controller.AntenatalController;
 import edu.usm.cos420.antenatal.controller.SubController;
 import edu.usm.cos420.antenatal.domain.PregnancyFollowUp;
-import edu.usm.cos420.antenatal.gui.SubsequentVisit;
+import edu.usm.cos420.antenatal.view.SubsequentVisit;
 import org.junit.*;
 
 import java.time.LocalDate;

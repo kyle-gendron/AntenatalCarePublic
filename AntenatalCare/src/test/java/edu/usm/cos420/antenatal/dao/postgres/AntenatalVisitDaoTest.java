@@ -2,7 +2,7 @@ package edu.usm.cos420.antenatal.dao.postgres;
 
 import edu.usm.cos420.antenatal.daoFactory.PostgresDao;
 import edu.usm.cos420.antenatal.domain.PregnancyVisit;
-import edu.usm.cos420.antenatal.gui.VisitForm;
+import edu.usm.cos420.antenatal.view.VisitForm;
 import junit.framework.Assert;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

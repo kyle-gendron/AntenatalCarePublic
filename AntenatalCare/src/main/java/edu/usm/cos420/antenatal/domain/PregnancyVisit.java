@@ -6,9 +6,8 @@
 
 package edu.usm.cos420.antenatal.domain;
 
-import edu.usm.cos420.antenatal.gui.VisitForm;
+import edu.usm.cos420.antenatal.view.VisitForm;
 
-import java.io.Serializable;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;

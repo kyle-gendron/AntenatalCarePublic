@@ -1,8 +1,8 @@
 package edu.usm.cos420.antenatal.controller;
 
 import edu.usm.cos420.antenatal.domain.PregnancyVisit;
-import edu.usm.cos420.antenatal.gui.NewVisitTab;
-import edu.usm.cos420.antenatal.gui.VisitForm;
+import edu.usm.cos420.antenatal.view.NewVisitTab;
+import edu.usm.cos420.antenatal.view.VisitForm;
 import edu.usm.cos420.antenatal.view.AntenatalView;
 
 import javax.swing.*;
