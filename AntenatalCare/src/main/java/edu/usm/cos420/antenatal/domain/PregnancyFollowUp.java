@@ -122,7 +122,7 @@ public class PregnancyFollowUp extends PregnancyRecord {
       ", diastolicBP=" + diastolicBP +
       ", weight=" + weight +
       ", fundalHeight=" + fundalHeight +
-      ", SubVisit Date=" + apptDate.toString() +
+      ", SubVisit Date=" + (apptDate != null ? apptDate.toString() : "None") +
       ", bloodFilm=" + bloodFilm +
       ", referred=" + referred +
       '}';
