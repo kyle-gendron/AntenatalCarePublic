@@ -1,7 +1,7 @@
 package edu.usm.cos420.antenatal.dao.postgres;
 
 import com.jcraft.jsch.JSchException;
-import edu.usm.cos420.antenatal.dao.interfaces.IAntenatalSubVisit;
+import edu.usm.cos420.antenatal.dao.interfaces.IAntenatalRecord;
 import edu.usm.cos420.antenatal.daoFactory.DaoFactory;
 import edu.usm.cos420.antenatal.domain.PregnancySubVisit;
 
@@ -14,7 +14,7 @@ import java.util.UUID;
 /**
  * Created by aaron on 4/16/2016.
  */
-public class PregnancySubVisitDao implements IAntenatalSubVisit {
+public class PregnancySubVisitDao implements IAntenatalRecord<PregnancySubVisit> {
 
   private static final String
     INSERT = "INSERT INTO subvisit_record (subid, pregnancyid,"
@@ -155,7 +155,6 @@ public class PregnancySubVisitDao implements IAntenatalSubVisit {
     return null;
   }
 
-  @Override
   public List<PregnancySubVisit> pregList(String key) throws SQLException {
     try {
       Connection c = DaoFactory.getDatabase().openConnection();

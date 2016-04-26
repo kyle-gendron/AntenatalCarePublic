@@ -1,6 +1,5 @@
 package edu.usm.cos420.antenatal.service.impl;
 
-import edu.usm.cos420.antenatal.dao.interfaces.IAntenatalSubVisit;
 import edu.usm.cos420.antenatal.dao.postgres.PregnancySubVisitDao;
 import edu.usm.cos420.antenatal.domain.PregnancySubVisit;
 import edu.usm.cos420.antenatal.service.SubVisitService;
@@ -16,7 +15,7 @@ import java.util.List;
  */
 public class SubVisitService1 implements SubVisitService {
 
-  IAntenatalSubVisit dao;
+  PregnancySubVisitDao dao;
 
   /**
    * Default Constructor creates a default CItemDao object

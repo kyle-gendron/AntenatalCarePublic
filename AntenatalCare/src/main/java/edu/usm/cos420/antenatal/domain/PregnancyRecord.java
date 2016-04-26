@@ -26,9 +26,7 @@ import java.util.List;
  * of HIV or Venereal Disease).  All Subsequent Visits will
  * be recorded in order and linked to this initial visit object.
  */
-public class PregnancyRecord implements Serializable {
-
-  private static final long serialVersionUID = 7526472295622776147L;
+public class PregnancyRecord {
 
   private int parity, systolicBP, diastolicBP, trimester, subVisits;
   private int gestation; //num weeks of pregnancy, calculated from last period

@@ -1,7 +1,7 @@
 package edu.usm.cos420.antenatal.dao.postgres;
 
 import com.jcraft.jsch.JSchException;
-import edu.usm.cos420.antenatal.dao.interfaces.IAntenatalVisit;
+import edu.usm.cos420.antenatal.dao.interfaces.IAntenatalRecord;
 import edu.usm.cos420.antenatal.daoFactory.DaoFactory;
 import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 
@@ -14,7 +14,7 @@ import java.util.UUID;
 /**
  * Created by aaron on 4/16/2016.
  */
-public class PregnancyRecordDao implements IAntenatalVisit {
+public class PregnancyRecordDao implements IAntenatalRecord<PregnancyRecord> {
 
   private static final String
     INSERT = "INSERT INTO antenatal_record (" +

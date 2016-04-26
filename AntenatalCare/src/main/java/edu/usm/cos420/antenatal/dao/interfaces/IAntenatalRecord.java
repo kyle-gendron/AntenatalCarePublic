@@ -8,14 +8,14 @@ import java.util.List;
 /**
  * Created by aaron on 4/16/2016.
  */
-public interface IAntenatalVisit extends GenericDao<String, PregnancyRecord> {
+public interface IAntenatalRecord<T> extends GenericDao<String, T> {
   /**
    * Add a PregnancyRecord to the DAO repository
    *
    * @param record any PregnancyRecord object
    */
   @Override
-  int add(String id, PregnancyRecord record);
+  int add(String id, T record);
 
   /**
    * Update a PregnancyRecord in the DAO repository
@@ -23,7 +23,7 @@ public interface IAntenatalVisit extends GenericDao<String, PregnancyRecord> {
    * @param record any PregnancyRecord object
    */
   @Override
-  int update(String id, PregnancyRecord record);
+  int update(String id, T record);
 
   /**
    * Remove a PregnancyRecord in the DAO repository
@@ -40,7 +40,7 @@ public interface IAntenatalVisit extends GenericDao<String, PregnancyRecord> {
    * @return the PregnancyRecord with id field equal to key
    */
   @Override
-  PregnancyRecord find(String key);
+  T find(String key);
 
   /**
    * Generate a list of AntenatalVisits in the DAO repository
@@ -48,7 +48,7 @@ public interface IAntenatalVisit extends GenericDao<String, PregnancyRecord> {
    * @return List of AntenatalVisits
    */
   @Override
-  List<PregnancyRecord> list();
+  List<T> list();
 }
 
 

@@ -6,7 +6,6 @@
 
 package edu.usm.cos420.antenatal.domain;
 
-import java.io.Serializable;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,7 +19,7 @@ import java.time.LocalDate;
  * including date, blood pressure, weight, fundal height,
  * blood film, and referred.
  */
-public class PregnancySubVisit implements Serializable {
+public class PregnancySubVisit extends PregnancyRecord {
 
   /**
    *

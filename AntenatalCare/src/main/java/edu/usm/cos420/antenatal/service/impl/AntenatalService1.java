@@ -1,6 +1,6 @@
 package edu.usm.cos420.antenatal.service.impl;
 
-import edu.usm.cos420.antenatal.dao.interfaces.IAntenatalVisit;
+import edu.usm.cos420.antenatal.dao.interfaces.IAntenatalRecord;
 import edu.usm.cos420.antenatal.dao.postgres.PregnancyRecordDao;
 import edu.usm.cos420.antenatal.daoFactory.DaoFactory;
 import edu.usm.cos420.antenatal.daoFactory.PostgresDao;
@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class AntenatalService1 implements AntenatalService {
 
-  IAntenatalVisit dao;
+  PregnancyRecordDao dao;
 
   /**
    * Default Constructor creates a default CItemDao object
