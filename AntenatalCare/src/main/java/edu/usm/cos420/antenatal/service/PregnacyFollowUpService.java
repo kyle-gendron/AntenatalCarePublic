@@ -1,8 +1,8 @@
-package edu.usm.cos420.antenatal.service.impl;
+package edu.usm.cos420.antenatal.service;
 
 import edu.usm.cos420.antenatal.dao.concete.PregnancyFollowUpDao;
 import edu.usm.cos420.antenatal.domain.PregnancyFollowUp;
-import edu.usm.cos420.antenatal.service.SubVisitService;
+import edu.usm.cos420.antenatal.service.interfaces.IPregnacyFollowUpService;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -13,14 +13,14 @@ import java.util.List;
  * that are typically layered on top of much of the low level functionality of the
  * application. This organization helps support service oriented architectures.
  */
-public class SubVisitService1 implements SubVisitService {
+public class PregnacyFollowUpService implements IPregnacyFollowUpService {
 
   PregnancyFollowUpDao dao;
 
   /**
    * Default Constructor creates a default CItemDao object
    */
-  public SubVisitService1() {
+  public PregnacyFollowUpService() {
     this.dao = new PregnancyFollowUpDao();
   }
 

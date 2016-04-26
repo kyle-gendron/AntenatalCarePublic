@@ -3,11 +3,11 @@ package edu.usm.cos420.antenatal.controller;
 import edu.usm.cos420.antenatal.domain.DummyPerson;
 import edu.usm.cos420.antenatal.domain.PregnancyFollowUp;
 import edu.usm.cos420.antenatal.domain.PregnancyVisit;
+import edu.usm.cos420.antenatal.service.interfaces.IPregnacyVisitService;
 import edu.usm.cos420.antenatal.view.PreviousVisits;
-import edu.usm.cos420.antenatal.service.AntenatalService;
-import edu.usm.cos420.antenatal.service.SubVisitService;
-import edu.usm.cos420.antenatal.service.impl.AntenatalService1;
-import edu.usm.cos420.antenatal.service.impl.SubVisitService1;
+import edu.usm.cos420.antenatal.service.interfaces.IPregnacyFollowUpService;
+import edu.usm.cos420.antenatal.service.PregnacyVisitService;
+import edu.usm.cos420.antenatal.service.PregnacyFollowUpService;
 import edu.usm.cos420.antenatal.view.AntenatalView;
 
 import javax.swing.*;
@@ -27,8 +27,8 @@ import java.util.stream.Collectors;
 public class AntenatalController implements ActionListener {
 
   private final PreviousVisits findPrevious;
-  private AntenatalService1 service;
-  private SubVisitService1 subService;
+  private PregnacyVisitService service;
+  private PregnacyFollowUpService subService;
   private AntenatalView view;
   private DummyPerson dummyPerson;
   //private NewVisitTab currentForm;
@@ -39,8 +39,8 @@ public class AntenatalController implements ActionListener {
   public AntenatalController() {
     // Dummy person object
     dummyPerson = new DummyPerson();
-    this.service = new AntenatalService1();
-    this.subService = new SubVisitService1();
+    this.service = new PregnacyVisitService();
+    this.subService = new PregnacyFollowUpService();
     this.view = new AntenatalView(this);
 
     // Debug Test
@@ -149,7 +149,7 @@ public class AntenatalController implements ActionListener {
   }
 
   public String getNextId() {
-    return AntenatalService.getNextID();
+    return IPregnacyVisitService.getNextID();
   }
 
   public PregnancyVisit getVisit(String id) {
@@ -186,7 +186,7 @@ public class AntenatalController implements ActionListener {
   }
 
   public String getNextSubId() {
-    return SubVisitService.getNextID();
+    return IPregnacyFollowUpService.getNextID();
   }
 
   public List<String> getVisitList() {

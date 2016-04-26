@@ -7,7 +7,7 @@ package edu.usm.cos420.antenatal.controller;
 import edu.usm.cos420.antenatal.domain.PregnancyVisit;
 import edu.usm.cos420.antenatal.domain.PregnancyFollowUp;
 import edu.usm.cos420.antenatal.view.SubsequentVisit;
-import edu.usm.cos420.antenatal.service.SubVisitService;
+import edu.usm.cos420.antenatal.service.interfaces.IPregnacyFollowUpService;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -21,7 +21,7 @@ import java.time.LocalDate;
  */
 public class SubController implements ActionListener {
 
-  //private SubVisitService1 service;
+  //private PregnacyFollowUpService service;
   private final AntenatalController controller;
   private final SubsequentVisit panel;
   private String id = null;
@@ -32,7 +32,7 @@ public class SubController implements ActionListener {
   public SubController(AntenatalController controller) {
     this.controller = controller;
     this.panel = new SubsequentVisit(this);
-    //this.service = new SubVisitService1();
+    //this.service = new PregnacyFollowUpService();
   }
 
 
@@ -68,7 +68,7 @@ public class SubController implements ActionListener {
         double weight = panel.getPatientWeight();
         String bloodFilm = panel.getBloodFilm();
         String refer = panel.getRefer();
-        String subId = SubVisitService.getNextID();
+        String subId = IPregnacyFollowUpService.getNextID();
 
         // Create a new Visit object to pass to the service class.
         PregnancyFollowUp visit = new PregnancyFollowUp(subId, id, sysBP, diaBP,

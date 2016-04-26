@@ -1,10 +1,10 @@
-package edu.usm.cos420.antenatal.service.impl;
+package edu.usm.cos420.antenatal.service;
 
 import edu.usm.cos420.antenatal.daoFactory.Postgres;
 import edu.usm.cos420.antenatal.dao.concete.PostgresVisitDao;
 import edu.usm.cos420.antenatal.daoFactory.DaoFactory;
 import edu.usm.cos420.antenatal.domain.PregnancyVisit;
-import edu.usm.cos420.antenatal.service.AntenatalService;
+import edu.usm.cos420.antenatal.service.interfaces.IPregnacyVisitService;
 
 import java.util.List;
 
@@ -14,14 +14,14 @@ import java.util.List;
  * that are typically layered on top of much of the low level functionality of the
  * application. This organization helps support service oriented architectures.
  */
-public class AntenatalService1 implements AntenatalService {
+public class PregnacyVisitService implements IPregnacyVisitService {
 
   PostgresVisitDao dao;
 
   /**
    * Default Constructor creates a default CItemDao object
    */
-  public AntenatalService1() {
+  public PregnacyVisitService() {
     Postgres p = null;
     try {
       p = DaoFactory.getDatabase();
