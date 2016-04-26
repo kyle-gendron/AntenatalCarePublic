@@ -14,7 +14,7 @@
 //import org.junit.Before;
 //import org.junit.Test;
 //
-//import edu.usm.cos420.antenatal.domain.PregnancySubVisit;
+//import edu.usm.cos420.antenatal.domain.PregnancyFollowUp;
 //
 //public class TestAntenatalSubVisitDAO {
 //	private static AntenatalSubVisitDao dao;
@@ -44,15 +44,15 @@
 //	public final void testAdd() {
 //
 //		//create data
-//		PregnancySubVisit a = new PregnancySubVisit("01", "01", 120, 80,
+//		PregnancyFollowUp a = new PregnancyFollowUp("01", "01", 120, 80,
 //		         100, 20, LocalDate.now(), "Non-Reactive", "No");
 //
 //		dao.add(a);
 //
 //		//get and test values to confirm.
-//		PregnancySubVisit b = dao.find(a.getID());
+//		PregnancyFollowUp b = dao.find(a.getId());
 //
-//		assertEquals("The retrieved ID is different from the original ID.", a.getID(), b.getID());
+//		assertEquals("The retrieved ID is different from the original ID.", a.getId(), b.getId());
 //		assertEquals("The retrieved Initial ID is different from the original Initial ID.", a.getInitialID(), b.getInitialID());
 //		assertEquals("The retrieved Systolic BP is different from the original Systolic BP.", a.getSystolicBP(), b.getSystolicBP());
 //		assertEquals("The retrieved Diastolic BP is different from the original Diastolic BP.", a.getDiastolicBP(), b.getDiastolicBP());
@@ -66,7 +66,7 @@
 //	@Test
 //	public final void testUpdate() {
 //		//create data
-//				PregnancySubVisit c = new PregnancySubVisit("02", "02", 120, 80,
+//				PregnancyFollowUp c = new PregnancyFollowUp("02", "02", 120, 80,
 //				         100, 20, LocalDate.now(), "Non-Reactive", "No");
 //
 //				dao.add(c);
@@ -74,9 +74,9 @@
 //				//update, retrieve, and check values
 //				c.setReferral("Yes");
 //				dao.update(c);
-//				PregnancySubVisit d = dao.find(c.getID());
+//				PregnancyFollowUp d = dao.find(c.getId());
 //
-//				assertEquals("The retrieved ID is different from the original ID.", c.getID(), d.getID());
+//				assertEquals("The retrieved ID is different from the original ID.", c.getId(), d.getId());
 //				assertEquals("The retrieved Initial ID is different from the original Initial ID.", c.getInitialID(), d.getInitialID());
 //				assertEquals("The retrieved Systolic BP is different from the original Systolic BP.", c.getSystolicBP(), d.getSystolicBP());
 //				assertEquals("The retrieved Diastolic BP is different from the original Diastolic BP.", c.getDiastolicBP(), d.getDiastolicBP());
@@ -90,12 +90,12 @@
 //	@Test
 //	public final void testRemove() {
 //		//create data
-//		PregnancySubVisit e = new PregnancySubVisit("03", "03", 120, 80,
+//		PregnancyFollowUp e = new PregnancyFollowUp("03", "03", 120, 80,
 //		         100, 20, LocalDate.now(), "Non-Reactive", "No");
 //
 //		dao.add(e);
-//		dao.remove(e.getID());
-//		PregnancySubVisit f = dao.find(e.getID());
+//		dao.remove(e.getId());
+//		PregnancyFollowUp f = dao.find(e.getId());
 //
 //		assertNull("The PostgresDatabase returned a value that was supposed to be removed.", f);
 //	}
@@ -103,15 +103,15 @@
 //	@Test
 //	public final void testFind() {
 //		//create data
-//				PregnancySubVisit g = new PregnancySubVisit("03", "03", 120, 80,
+//				PregnancyFollowUp g = new PregnancyFollowUp("03", "03", 120, 80,
 //				         100, 20, LocalDate.now(), "Non-Reactive", "No");
 //
 //
 //				//get and test values to confirm.
 //				dao.add(g);
-//				PregnancySubVisit h = dao.find(g.getID());
+//				PregnancyFollowUp h = dao.find(g.getId());
 //
-//				assertEquals("The retrieved ID is different from the original ID.", g.getID(), h.getID());
+//				assertEquals("The retrieved ID is different from the original ID.", g.getId(), h.getId());
 //				assertEquals("The retrieved Initial ID is different from the original Initial ID.", g.getInitialID(), h.getInitialID());
 //				assertEquals("The retrieved Systolic BP is different from the original Systolic BP.", g.getSystolicBP(), h.getSystolicBP());
 //				assertEquals("The retrieved Diastolic BP is different from the original Diastolic BP.", g.getDiastolicBP(), h.getDiastolicBP());

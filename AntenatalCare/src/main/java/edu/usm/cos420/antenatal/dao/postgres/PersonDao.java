@@ -1,21 +1,21 @@
 package edu.usm.cos420.antenatal.dao.postgres;
 
-import edu.usm.cos420.antenatal.dao.interfaces.IPerson;
-import edu.usm.cos420.antenatal.domain.Person;
+import edu.usm.cos420.antenatal.dao.interfaces.IPersonRecord;
+import edu.usm.cos420.antenatal.domain.interfaces.IPerson;
 
 import java.util.List;
 
 /**
  * Created by aaron on 4/25/2016.
  */
-public class PersonDao implements IPerson {
+public class PersonDao implements IPersonRecord {
   @Override
-  public void add(Person entity) {
+  public void add(IPerson entity) {
 
   }
 
   @Override
-  public void update(Person entity) {
+  public void update(IPerson entity) {
 
   }
 
@@ -25,12 +25,12 @@ public class PersonDao implements IPerson {
   }
 
   @Override
-  public Person find(Long key) {
+  public IPerson find(Long key) {
     return null;
   }
 
   @Override
-  public List<Person> list() {
+  public List<IPerson> list() {
     return null;
   }
 }

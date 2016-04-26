@@ -1,7 +1,7 @@
 package edu.usm.cos420.antenatal.dao.postgres;
 
 import edu.usm.cos420.antenatal.daoFactory.PostgresDao;
-import edu.usm.cos420.antenatal.domain.PregnancyRecord;
+import edu.usm.cos420.antenatal.domain.PregnancyVisit;
 import edu.usm.cos420.antenatal.gui.VisitForm;
 import junit.framework.Assert;
 import org.junit.AfterClass;
@@ -19,7 +19,7 @@ import java.util.UUID;
 public class AntenatalVisitDaoTest {
   private static PostgresDao db;
   private static PregnancyRecordDao dao;
-  private static PregnancyRecord record;
+  private static PregnancyVisit record;
   private static ArrayList<String> idList;
 
   @BeforeClass
@@ -30,7 +30,7 @@ public class AntenatalVisitDaoTest {
     idList = new ArrayList<>();
 
     VisitForm form = new VisitForm(new FlowLayout());
-    record = new PregnancyRecord(form);
+    record = new PregnancyVisit(form);
   }
 
   @AfterClass
@@ -78,7 +78,7 @@ public class AntenatalVisitDaoTest {
     String id = UUID.randomUUID().toString();
     record.setId(id);
     dao.add(id, record);
-    PregnancyRecord result = dao.find(id);
+    PregnancyVisit result = dao.find(id);
     idList.add(id);
     Assert.assertNotNull(result);
   }

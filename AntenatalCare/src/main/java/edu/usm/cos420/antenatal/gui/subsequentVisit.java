@@ -1,7 +1,7 @@
 package edu.usm.cos420.antenatal.gui;
 
 import edu.usm.cos420.antenatal.controller.SubController;
-import edu.usm.cos420.antenatal.domain.PregnancySubVisit;
+import edu.usm.cos420.antenatal.domain.PregnancyFollowUp;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
@@ -55,7 +55,7 @@ public class SubsequentVisit {
 
   }
 
-  public JPanel setForm(PregnancySubVisit sVisit) {
+  public JPanel setForm(PregnancyFollowUp sVisit) {
 
     subVisit = changeForm(sVisit);
     subVisit.setMinimumSize(new Dimension(600, 200));
@@ -102,7 +102,7 @@ public class SubsequentVisit {
     return data;
   }
 
-  private JPanel changeForm(PregnancySubVisit sVisit) {
+  private JPanel changeForm(PregnancyFollowUp sVisit) {
 
     JPanel data = new JPanel();
     data.setPreferredSize(new Dimension(800, 25));
@@ -135,7 +135,7 @@ public class SubsequentVisit {
     this.setWeight(sVisit.getWeight());
     this.setSystolicBP(sVisit.getSystolicBP());
     this.setDiastolicBP(sVisit.getDiastolicBP());
-    this.setBloodFilm(sVisit.bloodFilmResults());
+    this.setBloodFilm(sVisit.getBloodFilm());
     this.setReferral(sVisit.getReferral());
 
     data.add(apptDate);

@@ -1,10 +1,10 @@
-package edu.usm.cos420.antenatal.domain;
+package edu.usm.cos420.antenatal.domain.interfaces;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface Person extends Serializable {
+public interface IPerson extends Serializable {
 
   String getFacZone();
 

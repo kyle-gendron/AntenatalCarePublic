@@ -1,10 +1,9 @@
 package edu.usm.cos420.antenatal.service.impl;
 
-import edu.usm.cos420.antenatal.dao.interfaces.IAntenatalRecord;
 import edu.usm.cos420.antenatal.dao.postgres.PregnancyRecordDao;
 import edu.usm.cos420.antenatal.daoFactory.DaoFactory;
 import edu.usm.cos420.antenatal.daoFactory.PostgresDao;
-import edu.usm.cos420.antenatal.domain.PregnancyRecord;
+import edu.usm.cos420.antenatal.domain.PregnancyVisit;
 import edu.usm.cos420.antenatal.service.AntenatalService;
 
 import java.util.List;
@@ -38,23 +37,23 @@ public class AntenatalService1 implements AntenatalService {
   }
 
   @Override
-  public void addAntenatalVisit(PregnancyRecord visit) {
-    if (dao.add(visit.getID(), visit) == 1) {
-      System.out.println("Inserted: " + visit.getID() + " Into Database");
+  public void addAntenatalVisit(PregnancyVisit visit) {
+    if (dao.add(visit.getId(), visit) == 1) {
+      System.out.println("Inserted: " + visit.getId() + " Into Database");
     }
   }
 
   @Override
-  public PregnancyRecord getAntenatalVisitById(String id) {
+  public PregnancyVisit getAntenatalVisitById(String id) {
     return dao.find(id);
   }
 
   @Override
-  public List<PregnancyRecord> getAllVisits() {
+  public List<PregnancyVisit> getAllVisits() {
     return dao.list();
   }
 
-  public void updateAntenatalVisit(PregnancyRecord visit) {
-    dao.update(visit.getID(), visit);
+  public void updateAntenatalVisit(PregnancyVisit visit) {
+    dao.update(visit.getId(), visit);
   }
 }

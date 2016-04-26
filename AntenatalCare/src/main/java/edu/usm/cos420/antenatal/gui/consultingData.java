@@ -1,12 +1,12 @@
 package edu.usm.cos420.antenatal.gui;
 
-import edu.usm.cos420.antenatal.domain.Person;
+import edu.usm.cos420.antenatal.domain.interfaces.IPerson;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class ConsultingData extends JPanel{
-	private Person p;
+	private IPerson p;
 	private JPanel hold;
 	private JPanel jTab;
 	public ConsultingData(){
@@ -21,7 +21,7 @@ public class ConsultingData extends JPanel{
 	 * @param p the person that is currently selected
 	 * @return the new Jtab with the consulting data
 	 */
-	public JPanel getPanel(Person p){
+	public JPanel getPanel(IPerson p){
 		this.p=p;
 		setLayout(new BorderLayout());
 		jTab= getConsultingInfo();

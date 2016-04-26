@@ -1,27 +1,27 @@
 package edu.usm.cos420.antenatal.dao.interfaces;
 
-import edu.usm.cos420.antenatal.domain.Person;
+import edu.usm.cos420.antenatal.domain.interfaces.IPerson;
 
 import java.util.List;
 
 /**
  * Created by aaron on 4/16/2016.
  */
-public interface IPerson {
+public interface IPersonRecord {
 
   /**
    * Add a DummyPerson to the DAO repository
    *
    * @param entity any DummyPerson object
    */
-  void add(Person entity);
+  void add(IPerson entity);
 
   /**
    * Update a DummyPerson in the DAO repository
    *
    * @param entity any DummyPerson object
    */
-  void update(Person entity);
+  void update(IPerson entity);
 
   /**
    * Remove a DummyPerson in the DAO repository
@@ -37,7 +37,7 @@ public interface IPerson {
    * @param key of the DummyPerson object to locate
    * @return the DummyPerson with id field equal to key
    */
-  Person find(Long key);
+  IPerson find(Long key);
 
   /**
    * Generate a list of DummyPersons in the DAO repository
@@ -45,5 +45,5 @@ public interface IPerson {
    * @return List of DummyPersons
    */
 
-  List<Person> list();
+  List<IPerson> list();
 }

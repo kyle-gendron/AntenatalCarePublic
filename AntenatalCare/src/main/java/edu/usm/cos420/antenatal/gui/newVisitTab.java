@@ -1,7 +1,7 @@
 package edu.usm.cos420.antenatal.gui;
 
 import edu.usm.cos420.antenatal.controller.NewVisitController;
-import edu.usm.cos420.antenatal.domain.PregnancyRecord;
+import edu.usm.cos420.antenatal.domain.PregnancyVisit;
 import edu.usm.cos420.antenatal.view.AntenatalView;
 
 import javax.swing.*;
@@ -80,7 +80,7 @@ public class NewVisitTab extends JPanel {
     return form;
   }
 
-  public void setFormData(PregnancyRecord visit) {
+  public void setFormData(PregnancyVisit visit) {
     form.setParity(visit.getParity());
     form.setHIVResults(visit.getHIVResults());
     form.setHeight(visit.getHeight());

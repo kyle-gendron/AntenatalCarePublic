@@ -1,7 +1,7 @@
 package edu.usm.cos420.antenatal.service.impl;
 
 import edu.usm.cos420.antenatal.dao.postgres.PregnancySubVisitDao;
-import edu.usm.cos420.antenatal.domain.PregnancySubVisit;
+import edu.usm.cos420.antenatal.domain.PregnancyFollowUp;
 import edu.usm.cos420.antenatal.service.SubVisitService;
 
 import java.sql.SQLException;
@@ -25,26 +25,26 @@ public class SubVisitService1 implements SubVisitService {
   }
 
   @Override
-  public void addSubVisit(PregnancySubVisit visit) throws SQLException {
-    dao.add(visit.getID(), visit);
+  public void addSubVisit(PregnancyFollowUp visit) throws SQLException {
+    dao.add(visit.getId(), visit);
   }
 
   @Override
-  public void updateSubVisit(PregnancySubVisit visit) throws SQLException {
-    dao.update(visit.getID(), visit);
+  public void updateSubVisit(PregnancyFollowUp visit) throws SQLException {
+    dao.update(visit.getId(), visit);
   }
 
   @Override
-  public PregnancySubVisit getSubVisitById(String id) throws SQLException {
+  public PregnancyFollowUp getSubVisitById(String id) throws SQLException {
     return dao.find(id);
   }
 
   @Override
-  public List<PregnancySubVisit> getAllSubVisits() throws SQLException {
+  public List<PregnancyFollowUp> getAllSubVisits() throws SQLException {
     return dao.list();
   }
 
-  public List<PregnancySubVisit> getSubVisitsByPregnancy(String key) {
+  public List<PregnancyFollowUp> getSubVisitsByPregnancy(String key) {
     try {
       return dao.pregList(key);
     } catch (SQLException e) {

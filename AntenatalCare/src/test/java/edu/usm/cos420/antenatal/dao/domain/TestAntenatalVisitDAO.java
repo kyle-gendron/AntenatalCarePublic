@@ -18,10 +18,10 @@
 //
 //import edu.usm.cos420.antenatal.dao.GenericDao;
 //import edu.usm.cos420.antenatal.dao.ObjectStreamDao;
-//import edu.usm.cos420.antenatal.domain.PregnancyRecord;
+//import edu.usm.cos420.antenatal.domain.PregnancyVisit;
 //
 //public class TestAntenatalVisitDAO {
-//	private static GenericDao<String,PregnancyRecord> dao;
+//	private static GenericDao<String,PregnancyVisit> dao;
 //
 //	@Before
 //	public  void setUpAfterClass() throws Exception {
@@ -32,7 +32,7 @@
 //	public final void testAdd() {
 //
 //		//create record and fill with data
-//		PregnancyRecord p = new PregnancyRecord("01");
+//		PregnancyVisit p = new PregnancyVisit("01");
 //
 //		p.setParity(1);
 //		p.setHIVResults("Negative");
@@ -65,11 +65,11 @@
 //		p.setRemarks("None");
 //
 //		//add to PostgresDatabase, retrieve, and test values to ensure correctness
-//		dao.add(p.getID(), p);
+//		dao.add(p.getId(), p);
 //
-//		PregnancyRecord retrievedRecord = dao.find(p.getID());
+//		PregnancyVisit retrievedRecord = dao.find(p.getId());
 //
-//		assertEquals("Stored ID and original ID are not equal", p.getID(), retrievedRecord.getID());
+//		assertEquals("Stored ID and original ID are not equal", p.getId(), retrievedRecord.getId());
 //		assertEquals("Stored HIVResults and original HIVResults are not equal", p.getHIVResults(), retrievedRecord.getHIVResults());
 ////		assertEquals("Stored Height and original Height are not equal", p.getHeight(), retrievedRecord.getHeight());
 ////		assertEquals("Stored Weight and original Weight are not equal", p.getWeight(), retrievedRecord.getWeight());
@@ -102,7 +102,7 @@
 //	@Test
 //	public final void testUpdate() {
 //		//create record and fill with data
-//		PregnancyRecord p1 = new PregnancyRecord("02");
+//		PregnancyVisit p1 = new PregnancyVisit("02");
 //
 //		p1.setParity(1);
 //		p1.setHIVResults("Negative");
@@ -135,7 +135,7 @@
 //		p1.setRemarks("None");
 //
 //		//add to PostgresDatabase
-//		dao.add(p1.getID(), p1);
+//		dao.add(p1.getId(), p1);
 //
 //
 //		p1.setParity(2);
@@ -169,12 +169,12 @@
 //		p1.setRemarks("Some");
 //
 //		//update object, test values
-//		dao.update(p1.getID(), p1);
+//		dao.update(p1.getId(), p1);
 //
-//		PregnancyRecord retrievedRecord = dao.find(p1.getID());
+//		PregnancyVisit retrievedRecord = dao.find(p1.getId());
 //
 //
-//		assertEquals("Stored ID and original ID are not equal", p1.getID(), retrievedRecord.getID());
+//		assertEquals("Stored ID and original ID are not equal", p1.getId(), retrievedRecord.getId());
 //		assertEquals("Stored HIVResults and original HIVResults are not equal", p1.getHIVResults(), retrievedRecord.getHIVResults());
 ////		assertEquals("Stored Height and original Height are not equal", p2.getHeight(), retrievedRecord.getHeight());
 ////		assertEquals("Stored Weight and original Weight are not equal", p2.getWeight(), retrievedRecord.getWeight());
@@ -208,7 +208,7 @@
 //	public final void testRemove() {
 //
 //		//create record and fill with data
-//		PregnancyRecord p = new PregnancyRecord("03");
+//		PregnancyVisit p = new PregnancyVisit("03");
 //
 //		p.setParity(1);
 //		p.setHIVResults("Negative");
@@ -241,11 +241,11 @@
 //		p.setRemarks("None");
 //
 //		//add, then remove
-//		dao.add(p.getID(), p);
-//		dao.remove(p.getID());
+//		dao.add(p.getId(), p);
+//		dao.remove(p.getId());
 //
 //		//make sure it's been removed
-//		PregnancyRecord foundP = dao.find(p.getID());
+//		PregnancyVisit foundP = dao.find(p.getId());
 //
 //		assertNull("DAO returns value that should've been removed.", foundP);
 //
@@ -254,7 +254,7 @@
 //	@Test
 //	public final void testFind() {
 //		//create record and fill with data
-//		PregnancyRecord p = new PregnancyRecord("04");
+//		PregnancyVisit p = new PregnancyVisit("04");
 //
 //		p.setParity(1);
 //		p.setHIVResults("Negative");
@@ -287,9 +287,9 @@
 //		p.setRemarks("None");
 //
 //		//add to PostgresDatabase, retrieve, and test value
-//		dao.add(p.getID(), p);
+//		dao.add(p.getId(), p);
 //
-//		PregnancyRecord retrievedRecord = dao.find(p.getID());
+//		PregnancyVisit retrievedRecord = dao.find(p.getId());
 //
 //		assertNotNull(retrievedRecord);
 //	}

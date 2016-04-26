@@ -3,7 +3,7 @@ package edu.usm.cos420.antenatal.dao.postgres;
 import com.jcraft.jsch.JSchException;
 import edu.usm.cos420.antenatal.dao.interfaces.IAntenatalRecord;
 import edu.usm.cos420.antenatal.daoFactory.DaoFactory;
-import edu.usm.cos420.antenatal.domain.PregnancySubVisit;
+import edu.usm.cos420.antenatal.domain.PregnancyFollowUp;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.UUID;
 /**
  * Created by aaron on 4/16/2016.
  */
-public class PregnancySubVisitDao implements IAntenatalRecord<PregnancySubVisit> {
+public class PregnancySubVisitDao implements IAntenatalRecord<PregnancyFollowUp> {
 
   private static final String
     INSERT = "INSERT INTO subvisit_record (subid, pregnancyid,"
@@ -43,12 +43,12 @@ public class PregnancySubVisitDao implements IAntenatalRecord<PregnancySubVisit>
   }
 
   @Override
-  public int add(String id, PregnancySubVisit record) {
+  public int add(String id, PregnancyFollowUp record) {
     PreparedStatement query;
     try {
       Connection c = DaoFactory.getDatabase().openConnection();
       query = c.prepareStatement(INSERT);
-      query.setObject(1, UUID.fromString(record.getID()));
+      query.setObject(1, UUID.fromString(record.getId()));
       query.setObject(2, UUID.fromString(record.getInitialID()));
       query.setInt(3, record.getSystolicBP());
       query.setInt(4, record.getDiastolicBP());
@@ -59,7 +59,7 @@ public class PregnancySubVisitDao implements IAntenatalRecord<PregnancySubVisit>
         apptDate = Date.valueOf(record.getApptDate());
       }
       query.setDate(7, apptDate);
-      query.setString(8, record.bloodFilmResults());
+      query.setString(8, record.getBloodFilm());
       query.setString(9, record.getReferral());
       Calendar date = Calendar.getInstance();
       query.setTimestamp(10, new Timestamp(date.getTime().getTime()));
@@ -74,7 +74,7 @@ public class PregnancySubVisitDao implements IAntenatalRecord<PregnancySubVisit>
   }
 
   @Override
-  public int update(String id, PregnancySubVisit record) {
+  public int update(String id, PregnancyFollowUp record) {
     PreparedStatement query;
     try {
       Connection c = DaoFactory.getDatabase().openConnection();
@@ -89,11 +89,11 @@ public class PregnancySubVisitDao implements IAntenatalRecord<PregnancySubVisit>
       query.setDouble(3, record.getWeight());
       query.setDouble(4, record.getFundalHeight());
       query.setDate(5, aptDate);
-      query.setString(6, record.bloodFilmResults());
+      query.setString(6, record.getBloodFilm());
       query.setString(7, record.getReferral());
       Calendar date = Calendar.getInstance();
       query.setTimestamp(8, new Timestamp(date.getTime().getTime()));
-      query.setObject(9, record.getID());
+      query.setObject(9, record.getId());
       int result = query.executeUpdate();
       DaoFactory.getDatabase().closeConnection();
       return result;
@@ -121,7 +121,7 @@ public class PregnancySubVisitDao implements IAntenatalRecord<PregnancySubVisit>
   }
 
   @Override
-  public PregnancySubVisit find(String key) {
+  public PregnancyFollowUp find(String key) {
     PreparedStatement query;
     try {
       Connection c = DaoFactory.getDatabase().openConnection();
@@ -138,14 +138,14 @@ public class PregnancySubVisitDao implements IAntenatalRecord<PregnancySubVisit>
   }
 
   @Override
-  public List<PregnancySubVisit> list() {
+  public List<PregnancyFollowUp> list() {
     PreparedStatement query;
     try {
       Connection c = DaoFactory.getDatabase().openConnection();
       query = c.prepareStatement(ALL);
       ResultSet rs = query.executeQuery();
 
-      List<PregnancySubVisit> results = new ArrayList<>();
+      List<PregnancyFollowUp> results = new ArrayList<>();
       while (rs.next()) results.add(createRecord(rs));
       DaoFactory.getDatabase().closeConnection();
       return results;
@@ -155,14 +155,14 @@ public class PregnancySubVisitDao implements IAntenatalRecord<PregnancySubVisit>
     return null;
   }
 
-  public List<PregnancySubVisit> pregList(String key) throws SQLException {
+  public List<PregnancyFollowUp> pregList(String key) throws SQLException {
     try {
       Connection c = DaoFactory.getDatabase().openConnection();
       PreparedStatement query = c.prepareStatement(ALLKEY);
       query.setObject(1, UUID.fromString(key));
       ResultSet rs = query.executeQuery();
 
-      List<PregnancySubVisit> results = new ArrayList<>();
+      List<PregnancyFollowUp> results = new ArrayList<>();
       while (rs.next()) results.add(createRecord(rs));
       DaoFactory.getDatabase().closeConnection();
       return results;
@@ -172,7 +172,7 @@ public class PregnancySubVisitDao implements IAntenatalRecord<PregnancySubVisit>
     return null;
   }
 
-  private PregnancySubVisit createRecord(ResultSet rs) throws SQLException {
-    return new PregnancySubVisit(rs);
+  private PregnancyFollowUp createRecord(ResultSet rs) throws SQLException {
+    return new PregnancyFollowUp(rs);
   }
 }

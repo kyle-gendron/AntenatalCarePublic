@@ -1,11 +1,13 @@
 package edu.usm.cos420.antenatal.domain;
 
+import edu.usm.cos420.antenatal.domain.interfaces.IPerson;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DummyPerson implements Serializable, Person {
+public class DummyPerson implements Serializable, IPerson {
 
   /**
    * Stub person object to populate fields in GUI coming from the consulting register

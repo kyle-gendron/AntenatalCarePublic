@@ -4,8 +4,8 @@ package edu.usm.cos420.antenatal.controller;
  * Created by aaron on 3/11/2016.
  */
 
-import edu.usm.cos420.antenatal.domain.PregnancyRecord;
-import edu.usm.cos420.antenatal.domain.PregnancySubVisit;
+import edu.usm.cos420.antenatal.domain.PregnancyVisit;
+import edu.usm.cos420.antenatal.domain.PregnancyFollowUp;
 import edu.usm.cos420.antenatal.gui.SubsequentVisit;
 import edu.usm.cos420.antenatal.service.SubVisitService;
 
@@ -44,7 +44,7 @@ public class SubController implements ActionListener {
     return panel.getPanel();
   }
 
-  public JPanel setPanel(PregnancySubVisit subVisit) {
+  public JPanel setPanel(PregnancyFollowUp subVisit) {
     return panel.setForm(subVisit);
   }
 
@@ -71,10 +71,10 @@ public class SubController implements ActionListener {
         String subId = SubVisitService.getNextID();
 
         // Create a new Visit object to pass to the service class.
-        PregnancySubVisit visit = new PregnancySubVisit(subId, id, sysBP, diaBP,
+        PregnancyFollowUp visit = new PregnancyFollowUp(subId, id, sysBP, diaBP,
           weight, fH, date, bloodFilm, refer);
 
-        PregnancyRecord initVisit = controller.getVisit(id);
+        PregnancyVisit initVisit = controller.getVisit(id);
         initVisit.setSubID(subId);
         controller.updateVisit(initVisit);
         controller.submitNewSubVisit(visit);

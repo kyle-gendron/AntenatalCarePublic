@@ -10,30 +10,21 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.UUID;
 
 
 /**
- * The PregnancySubVisit class represents a follow up visit
+ * The PregnancyFollowUp class represents a follow up visit
  * of the initial visit with the id given. These visits record
  * only a subset of the information from the initial visit,
  * including date, blood pressure, weight, fundal height,
  * blood film, and referred.
  */
-public class PregnancySubVisit extends PregnancyRecord {
-
-  /**
-   *
-   */
-  private static final long serialVersionUID = -1091510392443704764L;
-  private String subVisitID;
+public class PregnancyFollowUp extends PregnancyRecord {
 
   private String initialVisitID;
-  private int systolicBP, diastolicBP;
-  private double weight; //weight in kg
-  private double fundalHeight; //in cm
-  private LocalDate apptDate; //date of subsequent visit
-  private String bloodFilm;  //results of malaria blood film test
   private String referred;
+  private String bloodFilm;
 
   /**
    * Eight-Field Constructor: The constructor to be used when all fields are being set
@@ -48,9 +39,9 @@ public class PregnancySubVisit extends PregnancyRecord {
    * @param bloodFilm      whether the malaria parasite is present
    * @param referred       whether the patient was referred
    */
-  public PregnancySubVisit(String subVisitID, String initialVisitID, int systolicBP, int diastolicBP,
+  public PregnancyFollowUp(String subVisitID, String initialVisitID, int systolicBP, int diastolicBP,
                            double weight, double fundalHeight, LocalDate apptDate, String bloodFilm, String referred) {
-    this.subVisitID = subVisitID;
+    setId(subVisitID);
     this.initialVisitID = initialVisitID;
     this.systolicBP = systolicBP;
     this.diastolicBP = diastolicBP;
@@ -73,9 +64,9 @@ public class PregnancySubVisit extends PregnancyRecord {
    * @param bloodFilm      whether the malaria parasite is present
    * @param referred       whether the patient was referred
    */
-  public PregnancySubVisit(String subVisitID, String initialVisitID, int systolicBP, int diastolicBP,
+  public PregnancyFollowUp(String subVisitID, String initialVisitID, int systolicBP, int diastolicBP,
                            double weight, double fundalHeight, String bloodFilm, String referred) {
-    this.subVisitID = subVisitID;
+    setId(subVisitID);
     this.initialVisitID = initialVisitID;
     this.systolicBP = systolicBP;
     this.diastolicBP = diastolicBP;
@@ -90,14 +81,14 @@ public class PregnancySubVisit extends PregnancyRecord {
    * @param rs is a resultset from the sql database containing all values.
    * @throws SQLException
    */
-  public PregnancySubVisit(ResultSet rs) throws SQLException {
+  public PregnancyFollowUp(ResultSet rs) throws SQLException {
     Date apptdate = rs.getDate("apptdate");
     LocalDate apDate = null;
     if (apptdate != null) {
       apDate = apptdate.toLocalDate();
     }
 
-    setID(rs.getString("subid"));
+    setId(rs.getString("subid"));
     setInitialID(rs.getString("pregnancyid"));
     setSystolicBP(rs.getInt("systolicbp"));
     setDiastolicBP(rs.getInt("diastolicBP"));
@@ -110,8 +101,8 @@ public class PregnancySubVisit extends PregnancyRecord {
     //ADD timestamp
   }
 
-  public PregnancySubVisit() {
-    this.subVisitID = null;
+  public PregnancyFollowUp() {
+    setId(UUID.randomUUID().toString());
     this.initialVisitID = null;
     this.systolicBP = 0;
     this.diastolicBP = 0;
@@ -124,7 +115,8 @@ public class PregnancySubVisit extends PregnancyRecord {
 
   @Override
   public String toString() {
-    return "PregnancySubVisit{" +
+
+    return "PregnancyFollowUp{" +
       "InitVisitID=" + initialVisitID +
       ", systolicBP=" + systolicBP +
       ", diastolicBP=" + diastolicBP +
@@ -134,24 +126,6 @@ public class PregnancySubVisit extends PregnancyRecord {
       ", bloodFilm=" + bloodFilm +
       ", referred=" + referred +
       '}';
-  }
-
-  /**
-   * Returns ID of Subsequent Visit
-   *
-   * @return id
-   */
-  public String getID() {
-    return subVisitID;
-  }
-
-  /**
-   * Sets the id of the Subsequent Visit
-   *
-   * @param id the id to set
-   */
-  public void setID(String id) {
-    this.subVisitID = id;
   }
 
   /**
@@ -172,114 +146,6 @@ public class PregnancySubVisit extends PregnancyRecord {
     this.initialVisitID = id;
   }
 
-  /**
-   * returns systolic Blood Pressure
-   *
-   * @return the systolicBP
-   */
-  public int getSystolicBP() {
-    return systolicBP;
-  }
-
-  /**
-   * sets systolic Blood Pressure
-   *
-   * @param systolicBP the systolicBP to set
-   */
-  public void setSystolicBP(int systolicBP) {
-    this.systolicBP = systolicBP;
-  }
-
-  /**
-   * Return Diastolic Blood Pressure
-   *
-   * @return the diastolicBP
-   */
-  public int getDiastolicBP() {
-    return diastolicBP;
-  }
-
-  /**
-   * Sets the Diastolic Blood Pressure
-   *
-   * @param diastolicBP the diastolicBP to set
-   */
-  public void setDiastolicBP(int diastolicBP) {
-    this.diastolicBP = diastolicBP;
-  }
-
-  /**
-   * Returns the weight of the client
-   *
-   * @return the weight
-   */
-  public double getWeight() {
-    return weight;
-  }
-
-  /**
-   * Sets the weight of the client
-   *
-   * @param weight the weight to set
-   */
-  public void setWeight(double weight) {
-    this.weight = weight;
-  }
-
-  /**
-   * Returns the Fundal Height of the pregnancy at visit
-   *
-   * @return the fundalHeight
-   */
-  public double getFundalHeight() {
-    return fundalHeight;
-  }
-
-  /**
-   * Sets the Fundal Height of the pregnancy at visit
-   *
-   * @param fundalHeight the fundalHeight to set
-   */
-  public void setFundalHeight(double fundalHeight) {
-    this.fundalHeight = fundalHeight;
-  }
-
-  /**
-   * Returns the Estimated Date of Delivery
-   *
-   * @return the eDD
-   */
-  public LocalDate getApptDate() {
-    return apptDate;
-  }
-
-  /**
-   * Sets the Estimated Date of Delivery
-   *
-   * @param date the eDD to set
-   */
-  public void setApptDate(LocalDate date) {
-    apptDate = date;
-  }
-
-  /**
-   * Returns the results of the blood film test for Malaria
-   *
-   * @return the bloodFilm
-   */
-  public String bloodFilmResults() {
-    return bloodFilm;
-  }
-
-  /**
-   * Sets the results of the blood film test for Malaria
-   *
-   * @param bloodFilm the bloodFilm to set
-   */
-  public void setBloodFilm(String bloodFilm) {
-    this.bloodFilm = bloodFilm;
-  }
-
   public String getReferral() {
     return referred;
   }
@@ -293,4 +159,11 @@ public class PregnancySubVisit extends PregnancyRecord {
     this.referred = refer;
   }
 
+  public String getBloodFilm() {
+    return bloodFilm;
+  }
+
+  public void setBloodFilm(String bloodFilm) {
+    this.bloodFilm = bloodFilm;
+  }
 }

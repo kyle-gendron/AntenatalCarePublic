@@ -1,7 +1,6 @@
 package edu.usm.cos420.antenatal.dao.interfaces;
 
 import edu.usm.cos420.antenatal.dao.GenericDao;
-import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 
 import java.util.List;
 
@@ -10,34 +9,34 @@ import java.util.List;
  */
 public interface IAntenatalRecord<T> extends GenericDao<String, T> {
   /**
-   * Add a PregnancyRecord to the DAO repository
+   * Add a PregnancyVisit to the DAO repository
    *
-   * @param record any PregnancyRecord object
+   * @param record any PregnancyVisit object
    */
   @Override
   int add(String id, T record);
 
   /**
-   * Update a PregnancyRecord in the DAO repository
+   * Update a PregnancyVisit in the DAO repository
    *
-   * @param record any PregnancyRecord object
+   * @param record any PregnancyVisit object
    */
   @Override
   int update(String id, T record);
 
   /**
-   * Remove a PregnancyRecord in the DAO repository
+   * Remove a PregnancyVisit in the DAO repository
    *
-   * @param id of the PregnancyRecord object to remove
+   * @param id of the PregnancyVisit object to remove
    */
   @Override
   int remove(String id);
 
   /**
-   * Find a PregnancyRecord in the DAO repository
+   * Find a PregnancyVisit in the DAO repository
    *
-   * @param key of the PregnancyRecord object to locate
-   * @return the PregnancyRecord with id field equal to key
+   * @param key of the PregnancyVisit object to locate
+   * @return the PregnancyVisit with id field equal to key
    */
   @Override
   T find(String key);
