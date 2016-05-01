@@ -667,9 +667,9 @@ public class VisitForm extends JPanel {
   }
 
   public void setIPTDoses(String string) {
-	  int value=0;
+	  double value=0;
 	  if(!string.equals("")){
-	  value = Integer.parseInt(string);
+	  value = Double.parseDouble(string);
 	  }
     this.iptInput.setValue(value);
   }
