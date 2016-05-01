@@ -3,21 +3,18 @@ package edu.usm.cos420.antenatal.daoFactory;
 import junit.framework.Assert;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-
-import java.sql.Connection;
 
 /**
  * Created by aaron on 4/16/2016.
  */
 public class PostgresDaoTest {
-  private static PostgresDao db;
+  private static Postgres db;
   private static int portCount = 5670;
 
   @Before
   public void setUp() throws Exception {
-    db = new PostgresDao(portCount);
+    db = new Postgres(portCount);
     portCount++;
   }
 

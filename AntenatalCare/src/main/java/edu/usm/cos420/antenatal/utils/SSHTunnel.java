@@ -1,10 +1,10 @@
 package edu.usm.cos420.antenatal.utils;
 
-import java.util.Properties;
-
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
+
+import java.util.Properties;
 
 public class SSHTunnel {
   private String shhUsername;            // SSH login username
@@ -54,10 +54,10 @@ public class SSHTunnel {
     }
   }
 
-  public String getShhUsername() {
+  public String getSshUsername() {
     return shhUsername;
   }
-  public void setShhUsername(String shhUsername) {
+  public void setSshUsername(String shhUsername) {
     this.shhUsername = shhUsername;
   }
   public String getSshPassword() {
