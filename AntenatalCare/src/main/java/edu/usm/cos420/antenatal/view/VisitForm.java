@@ -666,8 +666,12 @@ public class VisitForm extends JPanel {
     this.gestationInput.setText(String.valueOf(gestation));
   }
 
-  public void setIPTDoses(String IPTDoses) {
-    this.iptInput.setValue(IPTDoses);
+  public void setIPTDoses(String string) {
+	  int value=0;
+	  if(!string.equals("")){
+	  value = Integer.parseInt(string);
+	  }
+    this.iptInput.setValue(value);
   }
 
   public void setTTDoses(String TTDoses) {
