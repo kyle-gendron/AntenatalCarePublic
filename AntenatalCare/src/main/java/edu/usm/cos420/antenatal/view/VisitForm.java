@@ -54,7 +54,7 @@ public class VisitForm extends JPanel {
   private final JComboBox trimesterInput;
   private final JComboBox subVisitsInput;
   private final JComboBox ttDosesInput;
-  private final JComboBox iptInput;
+  private final JSpinner iptInput;
   private final JComboBox itnInput;
   private final JTextArea complaints;
   private final JTextArea remarks;
@@ -257,7 +257,8 @@ public class VisitForm extends JPanel {
 
     //ipt/doses
     JPanel IPT = new JPanel();
-    iptInput = new JComboBox<>(new String[]{"", "1", "2", "3"});
+    SpinnerModel iptSpin = new SpinnerNumberModel(0, 0, 3, 1.0);
+    iptInput = new JSpinner(iptSpin);
     IPT.add(new JLabel("IPT Doses:"));
     IPT.add(iptInput);
 
@@ -499,7 +500,7 @@ public class VisitForm extends JPanel {
   }
 
   public String getIPTDoses() {
-    return String.valueOf(iptInput.getSelectedItem());
+    return String.valueOf(iptInput.getValue());
   }
 
   /**
@@ -666,7 +667,7 @@ public class VisitForm extends JPanel {
   }
 
   public void setIPTDoses(String IPTDoses) {
-    this.iptInput.setSelectedItem(IPTDoses);
+    this.iptInput.setValue(IPTDoses);
   }
 
   public void setTTDoses(String TTDoses) {
