@@ -29,7 +29,7 @@ public class PregnancyVisit extends PregnancyRecord {
 
   private int parity, trimester, subVisits;
   private int gestation; //num weeks of pregnancy, calculated from last period
-  private String iPTDoses;
+  private int iPTDoses;
   private String TTDoses; //added together from tick marks
   private double height; //height in cm, weight in kg
   private double hBAtReg, hBAt36Weeks; //Hemoglobin (hB) in grams/deciliter
@@ -106,7 +106,7 @@ public class PregnancyVisit extends PregnancyRecord {
     setTrimester(rs.getInt("trimester"));
     setSubVisits(rs.getInt("subVisits"));
     setGestation(rs.getInt("gestation"));
-    setIPTDoses(rs.getString("iPTDoses"));
+    setIPTDoses(rs.getInt("iPTDoses"));
     setTTDoses(rs.getString("TTDoses"));
     setFundalHeight(rs.getDouble("fundalHeight"));
     sethBAtReg(rs.getDouble("hBAtReg"));
@@ -241,7 +241,7 @@ public class PregnancyVisit extends PregnancyRecord {
    *
    * @return the iPTDoses
    */
-  public String getIPTDoses() {
+  public int getIPTDoses() {
     return iPTDoses;
   }
 
@@ -250,7 +250,7 @@ public class PregnancyVisit extends PregnancyRecord {
    *
    * @param iPTDoses the iPTDoses to set
    */
-  public void setIPTDoses(String iPTDoses) {
+  public void setIPTDoses(int iPTDoses) {
     this.iPTDoses = iPTDoses;
   }
 

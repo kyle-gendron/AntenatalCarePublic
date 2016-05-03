@@ -7,7 +7,7 @@ import edu.usm.cos420.antenatal.service.interfaces.IPregnacyVisitService;
 import edu.usm.cos420.antenatal.view.PreviousVisits;
 import edu.usm.cos420.antenatal.service.interfaces.IPregnacyFollowUpService;
 import edu.usm.cos420.antenatal.service.PregnacyVisitService;
-import edu.usm.cos420.antenatal.service.PregnacyFollowUpService;
+import edu.usm.cos420.antenatal.service.PregnancyFollowUpService;
 import edu.usm.cos420.antenatal.view.AntenatalView;
 
 import javax.swing.*;
@@ -28,7 +28,7 @@ public class AntenatalController implements ActionListener {
 
   private final PreviousVisits findPrevious;
   private PregnacyVisitService service;
-  private PregnacyFollowUpService subService;
+  private PregnancyFollowUpService subService;
   private AntenatalView view;
   private DummyPerson dummyPerson;
   //private NewVisitTab currentForm;
@@ -40,7 +40,7 @@ public class AntenatalController implements ActionListener {
     // Dummy person object
     dummyPerson = new DummyPerson();
     this.service = new PregnacyVisitService();
-    this.subService = new PregnacyFollowUpService();
+    this.subService = new PregnancyFollowUpService();
     this.view = new AntenatalView(this);
 
     // Debug Test

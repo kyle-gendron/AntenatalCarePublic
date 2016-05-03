@@ -13,14 +13,14 @@ import java.util.List;
  * that are typically layered on top of much of the low level functionality of the
  * application. This organization helps support service oriented architectures.
  */
-public class PregnacyFollowUpService implements IPregnacyFollowUpService {
+public class PregnancyFollowUpService implements IPregnacyFollowUpService {
 
   PregnancyFollowUpDao dao;
 
   /**
    * Default Constructor creates a default CItemDao object
    */
-  public PregnacyFollowUpService() {
+  public PregnancyFollowUpService() {
     this.dao = new PregnancyFollowUpDao();
   }
 

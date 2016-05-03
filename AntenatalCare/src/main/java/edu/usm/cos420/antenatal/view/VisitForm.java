@@ -499,8 +499,8 @@ public class VisitForm extends JPanel {
     return parseInteger(gestationInput.getText());
   }
 
-  public String getIPTDoses() {
-    return String.valueOf(iptInput.getValue());
+  public int getIPTDoses() {
+    return (int) iptInput.getValue();
   }
 
   /**
@@ -666,12 +666,8 @@ public class VisitForm extends JPanel {
     this.gestationInput.setText(String.valueOf(gestation));
   }
 
-  public void setIPTDoses(String string) {
-	  double value=0;
-	  if(!string.equals("")){
-	  value = Double.parseDouble(string);
-	  }
-    this.iptInput.setValue(value);
+  public void setIPTDoses(int doses) {
+	  this.iptInput.setValue(doses);
   }
 
   public void setTTDoses(String TTDoses) {
