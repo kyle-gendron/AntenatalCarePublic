@@ -68,12 +68,12 @@ public class SubController implements ActionListener {
         double weight = panel.getPatientWeight();
         String bloodFilm = panel.getBloodFilm();
         String refer = panel.getRefer();
-        
+        String itn = panel.getITNUse();
         String subId = IPregnacyFollowUpService.getNextID();
 
         // Create a new Visit object to pass to the service class.
         PregnancyFollowUp visit = new PregnancyFollowUp(subId, id, sysBP, diaBP,
-          weight, fH, date, bloodFilm, refer);
+          weight, fH, date, bloodFilm, refer, itn);
 
         PregnancyVisit initVisit = controller.getVisit(id);
         initVisit.setSubID(subId);
