@@ -28,7 +28,7 @@ public class SubVisitTest {
       control = new AntenatalController();
       subController = new SubController(control);
       visit = new SubsequentVisit(subController);
-      subVisit = new PregnancyFollowUp(null, null, 0, 0, 0, 0, LocalDate.now(), null, null);
+      subVisit = new PregnancyFollowUp(null, null, 0, 0, 0, 0, LocalDate.now(), null, null, null);
       //visit.changeForm(subVisit);
 
    }

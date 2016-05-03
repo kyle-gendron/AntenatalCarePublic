@@ -178,7 +178,8 @@ public class ReportGenerator {
 				numITNFirstVisit++;
 		
 		//collect second-visit ITN usages
-		for(PregnancyFollowUp f: followUps)
-			if(f.g)
+		//for(PregnancyFollowUp f: followUps)
+		//	if(f.g)
+		return new ArrayList<Integer>();
 	}
 }
