@@ -18,7 +18,7 @@ public class PregnancyFollowUpDao implements IAntenatalRecord<PregnancyFollowUp>
 
   private static final String
     INSERT = "INSERT INTO subvisit_record (subid, pregnancyid,"
-    + "systolicbp,diastolicbp,weight,fh,apptdate,bloodfilm,refer,created ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    + "systolicbp,diastolicbp,weight,fh,apptdate,bloodfilm,refer,itn,created ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
   private static final String
     ALL = "SELECT * FROM subvisit_record";
   private static final String
@@ -36,6 +36,7 @@ public class PregnancyFollowUpDao implements IAntenatalRecord<PregnancyFollowUp>
     "apptdate = ? " +
     "bloodfilm =  ? " +
     "refer = ? " +
+    "itn = ? " +
     "updated = ? " +
     "WHERE subid = ?";
 
@@ -61,8 +62,9 @@ public class PregnancyFollowUpDao implements IAntenatalRecord<PregnancyFollowUp>
       query.setDate(7, apptDate);
       query.setString(8, record.getBloodFilm());
       query.setString(9, record.getReferral());
+      query.setString(10, record.getITNUse());
       Calendar date = Calendar.getInstance();
-      query.setTimestamp(10, new Timestamp(date.getTime().getTime()));
+      query.setTimestamp(11, new Timestamp(date.getTime().getTime()));
       int result = query.executeUpdate();
       DaoFactory.getDatabase().closeConnection();
       return result;
@@ -91,9 +93,10 @@ public class PregnancyFollowUpDao implements IAntenatalRecord<PregnancyFollowUp>
       query.setDate(5, aptDate);
       query.setString(6, record.getBloodFilm());
       query.setString(7, record.getReferral());
+      query.setString(8, record.getITNUse());
       Calendar date = Calendar.getInstance();
-      query.setTimestamp(8, new Timestamp(date.getTime().getTime()));
-      query.setObject(9, record.getId());
+      query.setTimestamp(9, new Timestamp(date.getTime().getTime()));
+      query.setObject(10, record.getId());
       int result = query.executeUpdate();
       DaoFactory.getDatabase().closeConnection();
       return result;

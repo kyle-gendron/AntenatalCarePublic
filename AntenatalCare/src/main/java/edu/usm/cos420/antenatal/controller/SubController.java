@@ -68,6 +68,7 @@ public class SubController implements ActionListener {
         double weight = panel.getPatientWeight();
         String bloodFilm = panel.getBloodFilm();
         String refer = panel.getRefer();
+        
         String subId = IPregnacyFollowUpService.getNextID();
 
         // Create a new Visit object to pass to the service class.
