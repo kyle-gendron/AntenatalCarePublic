@@ -177,9 +177,9 @@ public class ReportGenerator {
 			if(p.getITN().equals("Yes"))
 				numITNFirstVisit++;
 		
-		//collect second-visit ITN usages
-		//for(PregnancyFollowUp f: followUps)
-		//	if(f.g)
+		//collect second-visit ITN usages  
+		for(PregnancyFollowUp f: followUps)
+			if(f.getApptDate().)
 		return new ArrayList<Integer>();
 	}
 }
