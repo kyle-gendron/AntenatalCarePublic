@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   <%--<link rel="shortcut icon" href="/static/img/todolist.ico"/>--%>
 
-  <title>Todolist MVC</title>
+  <title>COS420: Antenatal Care Project</title>
 
   <!-- Le styles -->
   <link href="<c:url value="/static/css/bootstrap.min.css"/>" rel="stylesheet">
@@ -29,5 +29,4 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-10 well col-md-offset-1">
-      <div class="row">
+    <div class="col-md-10 col-md-offset-1">

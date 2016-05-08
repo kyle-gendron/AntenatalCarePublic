@@ -1,4 +1,4 @@
-package edu.usm.cos420.antenatal.servlet;
+package edu.usm.cos420.antenatal.servlet.antenatal;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,16 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by aaron on 5/2/2016.
+ * Created by aaron on 5/8/2016.
  */
-
-@WebServlet(name = "Births", urlPatterns = {"/births"})
-public class BirthsAndDeliveries extends HttpServlet {
-
+@WebServlet(name = "FindVisitServlet", urlPatterns = {"/antenatal/find"})
+public class FindVisitServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    request.setAttribute("birthTabStyle", "active");
-    request.getRequestDispatcher("/WEB-INF/views/births.jsp").forward(request, response);
+    request.setAttribute("antenatalTabStyle", "active");
+    request.setAttribute("findVisit", "active");
+    request.getRequestDispatcher("/WEB-INF/views/antenatalcare.jsp").forward(request, response);
   }
 
   @Override

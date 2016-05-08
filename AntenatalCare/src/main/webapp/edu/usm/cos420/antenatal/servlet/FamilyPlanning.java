@@ -16,7 +16,7 @@ public class FamilyPlanning extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    request.setAttribute("indexTabStyle", "active");
+    request.setAttribute("familyTabStyle", "active");
     request.getRequestDispatcher("/WEB-INF/views/familyplanning.jsp").forward(request, response);
   }
 

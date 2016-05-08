@@ -16,7 +16,7 @@ public class DiseaseSurveillance extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    request.setAttribute("indexTabStyle", "active");
+    request.setAttribute("diseaseTabStyle", "active");
     request.getRequestDispatcher("/WEB-INF/views/disease.jsp").forward(request, response);
   }
 

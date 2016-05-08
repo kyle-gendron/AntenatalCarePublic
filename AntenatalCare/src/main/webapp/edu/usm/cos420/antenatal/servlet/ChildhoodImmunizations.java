@@ -16,7 +16,7 @@ public class ChildhoodImmunizations extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    request.setAttribute("indexTabStyle", "active");
+    request.setAttribute("childhoodTabStyle", "active");
     request.getRequestDispatcher("/WEB-INF/views/immunizations.jsp").forward(request, response);
   }
 

@@ -16,12 +16,12 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="<c:url value="/"/>">Consulting Register</a></li>
-        <li><a href="<c:url value="/familyplanning"/>">Family Planning</a></li>
-        <li><a href="<c:url value="/antenatal"/>">Antenatal Care</a></li>
-        <li><a href="<c:url value="/births"/>">Births & Deliveries</a></li>
-        <li><a href="<c:url value="/immunizations"/>">Immunizations</a></li>
-        <li><a href="<c:url value="/disease"/>">Disease Surveillance</a></li>
+        <li class="${indexTabStyle}"><a href="<c:url value="/"/>">Consulting Register</a></li>
+        <li class="${familyTabStyle}"><a href="<c:url value="/familyplanning"/>">Family Planning</a></li>
+        <li class="${antenatalTabStyle}"><a href="<c:url value="/antenatal"/>">Antenatal Care</a></li>
+        <li class="${birthTabStyle}"><a href="<c:url value="/births"/>">Births & Deliveries</a></li>
+        <li class="${childhoodTabStyle}"><a href="<c:url value="/immunizations"/>">Immunizations</a></li>
+        <li class="${diseaseTabStyle}"><a href="<c:url value="/disease"/>">Disease Surveillance</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
