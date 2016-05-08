@@ -173,13 +173,29 @@ public class ReportGenerator {
 				numReactions++;
 		
 		//collect first-visit ITN usages
-		for(PregnancyVisit p: records)
+		for(PregnancyVisit p: records){
 			if(p.getITN().equals("Yes"))
 				numITNFirstVisit++;
+			
+			Boolean secondAppointmentFound = false;
+			
+			//collect second-visit ITN usages  
+			for(PregnancyFollowUp f: followUps)		  
+			  //second appt not found
+			  if(secondAppointmentFound == true){
+			    break;
+		      }else{
+		        //id == records id
+		        if(p.getId().equals(f.getInitialID()))      
+	              //appt is after this first one
+		          if(f.getApptDate().isAfter(p.getApptDate()) == true)
+		            numITNSecondVisit++;
+		      }
+		}
 		
-		//collect second-visit ITN usages  
-		for(PregnancyFollowUp f: followUps)
-			if(f.getApptDate().)
+		//collect PMTCT data?
+		//did we even collect that from the get go?
+			  
 		return new ArrayList<Integer>();
 	}
 }
