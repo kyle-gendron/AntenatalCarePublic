@@ -1,11 +1,18 @@
 package edu.usm.cos420.antenatal.utils;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import edu.usm.cos420.antenatal.domain.DummyPerson;
 import edu.usm.cos420.antenatal.domain.PregnancyFollowUp;
 import edu.usm.cos420.antenatal.domain.PregnancyRecord;
 import edu.usm.cos420.antenatal.domain.PregnancyVisit;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
 /**
  * 
@@ -197,5 +204,24 @@ public class ReportGenerator {
 		//did we even collect that from the get go?
 			  
 		return new ArrayList<Integer>();
-	}	
+	}
+	
+    /**
+     * Creates a PDF document.
+     * @param filename the path to the new PDF document
+     * @throws    DocumentException 
+     * @throws    IOException 
+     */
+	public void createPdf(String filename) throws DocumentException, IOException {
+	  //currently this is just a test to make sure that it works properly
+	  //file selector?
+	  
+	  Document doc = new Document();
+	  PdfWriter.getInstance(doc, new FileOutputStream(filename));
+	  doc.open();
+	  doc.add(new Paragraph("Hello world!"));
+	  doc.close();
+	  
+	  
+	}
 }
