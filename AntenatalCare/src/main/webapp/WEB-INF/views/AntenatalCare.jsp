@@ -24,9 +24,15 @@
   <div class="row">
     <div class="col-md-12">
       <ul class="nav nav-tabs">
+        <li role="presentation" class="${allVisits}"><a href="<c:url value="/antenatal/all"/>">All Visits</a></li>
         <li role="presentation" class="${newVisit}"><a href="<c:url value="/antenatal/new"/>">New Visit</a></li>
         <li role="presentation" class="${findVisit}"><a href="<c:url value="/antenatal/find"/>">Find Visit</a></li>
       </ul>
+      <c:if test="${not empty allVisits}">
+        <div class="panel">
+          <div class="panel-body">allVisits</div>
+        </div>
+      </c:if>
       <c:if test="${not empty newVisit}">
         <div class="panel">
           <div class="panel-body">newVisit</div>
