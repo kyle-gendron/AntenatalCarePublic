@@ -25,10 +25,9 @@ public class PregnancyFollowUp extends PregnancyRecord {
   private String initialVisitID;
   private String referred;
   private String bloodFilm;
-  private String iTNUse;
   
   /**
-   * Nine-Field Constructor: The constructor to be used when all fields are being set
+   * Eight-Field Constructor: The constructor to be used when all fields are being set
    *
    * @param subVisitID     the id of this subsequent visit
    * @param initialVisitID the id of the initial visit for the pregnancy
@@ -39,11 +38,10 @@ public class PregnancyFollowUp extends PregnancyRecord {
    * @param apptDate       the date of the subsequent appointment
    * @param bloodFilm      whether the malaria parasite is present
    * @param referred       whether the patient was referred
-   * @param iTnUse		   whether the patient is using ITNs
    */
   public PregnancyFollowUp(String subVisitID, String initialVisitID, int systolicBP, int diastolicBP,
-                           double weight, double fundalHeight, LocalDate apptDate, String bloodFilm, 
-                           String referred, String iTNUse) {
+                           double weight, double fundalHeight, LocalDate apptDate, String bloodFilm,
+                           String referred) {
     setId(subVisitID);
     this.initialVisitID = initialVisitID;
     this.systolicBP = systolicBP;
@@ -53,7 +51,6 @@ public class PregnancyFollowUp extends PregnancyRecord {
     this.apptDate = apptDate;
     this.bloodFilm = bloodFilm;
     this.referred = referred;
-    this.iTNUse = iTNUse;
   }
 
   /**
@@ -67,11 +64,9 @@ public class PregnancyFollowUp extends PregnancyRecord {
    * @param fundalHeight   the height of pregnancy
    * @param bloodFilm      whether the malaria parasite is present
    * @param referred       whether the patient was referred
-   * @param iTnUse		   whether the patient is using ITNs
    */
   public PregnancyFollowUp(String subVisitID, String initialVisitID, int systolicBP, int diastolicBP,
-                           double weight, double fundalHeight, String bloodFilm, String referred,
-                           String iTNUse) {
+                           double weight, double fundalHeight, String bloodFilm, String referred) {
     setId(subVisitID);
     this.initialVisitID = initialVisitID;
     this.systolicBP = systolicBP;
@@ -81,7 +76,6 @@ public class PregnancyFollowUp extends PregnancyRecord {
     this.apptDate = LocalDate.now();
     this.bloodFilm = bloodFilm;
     this.referred = referred;
-    this.iTNUse = iTNUse;
   }
 
   /**
@@ -104,7 +98,6 @@ public class PregnancyFollowUp extends PregnancyRecord {
     setApptDate(apDate);
     setBloodFilm(rs.getString("bloodfilm"));
     setReferral(rs.getString("refer"));
-    setITNUse(rs.getString("ITN"));
     
     //ADD timestamp
   }
@@ -119,7 +112,6 @@ public class PregnancyFollowUp extends PregnancyRecord {
     this.apptDate = null;
     this.bloodFilm = null;
     this.referred = null;
-    this.iTNUse = null;
   }
 
   @Override
@@ -134,7 +126,6 @@ public class PregnancyFollowUp extends PregnancyRecord {
       ", SubVisit Date=" + (apptDate != null ? apptDate.toString() : "None") +
       ", bloodFilm=" + bloodFilm +
       ", referred=" + referred +
-      ", ITNUse=" + iTNUse +
       '}';
   }
 
@@ -176,12 +167,5 @@ public class PregnancyFollowUp extends PregnancyRecord {
   public void setBloodFilm(String bloodFilm) {
     this.bloodFilm = bloodFilm;
   }
-  
-  public String getITNUse(){
-	  return iTNUse;
-  }
-  
-  public void setITNUse(String iTNUse){
-	  this.iTNUse = iTNUse;
-  }
+
 }

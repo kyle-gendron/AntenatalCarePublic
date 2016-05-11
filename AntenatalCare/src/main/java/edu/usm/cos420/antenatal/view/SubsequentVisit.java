@@ -142,7 +142,6 @@ public class SubsequentVisit {
     this.setDiastolicBP(sVisit.getDiastolicBP());
     this.setBloodFilm(sVisit.getBloodFilm());
     this.setReferral(sVisit.getReferral());
-    this.setITNUse(sVisit.getITNUse());
 
     data.add(apptDate);
     data.add(sysBP);

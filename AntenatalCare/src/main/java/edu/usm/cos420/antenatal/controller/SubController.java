@@ -73,7 +73,7 @@ public class SubController implements ActionListener {
 
         // Create a new Visit object to pass to the service class.
         PregnancyFollowUp visit = new PregnancyFollowUp(subId, id, sysBP, diaBP,
-          weight, fH, date, bloodFilm, refer, itn);
+          weight, fH, date, bloodFilm, refer);
 
         PregnancyVisit initVisit = controller.getVisit(id);
         initVisit.setSubID(subId);
