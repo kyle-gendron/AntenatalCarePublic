@@ -57,9 +57,9 @@
         <div class="panel">
           <div class="panel-body">
                 <form method="post" action="CreateVisitServlet" class="form-inline">
-                  <div class="form-group"><h4><span class="label label-default">Parity</span></h4><input type="number" class="form-control" name="quantity" min="0" max="20" style="width: 60px;"></div> &nbsp;&nbsp;
-                  <div class="form-group"><h4><span class="label label-default">Systolic BP</span></h4><input type="number" class="form-control" name="quantity" min="0" max="200" style="width: 70px;"></div> /
-                  <div class="form-group"><h4><span class="label label-default">Diastolic</span></h4><input type="number" class="form-control" name="quantity" min="0" max="140" style="width: 70px;"></div>&nbsp;&nbsp;
+                  <div class="form-group"><span class="label label-default" style="font-size: medium">Parity</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="20" style="width: 60px;"></div> &nbsp;&nbsp;
+                  <div class="form-group"><span class="label label-default" style="font-size: medium">Systolic BP</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="200" style="width: 70px;"></div> /
+                  <div class="form-group"><span class="label label-default" style="font-size: medium">Diastolic</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="140" style="width: 70px;"></div>&nbsp;&nbsp;
                 </form>
           </div>
         </div>
