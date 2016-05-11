@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.UUID;
 
+import static edu.usm.cos420.antenatal.utils.Parsers.parseDouble;
 import static edu.usm.cos420.antenatal.utils.Parsers.parseInteger;
 
 /**
@@ -35,12 +36,16 @@ public class CreateVisitServlet extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     String parity = request.getParameter("parity");
+    String height = request.getParameter("height");
+    String weight = request.getParameter("weight");
 
     PregnancyVisit visit = new PregnancyVisit(UUID.randomUUID().toString());
 
     visit.setParity(parseInteger(parity));
+    visit.setHeight(parseDouble(height));
+    visit.setWeight(parseDouble(weight));
 
-    //db.getAntenatalVisitDao().add(visit.getId(), visit);
+    db.getAntenatalVisitDao().add(visit.getId(), visit);
 
     request.setAttribute("antenatalTabStyle", "active");
     request.setAttribute("viewVisit", "active");

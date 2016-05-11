@@ -67,22 +67,6 @@
                       <input type="number" class="form-control" name="parity" min="0" max="20">
                     </div>
                   </div>
-                  <div class="form-group">
-                    <div class="col-xs-5">
-                      <label>Systolic BP</label>
-                    </div>
-                    <div class="col-xs-5">
-                      <input type="number" class="form-control" name="systolic" min="0" max="200"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-xs-5">
-                      <label>Diastolic BP</label>
-                    </div>
-                    <div class="col-xs-5">
-                      <input type="number" class="form-control" name="diastolic" min="0" max="140">
-                    </div>
-                  </div>
 
                   <div class="form-group">
                     <div class="col-xs-5">
@@ -99,6 +83,22 @@
                     </div>
                     <div class="col-xs-5">
                       <input type="number" class="form-control" name="weight" min="0" max="140">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>Systolic BP</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <input type="number" class="form-control" name="systolic" min="0" max="200"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>Diastolic BP</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <input type="number" class="form-control" name="diastolic" min="0" max="140">
                     </div>
                   </div>
 
