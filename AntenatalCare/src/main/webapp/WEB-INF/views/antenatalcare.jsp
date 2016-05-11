@@ -27,11 +27,28 @@
         <div class="panel">
           <div class="panel-body">
             <%--@elvariable id="visitList" type="java.util.ArrayList"--%>
-            <c:forEach items="${visitList}" var="currentItem">
-              <div>
-                <c:out value="${currentItem.id}"/>
-              </div>
-            </c:forEach>
+              <table class="table table-striped table-condensed table-hover">
+                <thead>
+                <tr>
+                  <th>Visit ID</th>
+                  <th>Person</th>
+                  <th>Created</th>
+                  <th>Updated</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <c:forEach items="${visitList}" var="currentItem">
+                    <div>
+                      <tr>
+                        <td><c:out value="${currentItem.id}"/></td>
+                        <td><c:out value="${currentItem.personId}"/></td>
+                        <td><c:out value="${currentItem.createdDate}"/></td>
+                        <td><c:out value="${currentItem.updatedDate}"/></td>
+                      </tr>
+                    </div>
+                  </c:forEach>
+                </tbody>
+            </table>
           </div>
         </div>
       </c:if>
