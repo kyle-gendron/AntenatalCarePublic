@@ -38,7 +38,13 @@
       <%--@elvariable id="newVisit" type="java.lang.String"--%>
       <c:if test="${not empty newVisit}">
         <div class="panel">
-          <div class="panel-body">newVisit</div>
+          <div class="panel-body">
+                <form method="post" action="CreateVisitServlet">
+                  Parity:<input type="number" name="quantity" min="0" max="20" style="width: 40px;"> &nbsp;&nbsp;
+                  Systolic:<input type="number" name="quantity" min="0" max="200" style="width: 50px;"> /
+                  Diastolic BP:<input type="number" name="quantity" min="0" max="140" style="width: 50px;">&nbsp;&nbsp;
+                </form>
+          </div>
         </div>
       </c:if>
       <%--@elvariable id="findVisit" type="java.lang.String"--%>
