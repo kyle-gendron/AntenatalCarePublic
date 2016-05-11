@@ -22,6 +22,7 @@ public class SubsequentVisit {
   private JLabel Date;
   private JLabel bloodFilm;
   private JLabel referred;
+  private JLabel itnUse;
   private JLabel saved;
   private JSpinner sysBP;
   private JSpinner diaBP;
@@ -31,6 +32,7 @@ public class SubsequentVisit {
   private UtilDateModel dateModel;
   private JComboBox<String> bloodF;
   private JComboBox<String> refer;
+  private JComboBox<String> itn;
   private SubController subC;
   private JButton saveButton;
 
@@ -86,6 +88,8 @@ public class SubsequentVisit {
     bloodFilm.setHorizontalAlignment(SwingConstants.CENTER);
     referred = new JLabel("Referred?");
     referred.setHorizontalAlignment(SwingConstants.CENTER);
+    itnUse = new JLabel("ITN Use");
+    itnUse.setHorizontalAlignment(SwingConstants.CENTER);
     saved = new JLabel("Save");
     saved.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -97,6 +101,7 @@ public class SubsequentVisit {
     data.add(fundalHeight);
     data.add(bloodFilm);
     data.add(referred);
+    data.add(itnUse);
     data.add(saved);
 
     return data;
@@ -127,7 +132,7 @@ public class SubsequentVisit {
     apptDate = new JDatePickerImpl(datePanel, new DateLabelFormatter());
     bloodF = new JComboBox<>(new String[]{"", "Not Present", "Present"});
     refer = new JComboBox<>(new String[]{"", "No", "Yes"});
-
+    itn = new JComboBox<>(new String[]{"", "No", "Yes"});
 
     //JPanel data = new JPanel();
     this.setApptDate(sVisit.getApptDate());
@@ -145,7 +150,8 @@ public class SubsequentVisit {
     data.add(fundalH);
     data.add(bloodF);
     data.add(refer);
-
+    data.add(itn);
+    
     saveButton = new JButton("Update");
     saveButton.addActionListener(subC);
 
@@ -178,7 +184,8 @@ public class SubsequentVisit {
     apptDate = new JDatePickerImpl(datePanel, new DateLabelFormatter());
     bloodF = new JComboBox<>(new String[]{"", "Not Present", "Present"});
     refer = new JComboBox<>(new String[]{"", "No", "Yes"});
-
+    itn = new JComboBox<>(new String[]{"", "No", "Yes"});
+    
     data.add(apptDate);
     data.add(sysBP);
     data.add(diaBP);
@@ -186,6 +193,7 @@ public class SubsequentVisit {
     data.add(fundalH);
     data.add(bloodF);
     data.add(refer);
+    data.add(itn);
     saveButton = new JButton("Save");
     saveButton.addActionListener(subC);
     data.add(saveButton);
@@ -245,6 +253,13 @@ public class SubsequentVisit {
   public String getRefer() {
     return String.valueOf(refer.getSelectedItem());
   }
+  
+  /**
+   * @return Returns true if uses ITN, false if not
+   */
+  public String getITNUse() {
+    return String.valueOf(itn.getSelectedItem());
+  }
 
   /**
    * @param date is entered into datepicker
@@ -290,5 +305,7 @@ public class SubsequentVisit {
     this.refer.setSelectedItem(reference);
   }
 
-
+  public void setITNUse(String itnUse){
+	  this.itn.setSelectedItem(itnUse);
+  }
 }

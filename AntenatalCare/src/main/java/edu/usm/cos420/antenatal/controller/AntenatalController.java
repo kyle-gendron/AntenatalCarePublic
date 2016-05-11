@@ -4,17 +4,23 @@ import edu.usm.cos420.antenatal.domain.DummyPerson;
 import edu.usm.cos420.antenatal.domain.PregnancyFollowUp;
 import edu.usm.cos420.antenatal.domain.PregnancyVisit;
 import edu.usm.cos420.antenatal.service.interfaces.IPregnacyVisitService;
+import edu.usm.cos420.antenatal.utils.ReportGenerator;
 import edu.usm.cos420.antenatal.view.PreviousVisits;
 import edu.usm.cos420.antenatal.service.interfaces.IPregnacyFollowUpService;
 import edu.usm.cos420.antenatal.service.PregnacyVisitService;
-import edu.usm.cos420.antenatal.service.PregnacyFollowUpService;
+import edu.usm.cos420.antenatal.service.PregnancyFollowUpService;
 import edu.usm.cos420.antenatal.view.AntenatalView;
 
 import javax.swing.*;
+
+import com.itextpdf.text.DocumentException;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,7 +34,7 @@ public class AntenatalController implements ActionListener {
 
   private final PreviousVisits findPrevious;
   private PregnacyVisitService service;
-  private PregnacyFollowUpService subService;
+  private PregnancyFollowUpService subService;
   private AntenatalView view;
   private DummyPerson dummyPerson;
   //private NewVisitTab currentForm;
@@ -40,7 +46,7 @@ public class AntenatalController implements ActionListener {
     // Dummy person object
     dummyPerson = new DummyPerson();
     this.service = new PregnacyVisitService();
-    this.subService = new PregnacyFollowUpService();
+    this.subService = new PregnancyFollowUpService();
     this.view = new AntenatalView(this);
 
     // Debug Test
@@ -114,12 +120,22 @@ public class AntenatalController implements ActionListener {
                 (this.view).addSub("", subController.setPanel(s));
               }
               (this.view).addSub("", subController.getPanel());
-
             }
-
-
           }
         }
+        break;
+      }
+      case "Generate Monthly Report": {
+        ArrayList<PregnancyFollowUp> followUps = null;
+        try {
+          followUps = new ArrayList<>(subService.getAllSubVisits());
+        } catch (SQLException e1) {
+          e1.printStackTrace();
+        }
+        ArrayList<PregnancyVisit> records = new ArrayList<>(service.getAllVisits());      
+        
+        ReportingController repController = new ReportingController(dummyPerson, followUps, records);
+        this.view.addReportingWindow(repController);
         break;
       }
       case "Quit": {

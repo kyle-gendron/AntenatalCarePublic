@@ -14,11 +14,12 @@ import java.util.UUID;
 /**
  * Created by aaron on 4/16/2016.
  */
+@SuppressWarnings("ALL")
 public class PregnancyFollowUpDao implements IAntenatalRecord<PregnancyFollowUp> {
 
   private static final String
     INSERT = "INSERT INTO subvisit_record (subid, pregnancyid,"
-    + "systolicbp,diastolicbp,weight,fh,apptdate,bloodfilm,refer,created ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    + "systolicbp,diastolicbp,weight,fh,apptdate,bloodfilm,refer,created ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
   private static final String
     ALL = "SELECT * FROM subvisit_record";
   private static final String
