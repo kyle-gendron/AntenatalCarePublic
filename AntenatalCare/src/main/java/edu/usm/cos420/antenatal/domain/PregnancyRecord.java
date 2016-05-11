@@ -13,7 +13,7 @@ public abstract class PregnancyRecord implements IPregnancyRecord {
   protected double weight; //weight in kg
   protected double fundalHeight; //in cm
   protected LocalDate apptDate; //date of subsequent visit
-  private String id;
+  protected String id;
 
   /**
    * Returns ID of Antenatal Visit

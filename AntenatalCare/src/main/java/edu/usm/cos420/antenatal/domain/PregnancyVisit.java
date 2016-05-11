@@ -39,7 +39,6 @@ public class PregnancyVisit extends PregnancyRecord {
   private String vDLabResults, preTestCounsel, hIVResults, postTestCounsel, ARV;
   private String bloodFilm;  //results of malaria blood film test
   private String iTN;
-  private String id;  //id used to identify a particular set of antenatal visits
   private String maleInvolvement;
   private String remarks;
   private String complaints;
