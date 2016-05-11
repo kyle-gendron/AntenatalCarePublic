@@ -1,6 +1,3 @@
-
-
-
 <%--@elvariable id="currentItem" type="edu.usm.cos420.antenatal.domain.PregnancyVisit"--%>
 
 
@@ -26,30 +23,30 @@
       <c:if test="${not empty allVisits}">
         <div class="panel">
           <div class="panel-body">
-            <%--@elvariable id="visitList" type="java.util.ArrayList"--%>
-              <table class="table table-striped table-condensed table-hover">
-                <thead>
+              <%--@elvariable id="visitList" type="java.util.ArrayList"--%>
+            <table class="table table-striped table-condensed table-hover">
+              <thead>
+              <tr>
+                <th>Visit ID</th>
+                <th>Person</th>
+                <th>Created</th>
+                <th>Updated</th>
+              </tr>
+              </thead>
+              <tbody>
+              <c:forEach items="${visitList}" var="currentItem">
                 <tr>
-                  <th>Visit ID</th>
-                  <th>Person</th>
-                  <th>Created</th>
-                  <th>Updated</th>
+                  <td>
+                    <a href="<c:url value="/antenatal/view/${currentItem.id}"/>">
+                      <c:out value="${currentItem.id}"/>
+                    </a>
+                  </td>
+                  <td><c:out value="${currentItem.personId}"/></td>
+                  <td><c:out value="${currentItem.createdDate}"/></td>
+                  <td><c:out value="${currentItem.updatedDate}"/></td>
                 </tr>
-                </thead>
-                <tbody>
-                  <c:forEach items="${visitList}" var="currentItem">
-                    <tr>
-                      <td>
-                        <a href="<c:url value="/antenatal/view/${currentItem.id}"/>">
-                          <c:out value="${currentItem.id}"/>
-                        </a>
-                      </td>
-                      <td><c:out value="${currentItem.personId}"/></td>
-                      <td><c:out value="${currentItem.createdDate}"/></td>
-                      <td><c:out value="${currentItem.updatedDate}"/></td>
-                    </tr>
-                  </c:forEach>
-                </tbody>
+              </c:forEach>
+              </tbody>
             </table>
           </div>
         </div>
@@ -58,21 +55,123 @@
       <c:if test="${not empty newVisit}">
         <div class="panel">
           <div class="panel-body">
-                <form method="post" action="CreateVisitServlet" class="form-inline">
-                  <div class="form-group"><span class="label label-default" style="font-size: medium">Parity</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="20" style="width: 60px;"></div> &nbsp;&nbsp;
-                  <div class="form-group"><span class="label label-default" style="font-size: medium">Systolic BP</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="200" style="width: 70px;"></div> /
-                  <div class="form-group"><span class="label label-default" style="font-size: medium">Diastolic BP</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="140" style="width: 70px;"></div>&nbsp;&nbsp;
-                  <div class="form-group"><span class="label label-default" style="font-size: medium">Height</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="200" style="width: 70px;"><label>cm</label></div> &nbsp;&nbsp;
-                  <div class="form-group"><span class="label label-default" style="font-size: medium">Weight</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="140" style="width: 70px;"><label>kg</label></div>&nbsp;&nbsp;
-                  <div class="form-group"><span class="label label-default" style="font-size: medium">Gestation</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="200" style="width: 70px;"></div>&nbsp;&nbsp;
-                  <div class="form-group"><span class="label label-default" style="font-size: medium">Fundal Height</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="140" style="width: 70px;"></div>&nbsp;&nbsp;
-                  <div class="form-group"><span class="label label-default" style="font-size: medium">Due Date</span>&nbsp;<input type="date" class="form-control" name="date" style="width: 100px;"></div>&nbsp;&nbsp;
-                  <div class="form-group"><span class="label label-default" style="font-size: medium">HBatReg (g/dL)</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="200" style="width: 70px;"></div> &nbsp;&nbsp;
-                  <div class="form-group"><span class="label label-default" style="font-size: medium">HBat36 (g/dL)</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="140" style="width: 70px;"></div>&nbsp;&nbsp;
-                  <div class="form-group"><span class="label label-default" style="font-size: medium">Urine Test (Sugar)</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="200" style="width: 70px;"></div> &nbsp;&nbsp;
-                  <div class="form-group"><span class="label label-default" style="font-size: medium">Urine Test (Protein)</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="140" style="width: 70px;"></div>&nbsp;&nbsp;
+            <form method="post" action="CreateVisitServlet" class="form-horizontal">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>Parity</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <input type="number" class="form-control" name="quantity" min="0" max="20">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>Systolic BP</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <input type="number" class="form-control" name="quantity" min="0" max="200"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>Diastolic BP</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <input type="number" class="form-control" name="quantity" min="0" max="140">
+                    </div>
+                  </div>
 
-                </form>
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>Height (cm)</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <input type="number" class="form-control" name="quantity" min="0" max="200">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>Weight (kg)</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <input type="number" class="form-control" name="quantity" min="0" max="140">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>Gestation</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <input type="number" class="form-control" name="quantity" min="0" max="200">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>Fundal Height</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <input type="number" class="form-control" name="quantity" min="0" max="140">
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>Due Date</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <input type="date" class="form-control" name="date"></div>
+                    </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>HBatReg (g/dL)</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <input type="number" class="form-control" name="quantity" min="0" max="200">
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>HBat36 (g/dL)</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <input type="number" class="form-control" name="quantity" min="0" max="140">
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>Urine Test (Sugar)</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <input type="number" class="form-control" name="quantity" min="0" max="200">
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>Urine Test (Protein)</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <input type="number" class="form-control" name="quantity" min="0" max="140">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <button class="btn btn-default" type="reset">Cancel</button>
+                <button class="btn btn-primary" type="submit">Save</button>
+              </div>
+            </form>
           </div>
         </div>
       </c:if>
@@ -80,14 +179,14 @@
       <c:if test="${not empty findVisit}">
         <div class="panel">
           <div class="panel-body">
-              <form method="post" action="<c:url value="/antenatal/find"/>" class="form">
-                <div class="form-group">
-                  <div class="col-sm-5">
-                    <input class="form-control" type="text" name="search" placeholder="Visit ID">
-                  </div>
-                  <button type="submit" class="btn btn-default">Search</button>
+            <form method="post" action="<c:url value="/antenatal/find"/>" class="form">
+              <div class="form-group">
+                <div class="col-sm-5">
+                  <input class="form-control" type="text" name="search" placeholder="Visit ID">
                 </div>
-              </form>
+                <button type="submit" class="btn btn-default">Search</button>
+              </div>
+            </form>
           </div>
         </div>
       </c:if>
