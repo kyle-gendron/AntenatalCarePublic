@@ -142,6 +142,7 @@
                     <div class="col-xs-5"><input type="number" class="form-control" name="urineProtein" min="0" max="140"></div>
                   </div>
                   </div>
+                </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <div class="col-xs-5">
@@ -156,7 +157,7 @@
                   </div>
                   <div class="form-group">
                     <div class="col-xs-5">
-                      <label></label>
+                      <label>Sickling Type</label>
                     </div>
                     <div class="col-xs-5">
                       <select name="sickling2" size="1" class="form-control" min="0" max="140">
