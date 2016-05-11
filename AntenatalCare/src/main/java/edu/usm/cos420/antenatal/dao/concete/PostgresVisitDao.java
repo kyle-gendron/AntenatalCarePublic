@@ -114,7 +114,7 @@ public class PostgresVisitDao implements IAntenatalRecord<PregnancyVisit> {
 
       query.setInt(1, record.getParity());
       query.setInt(2, record.getGestation());
-      query.setInt(3, record.getIPTDoses());
+      query.setString(3, record.getIPTDoses());
       query.setString(4, record.getTTDoses());
       query.setDouble(5, record.getHeight());
       query.setDouble(6, record.getWeight());
@@ -168,7 +168,7 @@ public class PostgresVisitDao implements IAntenatalRecord<PregnancyVisit> {
 
       query.setInt(1, record.getParity());
       query.setInt(2, record.getGestation());
-      query.setInt(3, record.getIPTDoses());
+      query.setString(3, record.getIPTDoses());
       query.setString(4, record.getTTDoses());
       query.setDouble(5, record.getHeight());
       query.setDouble(6, record.getWeight());

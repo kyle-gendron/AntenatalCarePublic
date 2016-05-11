@@ -499,8 +499,8 @@ public class VisitForm extends JPanel {
     return parseInteger(gestationInput.getText());
   }
 
-  public int getIPTDoses() {
-    return (int) iptInput.getValue();
+  public String getIPTDoses() {
+    return  String.valueOf((Double)iptInput.getValue());
   }
 
   /**
