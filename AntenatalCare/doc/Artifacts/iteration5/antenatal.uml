@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>edu.usm.cos420.antenatal</OriginalElement>
+  <nodes>
+    <node x="166.0" y="346.0">edu.usm.cos420.antenatal.servlet.antenatal.FindVisitServlet</node>
+    <node x="672.75" y="158.0">edu.usm.cos420.antenatal.domain.PregnancyVisit</node>
+    <node x="46.0" y="453.0">edu.usm.cos420.antenatal.domain.interfaces.IPerson</node>
+    <node x="226.0" y="453.0">edu.usm.cos420.antenatal.service.interfaces.IPregnacyFollowUpService</node>
+    <node x="479.0" y="346.0">edu.usm.cos420.antenatal.servlet.antenatal.AntenatalCareServlet</node>
+    <node x="474.5" y="453.0">edu.usm.cos420.antenatal.service.interfaces.IPregnacyVisitService</node>
+    <node x="940.3428571428572" y="79.0">edu.usm.cos420.antenatal.domain.PregnancyRecord</node>
+    <node x="925.75" y="158.0">edu.usm.cos420.antenatal.domain.PregnancyFollowUp</node>
+    <node x="208.0" y="532.0">edu.usm.cos420.antenatal.service.PregnancyFollowUpService</node>
+    <node x="330.0" y="335.0">edu.usm.cos420.antenatal.daoFactory.Postgres</node>
+    <node x="0.0" y="346.0">edu.usm.cos420.antenatal.servlet.antenatal.ViewVisitServlet</node>
+    <node x="460.0" y="532.0">edu.usm.cos420.antenatal.service.PregnacyVisitService</node>
+    <node x="0.0" y="532.0">edu.usm.cos420.antenatal.domain.DummyPerson</node>
+    <node x="313.5" y="191.0">edu.usm.cos420.antenatal.daoFactory.DaoFactory</node>
+    <node x="938.8428571428572" y="0.0">edu.usm.cos420.antenatal.domain.interfaces.IPregnancyRecord</node>
+    <node x="673.0" y="346.0">edu.usm.cos420.antenatal.servlet.antenatal.CreateVisitServlet</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="edu.usm.cos420.antenatal.domain.PregnancyVisit" target="edu.usm.cos420.antenatal.domain.PregnancyRecord">
+      <point x="0.0" y="-58.5" />
+      <point x="789.25" y="133.0" />
+      <point x="971.5928571428572" y="133.0" />
+      <point x="-31.25" y="14.5" />
+    </edge>
+    <edge source="edu.usm.cos420.antenatal.servlet.antenatal.AntenatalCareServlet" target="edu.usm.cos420.antenatal.daoFactory.DaoFactory">
+      <point x="0.0" y="-25.5" />
+      <point x="566.0" y="305.0" />
+      <point x="440.78571428571433" y="305.0" />
+      <point x="46.285714285714334" y="25.5" />
+    </edge>
+    <edge source="edu.usm.cos420.antenatal.domain.PregnancyRecord" target="edu.usm.cos420.antenatal.domain.interfaces.IPregnancyRecord">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="edu.usm.cos420.antenatal.domain.PregnancyFollowUp" target="edu.usm.cos420.antenatal.domain.PregnancyRecord">
+      <point x="0.0" y="-58.5" />
+      <point x="1203.75" y="133.0" />
+      <point x="1034.0928571428572" y="133.0" />
+      <point x="31.25" y="14.5" />
+    </edge>
+    <edge source="edu.usm.cos420.antenatal.domain.DummyPerson" target="edu.usm.cos420.antenatal.domain.interfaces.IPerson">
+      <point x="0.0" y="-36.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="edu.usm.cos420.antenatal.daoFactory.DaoFactory" target="edu.usm.cos420.antenatal.daoFactory.Postgres">
+      <point x="0.0" y="25.5" />
+      <point x="0.0" y="-36.5" />
+    </edge>
+    <edge source="edu.usm.cos420.antenatal.servlet.antenatal.ViewVisitServlet" target="edu.usm.cos420.antenatal.daoFactory.DaoFactory">
+      <point x="0.0" y="-25.5" />
+      <point x="73.0" y="295.0" />
+      <point x="325.07142857142856" y="295.0" />
+      <point x="-69.42857142857144" y="25.5" />
+    </edge>
+    <edge source="edu.usm.cos420.antenatal.service.PregnancyFollowUpService" target="edu.usm.cos420.antenatal.service.interfaces.IPregnacyFollowUpService">
+      <point x="0.0" y="-25.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="edu.usm.cos420.antenatal.servlet.antenatal.FindVisitServlet" target="edu.usm.cos420.antenatal.daoFactory.DaoFactory">
+      <point x="0.0" y="-25.5" />
+      <point x="238.0" y="305.0" />
+      <point x="348.2142857142857" y="305.0" />
+      <point x="-46.28571428571428" y="25.5" />
+    </edge>
+    <edge source="edu.usm.cos420.antenatal.daoFactory.Postgres" target="edu.usm.cos420.antenatal.daoFactory.DaoFactory">
+      <point x="-43.0" y="-36.5" />
+      <point x="351.5" y="315.0" />
+      <point x="371.3571428571429" y="315.0" />
+      <point x="-23.14285714285711" y="25.5" />
+    </edge>
+    <edge source="edu.usm.cos420.antenatal.servlet.antenatal.CreateVisitServlet" target="edu.usm.cos420.antenatal.daoFactory.DaoFactory">
+      <point x="-38.75" y="-25.5" />
+      <point x="711.75" y="295.0" />
+      <point x="463.92857142857144" y="295.0" />
+      <point x="69.42857142857144" y="25.5" />
+    </edge>
+    <edge source="edu.usm.cos420.antenatal.service.PregnacyVisitService" target="edu.usm.cos420.antenatal.service.interfaces.IPregnacyVisitService">
+      <point x="0.0" y="-25.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="edu.usm.cos420.antenatal.servlet.antenatal.CreateVisitServlet" target="edu.usm.cos420.antenatal.domain.PregnancyVisit">
+      <point x="38.75" y="-25.5" />
+      <point x="0.0" y="58.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9653794940079894" x="622.9117241379311" y="302.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+
