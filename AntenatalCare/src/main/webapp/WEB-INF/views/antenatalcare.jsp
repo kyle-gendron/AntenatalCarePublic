@@ -111,8 +111,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-6">
+
                 <div class="row">
                   <div class="form-group">
                     <div class="col-xs-5">
@@ -180,6 +179,8 @@
                         <option><label>AB</label></option>
                       </select></div>&nbsp;&nbsp;
                   </div>
+                  </div>
+                <div class="col-md-6">
                   <div class="form-group">
                     <div class="col-xs-5">
                       <label>Sickling</label>
