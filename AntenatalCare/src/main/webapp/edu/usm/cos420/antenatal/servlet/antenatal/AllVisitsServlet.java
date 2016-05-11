@@ -2,7 +2,6 @@ package edu.usm.cos420.antenatal.servlet.antenatal;
 
 import edu.usm.cos420.antenatal.daoFactory.DaoFactory;
 import edu.usm.cos420.antenatal.domain.PregnancyVisit;
-import edu.usm.cos420.antenatal.service.PregnacyVisitService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
