@@ -192,11 +192,11 @@ public class ReportGenerator {
 		
 		//collect IPT dose numbers
 		for(PregnancyVisit p: records){
-			if(p.getIPTDoses() > 0){
+			if(Double.valueOf(p.getIPTDoses()) > 0){
 				numIPTFirstDose++;
-				if(p.getIPTDoses() > 1){
+				if(Double.valueOf(p.getIPTDoses()) > 1){
 					numIPTSecondDose++;
-					if(p.getIPTDoses() > 2)
+					if(Double.valueOf(p.getIPTDoses()) > 2)
 						numIPTThirdDose++;
 				}
 			}
@@ -210,31 +210,80 @@ public class ReportGenerator {
 			if(f.getBloodFilm().equals("Reactive"))
 				numReactions++;
 		
-		//collect first-visit ITN usages
-		for(PregnancyVisit p: records){
-			if(p.getITN().equals("Yes"))
-				numITNFirstVisit++;
-			
-			Boolean secondAppointmentFound = false;
-			
-			//collect second-visit ITN usages  
-			for(PregnancyFollowUp f: followUps)		  
-			  //second appt not found
-			  if(secondAppointmentFound == true){
-			    break;
-		      }else{
-		        //id == records id
-		        if(p.getId().equals(f.getInitialID()))      
-	              //appt is after this first one
-		          if(f.getApptDate().isAfter(p.getApptDate()) == true)
-		            numITNSecondVisit++;
-		      }
-		}
-		
-		//collect PMTCT data?
-		//did we even collect that from the get go?
-			  
-		return new ArrayList<Integer>();
+		//collect the number of patients counseled for HIV testing
+        for(PregnancyVisit p: records){
+            if(p.getPreTestCounsel().equals("Yes")
+                    || p.getPostTestCounsel().equals("Yes")){
+                numHIVCounseled++;
+            }
+        }
+        
+        //collect the number of HIV tests conducted
+        String result;
+        for(PregnancyVisit p: records){
+            result = p.getHIVResults();
+            if(!result.equals(null))
+                numHIVTested++;
+        }
+        
+        //collect the number of positive HIV results
+        for(PregnancyVisit p: records){
+            if(p.getHIVResults().equals("Positive"))
+                numHIVPos++;
+        }
+            
+        //collect the number of babies on ARV
+        for(PregnancyVisit p: records)
+            if(p.getARV().equals("Yes"))
+                numARVBabies++;
+        
+        //collect the number of mothers on ARV drugs
+        for(PregnancyVisit p: records){
+            if(p.getARV().equals("Yes")){
+                numARVMothers++;
+                break;
+            }
+        }
+        
+        //collect data into arraylist
+        ArrayList<Integer> results = new ArrayList<Integer>();
+        results.add(numReg);
+        results.add(numAttendances);
+        results.add(num4thVisits);
+        results.add(numTT2ndDoses);
+        results.add(numMothers10To14);
+        results.add(numMothers15To19);
+        results.add(numMothers20To24);
+        results.add(numMothers25To29);
+        results.add(numMothers30To34);
+        results.add(numMothers35AndUp);
+        results.add(numMothers150OrLess);
+        results.add(numParity0);
+        results.add(numParity1To2);
+        results.add(numParity3To4);
+        results.add(numParity5AndMore);
+        results.add(numFirstTri);
+        results.add(numSecondTri);
+        results.add(numThirdTri);
+        results.add(numHBAtReg);
+        results.add(numHBUnder11AtReg);
+        results.add(numHBUnder7AtReg);
+        results.add(numHBAt36);
+        results.add(numHBUnder11At36);
+        results.add(numHBUnder7At36);
+        results.add(numIPTFirstDose);
+        results.add(numIPTSecondDose);
+        results.add(numIPTThirdDose);
+        results.add(numReactions);
+        results.add(numITNFirstVisit);
+        results.add(numITNSecondVisit);
+        results.add(numHIVCounseled);
+        results.add(numHIVTested);
+        results.add(numHIVPos);
+        results.add(numARVBabies);
+        results.add(numARVMothers);
+        
+        return results;
 	}
 	
     /**
