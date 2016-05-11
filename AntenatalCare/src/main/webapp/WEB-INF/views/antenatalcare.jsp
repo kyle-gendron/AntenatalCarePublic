@@ -115,56 +115,32 @@
               <div class="col-md-6">
                 <div class="row">
                   <div class="form-group">
-                    <div class="col-xs-5">
-                      <label>Fundal Height</label>
-                    </div>
-                    <div class="col-xs-5">
-                      <input type="number" class="form-control" name="quantity" min="0" max="140">
-                      </div>
+                    <div class="col-xs-5"><label>Fundal Height</label></div>
+                    <div class="col-xs-5"><input type="number" class="form-control" name="quantity" min="0" max="140"></div>
                   </div>
 
                   <div class="form-group">
-                    <div class="col-xs-5">
-                      <label>Due Date</label>
-                    </div>
-                    <div class="col-xs-5">
-                      <input type="date" class="form-control" name="date"></div>
-                    </div>
+                    <div class="col-xs-5"><label>Due Date</label></div>
+                    <div class="col-xs-5"><input type="date" class="form-control" name="date"></div></div>
 
                   <div class="form-group">
-                    <div class="col-xs-5">
-                      <label>HBatReg (g/dL)</label>
-                    </div>
-                    <div class="col-xs-5">
-                      <input type="number" class="form-control" name="quantity" min="0" max="200">
-                      </div>
+                    <div class="col-xs-5"><label>HBatReg (g/dL)</label></div>
+                    <div class="col-xs-5"><input type="number" class="form-control" name="quantity" min="0" max="200"></div>
                   </div>
 
                   <div class="form-group">
-                    <div class="col-xs-5">
-                      <label>HBat36 (g/dL)</label>
-                    </div>
-                    <div class="col-xs-5">
-                      <input type="number" class="form-control" name="quantity" min="0" max="140">
-                      </div>
+                    <div class="col-xs-5"><label>HBat36 (g/dL)</label></div>
+                    <div class="col-xs-5"><input type="number" class="form-control" name="quantity" min="0" max="140"></div>
                   </div>
 
                   <div class="form-group">
-                    <div class="col-xs-5">
-                      <label>Urine Test (Sugar)</label>
-                    </div>
-                    <div class="col-xs-5">
-                      <input type="number" class="form-control" name="quantity" min="0" max="200">
-                      </div>
+                    <div class="col-xs-5"><label>Urine Test (Sugar)</label></div>
+                    <div class="col-xs-5"><input type="number" class="form-control" name="quantity" min="0" max="200"></div>
                   </div>
 
                   <div class="form-group">
-                    <div class="col-xs-5">
-                      <label>Urine Test (Protein)</label>
-                    </div>
-                    <div class="col-xs-5">
-                      <input type="number" class="form-control" name="quantity" min="0" max="140">
-                    </div>
+                    <div class="col-xs-5"><label>Urine Test (Protein)</label></div>
+                    <div class="col-xs-5"><input type="number" class="form-control" name="quantity" min="0" max="140"></div>
                   </div>
                 </div>
               </div>
@@ -194,7 +170,97 @@
       <%--@elvariable id="viewVisit" type="java.lang.String"--%>
       <c:if test="${not empty viewVisit}">
         <%--@elvariable id="visitData" type="edu.usm.cos420.antenatal.domain.PregnancyVisit"--%>
-        ${visitData.toString()}
+        <div class="panel">
+          <div class="panel-body">
+            <h4>Visit ID: <c:out value="${visitData.id}"/></h4>
+            <form class="form-horizontal">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="form-group">
+                    <div class="col-xs-5"><label>Parity</label></div>
+                    <div class="col-xs-5"><c:out value="${visitData.parity}"/></div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-5"><label>Systolic BP</label></div>
+                    <div class="col-xs-5"><c:out value="${visitData.systolicBP}"/></div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-5"><label>Diastolic BP</label></div>
+                    <div class="col-xs-5"><c:out value="${visitData.diastolicBP}"/></div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-5"><label>Height (cm)</label></div>
+                    <div class="col-xs-5"><c:out value="${visitData.height}"/></div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-5"><label>Weight (kg)</label></div>
+                    <div class="col-xs-5"><c:out value="${visitData.weight}"/></div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-5"><label>Gestation</label></div>
+                    <div class="col-xs-5"><c:out value="${visitData.gestation}"/></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="form-group">
+                    <div class="col-xs-5"><label>Fundal Height</label></div>
+                    <div class="col-xs-5"><c:out value="${visitData.fundalHeight}"/></div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-5"><label>Due Date</label></div>
+                    <div class="col-xs-5"><c:out value="${visitData.EDD}"/></div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-5"><label>HBatReg (g/dL)</label></div>
+                    <div class="col-xs-5"><c:out value="${visitData.HBAtReg}"/></div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-5"><label>HBat36 (g/dL)</label></div>
+                    <div class="col-xs-5"><c:out value="${visitData.hBAt36Weeks}"/></div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-5"><label>Urine Test (Sugar)</label></div>
+                    <div class="col-xs-5"><c:out value="${visitData.urineTestSugar}"/></div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-5"><label>Urine Test (Protein)</label></div>
+                    <div class="col-xs-5"><c:out value="${visitData.urineTestProtein}"/></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="form-group">
+                        <div class="col-xs-5"><label>Complaints</label></div>
+                        <div class="col-xs-5"><c:out value="${visitData.complaints}"/></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="form-group">
+                        <div class="col-xs-5"><label>Remarks</label></div>
+                        <div class="col-xs-5"><c:out value="${visitData.remarks}"/></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
       </c:if>
       <%--@elvariable id="reporting" type="java.lang.String"--%>
       <c:if test="${not empty reporting}">
