@@ -2,6 +2,7 @@ package edu.usm.cos420.antenatal.view;
 
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.WindowEvent;
 import java.time.LocalDate;
 import java.util.Properties;
 
@@ -72,28 +73,30 @@ public class ReportingForm {
 		frame.add(windowMessage);
 		frame.add(panel);
 		frame.add(submitButton);
-		frame.pack();
-		
-		
+		frame.pack();		
 	}
 
 	/**
 	 * Get report year
 	 * @return the return year selected
 	 */
-	public int getReportYear(){
-		return (int) reportYear.getValue();
+	public Integer getReportYear(){
+		return (Integer)reportYear.getValue();
 	}
 
 	/**
 	 * Get report month
 	 * @return the return month selected
 	 */
-	public int getReportMonth(){
-		return (int) reportMonth.getValue();
+	public Integer getReportMonth(){
+		return (Integer) reportMonth.getValue();
 	}
 	
 	public void display(){
 		frame.setVisible(true);
+	}
+	
+	public void close(){
+	  frame.setVisible(false);
 	}
 }

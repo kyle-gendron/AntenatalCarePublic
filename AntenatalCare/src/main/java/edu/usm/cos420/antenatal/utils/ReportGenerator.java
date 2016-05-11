@@ -53,12 +53,12 @@ import edu.usm.cos420.antenatal.domain.PregnancyVisit;
  */
 public class ReportGenerator {
 	//input data
-	DummyPerson person;
-	ArrayList<PregnancyFollowUp> followUps;
-	ArrayList<PregnancyVisit> records;
+	static DummyPerson person;
+	static ArrayList<PregnancyFollowUp> followUps;
+	static ArrayList<PregnancyVisit> records;
 
 	//collected data
-	int numReg, numAttendances, num4thVisits, numTT2ndDoses,
+	static int numReg, numAttendances, num4thVisits, numTT2ndDoses,
 	numMothers10To14, numMothers15To19, numMothers20To24,
 	numMothers25To29, numMothers30To34, numMothers35AndUp,
 	numMothers150OrLess, numParity0, numParity1To2,
@@ -87,7 +87,7 @@ public class ReportGenerator {
 	 * @return the resulting collected data in the form of an 
 	 * arraylist.
 	 */
-	public ArrayList<Integer> collect(){
+	public static ArrayList<Integer> collect(){
 
 		//collect number of registers
 		numReg = records.size();
@@ -189,7 +189,7 @@ public class ReportGenerator {
 				}
 			}
 		}
-		
+		/* currently broken don't look
 		//collect IPT dose numbers
 		for(PregnancyVisit p: records){
 			if(Double.valueOf(p.getIPTDoses()) > 0){
@@ -201,12 +201,13 @@ public class ReportGenerator {
 				}
 			}
 		}
+		*/
 		
 	      //collect first-visit ITN usages
         for(PregnancyVisit p: records)
             if(p.getITN().equals("Yes"))
                 numITNFirstVisit++;
-        
+        /*
         //collect second-visit ITN usages  
         PregnancyFollowUp fol = null;
         for(PregnancyVisit r: records){
@@ -225,6 +226,7 @@ public class ReportGenerator {
                 }
             }
         }
+        */
 		
 		//collect number of positive malaria lab reactions
 		for(PregnancyVisit p: records)
@@ -313,22 +315,184 @@ public class ReportGenerator {
     /**
      * Creates a PDF document.
      * @param filename the path to the new PDF document
-     * @throws    DocumentException 
-     * @throws    IOException 
+     * @param year the year of the report
+     * @param month the month of the report
      */
-	public static void createPdf(String filename) throws DocumentException, IOException {
+	public static void createPdf(String filename, int year, int month) throws DocumentException, IOException {	  
 	  
-	  System.out.println("Generated a report!");
+	  //get data from stuff
+	  ArrayList<Integer> results = collect();
 	  
-	  //currently this is just a test to make sure that it works properly
-	  //file selector?
-	  
-	  Document doc = new Document();
+	  //open the form
+	  Document doc = new Document(PageSize.A4);
 	  PdfWriter.getInstance(doc, new FileOutputStream(filename));
-	  doc.open();
-	  doc.add(new Paragraph("Hello world!"));
+	  doc.open();	  
+	  
+	  //just a temp thing
+      PdfPTable table = new PdfPTable(11);
+      // the cell object
+      PdfPCell cell;
+      
+      cell = new PdfPCell(new Phrase("Monthly Midwife Report"
+          + "Name of Insitution:\t\t" + " Antenatal Office\n"
+          + "Type of Facility:\t\t"  + " Antenatal\n"
+          + "Sub Dist:\t\t"          +  person.getSubDistrict() + "\n"
+          + "District:\t"          +  person.getDistrict() + "\n"
+          + "Region:\t\t"            +  "Here\n"
+          + "Year:\t\t"              +  year + "\n"
+          + "Month:\t\t"             +  month + "\n" ));
+      cell.setColspan(11);
+      table.addCell(cell);
+           
+      cell = new PdfPCell(new Phrase("# of Registrants"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(0) + ""));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase("Attendances"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(1)+ ""));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase("# making 4th visists"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(2)+ ""));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase("TT 2+ vaccination"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(3)+ ""));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase("AGE OF MOTHER AT REGISTRATION"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase("10 - 14"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(4)+ ""));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase("15 - 19"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(5)+ ""));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase("20 - 24"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(6)+ ""));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase("25 - 29"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(7)+ ""));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase("30 - 34"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(8)+ ""));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase("35+"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(9)+ ""));
+      table.addCell(cell);      
+      cell = new PdfPCell(new Phrase("Mothers below 150cm"));
+      table.addCell(cell); 
+      cell = new PdfPCell(new Phrase(results.get(10)+ ""));
+      table.addCell(cell); 
+      
+      cell = new PdfPCell(new Phrase("Parity:"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase("0"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(11)+ ""));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase("1 - 2"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(12)+ ""));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase("3 - 4"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(13)+ ""));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase("5+"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(14)+ ""));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase("Trimester at Registration"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase("First"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(15)+ ""));
+      table.addCell(cell);      
+      cell = new PdfPCell(new Phrase("Second"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(16)+ ""));
+      table.addCell(cell); 
+      cell = new PdfPCell(new Phrase("Third"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(17)+ ""));
+      table.addCell(cell); 
+      cell = new PdfPCell(new Phrase("HB at reg:"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(18)+ ""));
+      table.addCell(cell); 
+      cell = new PdfPCell(new Phrase("HB <11"));
+      table.addCell(cell);      
+      cell = new PdfPCell(new Phrase(results.get(19)+ ""));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase("HB <7"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(20)+ ""));
+      table.addCell(cell); 
+      cell = new PdfPCell(new Phrase("HB @ 36"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(21)+ ""));
+      table.addCell(cell); 
+      cell = new PdfPCell(new Phrase("HB < 11"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(22)+ ""));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase("HB < 7"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(23)+ ""));
+      table.addCell(cell); 
+      cell = new PdfPCell(new Phrase("IPT 1st Dose"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(24)+ ""));
+      table.addCell(cell); 
+      cell = new PdfPCell(new Phrase("IPT 2nd Dose"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(25)+ ""));
+      table.addCell(cell);      
+      cell = new PdfPCell(new Phrase("IPT 3rd Dose"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(26)+ ""));
+      table.addCell(cell); 
+      cell = new PdfPCell(new Phrase("Reactions"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(27)+ ""));
+      table.addCell(cell); 
+      cell = new PdfPCell(new Phrase("ITN 1st Visit"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(28)+ ""));
+      table.addCell(cell); 
+      cell = new PdfPCell(new Phrase("ITN 2nd Visit"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(29)+ ""));
+      table.addCell(cell);       
+      cell = new PdfPCell(new Phrase("HIV Consouled"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(30)+ ""));
+      table.addCell(cell); 
+      cell = new PdfPCell(new Phrase("HIV Tested"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(31)+ ""));
+      table.addCell(cell); 
+      cell = new PdfPCell(new Phrase("HIV+"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(32)+ ""));
+      table.addCell(cell); 
+      cell = new PdfPCell(new Phrase("ARV Babies"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(33)+ ""));
+      table.addCell(cell); 
+      cell = new PdfPCell(new Phrase("ARV Mothers"));
+      table.addCell(cell);
+      cell = new PdfPCell(new Phrase(results.get(34)+ ""));
+      table.addCell(cell);       
+	  
+	  doc.add(table);
 	  doc.close();
-	  
-	  
 	}
 }

@@ -20,6 +20,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -119,16 +120,21 @@ public class AntenatalController implements ActionListener {
                 (this.view).addSub("", subController.setPanel(s));
               }
               (this.view).addSub("", subController.getPanel());
-
             }
-
-
           }
         }
         break;
       }
       case "Generate Monthly Report": {
-        ReportingController repController = new ReportingController();
+        ArrayList<PregnancyFollowUp> followUps = null;
+        try {
+          followUps = new ArrayList<>(subService.getAllSubVisits());
+        } catch (SQLException e1) {
+          e1.printStackTrace();
+        }
+        ArrayList<PregnancyVisit> records = new ArrayList<>(service.getAllVisits());      
+        
+        ReportingController repController = new ReportingController(dummyPerson, followUps, records);
         this.view.addReportingWindow(repController);
         break;
       }
