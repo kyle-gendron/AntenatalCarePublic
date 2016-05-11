@@ -15,7 +15,7 @@ import java.util.List;
  * Created by aaron on 5/2/2016.
  */
 
-@WebServlet(name = "AntenatalCareServlet", urlPatterns = {"/antenatal/all", "/antenatal/"})
+@WebServlet(name = "AntenatalCareServlet", urlPatterns = {"/antenatal/all", "/antenatal"})
 public class AntenatalCareServlet extends HttpServlet {
   private final DaoFactory db;
 

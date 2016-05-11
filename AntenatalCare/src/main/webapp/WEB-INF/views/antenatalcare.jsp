@@ -69,7 +69,16 @@
       <%--@elvariable id="findVisit" type="java.lang.String"--%>
       <c:if test="${not empty findVisit}">
         <div class="panel">
-          <div class="panel-body">findVisit</div>
+          <div class="panel-body">
+              <form method="post" action="<c:url value="/antenatal/find"/>" class="form">
+                <div class="form-group">
+                  <div class="col-sm-5">
+                    <input class="form-control" type="text" name="search" placeholder="Visit ID">
+                  </div>
+                  <button type="submit" class="btn btn-default">Search</button>
+                </div>
+              </form>
+          </div>
         </div>
       </c:if>
       <%--@elvariable id="viewVisit" type="java.lang.String"--%>
