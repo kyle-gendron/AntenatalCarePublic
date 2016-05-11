@@ -38,14 +38,16 @@
                 </thead>
                 <tbody>
                   <c:forEach items="${visitList}" var="currentItem">
-                    <div>
-                      <tr>
-                        <td><c:out value="${currentItem.id}"/></td>
-                        <td><c:out value="${currentItem.personId}"/></td>
-                        <td><c:out value="${currentItem.createdDate}"/></td>
-                        <td><c:out value="${currentItem.updatedDate}"/></td>
-                      </tr>
-                    </div>
+                    <tr>
+                      <td>
+                        <a href="<c:url value="/antenatal/view/${currentItem.id}"/>">
+                          <c:out value="${currentItem.id}"/>
+                        </a>
+                      </td>
+                      <td><c:out value="${currentItem.personId}"/></td>
+                      <td><c:out value="${currentItem.createdDate}"/></td>
+                      <td><c:out value="${currentItem.updatedDate}"/></td>
+                    </tr>
                   </c:forEach>
                 </tbody>
             </table>
@@ -72,7 +74,8 @@
       </c:if>
       <%--@elvariable id="viewVisit" type="java.lang.String"--%>
       <c:if test="${not empty viewVisit}">
-        viewVisit
+        <%--@elvariable id="visitData" type="edu.usm.cos420.antenatal.domain.PregnancyVisit"--%>
+        ${visitData.toString()}
       </c:if>
     </div>
   </div>
