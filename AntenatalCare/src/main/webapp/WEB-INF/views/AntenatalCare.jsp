@@ -29,7 +29,7 @@
             <%--@elvariable id="visitList" type="java.util.ArrayList"--%>
             <c:forEach items="${visitList}" var="currentItem">
               <div>
-                <c:out value="${currentItem.toString()}"/>
+                <c:out value="${currentItem.id}"/>
               </div>
             </c:forEach>
           </div>
