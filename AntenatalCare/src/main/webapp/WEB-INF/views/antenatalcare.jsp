@@ -110,9 +110,7 @@
                       <input type="number" class="form-control" name="gestation" min="0" max="200">
                     </div>
                   </div>
-                </div>
 
-                <div class="row">
                   <div class="form-group">
                     <div class="col-xs-5"><label>Fundal Height</label></div>
                     <div class="col-xs-5"><input type="number" class="form-control" name="fundal" min="0" max="140"></div>
@@ -120,7 +118,8 @@
 
                   <div class="form-group">
                     <div class="col-xs-5"><label>Due Date</label></div>
-                    <div class="col-xs-5"><input type="date" class="form-control" name="date"></div></div>
+                    <div class="col-xs-5"><input type="date" class="form-control" name="date"></div>
+                  </div>
 
                   <div class="form-group">
                     <div class="col-xs-5"><label>HBatReg (g/dL)</label></div>
@@ -141,9 +140,11 @@
                     <div class="col-xs-5"><label>Urine Test (Protein)</label></div>
                     <div class="col-xs-5"><input type="number" class="form-control" name="urineProtein" min="0" max="140"></div>
                   </div>
+
                   </div>
                 </div>
                 <div class="col-md-6">
+                  <div class="row">
                   <div class="form-group">
                     <div class="col-xs-5">
                       <label>Sickling</label>
