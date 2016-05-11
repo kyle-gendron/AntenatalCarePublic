@@ -59,7 +59,17 @@
                 <form method="post" action="CreateVisitServlet" class="form-inline">
                   <div class="form-group"><span class="label label-default" style="font-size: medium">Parity</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="20" style="width: 60px;"></div> &nbsp;&nbsp;
                   <div class="form-group"><span class="label label-default" style="font-size: medium">Systolic BP</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="200" style="width: 70px;"></div> /
-                  <div class="form-group"><span class="label label-default" style="font-size: medium">Diastolic</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="140" style="width: 70px;"></div>&nbsp;&nbsp;
+                  <div class="form-group"><span class="label label-default" style="font-size: medium">Diastolic BP</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="140" style="width: 70px;"></div>&nbsp;&nbsp;
+                  <div class="form-group"><span class="label label-default" style="font-size: medium">Height</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="200" style="width: 70px;"><label>cm</label></div> &nbsp;&nbsp;
+                  <div class="form-group"><span class="label label-default" style="font-size: medium">Weight</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="140" style="width: 70px;"><label>kg</label></div>&nbsp;&nbsp;
+                  <div class="form-group"><span class="label label-default" style="font-size: medium">Gestation</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="200" style="width: 70px;"></div>&nbsp;&nbsp;
+                  <div class="form-group"><span class="label label-default" style="font-size: medium">Fundal Height</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="140" style="width: 70px;"></div>&nbsp;&nbsp;
+                  <div class="form-group"><span class="label label-default" style="font-size: medium">Due Date</span>&nbsp;<input type="date" class="form-control" name="date" style="width: 100px;"></div>&nbsp;&nbsp;
+                  <div class="form-group"><span class="label label-default" style="font-size: medium">HBatReg (g/dL)</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="200" style="width: 70px;"></div> &nbsp;&nbsp;
+                  <div class="form-group"><span class="label label-default" style="font-size: medium">HBat36 (g/dL)</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="140" style="width: 70px;"></div>&nbsp;&nbsp;
+                  <div class="form-group"><span class="label label-default" style="font-size: medium">Urine Test (Sugar)</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="200" style="width: 70px;"></div> &nbsp;&nbsp;
+                  <div class="form-group"><span class="label label-default" style="font-size: medium">Urine Test (Protein)</span>&nbsp;<input type="number" class="form-control" name="quantity" min="0" max="140" style="width: 70px;"></div>&nbsp;&nbsp;
+
                 </form>
           </div>
         </div>
