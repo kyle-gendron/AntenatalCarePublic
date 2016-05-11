@@ -202,6 +202,30 @@ public class ReportGenerator {
 			}
 		}
 		
+	      //collect first-visit ITN usages
+        for(PregnancyVisit p: records)
+            if(p.getITN().equals("Yes"))
+                numITNFirstVisit++;
+        
+        //collect second-visit ITN usages  
+        PregnancyFollowUp fol = null;
+        for(PregnancyVisit r: records){
+            
+            //cycle through followup visits looking for earliest
+            for(PregnancyFollowUp f: followUps){
+                if(!fol.equals(null)){
+                    if(fol.getApptDate().isAfter(f.getApptDate())
+                            && fol.getInitialID().equals(f.getInitialID())){
+                        fol = f;
+                    }
+                }
+                else{
+                    if(f.getInitialID().equals(r.getId()))
+                        fol = f;
+                }
+            }
+        }
+		
 		//collect number of positive malaria lab reactions
 		for(PregnancyVisit p: records)
 			if(p.getBloodFilm().equals("Reactive"))
@@ -292,7 +316,10 @@ public class ReportGenerator {
      * @throws    DocumentException 
      * @throws    IOException 
      */
-	public void createPdf(String filename) throws DocumentException, IOException {
+	public static void createPdf(String filename) throws DocumentException, IOException {
+	  
+	  System.out.println("Generated a report!");
+	  
 	  //currently this is just a test to make sure that it works properly
 	  //file selector?
 	  

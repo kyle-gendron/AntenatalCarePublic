@@ -4,6 +4,7 @@ import edu.usm.cos420.antenatal.domain.DummyPerson;
 import edu.usm.cos420.antenatal.domain.PregnancyFollowUp;
 import edu.usm.cos420.antenatal.domain.PregnancyVisit;
 import edu.usm.cos420.antenatal.service.interfaces.IPregnacyVisitService;
+import edu.usm.cos420.antenatal.utils.ReportGenerator;
 import edu.usm.cos420.antenatal.view.PreviousVisits;
 import edu.usm.cos420.antenatal.service.interfaces.IPregnacyFollowUpService;
 import edu.usm.cos420.antenatal.service.PregnacyVisitService;
@@ -11,8 +12,12 @@ import edu.usm.cos420.antenatal.service.PregnancyFollowUpService;
 import edu.usm.cos420.antenatal.view.AntenatalView;
 
 import javax.swing.*;
+
+import com.itextpdf.text.DocumentException;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -120,6 +125,11 @@ public class AntenatalController implements ActionListener {
 
           }
         }
+        break;
+      }
+      case "Generate Monthly Report": {
+        ReportingController repController = new ReportingController();
+        this.view.addReportingWindow(repController);
         break;
       }
       case "Quit": {

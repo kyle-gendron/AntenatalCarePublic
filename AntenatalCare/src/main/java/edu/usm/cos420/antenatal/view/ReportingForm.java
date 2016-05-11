@@ -47,8 +47,10 @@ public class ReportingForm {
 				+ " and year of the Midwife Report you'd like to see");
 
 		//year to be selected
+		
 		JLabel yearLabel = new JLabel("Year: ");
 		SpinnerModel year =  new SpinnerNumberModel(1970,1970,LocalDate.now().getYear(),1);
+		
 		reportYear = new JSpinner(year);
 
 		//month to be selected
