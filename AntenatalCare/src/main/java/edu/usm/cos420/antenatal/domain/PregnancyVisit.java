@@ -264,7 +264,7 @@ public class PregnancyVisit extends PregnancyRecord {
   /**
    * Sets the number of IPT Doses given
    *
-   * @param i the iPTDoses to set
+   * @param iPTDoses the iPTDoses to set
    */
   public void setIPTDoses(String iPTDoses) {
     this.iPTDoses = iPTDoses;

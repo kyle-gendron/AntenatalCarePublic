@@ -14,6 +14,7 @@ import java.util.UUID;
 /**
  * Created by aaron on 4/16/2016.
  */
+@SuppressWarnings("ALL")
 public class PregnancyFollowUpDao implements IAntenatalRecord<PregnancyFollowUp> {
 
   private static final String
