@@ -173,11 +173,11 @@
                     </div>
                     <div class="col-xs-5">
                       <select name="bloodtype" size="1" class="form-control" min="0" max="140">
-                        <option>""</option>
-                        <option>"O"</option>
-                        <option>"A"</option>
-                        <option>"B"</option>
-                        <option>"AB"</option>
+                        <option></option>
+                        <option><label>O</label></option>
+                        <option><label>A</label></option>
+                        <option><label>B</label></option>
+                        <option><label>AB</label></option>
                       </select></div>&nbsp;&nbsp;
                   </div>
                     </div>
