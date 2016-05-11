@@ -16,7 +16,7 @@
     <div class="col-md-12">
       <ul class="nav nav-tabs">
         <li role="presentation" class="${allVisits}"><a href="<c:url value="/antenatal/all"/>">All Visits</a></li>
-        <li role="presentation" class="${newVisit}"><a href="<c:url value="/antenatal/new"/>">New Visit</a></li>
+        <li role="presentation" class="${newVisit}"><a href="<c:url value="/antenatal/create"/>">New Visit</a></li>
         <li role="presentation" class="${findVisit}"><a href="<c:url value="/antenatal/find"/>">Find Visit</a></li>
       </ul>
       <%--@elvariable id="allVisits" type="java.lang.String"--%>
@@ -55,7 +55,7 @@
       <c:if test="${not empty newVisit}">
         <div class="panel">
           <div class="panel-body">
-            <form method="post" action="CreateVisitServlet" class="form-horizontal">
+            <form method="post" action="<c:url value="/antenatal/create"/>" class="form-horizontal">
               <div class="col-md-6">
                 <div class="row">
                   <div class="form-group">
@@ -63,7 +63,7 @@
                       <label>Parity</label>
                     </div>
                     <div class="col-xs-5">
-                      <input type="number" class="form-control" name="quantity" min="0" max="20">
+                      <input type="number" class="form-control" name="parity" min="0" max="20">
                     </div>
                   </div>
                   <div class="form-group">
