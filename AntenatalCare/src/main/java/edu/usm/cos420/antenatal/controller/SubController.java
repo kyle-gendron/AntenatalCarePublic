@@ -21,7 +21,7 @@ import java.time.LocalDate;
  */
 public class SubController implements ActionListener {
 
-  //private PregnacyFollowUpService service;
+  //private PregnancyFollowUpService service;
   private final AntenatalController controller;
   private final SubsequentVisit panel;
   private String id = null;
@@ -32,7 +32,7 @@ public class SubController implements ActionListener {
   public SubController(AntenatalController controller) {
     this.controller = controller;
     this.panel = new SubsequentVisit(this);
-    //this.service = new PregnacyFollowUpService();
+    //this.service = new PregnancyFollowUpService();
   }
 
 
@@ -68,6 +68,7 @@ public class SubController implements ActionListener {
         double weight = panel.getPatientWeight();
         String bloodFilm = panel.getBloodFilm();
         String refer = panel.getRefer();
+        String itn = panel.getITNUse();
         String subId = IPregnacyFollowUpService.getNextID();
 
         // Create a new Visit object to pass to the service class.
