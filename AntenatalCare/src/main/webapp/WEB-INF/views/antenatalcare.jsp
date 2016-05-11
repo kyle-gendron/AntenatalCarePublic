@@ -180,6 +180,173 @@
                         <option><label>AB</label></option>
                       </select></div>&nbsp;&nbsp;
                   </div>
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>Sickling</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <select name="sickling" size="1" class="form-control" min="0" max="140">
+                        <option></option>
+                        <option><label>Positive</label></option>
+                        <option><label>Negative</label></option>
+                      </select></div>&nbsp;&nbsp;
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label></label>
+                    </div>
+                    <div class="col-xs-5">
+                      <select name="sickling2" size="1" class="form-control" min="0" max="140">
+                        <option></option>
+                        <option><label>N/A</label></option>
+                        <option><label>Hemoglobin SS</label></option>
+                        <option><label>Hemoglobin SC</label></option>
+                        <option><label>Hemoglobin SB+</label></option>
+                        <option><label>Beta Zero</label></option>
+                      </select></div>&nbsp;&nbsp;
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>VDLab</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <select name="vdlab" size="1" class="form-control" min="0" max="140">
+                        <option></option>
+                        <option><label>Reactive</label></option>
+                        <option><label>Non-Reactive</label></option>
+                      </select></div>&nbsp;&nbsp;
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>PreTest Counseling</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <select name="pretest" size="1" class="form-control" min="0" max="140">
+                        <option></option>
+                        <option><label></label></option>
+                        <option><label>Yes</label></option>
+                        <option><label>No</label></option>
+                      </select></div>&nbsp;&nbsp;
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>Test Result</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <select name="testresult" size="1" class="form-control" min="0" max="140">
+                        <option></option>
+                        <option><label></label></option>
+                        <option><label>Positive</label></option>
+                        <option><label>Negative</label></option>
+                      </select></div>&nbsp;&nbsp;
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>PostTest Counseling</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <select name="posttest" size="1" class="form-control" min="0" max="140">
+                        <option></option>
+                        <option><label></label></option>
+                        <option><label>Yes</label></option>
+                        <option><label>No</label></option>
+                      </select></div>&nbsp;&nbsp;
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>ARV Drug Use</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <select name="arvdrug" size="1" class="form-control" min="0" max="140">
+                        <option></option>
+                        <option><label></label></option>
+                        <option><label>Yes</label></option>
+                        <option><label>No</label></option>
+                      </select></div>&nbsp;&nbsp;
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>Blood Film</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <select name="bloodfilm" size="1" class="form-control" min="0" max="140">
+                        <option></option>
+                        <option><label></label></option>
+                        <option><label>Present</label></option>
+                        <option><label>Not Present</label></option>
+                      </select></div>&nbsp;&nbsp;
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>Male Involvement</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <select name="maleinvolve" size="1" class="form-control" min="0" max="140">
+                        <option><label></label></option>
+                        <option><label>Present</label></option>
+                        <option><label>Not Present</label></option>
+                      </select></div>&nbsp;&nbsp;
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>Trimester</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <select name="trimester" size="1" class="form-control" min="0" max="140">
+                        <option></option>
+                        <option><label>0</label></option>
+                        <option><label>1</label></option>
+                        <option><label>2</label></option>
+                        <option><label>3</label></option>
+                      </select></div>&nbsp;&nbsp;
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>Subsequent Visits</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <select name="subvisits" size="1" class="form-control" min="0" max="140">
+                        <option></option>
+                        <option><label>O</label></option>
+                        <option><label>A</label></option>
+                        <option><label>B</label></option>
+                        <option><label>AB</label></option>
+                      </select></div>&nbsp;&nbsp;
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>TT</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <select name="tt" size="1" class="form-control" min="0" max="140">
+                        <option></option>
+                        <option><label>O</label></option>
+                        <option><label>A</label></option>
+                        <option><label>B</label></option>
+                        <option><label>AB</label></option>
+                      </select></div>&nbsp;&nbsp;
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>IPT</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <input type="number" class="form-control" name="ipt" min="0" max="140">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>ITN</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <select name="itn" size="1" class="form-control" min="0" max="140">
+                        <option></option>
+                        <option><label>O</label></option>
+                        <option><label>A</label></option>
+                        <option><label>B</label></option>
+                        <option><label>AB</label></option>
+                      </select></div>&nbsp;&nbsp;
+                  </div>
                     </div>
                   </div>
                 </div>
