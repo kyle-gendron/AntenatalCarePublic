@@ -18,6 +18,7 @@
         <li role="presentation" class="${allVisits}"><a href="<c:url value="/antenatal/all"/>">All Visits</a></li>
         <li role="presentation" class="${newVisit}"><a href="<c:url value="/antenatal/create"/>">New Visit</a></li>
         <li role="presentation" class="${findVisit}"><a href="<c:url value="/antenatal/find"/>">Find Visit</a></li>
+        <li role="presentation" class="${reporting}"><a href="<c:url value="/antenatal/reporting"/>">Report</a></li>
       </ul>
       <%--@elvariable id="allVisits" type="java.lang.String"--%>
       <c:if test="${not empty allVisits}">
@@ -194,6 +195,25 @@
       <c:if test="${not empty viewVisit}">
         <%--@elvariable id="visitData" type="edu.usm.cos420.antenatal.domain.PregnancyVisit"--%>
         ${visitData.toString()}
+      </c:if>
+      <%--@elvariable id="reporting" type="java.lang.String"--%>
+      <c:if test="${not empty reporting}">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="page-header">
+              <h3>Antenatal Care Reporting</h3>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-body">
+              <form method="post" action="CreateVisitServlet" class="form-inline">
+                <label for="begin">Begin Date : </label><input id="begin" type="date" value="2016-01-01"/>
+                <label for="end">End Date : </label><input id="end" type="date" value="2016-01-01"/>
+                <input type="submit" value="Submit"/>
+              </form>
+            </div>
+          </div>
+        </div>
       </c:if>
     </div>
   </div>
