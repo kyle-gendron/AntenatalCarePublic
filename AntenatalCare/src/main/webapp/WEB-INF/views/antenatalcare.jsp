@@ -72,7 +72,7 @@
                       <label>Systolic BP</label>
                     </div>
                     <div class="col-xs-5">
-                      <input type="number" class="form-control" name="quantity" min="0" max="200"/>
+                      <input type="number" class="form-control" name="systolic" min="0" max="200"/>
                     </div>
                   </div>
                   <div class="form-group">
@@ -80,7 +80,7 @@
                       <label>Diastolic BP</label>
                     </div>
                     <div class="col-xs-5">
-                      <input type="number" class="form-control" name="quantity" min="0" max="140">
+                      <input type="number" class="form-control" name="diastolic" min="0" max="140">
                     </div>
                   </div>
 
@@ -89,7 +89,7 @@
                       <label>Height (cm)</label>
                     </div>
                     <div class="col-xs-5">
-                      <input type="number" class="form-control" name="quantity" min="0" max="200">
+                      <input type="number" class="form-control" name="height" min="0" max="200">
                     </div>
                   </div>
 
@@ -98,7 +98,7 @@
                       <label>Weight (kg)</label>
                     </div>
                     <div class="col-xs-5">
-                      <input type="number" class="form-control" name="quantity" min="0" max="140">
+                      <input type="number" class="form-control" name="weight" min="0" max="140">
                     </div>
                   </div>
 
@@ -107,7 +107,7 @@
                       <label>Gestation</label>
                     </div>
                     <div class="col-xs-5">
-                      <input type="number" class="form-control" name="quantity" min="0" max="200">
+                      <input type="number" class="form-control" name="gestation" min="0" max="200">
                     </div>
                   </div>
                 </div>
@@ -119,7 +119,7 @@
                       <label>Fundal Height</label>
                     </div>
                     <div class="col-xs-5">
-                      <input type="number" class="form-control" name="quantity" min="0" max="140">
+                      <input type="number" class="form-control" name="fundal" min="0" max="140">
                       </div>
                   </div>
 
@@ -136,7 +136,7 @@
                       <label>HBatReg (g/dL)</label>
                     </div>
                     <div class="col-xs-5">
-                      <input type="number" class="form-control" name="quantity" min="0" max="200">
+                      <input type="number" class="form-control" name="hbatreg" min="0" max="200">
                       </div>
                   </div>
 
@@ -145,7 +145,7 @@
                       <label>HBat36 (g/dL)</label>
                     </div>
                     <div class="col-xs-5">
-                      <input type="number" class="form-control" name="quantity" min="0" max="140">
+                      <input type="number" class="form-control" name="hbat36" min="0" max="140">
                       </div>
                   </div>
 
@@ -154,7 +154,7 @@
                       <label>Urine Test (Sugar)</label>
                     </div>
                     <div class="col-xs-5">
-                      <input type="number" class="form-control" name="quantity" min="0" max="200">
+                      <input type="number" class="form-control" name="urinesugar" min="0" max="200">
                       </div>
                   </div>
 
@@ -163,7 +163,23 @@
                       <label>Urine Test (Protein)</label>
                     </div>
                     <div class="col-xs-5">
-                      <input type="number" class="form-control" name="quantity" min="0" max="140">
+                      <input type="number" class="form-control" name="urineprotein" min="0" max="140">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-5">
+                      <label>Blood Type</label>
+                    </div>
+                    <div class="col-xs-5">
+                      <select name="bloodtype" size="1" class="form-control" min="0" max="140">
+                        <option></option>
+                        <option><label>O</label></option>
+                        <option><label>A</label></option>
+                        <option><label>B</label></option>
+                        <option><label>AB</label></option>
+                      </select></div>&nbsp;&nbsp;
+                  </div>
                     </div>
                   </div>
                 </div>
