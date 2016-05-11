@@ -1,7 +1,9 @@
 package edu.usm.cos420.antenatal.domain;
 
+import edu.usm.cos420.antenatal.domain.interfaces.IPerson;
 import edu.usm.cos420.antenatal.domain.interfaces.IPregnancyRecord;
 
+import javax.ejb.Local;
 import java.time.LocalDate;
 
 /**
@@ -13,7 +15,10 @@ public abstract class PregnancyRecord implements IPregnancyRecord {
   protected double weight; //weight in kg
   protected double fundalHeight; //in cm
   protected LocalDate apptDate; //date of subsequent visit
-  private String id;
+  protected String id;
+  private LocalDate updatedDate;
+  private LocalDate createdDate;
+  private String personId;
 
   /**
    * Returns ID of Antenatal Visit
@@ -71,6 +76,31 @@ public abstract class PregnancyRecord implements IPregnancyRecord {
 
   public void setApptDate(LocalDate apptDate) {
     this.apptDate = apptDate;
+  }
+
+  public LocalDate getUpdatedDate() {
+    return updatedDate;
+  }
+
+  public void setUpdatedDate(LocalDate date) {
+    this.updatedDate = date;
+  }
+
+
+  public LocalDate getCreatedDate() {
+    return createdDate;
+  }
+
+  public void setCreatedDate(LocalDate date) {
+    this.createdDate = date;
+  }
+
+  public String getPersonId() {
+    return personId;
+  }
+
+  public void setPersonId(String id) {
+    this.personId = id;
   }
 
 }

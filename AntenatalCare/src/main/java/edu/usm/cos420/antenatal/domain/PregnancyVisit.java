@@ -39,7 +39,6 @@ public class PregnancyVisit extends PregnancyRecord {
   private String vDLabResults, preTestCounsel, hIVResults, postTestCounsel, ARV;
   private String bloodFilm;  //results of malaria blood film test
   private String iTN;
-  private String id;  //id used to identify a particular set of antenatal visits
   private String maleInvolvement;
   private String remarks;
   private String complaints;
@@ -87,11 +86,26 @@ public class PregnancyVisit extends PregnancyRecord {
 
   public PregnancyVisit(ResultSet rs) throws SQLException {
 
-    Date edd = rs.getDate("EDD");
+    // This should be refactored
+    Date edd = rs.getDate("edd");
     LocalDate edDate = null;
 
     if (edd != null) {
       edDate = edd.toLocalDate();
+    }
+
+    Date created = rs.getDate("created");
+    LocalDate createdDate = null;
+
+    if (created != null) {
+      createdDate = created.toLocalDate();
+    }
+
+    Date updated = rs.getDate("updated");
+    LocalDate updatedDate = null;
+
+    if (updated != null) {
+      updatedDate = updated.toLocalDate();
     }
 
     setId(rs.getString("id"));
@@ -124,7 +138,9 @@ public class PregnancyVisit extends PregnancyRecord {
     setMaleInvolvement(rs.getString("maleInvolvement"));
     setComplaints(rs.getString("complaints"));
     setRemarks(rs.getString("remarks"));
-    // TODO: Add timestamp
+    setCreatedDate(createdDate);
+    setUpdatedDate(updatedDate);
+    setPersonId(rs.getString("personId"));
   }
 
   @Override
