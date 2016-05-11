@@ -307,10 +307,18 @@
                     <div class="col-xs-5">
                       <select name="subvisits" size="1" class="form-control" min="0" max="140">
                         <option></option>
-                        <option><label>O</label></option>
-                        <option><label>A</label></option>
-                        <option><label>B</label></option>
-                        <option><label>AB</label></option>
+                        <option><label>1</label></option>
+                        <option><label>2</label></option>
+                        <option><label>3</label></option>
+                        <option><label>4</label></option>
+                        <option><label>5</label></option>
+                        <option><label>6</label></option>
+                        <option><label>7</label></option>
+                        <option><label>8</label></option>
+                        <option><label>9</label></option>
+                        <option><label>10</label></option>
+                        <option><label>11</label></option>
+                        <option><label>12</label></option>
                       </select></div>&nbsp;&nbsp;
                   </div>
                   <div class="form-group">
@@ -320,10 +328,9 @@
                     <div class="col-xs-5">
                       <select name="tt" size="1" class="form-control" min="0" max="140">
                         <option></option>
-                        <option><label>O</label></option>
-                        <option><label>A</label></option>
-                        <option><label>B</label></option>
-                        <option><label>AB</label></option>
+                        <option><label>Given</label></option>
+                        <option><label>Booster</label></option>
+                        <option><label>Protected</label></option>
                       </select></div>&nbsp;&nbsp;
                   </div>
                   <div class="form-group">
@@ -341,10 +348,8 @@
                     <div class="col-xs-5">
                       <select name="itn" size="1" class="form-control" min="0" max="140">
                         <option></option>
-                        <option><label>O</label></option>
-                        <option><label>A</label></option>
-                        <option><label>B</label></option>
-                        <option><label>AB</label></option>
+                        <option><label>Yes</label></option>
+                        <option><label>No</label></option>
                       </select></div>&nbsp;&nbsp;
                   </div>
                     </div>
