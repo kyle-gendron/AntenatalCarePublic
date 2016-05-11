@@ -500,7 +500,7 @@ public class VisitForm extends JPanel {
   }
 
   public String getIPTDoses() {
-    return String.valueOf(iptInput.getValue());
+    return  String.valueOf((Double)iptInput.getValue());
   }
 
   /**
@@ -667,11 +667,7 @@ public class VisitForm extends JPanel {
   }
 
   public void setIPTDoses(String string) {
-	  double value=0;
-	  if(!string.equals("")){
-	  value = Double.parseDouble(string);
-	  }
-    this.iptInput.setValue(value);
+	  this.iptInput.setValue(string);
   }
 
   public void setTTDoses(String TTDoses) {

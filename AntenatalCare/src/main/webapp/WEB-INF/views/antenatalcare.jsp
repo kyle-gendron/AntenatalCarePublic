@@ -72,7 +72,7 @@
                       <label>Systolic BP</label>
                     </div>
                     <div class="col-xs-5">
-                      <input type="number" class="form-control" name="quantity" min="0" max="200"/>
+                      <input type="number" class="form-control" name="systolic" min="0" max="200"/>
                     </div>
                   </div>
                   <div class="form-group">

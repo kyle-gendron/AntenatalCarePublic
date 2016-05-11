@@ -21,11 +21,11 @@ import java.util.UUID;
  * blood film, and referred.
  */
 public class PregnancyFollowUp extends PregnancyRecord {
-
+	
   private String initialVisitID;
   private String referred;
   private String bloodFilm;
-
+  
   /**
    * Eight-Field Constructor: The constructor to be used when all fields are being set
    *
@@ -40,7 +40,8 @@ public class PregnancyFollowUp extends PregnancyRecord {
    * @param referred       whether the patient was referred
    */
   public PregnancyFollowUp(String subVisitID, String initialVisitID, int systolicBP, int diastolicBP,
-                           double weight, double fundalHeight, LocalDate apptDate, String bloodFilm, String referred) {
+                           double weight, double fundalHeight, LocalDate apptDate, String bloodFilm,
+                           String referred) {
     setId(subVisitID);
     this.initialVisitID = initialVisitID;
     this.systolicBP = systolicBP;
@@ -97,7 +98,7 @@ public class PregnancyFollowUp extends PregnancyRecord {
     setApptDate(apDate);
     setBloodFilm(rs.getString("bloodfilm"));
     setReferral(rs.getString("refer"));
-
+    
     //ADD timestamp
   }
 
@@ -166,4 +167,5 @@ public class PregnancyFollowUp extends PregnancyRecord {
   public void setBloodFilm(String bloodFilm) {
     this.bloodFilm = bloodFilm;
   }
+
 }
