@@ -2,7 +2,6 @@ package edu.usm.cos420.antenatal.view;
 
 import edu.usm.cos420.antenatal.controller.AntenatalController;
 import edu.usm.cos420.antenatal.controller.ReportingController;
-import edu.usm.cos420.antenatal.view.ReportingForm;
 
 import javax.swing.*;
 import java.awt.*;
@@ -231,7 +230,7 @@ public class AntenatalView extends JFrame {
 	}
 
 	/**
-	 * Generates reporting window 
+	 * Generates reporting window
 	 */
 	public ReportingForm addReportingWindow(ReportingController controller){
 		ReportingForm report = new ReportingForm(controller);
