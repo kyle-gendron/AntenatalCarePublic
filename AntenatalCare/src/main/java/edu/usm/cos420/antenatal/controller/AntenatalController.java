@@ -44,7 +44,6 @@ public class AntenatalController implements ActionListener {
    */
   public AntenatalController() {
     // Dummy person object
-    dummyPerson = new DummyPerson();
     this.service = new PregnacyVisitService();
     this.subService = new PregnancyFollowUpService();
     this.view = new AntenatalView(this);
@@ -132,8 +131,8 @@ public class AntenatalController implements ActionListener {
         } catch (SQLException e1) {
           e1.printStackTrace();
         }
-        ArrayList<PregnancyVisit> records = new ArrayList<>(service.getAllVisits());      
-        
+        ArrayList<PregnancyVisit> records = new ArrayList<>(service.getAllVisits());
+
         ReportingController repController = new ReportingController(dummyPerson, followUps, records);
         this.view.addReportingWindow(repController);
         break;
@@ -210,6 +209,6 @@ public class AntenatalController implements ActionListener {
   }
 
   public JPanel getView() {
-    return (JPanel) this.view.getContentPane();
+    return this.view;
   }
 }

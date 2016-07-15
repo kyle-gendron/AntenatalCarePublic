@@ -13,10 +13,10 @@ import java.util.Objects;
  * adds a place for the antenatal visit tab
  * and puts them together in one frame
  */
-public class AntenatalView extends JFrame {
+public class AntenatalView extends JPanel {
 
 	/**
-	 *
+	 * Main components of view
 	 */
 	private static final long serialVersionUID = -5325581904260654110L;
 	private AntenatalController controller;
@@ -43,7 +43,6 @@ public class AntenatalView extends JFrame {
 
 
 		//Container pane = getRootPane();
-		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setSize(900, 900);
 		JPanel pane = new JPanel();
 		pane.setLayout(new BorderLayout());

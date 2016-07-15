@@ -7,28 +7,27 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DummyPerson implements Serializable, IPerson {
+public class DummyPerson implements IPerson {
 
   /**
    * Stub person object to populate fields in GUI coming from the consulting register
    * this will be removed later once we get the actually dummy from the consulting register
    */
-  private static final long serialVersionUID = -1931254923689371768L;
-  private String dateOfBirth = "1/1/1970";
+  private String dateOfBirth;
   private String id;
-  private static Long COUNTER = 0L;
-  private String FacZone = "A Facility";
-  private String Subdistrict = "A Subdistrict";
-  private String District = "A District";
-  private String Year = "2016";
-  private int SerialNumber = 1;
-  private LocalDate Date = LocalDate.now();
-  private int RegNumber = 1234;
-  private int HININumber = 564532;
-  private String name = "Hello, my name is...";
-  private String Address = "2nd on right";
-  private int Age = 21;
-  private List<Long> visitID = new ArrayList<Long>();
+  private static Long COUNTER;
+  private String FacZone;
+  private String Subdistrict;
+  private String District;
+  private String Year;
+  private int SerialNumber;
+  private LocalDate Date;
+  private int RegNumber;
+  private int HININumber;
+  private String name;
+  private String Address;
+  private int Age;
+  private List<Long> visitID;
 
 
   public DummyPerson() {
